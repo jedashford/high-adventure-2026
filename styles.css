@@ -112,6 +112,18 @@ h1.title em { font-style: italic; color: var(--rust); }
   box-shadow: 0 12px 30px -16px rgba(30,58,47,0.55);
 }
 
+/* ---------- calendar row ---------- */
+
+.calrow {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 10px; margin: -14px 0 36px;
+}
+.calrow-label {
+  font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--moss); font-weight: 700;
+}
+.btn.small { padding: 7px 14px; font-size: 12.5px; }
+
 /* ---------- sections ---------- */
 
 section { padding: 58px 0 8px; }
@@ -380,7 +392,7 @@ section:target .sec-num { background: var(--rust); color: var(--paper); font-sty
 
 @media print {
   body { background: #fff; font-size: 12px; }
-  .topbar, .photo-banner, .sitenav, .warnbar { display: none; }
+  .topbar, .photo-banner, .sitenav, .warnbar, .calrow { display: none; }
   .masthead-badge { width: 96px; height: 96px; box-shadow: none; }
   .toc { background: none; border-color: #000; break-inside: avoid; }
   .now-grid, .now-card { break-inside: avoid; }

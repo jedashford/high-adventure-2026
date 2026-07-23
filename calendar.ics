@@ -1,0 +1,65 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Lakeside 14th YM//High Adventure 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Lakeside 14th YM — High Adventure
+X-WR-CALDESC:Sawtooth High Adventure 2026 — key dates. Auto-updates if
+ plans change.
+X-WR-TIMEZONE:America/Denver
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VTIMEZONE
+TZID:America/Denver
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0600
+TZNAME:MDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0600
+TZOFFSETTO:-0700
+TZNAME:MST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:packcheck-20260729@lakeside14-ym-highadventure
+DTSTAMP:20260722T210000Z
+DTSTART;TZID=America/Denver:20260729T190000
+DTEND;TZID=America/Denver:20260729T203000
+SUMMARY:YM Pack Check — bring loaded pack
+LOCATION:Church building (confirm with Alex)
+DESCRIPTION:Bring the pack FULLY loaded — scale at the door. Full guide:
+ https://jedashford.github.io/high-adventure-2026/packcheck.html
+URL:https://jedashford.github.io/high-adventure-2026/packcheck.html
+END:VEVENT
+BEGIN:VEVENT
+UID:depart-20260810@lakeside14-ym-highadventure
+DTSTAMP:20260722T210000Z
+DTSTART;TZID=America/Denver:20260810T060000
+DTEND;TZID=America/Denver:20260810T063000
+SUMMARY:Depart for the Sawtooths — meet at the church
+LOCATION:Church building
+DESCRIPTION:6:00 AM sharp. 380-mile drive to Tin Cup Trailhead\, Pettit
+ Lake\, Idaho. Trip guide:
+ https://jedashford.github.io/high-adventure-2026/
+URL:https://jedashford.github.io/high-adventure-2026/
+END:VEVENT
+BEGIN:VEVENT
+UID:trip-20260810@lakeside14-ym-highadventure
+DTSTAMP:20260722T210000Z
+DTSTART;VALUE=DATE:20260810
+DTEND;VALUE=DATE:20260814
+SUMMARY:Sawtooth High Adventure (backpacking trip)
+LOCATION:Sawtooth Wilderness\, Idaho
+DESCRIPTION:Alice-Toxaway & Edith Lake Loop\, 22 miles over 4 days. No
+ cell service on the trail — leaders carry satellite SOS. ETA text
+ Thursday afternoon. Guide:
+ https://jedashford.github.io/high-adventure-2026/
+URL:https://jedashford.github.io/high-adventure-2026/
+END:VEVENT
+END:VCALENDAR
