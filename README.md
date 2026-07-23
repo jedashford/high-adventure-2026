@@ -1,6 +1,6 @@
 # Sawtooth High Adventure 2026
 
-Living trip guide for the ward Young Men's high adventure — backpacking the
+Living trip guide for the Lakeside 14th Ward Young Men's high adventure — backpacking the
 **Alice–Toxaway & Edith Lake Loop** in Idaho's Sawtooth Wilderness,
 **August 10–13, 2026**.
 
