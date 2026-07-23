@@ -177,6 +177,8 @@ figure.doc {
   box-shadow: 0 10px 30px -18px rgba(30,58,47,0.45);
 }
 figure.doc img { display: block; width: 100%; height: auto; }
+figure.doc iframe { display: block; width: 100%; height: 460px; border: 0; }
+@media (max-width: 640px) { figure.doc iframe { height: 340px; } }
 figure.doc figcaption {
   padding: 12px 18px; font-size: 13px; color: var(--moss);
   border-top: 1px solid var(--line); background: var(--paper-deep);
@@ -382,6 +384,7 @@ section:target .sec-num { background: var(--rust); color: var(--paper); font-sty
   .now-grid, .now-card { break-inside: avoid; }
   .statband { border-color: #000; }
   figure.doc { box-shadow: none; break-inside: avoid; }
+  figure.doc.doc-map { display: none; }
   .day, table, .callout, .intel { break-inside: avoid; }
   .btn { border: 1px solid #000; color: #000 !important; background: none; }
   section { padding: 24px 0 4px; }
