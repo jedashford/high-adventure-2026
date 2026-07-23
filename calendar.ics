@@ -28,22 +28,22 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:packcheck-20260729@lakeside14-ym-highadventure
-DTSTAMP:20260722T210000Z
+DTSTAMP:20260722T230000Z
 DTSTART;TZID=America/Denver:20260729T190000
 DTEND;TZID=America/Denver:20260729T203000
 SUMMARY:YM Pack Check — bring loaded pack
-LOCATION:Church building (confirm with Alex)
+LOCATION:Our ward building
 DESCRIPTION:Bring the pack FULLY loaded — scale at the door. Full guide:
  https://jedashford.github.io/high-adventure-2026/packcheck.html
 URL:https://jedashford.github.io/high-adventure-2026/packcheck.html
 END:VEVENT
 BEGIN:VEVENT
 UID:depart-20260810@lakeside14-ym-highadventure
-DTSTAMP:20260722T210000Z
+DTSTAMP:20260722T230000Z
 DTSTART;TZID=America/Denver:20260810T060000
 DTEND;TZID=America/Denver:20260810T063000
 SUMMARY:Depart for the Sawtooths — meet at the church
-LOCATION:Church building
+LOCATION:Our ward building
 DESCRIPTION:6:00 AM sharp. 380-mile drive to Tin Cup Trailhead\, Pettit
  Lake\, Idaho. Trip guide:
  https://jedashford.github.io/high-adventure-2026/
@@ -51,7 +51,7 @@ URL:https://jedashford.github.io/high-adventure-2026/
 END:VEVENT
 BEGIN:VEVENT
 UID:trip-20260810@lakeside14-ym-highadventure
-DTSTAMP:20260722T210000Z
+DTSTAMP:20260722T230000Z
 DTSTART;VALUE=DATE:20260810
 DTEND;VALUE=DATE:20260814
 SUMMARY:Sawtooth High Adventure (backpacking trip)
