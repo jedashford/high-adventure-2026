@@ -99,6 +99,16 @@ h1.title em { font-style: italic; color: var(--rust); }
 .photo-banner { display: block; width: 100%; height: auto; }
 .photo-banner img { display: block; width: 100%; height: 240px; object-fit: cover; }
 
+/* ---------- badge & hero art ---------- */
+
+.masthead-badge {
+  display: block; width: 150px; height: 150px; margin: 0 auto 18px;
+  border-radius: 50%;
+  box-shadow: 0 12px 30px -16px rgba(30,58,47,0.55);
+}
+.hero-banner { display: block; }
+.hero-banner img { display: block; width: 100%; height: auto; }
+
 /* ---------- sections ---------- */
 
 section { padding: 58px 0 8px; }
@@ -365,7 +375,8 @@ section:target .sec-num { background: var(--rust); color: var(--paper); font-sty
 
 @media print {
   body { background: #fff; font-size: 12px; }
-  .topbar, .photo-banner, .sitenav, .warnbar { display: none; }
+  .topbar, .photo-banner, .hero-banner, .sitenav, .warnbar { display: none; }
+  .masthead-badge { width: 96px; height: 96px; box-shadow: none; }
   .toc { background: none; border-color: #000; break-inside: avoid; }
   .now-grid, .now-card { break-inside: avoid; }
   .statband { border-color: #000; }
