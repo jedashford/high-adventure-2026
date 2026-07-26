@@ -1,0 +1,260 @@
+{
+  "totalProducts": 38,
+  "missingFields": [],
+  "invalidFieldTypes": [],
+  "discountMismatches": [],
+  "invalidPriceHistories": [],
+  "profileCounts": {
+    "adult": 25,
+    "youth": 22,
+    "ultralight": 19,
+    "budget": 20
+  },
+  "otherProfileCounts": {},
+  "invalidProfiles": [],
+  "categoryStats": {
+    "tents": {
+      "count": 6,
+      "products": [
+        "tent-rei-halfdome",
+        "tent-ba-copperspur",
+        "tent-marmot-tungsten",
+        "tent-nemo-aurora",
+        "tent-durston-xmid",
+        "tent-naturehike-cloudup"
+      ]
+    },
+    "sleeping_bags": {
+      "count": 4,
+      "products": [
+        "bag-kelty-cosmic-down-20",
+        "bag-kelty-cosmic-synth-20",
+        "bag-nemo-forte-20",
+        "bag-rei-magma-15"
+      ]
+    },
+    "sleeping_pads": {
+      "count": 4,
+      "products": [
+        "pad-therm-zlite-sol",
+        "pad-therm-neoair-xlite",
+        "pad-rei-helix",
+        "pad-nemo-switchback"
+      ]
+    },
+    "backpacks": {
+      "count": 4,
+      "products": [
+        "pack-osprey-atmos-65",
+        "pack-osprey-ace-50",
+        "pack-granite-crown3-60",
+        "pack-rei-flash-55"
+      ]
+    },
+    "stoves": {
+      "count": 4,
+      "products": [
+        "stove-msr-pocketrocket-2",
+        "stove-jetboil-flash",
+        "pot-toaks-750ml",
+        "filter-sawyer-squeeze"
+      ]
+    },
+    "electronics": {
+      "count": 4,
+      "products": [
+        "elec-garmin-inreach-mini2",
+        "elec-nitecore-nb10000",
+        "elec-garmin-etrex-22x",
+        "elec-anker-325-20k"
+      ]
+    },
+    "apparel": {
+      "count": 4,
+      "products": [
+        "apparel-patagonia-torrentshell",
+        "apparel-mh-ghost-whisperer",
+        "apparel-rei-rainier",
+        "apparel-smartwool-merino-200"
+      ]
+    },
+    "poles_chairs": {
+      "count": 4,
+      "products": [
+        "poles-cascade-carbon",
+        "poles-bd-trail-pro",
+        "chair-helinox-zero",
+        "chair-rei-flexlite-air"
+      ]
+    },
+    "lighting": {
+      "count": 4,
+      "products": [
+        "light-bd-spot-400",
+        "light-petzl-actik-core",
+        "light-nitecore-nu25",
+        "light-biolite-325"
+      ]
+    }
+  },
+  "specIssues": [],
+  "prosConsIssues": [],
+  "valueRatingStats": {
+    "min": 8.3,
+    "max": 9.9,
+    "list": [
+      {
+        "id": "tent-rei-halfdome",
+        "val": 9.4
+      },
+      {
+        "id": "tent-ba-copperspur",
+        "val": 8.5
+      },
+      {
+        "id": "tent-marmot-tungsten",
+        "val": 9
+      },
+      {
+        "id": "tent-nemo-aurora",
+        "val": 8.3
+      },
+      {
+        "id": "tent-durston-xmid",
+        "val": 9.5
+      },
+      {
+        "id": "tent-naturehike-cloudup",
+        "val": 8.7
+      },
+      {
+        "id": "bag-kelty-cosmic-down-20",
+        "val": 9.6
+      },
+      {
+        "id": "bag-kelty-cosmic-synth-20",
+        "val": 8.8
+      },
+      {
+        "id": "bag-nemo-forte-20",
+        "val": 9.1
+      },
+      {
+        "id": "bag-rei-magma-15",
+        "val": 8.9
+      },
+      {
+        "id": "pad-therm-zlite-sol",
+        "val": 9.7
+      },
+      {
+        "id": "pad-therm-neoair-xlite",
+        "val": 9.3
+      },
+      {
+        "id": "pad-rei-helix",
+        "val": 9.4
+      },
+      {
+        "id": "pad-nemo-switchback",
+        "val": 9
+      },
+      {
+        "id": "pack-osprey-atmos-65",
+        "val": 9.2
+      },
+      {
+        "id": "pack-osprey-ace-50",
+        "val": 9.7
+      },
+      {
+        "id": "pack-granite-crown3-60",
+        "val": 9.5
+      },
+      {
+        "id": "pack-rei-flash-55",
+        "val": 9.3
+      },
+      {
+        "id": "stove-msr-pocketrocket-2",
+        "val": 9.8
+      },
+      {
+        "id": "stove-jetboil-flash",
+        "val": 9.3
+      },
+      {
+        "id": "pot-toaks-750ml",
+        "val": 9.7
+      },
+      {
+        "id": "filter-sawyer-squeeze",
+        "val": 9.9
+      },
+      {
+        "id": "elec-garmin-inreach-mini2",
+        "val": 9.6
+      },
+      {
+        "id": "elec-nitecore-nb10000",
+        "val": 9.7
+      },
+      {
+        "id": "elec-garmin-etrex-22x",
+        "val": 8.8
+      },
+      {
+        "id": "elec-anker-325-20k",
+        "val": 8.9
+      },
+      {
+        "id": "apparel-patagonia-torrentshell",
+        "val": 9.6
+      },
+      {
+        "id": "apparel-mh-ghost-whisperer",
+        "val": 9.1
+      },
+      {
+        "id": "apparel-rei-rainier",
+        "val": 9.4
+      },
+      {
+        "id": "apparel-smartwool-merino-200",
+        "val": 9.3
+      },
+      {
+        "id": "poles-cascade-carbon",
+        "val": 9.9
+      },
+      {
+        "id": "poles-bd-trail-pro",
+        "val": 9
+      },
+      {
+        "id": "chair-helinox-zero",
+        "val": 9.2
+      },
+      {
+        "id": "chair-rei-flexlite-air",
+        "val": 9.4
+      },
+      {
+        "id": "light-bd-spot-400",
+        "val": 9.6
+      },
+      {
+        "id": "light-petzl-actik-core",
+        "val": 9.3
+      },
+      {
+        "id": "light-nitecore-nu25",
+        "val": 9.8
+      },
+      {
+        "id": "light-biolite-325",
+        "val": 9.2
+      }
+    ]
+  }
+}

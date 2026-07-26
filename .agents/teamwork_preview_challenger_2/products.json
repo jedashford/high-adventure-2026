@@ -1,0 +1,1872 @@
+[
+  {
+    "id": "tent-rei-halfdome",
+    "imageUrl": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1200&q=80",
+    "name": "REI Co-op Half Dome SL 3+",
+    "brand": "REI Co-op",
+    "category": "tents",
+    "categoryName": "Tents",
+    "profiles": [
+      "adult",
+      "youth"
+    ],
+    "msrp": 379,
+    "currentPrice": 299,
+    "discountPercent": 21,
+    "rating": 4.7,
+    "reviewCount": 142,
+    "weightOz": 78,
+    "weightDisplay": "4 lbs 14 oz (78 oz)",
+    "dealBadge": "REI Member Sale",
+    "valueRating": 9.4,
+    "specs": {
+      "Freestanding": "Yes (Freestanding)",
+      "Capacity": "3-Person+",
+      "Floor Area": "48.8 sq ft (Real 4P space)",
+      "Peak Height": "44 in",
+      "Packed Size": "21 x 7 in",
+      "Doors/Vestibules": "2 Doors / 2 Vestibules"
+    },
+    "priceHistory": [
+      379,
+      379,
+      349,
+      329,
+      299
+    ],
+    "pros": [
+      "Roomiest floor in class (48.8 sq ft)",
+      "Footprint included in box",
+      "Near-vertical sidewalls"
+    ],
+    "cons": [
+      "Near 5 lb trail weight",
+      "Slightly bulkier packed volume"
+    ],
+    "verdict": "Top overall recommendation. Palace for two with zero cramped feel."
+  },
+  {
+    "id": "tent-ba-copperspur",
+    "imageUrl": "https://absolute-snow-content.cdn.rlab.net/original/flsu0031.jpg",
+    "name": "Big Agnes Copper Spur HV UL3",
+    "brand": "Big Agnes",
+    "category": "tents",
+    "categoryName": "Tents",
+    "profiles": [
+      "ultralight",
+      "adult"
+    ],
+    "msrp": 600,
+    "currentPrice": 539,
+    "discountPercent": 10,
+    "rating": 4.8,
+    "reviewCount": 98,
+    "weightOz": 54,
+    "weightDisplay": "3 lbs 6 oz (54 oz)",
+    "dealBadge": "10% OFF Sale",
+    "valueRating": 8.5,
+    "specs": {
+      "Freestanding": "Yes (Freestanding)",
+      "Capacity": "3-Person",
+      "Floor Area": "41.0 sq ft",
+      "Peak Height": "43 in",
+      "Packed Size": "21 x 6.5 in",
+      "Doors/Vestibules": "2 Awning Vestibules"
+    },
+    "priceHistory": [
+      600,
+      600,
+      580,
+      560,
+      539
+    ],
+    "pros": [
+      "1.5 lbs lighter than Half Dome",
+      "Awning-style vestibule doors",
+      "Premium materials"
+    ],
+    "cons": [
+      "High cost ($539+)",
+      "Thinner 15D fabric requires care"
+    ],
+    "verdict": "The premium ultralight 3P pick for multi-week expeditions."
+  },
+  {
+    "id": "tent-marmot-tungsten",
+    "imageUrl": "https://www.bfgcdn.com/1500_1500_90/521-0592-0211/marmot-tungsten-3p-3-person-tent.jpg",
+    "name": "Marmot Tungsten 3P",
+    "brand": "Marmot",
+    "category": "tents",
+    "categoryName": "Tents",
+    "profiles": [
+      "budget",
+      "adult"
+    ],
+    "msrp": 329,
+    "currentPrice": 225,
+    "discountPercent": 32,
+    "rating": 4.5,
+    "reviewCount": 86,
+    "weightOz": 96,
+    "weightDisplay": "6 lbs 0 oz (96 oz)",
+    "dealBadge": "32% OFF Sale",
+    "valueRating": 9,
+    "specs": {
+      "Freestanding": "Yes (Freestanding)",
+      "Capacity": "3-Person",
+      "Floor Area": "40.9 sq ft",
+      "Peak Height": "46 in",
+      "Packed Size": "22 x 8 in",
+      "Doors/Vestibules": "2 D-Shaped Doors"
+    },
+    "priceHistory": [
+      329,
+      329,
+      280,
+      249,
+      225
+    ],
+    "pros": [
+      "Outstanding sale price ($225)",
+      "Footprint included",
+      "Durable 68D polyester"
+    ],
+    "cons": [
+      "6.0 lb trail weight",
+      "Slightly less floor area than REI"
+    ],
+    "verdict": "The value sniper. Best sub-$250 3-person freestanding tent."
+  },
+  {
+    "id": "tent-nemo-aurora",
+    "imageUrl": "https://cdn.shoplightspeed.com/shops/622237/files/54843417/image.jpg",
+    "name": "NEMO Aurora 3P",
+    "brand": "NEMO",
+    "category": "tents",
+    "categoryName": "Tents",
+    "profiles": [
+      "adult",
+      "youth"
+    ],
+    "msrp": 330,
+    "currentPrice": 289,
+    "discountPercent": 12,
+    "rating": 4.6,
+    "reviewCount": 64,
+    "weightOz": 93,
+    "weightDisplay": "5 lbs 13 oz (93 oz)",
+    "dealBadge": "12% OFF",
+    "valueRating": 8.3,
+    "specs": {
+      "Freestanding": "Yes (Freestanding)",
+      "Capacity": "3-Person",
+      "Floor Area": "44.0 sq ft",
+      "Peak Height": "44 in",
+      "Packed Size": "23 x 7.5 in",
+      "Doors/Vestibules": "2 Large Doors"
+    },
+    "priceHistory": [
+      330,
+      330,
+      310,
+      299,
+      289
+    ],
+    "pros": [
+      "Pre-bent poles for vertical walls",
+      "Includes footprint & pawn print",
+      "Fun color options"
+    ],
+    "cons": [
+      "Heavier than Half Dome",
+      "Pole hubs slightly stiff"
+    ],
+    "verdict": "Solid contender to Tungsten with better interior shoulder room."
+  },
+  {
+    "id": "tent-durston-xmid",
+    "imageUrl": "https://valleyandpeak.co.uk/cdn/shop/files/Durston_Gear_X-Mid_2_Solid_Ultralight_Tent_Double_1024x1024.webp?v=1728381332",
+    "name": "Durston X-Mid 2",
+    "brand": "Durston Gear",
+    "category": "tents",
+    "categoryName": "Tents",
+    "profiles": [
+      "ultralight"
+    ],
+    "msrp": 280,
+    "currentPrice": 280,
+    "discountPercent": 0,
+    "rating": 4.9,
+    "reviewCount": 210,
+    "weightOz": 37,
+    "weightDisplay": "2 lbs 5 oz (37 oz)",
+    "dealBadge": "Cult Favorite",
+    "valueRating": 9.5,
+    "specs": {
+      "Freestanding": "No (Non-freestanding / Trekking pole setup)",
+      "Capacity": "2-Person",
+      "Floor Area": "33.0 sq ft",
+      "Peak Height": "46 in",
+      "Packed Size": "12 x 5 in",
+      "Doors/Vestibules": "2 Dual Pitch Doors"
+    },
+    "priceHistory": [
+      280,
+      280,
+      280,
+      280,
+      280
+    ],
+    "pros": [
+      "Incredible 2 lb 5 oz weight",
+      "No pole weight (uses trekking poles)",
+      "Stormproof double-wall design"
+    ],
+    "cons": [
+      "Non-freestanding (requires stakes + trekking poles)",
+      "Tight for 2 large adults"
+    ],
+    "verdict": "Best ultralight trekking pole tent on the market."
+  },
+  {
+    "id": "tent-naturehike-cloudup",
+    "imageUrl": "https://i5.walmartimages.com/seo/Naturehike-Cloud-up-3-person-Camping-Tent-210T-Polyester-20D-Silicone-Nylon-PU3000-4000mm-Ultralight-Tent-Portable-Outdoor-Tent-Backpack-Hiking-Tent_cf740514-ef20-4045-9a04-c48367d7a0b5.11a9833995bf9fd393988dad749efba7.jpeg",
+    "name": "Naturehike Cloud-Up 3",
+    "brand": "Naturehike",
+    "category": "tents",
+    "categoryName": "Tents",
+    "profiles": [
+      "budget",
+      "youth"
+    ],
+    "msrp": 190,
+    "currentPrice": 149,
+    "discountPercent": 22,
+    "rating": 4.3,
+    "reviewCount": 155,
+    "weightOz": 72,
+    "weightDisplay": "4 lbs 8 oz (72 oz)",
+    "dealBadge": "Budget Pick",
+    "valueRating": 8.7,
+    "specs": {
+      "Freestanding": "Semi-Freestanding",
+      "Capacity": "3-Person",
+      "Floor Area": "40.0 sq ft",
+      "Peak Height": "43 in",
+      "Packed Size": "19 x 6 in",
+      "Doors/Vestibules": "1 Front Entry Door"
+    },
+    "priceHistory": [
+      190,
+      180,
+      169,
+      159,
+      149
+    ],
+    "pros": [
+      "Ultra-budget price ($149)",
+      "Decent 4.5 lb weight",
+      "Silnylon rainfly included"
+    ],
+    "cons": [
+      "Single front entry door",
+      "Cheaper zippers",
+      "Tighter 3P fit"
+    ],
+    "verdict": "Surprisingly capable budget tent for 1-2 trips per year."
+  },
+  {
+    "id": "tent-ba-craglake",
+    "imageUrl": "https://cdn11.bigcommerce.com/s-v29r2wl21x/images/stencil/660x733/products/5530/27837/ss23lifestyle2__37554.1671790408.jpg?c=1",
+    "name": "Big Agnes Crag Lake SL3 (UL3)",
+    "brand": "Big Agnes",
+    "category": "tents",
+    "categoryName": "Tents",
+    "profiles": [
+      "adult",
+      "youth",
+      "budget"
+    ],
+    "msrp": 400,
+    "currentPrice": 319,
+    "discountPercent": 20,
+    "rating": 4.6,
+    "reviewCount": 68,
+    "weightOz": 76,
+    "weightDisplay": "4 lbs 12 oz (76 oz)",
+    "dealBadge": "Eco Choice",
+    "valueRating": 9.1,
+    "specs": {
+      "Freestanding": "Yes (Freestanding)",
+      "Capacity": "3-Person",
+      "Floor Area": "38.5 sq ft",
+      "Peak Height": "44 in",
+      "Packed Size": "19.5 x 6 in",
+      "Doors/Vestibules": "2 Doors / 2 Vestibules"
+    },
+    "priceHistory": [
+      400,
+      380,
+      359,
+      339,
+      319
+    ],
+    "pros": [
+      "100% GRS-certified recycled fabric",
+      "Pre-bent pole hubs for excellent headroom",
+      "Dual doors & generous vestibules"
+    ],
+    "cons": [
+      "Heavier than Copper Spur series",
+      "Compact 38.5 sq ft floor"
+    ],
+    "verdict": "Eco-conscious 3-person shelter delivering Big Agnes craftsmanship at a lower price point."
+  },
+  {
+    "id": "bag-kelty-cosmic-down-20",
+    "imageUrl": "https://cdn.absolute-snow.co.uk/fullsize/35413724RR_MAIN_Kelty_S24_CosmicDown_20Long__48623.jpg",
+    "name": "Kelty Cosmic Down 20",
+    "brand": "Kelty",
+    "category": "sleeping_bags",
+    "categoryName": "Sleeping Bags",
+    "profiles": [
+      "adult",
+      "youth",
+      "budget"
+    ],
+    "msrp": 180,
+    "currentPrice": 149,
+    "discountPercent": 17,
+    "rating": 4.7,
+    "reviewCount": 230,
+    "weightOz": 41,
+    "weightDisplay": "2 lbs 9 oz (41 oz)",
+    "dealBadge": "Best Value Down",
+    "valueRating": 9.6,
+    "specs": {
+      "Temp Rating": "20°F (-6°C)",
+      "Insulation": "550-Fill DriDown",
+      "Compressed Size": "8 x 13 in",
+      "Fit Sizing": "Short 5'6\" / Reg 6'0\"",
+      "Zipper": "Dual Slider"
+    },
+    "priceHistory": [
+      180,
+      180,
+      165,
+      159,
+      149
+    ],
+    "pros": [
+      "Unbeatable value for 550-fill down",
+      "Packs to size of a bread loaf",
+      "PFC-free water-resistant down"
+    ],
+    "cons": [
+      "Slightly heavier than 800-fill bags",
+      "Basic draft collar"
+    ],
+    "verdict": "The undisputed king of budget-friendly down sleeping bags."
+  },
+  {
+    "id": "bag-kelty-cosmic-synth-20",
+    "imageUrl": "https://cdn.absolute-snow.co.uk/fullsize/Kelty_WomenS_Cosmic_Synthetic_20_Deg_Sleeping_Bag_Green_Gables_Laurel_Green_Tandoori_Spice_520548-12.jpg",
+    "name": "Kelty Cosmic Synthetic 20",
+    "brand": "Kelty",
+    "category": "sleeping_bags",
+    "categoryName": "Sleeping Bags",
+    "profiles": [
+      "budget",
+      "youth"
+    ],
+    "msrp": 110,
+    "currentPrice": 89,
+    "discountPercent": 19,
+    "rating": 4.4,
+    "reviewCount": 180,
+    "weightOz": 56,
+    "weightDisplay": "3 lbs 8 oz (56 oz)",
+    "dealBadge": "Budget Pick",
+    "valueRating": 8.8,
+    "specs": {
+      "Temp Rating": "20°F (-6°C)",
+      "Insulation": "CirroLoft Synthetic",
+      "Compressed Size": "10 x 16 in",
+      "Fit Sizing": "Short 5'6\" / Reg 6'0\"",
+      "Zipper": "Anti-Snag"
+    },
+    "priceHistory": [
+      110,
+      110,
+      99,
+      95,
+      89
+    ],
+    "pros": [
+      "Sub-$90 price point",
+      "Forgiving in wet conditions",
+      "Durable shell"
+    ],
+    "cons": [
+      "Heavy at 3.5 lbs",
+      "Takes double the pack volume of down"
+    ],
+    "verdict": "Solid choice for youth or rain-heavy trips on a strict budget."
+  },
+  {
+    "id": "bag-nemo-forte-20",
+    "imageUrl": "https://www.mountainsports.com/cdn/shop/files/ForteEndlessPromiseMensSleepingBag202320_FDetail.jpg?v=1742851037",
+    "name": "NEMO Forte Endless Promise 20",
+    "brand": "NEMO",
+    "category": "sleeping_bags",
+    "categoryName": "Sleeping Bags",
+    "profiles": [
+      "adult",
+      "youth"
+    ],
+    "msrp": 170,
+    "currentPrice": 139,
+    "discountPercent": 18,
+    "rating": 4.6,
+    "reviewCount": 112,
+    "weightOz": 43,
+    "weightDisplay": "2 lbs 11 oz (43 oz)",
+    "dealBadge": "Spoon Comfort",
+    "valueRating": 9.1,
+    "specs": {
+      "Temp Rating": "20°F (-6°C)",
+      "Insulation": "Zerofiber Synthetic",
+      "Compressed Size": "9 x 14 in",
+      "Fit Sizing": "Short 5'6\" / Reg 6'0\"",
+      "Zipper": "Thermo Gills"
+    },
+    "priceHistory": [
+      170,
+      170,
+      155,
+      149,
+      139
+    ],
+    "pros": [
+      "Classic NEMO Spoon shape for side sleepers",
+      "Thermo Gill vents for temperature tuning",
+      "100% recyclable material"
+    ],
+    "cons": [
+      "Slightly bulkier than down",
+      "Synthetics degrade faster over 10 yrs"
+    ],
+    "verdict": "The best synthetic bag for side sleepers who need knee room."
+  },
+  {
+    "id": "bag-rei-magma-15",
+    "imageUrl": "https://www.adventurealan.com/wp-content/uploads/2021/10/REI-Magma-15-Ultralight-Sleeping-Bag.jpg",
+    "name": "REI Co-op Magma 15",
+    "brand": "REI Co-op",
+    "category": "sleeping_bags",
+    "categoryName": "Sleeping Bags",
+    "profiles": [
+      "ultralight",
+      "adult"
+    ],
+    "msrp": 389,
+    "currentPrice": 329,
+    "discountPercent": 15,
+    "rating": 4.8,
+    "reviewCount": 175,
+    "weightOz": 28,
+    "weightDisplay": "1 lb 12 oz (28 oz)",
+    "dealBadge": "REI Outlet Deal",
+    "valueRating": 8.9,
+    "specs": {
+      "Temp Rating": "15°F (-9°C)",
+      "Insulation": "850-Fill Goose Down",
+      "Compressed Size": "6 x 10 in",
+      "Fit Sizing": "Reg 6'0\" / Long 6'6\"",
+      "Zipper": "Trapezoidal Footbox"
+    },
+    "priceHistory": [
+      389,
+      389,
+      359,
+      349,
+      329
+    ],
+    "pros": [
+      "Incredible sub-2lb trail weight",
+      "Packs down extremely small",
+      "850-fill premium goose down"
+    ],
+    "cons": [
+      "Higher initial price tag",
+      "Snug athletic mummy cut"
+    ],
+    "verdict": "Buy once, cry once. Premium featherweight warmth for cold mountain nights."
+  },
+  {
+    "id": "pad-therm-zlite-sol",
+    "imageUrl": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80",
+    "name": "Therm-a-Rest Z Lite Sol Foam Pad",
+    "brand": "Therm-a-Rest",
+    "category": "sleeping_pads",
+    "categoryName": "Sleeping Pads",
+    "profiles": [
+      "youth",
+      "budget",
+      "ultralight"
+    ],
+    "msrp": 55,
+    "currentPrice": 45,
+    "discountPercent": 18,
+    "rating": 4.7,
+    "reviewCount": 420,
+    "weightOz": 14,
+    "weightDisplay": "0 lbs 14 oz (14 oz)",
+    "dealBadge": "Indestructible",
+    "valueRating": 9.7,
+    "specs": {
+      "R-Value": "2.6",
+      "Thickness": "0.75 in",
+      "Dimensions": "72 x 20 in",
+      "Type": "Closed-Cell Foam Accordion",
+      "Packed Size": "20 x 5 x 5.5 in"
+    },
+    "priceHistory": [
+      55,
+      55,
+      49,
+      47,
+      45
+    ],
+    "pros": [
+      "Cannot pop or puncture ever",
+      "Instant 3-second deployment",
+      "Doubles as camp seat / glassing pad"
+    ],
+    "cons": [
+      "Only 0.75 inches of cushion",
+      "R-value 2.6 is chilly below 32°F"
+    ],
+    "verdict": "Perfect indestructible pad for youth hikers and backcountry glassing."
+  },
+  {
+    "id": "pad-therm-neoair-xlite",
+    "imageUrl": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",
+    "name": "Therm-a-Rest NeoAir XLite NXT",
+    "brand": "Therm-a-Rest",
+    "category": "sleeping_pads",
+    "categoryName": "Sleeping Pads",
+    "profiles": [
+      "ultralight",
+      "adult"
+    ],
+    "msrp": 210,
+    "currentPrice": 179,
+    "discountPercent": 15,
+    "rating": 4.8,
+    "reviewCount": 310,
+    "weightOz": 13,
+    "weightDisplay": "0 lbs 13 oz (13 oz)",
+    "dealBadge": "Thru-Hiker Standard",
+    "valueRating": 9.3,
+    "specs": {
+      "R-Value": "4.5 (High Warmth)",
+      "Thickness": "3.0 in",
+      "Dimensions": "72 x 20 in",
+      "Type": "Insulated Air Matrix",
+      "Packed Size": "9 x 4.1 in"
+    },
+    "priceHistory": [
+      210,
+      210,
+      195,
+      189,
+      179
+    ],
+    "pros": [
+      "3.0 inches of plush air comfort",
+      "High 4.5 R-value for cold ground",
+      "Quieter NXT fabric design"
+    ],
+    "cons": [
+      "Requires inflation breath / pump sack",
+      "Can puncture on sharp thorns"
+    ],
+    "verdict": "The gold standard air pad. Maximum warmth and comfort per ounce."
+  },
+  {
+    "id": "pad-rei-helix",
+    "imageUrl": "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80",
+    "name": "REI Co-op Helix Insulated Air Pad",
+    "brand": "REI Co-op",
+    "category": "sleeping_pads",
+    "categoryName": "Sleeping Pads",
+    "profiles": [
+      "adult",
+      "budget"
+    ],
+    "msrp": 129,
+    "currentPrice": 99,
+    "discountPercent": 23,
+    "rating": 4.6,
+    "reviewCount": 140,
+    "weightOz": 17,
+    "weightDisplay": "1 lb 1 oz (17 oz)",
+    "dealBadge": "Best Air Pad Value",
+    "valueRating": 9.4,
+    "specs": {
+      "R-Value": "4.9 (High Warmth)",
+      "Thickness": "3.25 in",
+      "Dimensions": "72 x 20 in",
+      "Type": "Weld-Tack Air",
+      "Packed Size": "9 x 4.5 in"
+    },
+    "priceHistory": [
+      129,
+      129,
+      115,
+      109,
+      99
+    ],
+    "pros": [
+      "Outstanding 4.9 R-value for cold nights",
+      "3.25 inches thick for side sleepers",
+      "80% of XLite comfort at 50% cost"
+    ],
+    "cons": [
+      "4 oz heavier than XLite",
+      "Takes 2 mins to inflate"
+    ],
+    "verdict": "The best value air pad for adult side sleepers concerned with cold ground."
+  },
+  {
+    "id": "pad-nemo-switchback",
+    "imageUrl": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",
+    "name": "NEMO Switchback Foam Pad",
+    "brand": "NEMO",
+    "category": "sleeping_pads",
+    "categoryName": "Sleeping Pads",
+    "profiles": [
+      "youth",
+      "budget",
+      "ultralight"
+    ],
+    "msrp": 60,
+    "currentPrice": 49,
+    "discountPercent": 18,
+    "rating": 4.6,
+    "reviewCount": 190,
+    "weightOz": 14.5,
+    "weightDisplay": "0 lbs 14.5 oz (14.5 oz)",
+    "dealBadge": "Cushioned Foam",
+    "valueRating": 9,
+    "specs": {
+      "R-Value": "2.0",
+      "Thickness": "0.9 in",
+      "Dimensions": "72 x 20 in",
+      "Type": "Closed-Cell Foam Accordion",
+      "Packed Size": "20 x 5 x 5 in"
+    },
+    "priceHistory": [
+      60,
+      60,
+      55,
+      52,
+      49
+    ],
+    "pros": [
+      "Deep hexagonal nodes for extra cushion",
+      "Thermal reflective film layer",
+      "Puncture proof"
+    ],
+    "cons": [
+      "R-value 2.0 is summer oriented",
+      "Bulky strap-on pack profile"
+    ],
+    "verdict": "Excellent alternative to Z Lite with deeper foam dimples."
+  },
+  {
+    "id": "pack-osprey-atmos-65",
+    "imageUrl": "https://www.glacier-national-park-travel-guide.com/wp-content/uploads/2015/03/Osprey-Atmos-65-AG-EX-Pack-.jpg",
+    "name": "Osprey Atmos AG 65",
+    "brand": "Osprey",
+    "category": "backpacks",
+    "categoryName": "Backpacks",
+    "profiles": [
+      "adult"
+    ],
+    "msrp": 340,
+    "currentPrice": 279,
+    "discountPercent": 18,
+    "rating": 4.8,
+    "reviewCount": 410,
+    "weightOz": 73,
+    "weightDisplay": "4 lbs 9 oz (73 oz)",
+    "dealBadge": "Best Comfort Hauler",
+    "valueRating": 9.2,
+    "specs": {
+      "Volume": "65 Liters",
+      "Suspension": "Anti-Gravity Mesh Trampoline",
+      "Torso Fit": "17-21 in (Adult Heavy)",
+      "Max Load": "50 lbs",
+      "Raincover": "Included"
+    },
+    "priceHistory": [
+      340,
+      340,
+      310,
+      299,
+      279
+    ],
+    "pros": [
+      "Anti-Gravity mesh back feels weightless on hips",
+      "Carries 40+ lbs comfortably",
+      "Osprey All Mighty Lifetime Guarantee"
+    ],
+    "cons": [
+      "Heavier empty weight (4.6 lbs)",
+      "Lots of straps and buckles"
+    ],
+    "verdict": "The king of comfort for 45+ lb heavy load hauls."
+  },
+  {
+    "id": "pack-osprey-ace-50",
+    "imageUrl": "https://www.furtherfaster.co.nz/cdn/shop/files/osprey-ace-50-pack-youth-green-canopy-matcha-green-nz-01.webp?v=1763717696",
+    "name": "Osprey Ace 50 Youth Pack",
+    "brand": "Osprey",
+    "category": "backpacks",
+    "categoryName": "Backpacks",
+    "profiles": [
+      "youth",
+      "budget"
+    ],
+    "msrp": 180,
+    "currentPrice": 149,
+    "discountPercent": 17,
+    "rating": 4.9,
+    "reviewCount": 125,
+    "weightOz": 44,
+    "weightDisplay": "2 lbs 12 oz (44 oz)",
+    "dealBadge": "Adjustable Youth",
+    "valueRating": 9.7,
+    "specs": {
+      "Volume": "50 Liters",
+      "Suspension": "AirSpeed Mesh Backpanel",
+      "Torso Fit": "11-17 in (Grows with kid)",
+      "Max Load": "30 lbs",
+      "Raincover": "Included"
+    },
+    "priceHistory": [
+      180,
+      180,
+      169,
+      159,
+      149
+    ],
+    "pros": [
+      "Adjustable torso grows 6 inches with youth",
+      "Top tier Osprey hipbelt padding",
+      "Integrated raincover"
+    ],
+    "cons": [
+      "Max load 30 lbs limit",
+      "Fixed lid pocket"
+    ],
+    "verdict": "The definitive pack for growing 10-14 year old youth scouts."
+  },
+  {
+    "id": "pack-granite-crown3-60",
+    "imageUrl": "https://www.campsaver.com/i/zoomed/opplanet-granite-gear-crown-3-backpack-short-dunes-black-60l-50014-7010-main-1.jpg",
+    "name": "Granite Gear Crown3 60",
+    "brand": "Granite Gear",
+    "category": "backpacks",
+    "categoryName": "Backpacks",
+    "profiles": [
+      "ultralight",
+      "budget",
+      "adult"
+    ],
+    "msrp": 240,
+    "currentPrice": 189,
+    "discountPercent": 21,
+    "rating": 4.7,
+    "reviewCount": 110,
+    "weightOz": 40,
+    "weightDisplay": "2 lbs 8 oz (40 oz)",
+    "dealBadge": "Best UL Pack Value",
+    "valueRating": 9.5,
+    "specs": {
+      "Volume": "60 Liters",
+      "Suspension": "VC Mark 3 Frame Sheet",
+      "Torso Fit": "18-21 in",
+      "Max Load": "35 lbs (43 lbs w/ frame)",
+      "Raincover": "Not Included"
+    },
+    "priceHistory": [
+      240,
+      240,
+      219,
+      199,
+      189
+    ],
+    "pros": [
+      "Lightweight 2.5 lb empty weight",
+      "Removable lid converts to waist pack",
+      "Fully customizable hipbelt fit"
+    ],
+    "cons": [
+      "Less ventilated than mesh trampolines",
+      "Water bottle pockets tight when pack full"
+    ],
+    "verdict": "The ultimate sweet spot between ultralight weight and real load carrying."
+  },
+  {
+    "id": "pack-rei-flash-55",
+    "imageUrl": "https://www.adventurealan.com/wp-content/uploads/2022/04/REI-Co-op-Flash-55-Pack-1.jpg",
+    "name": "REI Co-op Flash 55",
+    "brand": "REI Co-op",
+    "category": "backpacks",
+    "categoryName": "Backpacks",
+    "profiles": [
+      "ultralight",
+      "budget"
+    ],
+    "msrp": 199,
+    "currentPrice": 159,
+    "discountPercent": 20,
+    "rating": 4.6,
+    "reviewCount": 180,
+    "weightOz": 41,
+    "weightDisplay": "2 lbs 9 oz (41 oz)",
+    "dealBadge": "REI Member Deal",
+    "valueRating": 9.3,
+    "specs": {
+      "Volume": "55 Liters",
+      "Suspension": "3D Molded Foam Back",
+      "Torso Fit": "17-20 in",
+      "Max Load": "30 lbs",
+      "Raincover": "Not Included"
+    },
+    "priceHistory": [
+      199,
+      199,
+      179,
+      169,
+      159
+    ],
+    "pros": [
+      "Modular Packmod straps strip down weight",
+      "Water bottle holsters angled forward for easy reach",
+      "Sub-$160 price point"
+    ],
+    "cons": [
+      "Max load 30-32 lbs limit",
+      "Less rigid frame sheet"
+    ],
+    "verdict": "Fantastic modular ultralight pack for streamlined gear kits."
+  },
+  {
+    "id": "stove-msr-pocketrocket-2",
+    "imageUrl": "https://content.backcountry.com/images/items/900/CAS/CAS009R/ONECOL.jpg",
+    "name": "MSR PocketRocket 2 Stove",
+    "brand": "MSR",
+    "category": "stoves",
+    "categoryName": "Stoves & Kitchen",
+    "profiles": [
+      "ultralight",
+      "budget",
+      "adult",
+      "youth"
+    ],
+    "msrp": 50,
+    "currentPrice": 39,
+    "discountPercent": 22,
+    "rating": 4.8,
+    "reviewCount": 550,
+    "weightOz": 2.6,
+    "weightDisplay": "0 lbs 2.6 oz (2.6 oz)",
+    "dealBadge": "Top Micro Stove",
+    "valueRating": 9.8,
+    "specs": {
+      "Burner Type": "Canister Micro Burner",
+      "Boil Speed": "3.5 min / 1 Liter",
+      "Fuel Type": "Isobutane-Propane Canister",
+      "Case": "Hard Protective Case",
+      "Wind Shield": "WindClip Shield"
+    },
+    "priceHistory": [
+      50,
+      50,
+      45,
+      42,
+      39
+    ],
+    "pros": [
+      "Tiny 2.6 oz weight",
+      "Boils 1 liter of water in 3.5 mins",
+      "Bulletproof reliability"
+    ],
+    "cons": [
+      "No igniter button (requires lighter)",
+      "Windy conditions reduce boil speed"
+    ],
+    "verdict": "The standard micro canister stove every backpacker should consider."
+  },
+  {
+    "id": "stove-jetboil-flash",
+    "imageUrl": "https://www.durableknife.com/wp-content/uploads/2026/01/jetboil-flash-cooking-stove-system-gold-scaled.webp",
+    "name": "Jetboil Flash Cooking System",
+    "brand": "Jetboil",
+    "category": "stoves",
+    "categoryName": "Stoves & Kitchen",
+    "profiles": [
+      "adult",
+      "youth"
+    ],
+    "msrp": 130,
+    "currentPrice": 109,
+    "discountPercent": 16,
+    "rating": 4.8,
+    "reviewCount": 380,
+    "weightOz": 13.1,
+    "weightDisplay": "0 lbs 13.1 oz (13.1 oz)",
+    "dealBadge": "Fastest 100-Sec Boil",
+    "valueRating": 9.3,
+    "specs": {
+      "Burner Type": "Integrated Heat-Exchange Pot",
+      "Boil Speed": "100 sec / 0.5 Liter",
+      "Fuel Type": "Isobutane Canister",
+      "Case": "Insulated Cozy w/ Color Indicator",
+      "Wind Shield": "FluxRing Guard"
+    },
+    "priceHistory": [
+      130,
+      130,
+      120,
+      115,
+      109
+    ],
+    "pros": [
+      "Blazing fast 100-second boil time",
+      "Push-button piezo igniter",
+      "Thermo-chromatic color change indicator"
+    ],
+    "cons": [
+      "13.1 oz system weight",
+      "Only boils water (simmer control limited)"
+    ],
+    "verdict": "Best for quick freeze-dried meal prep and coffee for duo teams."
+  },
+  {
+    "id": "pot-toaks-750ml",
+    "imageUrl": "https://i5.walmartimages.com/seo/TOAKS-Titanium-750ml-Pot-w-Bail-Grey_fd422453-f441-4b7b-83fc-4fbe58d23d55_1.9e1e13249844d37ecfafe9b6e883b9ec.jpeg",
+    "name": "TOAKS Titanium 750ml Pot",
+    "brand": "TOAKS",
+    "category": "stoves",
+    "categoryName": "Stoves & Kitchen",
+    "profiles": [
+      "ultralight",
+      "budget"
+    ],
+    "msrp": 37,
+    "currentPrice": 31,
+    "discountPercent": 16,
+    "rating": 4.8,
+    "reviewCount": 320,
+    "weightOz": 3.6,
+    "weightDisplay": "0 lbs 3.6 oz (3.6 oz)",
+    "dealBadge": "Pure Titanium",
+    "valueRating": 9.7,
+    "specs": {
+      "Capacity": "750 ml (25.4 oz)",
+      "Material": "Grade 1 Pure Titanium",
+      "Dimensions": "3.75 in W x 4.3 in H",
+      "Nesting": "Fits 110g Canister + Stove",
+      "Extras": "Handles, Lid, Mesh Sack"
+    },
+    "priceHistory": [
+      37,
+      37,
+      35,
+      33,
+      31
+    ],
+    "pros": [
+      "Featherweight 3.6 oz titanium construction",
+      "Nests 110g fuel canister + PocketRocket 2 inside",
+      "Graduated volume markings"
+    ],
+    "cons": [
+      "Titanium has hot spots (boiling water only, no gourmet frying)"
+    ],
+    "verdict": "The ideal solo/duo water boiling pot."
+  },
+  {
+    "id": "filter-sawyer-squeeze",
+    "imageUrl": "https://sawyerdirect.net/cdn/shop/files/54122622307_47987a2e9c_k_1200x1200.jpg?v=1742388596",
+    "name": "Sawyer Squeeze Water Filter System",
+    "brand": "Sawyer",
+    "category": "stoves",
+    "categoryName": "Stoves & Kitchen",
+    "profiles": [
+      "adult",
+      "youth",
+      "ultralight",
+      "budget"
+    ],
+    "msrp": 41,
+    "currentPrice": 34,
+    "discountPercent": 17,
+    "rating": 4.9,
+    "reviewCount": 850,
+    "weightOz": 3,
+    "weightDisplay": "0 lbs 3.0 oz (3.0 oz)",
+    "dealBadge": "Essential Filter",
+    "valueRating": 9.9,
+    "specs": {
+      "Filter Media": "0.1 Micron Hollow Fiber",
+      "Flow Rate": "1.7 Liters / Min",
+      "Lifespan": "Up to 100,000 Gallons",
+      "Threads": "Standard 28mm (Smartwater Compatible)",
+      "Weight": "3.0 oz Filter Unit"
+    },
+    "priceHistory": [
+      41,
+      41,
+      38,
+      36,
+      34
+    ],
+    "pros": [
+      "Threads directly onto 1L Smartwater bottles",
+      "Removes 99.9999% bacteria & protozoa",
+      "Field cleanable with syringe"
+    ],
+    "cons": [
+      "Pouches can wear out (use Smartwater bottle instead)",
+      "Must prevent freezing in sub-32°F weather"
+    ],
+    "verdict": "The undisputed gold standard filter for backcountry water purification."
+  },
+  {
+    "id": "elec-garmin-inreach-mini2",
+    "imageUrl": "https://media-www.sportchek.ca/product/div-01-hardgoods/dpt-48-electronics/sdpt-14-navigation/333904911/garmin-inreach-mini-2-b2f061a2-ada9-4ec1-95a3-4e2e53badc07-jpgrendition.jpg?imdensity=1&imwidth=1244&impolicy=gZoom",
+    "name": "Garmin inReach Mini 2 Satellite Communicator",
+    "brand": "Garmin",
+    "category": "electronics",
+    "categoryName": "Electronics & Navigation",
+    "profiles": [
+      "adult",
+      "youth",
+      "ultralight"
+    ],
+    "msrp": 400,
+    "currentPrice": 349,
+    "discountPercent": 13,
+    "rating": 4.9,
+    "reviewCount": 340,
+    "weightOz": 3.5,
+    "weightDisplay": "0 lbs 3.5 oz (3.5 oz)",
+    "dealBadge": "Group Safety Essential",
+    "valueRating": 9.6,
+    "specs": {
+      "Network": "100% Global Iridium Satellite",
+      "Battery Life": "Up to 14 Days (10-min tracking)",
+      "Features": "2-Way Text, SOS, Live Location",
+      "Water Rating": "IPX7 Waterproof",
+      "Display": "Monochrome Sun-Readable"
+    },
+    "priceHistory": [
+      400,
+      400,
+      379,
+      369,
+      349
+    ],
+    "pros": [
+      "Lifesaving 2-way satellite SOS communications anywhere on Earth",
+      "14-day battery life in standard tracking mode",
+      "Completely independent of cell service"
+    ],
+    "cons": [
+      "Requires monthly satellite subscription (~$15/mo)",
+      "Initial hardware cost"
+    ],
+    "verdict": "Essential group safety lifeline for remote Sawtooth wilderness trips."
+  },
+  {
+    "id": "elec-nitecore-nb10000",
+    "imageUrl": "https://down-sg.img.susercontent.com/file/sg-11134207-7rdxr-lz4u8zp24z8adc",
+    "name": "Nitecore NB10000 Gen 3 Power Bank",
+    "brand": "Nitecore",
+    "category": "electronics",
+    "categoryName": "Electronics & Navigation",
+    "profiles": [
+      "ultralight",
+      "adult",
+      "youth"
+    ],
+    "msrp": 60,
+    "currentPrice": 49,
+    "discountPercent": 18,
+    "rating": 4.8,
+    "reviewCount": 210,
+    "weightOz": 5.3,
+    "weightDisplay": "0 lbs 5.3 oz (5.3 oz)",
+    "dealBadge": "Lightest 10k",
+    "valueRating": 9.7,
+    "specs": {
+      "Capacity": "10,000 mAh (38.5Wh)",
+      "Material": "Carbon Fiber Frame",
+      "Ports": "Dual USB-C (22.5W Fast Charge)",
+      "Pass-Through": "Supported",
+      "Water Rating": "IPX5 Weather Resistant"
+    },
+    "priceHistory": [
+      60,
+      60,
+      55,
+      52,
+      49
+    ],
+    "pros": [
+      "World's lightest 10,000mAh power bank (5.3 oz)",
+      "Sleek carbon fiber anti-drop frame",
+      "Fast charges phone + Garmin simultaneously"
+    ],
+    "cons": [
+      "Higher cost per mAh than bulky plastic bricks",
+      "Carbon weave shows minor scuffs"
+    ],
+    "verdict": "The ultimate ultralight power bank for backpacking."
+  },
+  {
+    "id": "elec-garmin-etrex-22x",
+    "imageUrl": "https://www.outdoorsi.com.au/wp-content/uploads/2022/11/Garmin-eTrex-22x-Rugged-Handheld-GPS-Navigator-Black-Navy.jpg",
+    "name": "Garmin eTrex 22x Handheld GPS",
+    "brand": "Garmin",
+    "category": "electronics",
+    "categoryName": "Electronics & Navigation",
+    "profiles": [
+      "adult",
+      "budget"
+    ],
+    "msrp": 200,
+    "currentPrice": 169,
+    "discountPercent": 16,
+    "rating": 4.4,
+    "reviewCount": 180,
+    "weightOz": 5,
+    "weightDisplay": "0 lbs 5.0 oz (5.0 oz)",
+    "dealBadge": "16% OFF GPS",
+    "valueRating": 8.8,
+    "specs": {
+      "Screen": "2.2 in 65k Color Sunlight Display",
+      "Maps": "Preloaded TopoActive Mapping",
+      "Battery Life": "25 hours (2 AA Batteries)",
+      "Constellation": "GPS + GLONASS",
+      "Memory": "8 GB Internal + MicroSD"
+    },
+    "priceHistory": [
+      200,
+      200,
+      189,
+      179,
+      169
+    ],
+    "pros": [
+      "Preloaded TopoActive topographic maps",
+      "Runs on standard AA batteries for easy swap",
+      "Rugged waterproof body"
+    ],
+    "cons": [
+      "Non-touchscreen joystick navigation",
+      "Smaller 2.2-inch screen size"
+    ],
+    "verdict": "Reliable standalone GPS with preloaded topo maps."
+  },
+  {
+    "id": "elec-anker-325-20k",
+    "imageUrl": "https://brlhc31l9m.tenbytecdn.com/assets/images/products/power-bank/product_9438_main.webp?w=900",
+    "name": "Anker 325 Power Bank 20,000mAh",
+    "brand": "Anker",
+    "category": "electronics",
+    "categoryName": "Electronics & Navigation",
+    "profiles": [
+      "budget"
+    ],
+    "msrp": 50,
+    "currentPrice": 35,
+    "discountPercent": 30,
+    "rating": 4.6,
+    "reviewCount": 450,
+    "weightOz": 12.8,
+    "weightDisplay": "0 lbs 12.8 oz (12.8 oz)",
+    "dealBadge": "30% OFF High Cap",
+    "valueRating": 8.9,
+    "specs": {
+      "Capacity": "20,000 mAh",
+      "Material": "Polycarbonate Shell",
+      "Ports": "USB-C + USB-A",
+      "Pass-Through": "Standard Charge",
+      "Weight": "12.8 oz"
+    },
+    "priceHistory": [
+      50,
+      48,
+      42,
+      38,
+      35
+    ],
+    "pros": [
+      "Massive 20,000mAh capacity (4-5 full phone charges)",
+      "Budget $35 price point",
+      "Proven Anker safety circuit"
+    ],
+    "cons": [
+      "Heavy 12.8 oz weight",
+      "Slower recharging time"
+    ],
+    "verdict": "High-capacity power bank for multi-person group trips on a budget."
+  },
+  {
+    "id": "apparel-patagonia-torrentshell",
+    "imageUrl": "https://www.patagonia.com.hk/cdn/shop/files/WBS23_85241_BLK_TM4.jpg?v=1693883676&width=1800",
+    "name": "Patagonia Torrentshell 3L Rain Jacket",
+    "brand": "Patagonia",
+    "category": "apparel",
+    "categoryName": "Apparel",
+    "profiles": [
+      "adult",
+      "youth"
+    ],
+    "msrp": 179,
+    "currentPrice": 139,
+    "discountPercent": 22,
+    "rating": 4.8,
+    "reviewCount": 310,
+    "weightOz": 14.1,
+    "weightDisplay": "0 lbs 14.1 oz (14.1 oz)",
+    "dealBadge": "Best 3L Rain Shell",
+    "valueRating": 9.6,
+    "specs": {
+      "Waterproofing": "3-Layer H2No Performance Standard",
+      "Pit Zips": "Dual Underarm Pit Zips",
+      "Pockets": "2 Zippered Handwarmer",
+      "Packable": "Stuffs into Left Pocket",
+      "Hood": "2-Way Adjustable Visor Hood"
+    },
+    "priceHistory": [
+      179,
+      179,
+      159,
+      149,
+      139
+    ],
+    "pros": [
+      "Durable 3-layer construction doesn't wet out",
+      "Dual pit zips for intense uphill venting",
+      "100% recycled nylon face fabric"
+    ],
+    "cons": [
+      "Slightly crinkly fabric sound",
+      "14 oz weight is average"
+    ],
+    "verdict": "The definitive 3-layer rain jacket for mountain cloudbursts."
+  },
+  {
+    "id": "apparel-mh-ghost-whisperer",
+    "imageUrl": "https://images.hardloop.fr/377196/mountain-hardwear-ghost-whisperer-2-hoody-down-jacket-mens.jpg?w=auto&h=auto&q=80",
+    "name": "Mountain Hardwear Ghost Whisperer/2 Down Hoody",
+    "brand": "Mountain Hardwear",
+    "category": "apparel",
+    "categoryName": "Apparel",
+    "profiles": [
+      "ultralight",
+      "adult"
+    ],
+    "msrp": 360,
+    "currentPrice": 279,
+    "discountPercent": 23,
+    "rating": 4.9,
+    "reviewCount": 240,
+    "weightOz": 8.8,
+    "weightDisplay": "0 lbs 8.8 oz (8.8 oz)",
+    "dealBadge": "UL Featherweight",
+    "valueRating": 9.1,
+    "specs": {
+      "Insulation": "800-Fill RDS Goose Down",
+      "Shell": "10D Recycled Whisperer Ripstop",
+      "Weight": "8.8 oz Total",
+      "Packable": "Stuffs into Own Pocket w/ Carabiner Loop",
+      "Features": "Elastic Hood & Cuffs"
+    },
+    "priceHistory": [
+      360,
+      360,
+      320,
+      299,
+      279
+    ],
+    "pros": [
+      "Mind-blowing 8.8 oz ultralight warmth",
+      "Packs smaller than a 1L water bottle",
+      "800-fill RDS certified goose down"
+    ],
+    "cons": [
+      "Ultra-thin 10D fabric requires care around sharp brush",
+      "Premium price tag"
+    ],
+    "verdict": "The pinnacle ultralight down jacket for chilly alpine camp evenings."
+  },
+  {
+    "id": "apparel-rei-rainier",
+    "imageUrl": "https://www.adventurealan.com/wp-content/uploads/2021/03/REI-Rainier-Rain-Jacket-1500x1500.jpg",
+    "name": "REI Co-op Rainier Rain Jacket",
+    "brand": "REI Co-op",
+    "category": "apparel",
+    "categoryName": "Apparel",
+    "profiles": [
+      "budget",
+      "youth"
+    ],
+    "msrp": 100,
+    "currentPrice": 69,
+    "discountPercent": 31,
+    "rating": 4.5,
+    "reviewCount": 280,
+    "weightOz": 12.5,
+    "weightDisplay": "0 lbs 12.5 oz (12.5 oz)",
+    "dealBadge": "31% OFF Budget Rain",
+    "valueRating": 9.4,
+    "specs": {
+      "Waterproofing": "2.5-Layer Peakproof Shield",
+      "Pit Zips": "Yes Underarm Zips",
+      "Pockets": "2 Zippered Hand + 2 Internal Drop",
+      "Windproof": "Up to 60 mph",
+      "Fit": "Relaxed Fit"
+    },
+    "priceHistory": [
+      100,
+      95,
+      85,
+      75,
+      69
+    ],
+    "pros": [
+      "Outstanding sub-$70 price point",
+      "Includes pit zips for ventilation",
+      "Windproof up to 60 mph"
+    ],
+    "cons": [
+      "2.5-layer membrane can feel clammy against bare skin",
+      "DWR requires re-treatment after 1 season"
+    ],
+    "verdict": "Best budget rain shell for scouts and youth backpackers."
+  },
+  {
+    "id": "apparel-smartwool-merino-200",
+    "imageUrl": "https://www.wildernessx.com/cdn/shop/files/smartwool-classic-thermal-merino-base-layer-crew-w_1.jpg?v=1718080004&width=1946",
+    "name": "Smartwool Classic Thermal Merino Base Layer Crew",
+    "brand": "Smartwool",
+    "category": "apparel",
+    "categoryName": "Apparel",
+    "profiles": [
+      "adult",
+      "youth"
+    ],
+    "msrp": 115,
+    "currentPrice": 89,
+    "discountPercent": 23,
+    "rating": 4.8,
+    "reviewCount": 390,
+    "weightOz": 7.7,
+    "weightDisplay": "0 lbs 7.7 oz (7.7 oz)",
+    "dealBadge": "100% Merino Wool",
+    "valueRating": 9.3,
+    "specs": {
+      "Material": "100% Merino Wool Interlock Knit",
+      "Fabric Weight": "200 g/m² (Midweight)",
+      "Seams": "Flatlock Seam Construction",
+      "Odor Control": "Natural Odor Resistant",
+      "Fit": "Slim Body Fit"
+    },
+    "priceHistory": [
+      115,
+      115,
+      105,
+      95,
+      89
+    ],
+    "pros": [
+      "Natural merino wool resists odor for 5+ days without washing",
+      "Regulates body temperature hot or cold",
+      "Zero chafing flatlock seams"
+    ],
+    "cons": [
+      "Slower drying time than pure synthetics",
+      "Requires gentle laundry care"
+    ],
+    "verdict": "Essential mountain sleep shirt and cold morning hiking layer."
+  },
+  {
+    "id": "poles-durston-iceline",
+    "imageUrl": "https://durstongear.com/cdn/shop/files/durston-iceline-trekking-poles-1.jpg",
+    "name": "Durston Iceline Carbon Trekking Poles",
+    "brand": "Durston Gear",
+    "category": "poles_chairs",
+    "categoryName": "Poles & Chairs",
+    "profiles": [
+      "ultralight",
+      "adult"
+    ],
+    "msrp": 149,
+    "currentPrice": 149,
+    "discountPercent": 0,
+    "rating": 4.9,
+    "reviewCount": 180,
+    "weightOz": 10.2,
+    "weightDisplay": "0 lbs 10.2 oz (290g / 145g per pole)",
+    "dealBadge": "🏆 #1 Rated Pole (Adventure Alan)",
+    "valueRating": 9.8,
+    "specs": {
+      "Rank / Overall Score": "#1 (Highest Strength-to-Weight Ratio)",
+      "Weight": "145g (5.1 oz) per pole",
+      "Deflection & Stiffness": "Top 3 Stiffest (Minimal center/end deflection)",
+      "Reverb & Noise": "Quietest (Dual O-Ring Ferrule Dampeners)",
+      "Lock System": "Hybrid Telescoping Flip-Lock + QuickConnect Ferrule",
+      "Grip & Strap": "Thin Soft Mesh Strap + Light Ergonomic Foam Grip",
+      "Max Length": "127 cm (Fits hikers up to ~6 ft)"
+    },
+    "priceHistory": [
+      149,
+      149,
+      149,
+      149,
+      149
+    ],
+    "pros": [
+      "#1 ranked strength-to-weight ratio out of 30 tested poles",
+      "Dual ferrule O-rings completely eliminate rattle & reverb",
+      "Ultra-packable hybrid telescoping quick-connect design"
+    ],
+    "cons": [
+      "Max 127 cm length may not fit very tall hikers or tall trekking shelters"
+    ],
+    "verdict": "The best trekking pole in the world. Unmatched strength-to-weight with zero rattle."
+  },
+  {
+    "id": "poles-bd-alpine-cork",
+    "imageUrl": "https://www.blackdiamondequipment.com/on/demandware.static/-/Sites-bd-master-catalog/default/dw837492c1/products/alpine_carbon_cork_trekking_pole_BD112514_0000_ALL1.jpg",
+    "name": "Black Diamond Alpine Carbon Cork Poles",
+    "brand": "Black Diamond",
+    "category": "poles_chairs",
+    "categoryName": "Poles & Chairs",
+    "profiles": [
+      "adult"
+    ],
+    "msrp": 200,
+    "currentPrice": 169,
+    "discountPercent": 15,
+    "rating": 4.8,
+    "reviewCount": 310,
+    "weightOz": 17.1,
+    "weightDisplay": "1 lb 1.1 oz (485g per pair)",
+    "dealBadge": "🏆 Most Durable / Strongest",
+    "valueRating": 9.3,
+    "specs": {
+      "Rank / Overall Score": "#2 Overall (#1 Pure Strength)",
+      "Weight": "242g (8.5 oz) per pole",
+      "Deflection & Stiffness": "3 cm Center Deflection (Practically Indestructible)",
+      "Reverb & Noise": "Low Reverb (Solid Carbon Shafts)",
+      "Lock System": "FlickLock Pro Metal Clamps (Best in Biz)",
+      "Grip & Strap": "Premium 100% Natural Cork Grip + Padded Strap",
+      "Max Length": "130 cm (Collapsed 61 cm)"
+    },
+    "priceHistory": [
+      200,
+      200,
+      185,
+      175,
+      169
+    ],
+    "pros": [
+      "Strongest pole tested (only 3 cm deflection under 35 lb load)",
+      "Best metal FlickLock Pro clamps on the market",
+      "Premium natural cork grip absorbs hand sweat"
+    ],
+    "cons": [
+      "Midweight (8.5 oz per pole), heavier than ultralight models",
+      "Clunky padded wrist strap"
+    ],
+    "verdict": "Indestructible workhorse for thru-hikers, heavy loads, and rugged alpine travel."
+  },
+  {
+    "id": "poles-cascade-ultralight",
+    "imageUrl": "https://cascademountaintech.com/cdn/shop/files/trekkingpolelayoutimage_1_1800x1800.jpg?v=1738185232",
+    "name": "Cascade Mountain Tech Carbon Ultralight",
+    "brand": "Cascade Mountain Tech",
+    "category": "poles_chairs",
+    "categoryName": "Poles & Chairs",
+    "profiles": [
+      "adult",
+      "youth",
+      "budget",
+      "ultralight"
+    ],
+    "msrp": 65,
+    "currentPrice": 54,
+    "discountPercent": 17,
+    "rating": 4.7,
+    "reviewCount": 540,
+    "weightOz": 14.4,
+    "weightDisplay": "0 lbs 14.4 oz (410g per pair)",
+    "dealBadge": "🏆 #3 Overall & Best Value ($54)",
+    "valueRating": 9.9,
+    "specs": {
+      "Rank / Overall Score": "#3 Overall (Best Value under $70)",
+      "Weight": "205g (7.2 oz) per pole",
+      "Deflection & Stiffness": "High Stiffness (Single Flip Lock Reinforcement)",
+      "Reverb & Noise": "Moderate Reverb",
+      "Lock System": "Single Quick Flip-Lock (2-Piece Shaft)",
+      "Grip & Strap": "EVA Foam Grip + Extension (Basic Nylon Strap)",
+      "Max Length": "135 cm"
+    },
+    "priceHistory": [
+      65,
+      65,
+      59,
+      56,
+      54
+    ],
+    "pros": [
+      "Incredible strength-to-weight ratio for just $54/pair",
+      "2-piece single flip-lock architecture reinforces center against deflection",
+      "Includes foam grip extension"
+    ],
+    "cons": [
+      "Taller minimum collapsed height (less ideal for running vests/small daypacks)",
+      "Basic nylon webbing wrist strap"
+    ],
+    "verdict": "The ultimate value sniper. Outstanding stiffness-to-weight ratio at 1/3 the cost of premium brands."
+  },
+  {
+    "id": "poles-leki-ultratrail-fx",
+    "imageUrl": "https://www.leki.com/media/image/84/64/70/65225851_1.jpg",
+    "name": "Leki Ultra Trail FX.One Folding Carbon Poles",
+    "brand": "Leki",
+    "category": "poles_chairs",
+    "categoryName": "Poles & Chairs",
+    "profiles": [
+      "ultralight",
+      "adult"
+    ],
+    "msrp": 220,
+    "currentPrice": 189,
+    "discountPercent": 14,
+    "rating": 4.8,
+    "reviewCount": 95,
+    "weightOz": 9.6,
+    "weightDisplay": "0 lbs 9.6 oz (274g / 137g per pole)",
+    "dealBadge": "⚡ Best Collapsible / Trail Runner",
+    "valueRating": 9,
+    "specs": {
+      "Rank / Overall Score": "Honorable Mention (Best Folding / Ultramarathon)",
+      "Weight": "137g (4.8 oz) per pole",
+      "Deflection & Stiffness": "Lightweight Carbon Folding Z-Pole Structure",
+      "Reverb & Noise": "Low Reverb Internal Cord System",
+      "Lock System": "Push-Button Release Collapsible Z-Pole System",
+      "Grip & Strap": "Shark System Glove Strap (Direct Power Transfer)",
+      "Max Length": "130 cm (Fixed/Collapsible sizes)"
+    },
+    "priceHistory": [
+      220,
+      220,
+      210,
+      199,
+      189
+    ],
+    "pros": [
+      "Ultra-fast folding push-button design for rapid stowing",
+      "Unique Shark System glove strap maximizes arm-to-ground power transfer",
+      "Ultra-lightweight 137g per pole for trail runners"
+    ],
+    "cons": [
+      "Fixed length sizes require careful height selection",
+      "Higher price point"
+    ],
+    "verdict": "The trusted choice of elite ultramarathoners for maximum speed, power transfer, and fast stowing."
+  },
+  {
+    "id": "chair-helinox-zero",
+    "imageUrl": "https://www.anacondastores.com/medias/BP90187413-black-2.jpg-SPOTWF-productHero?context=bWFzdGVyfGltYWdlc3w1Mzg1OHxpbWFnZS9qcGVnfGltYWdlcy9oNjgvaDAwLzE0MTUxNjY0MDc0NzgyL0JQOTAxODc0MTMtYmxhY2tfMi5qcGdfU1BPVFdGX3Byb2R1Y3RIZXJvfGUwOGFkOTY3ZTEwMGQ1N2Y1YjJjYjI3ZmZiZTUyNTIzMzM2NTBmMTJmZTBjYzE0NTFkZGI0MGQ0NTEwOWQ0MTQ",
+    "name": "Helinox Chair Zero",
+    "brand": "Helinox",
+    "category": "poles_chairs",
+    "categoryName": "Poles & Chairs",
+    "profiles": [
+      "ultralight",
+      "adult",
+      "youth"
+    ],
+    "msrp": 150,
+    "currentPrice": 119,
+    "discountPercent": 21,
+    "rating": 4.8,
+    "reviewCount": 260,
+    "weightOz": 17,
+    "weightDisplay": "1 lb 1 oz (17 oz)",
+    "dealBadge": "1 lb Ultralight Chair",
+    "valueRating": 9.2,
+    "specs": {
+      "Weight Capacity": "265 lbs",
+      "Frame": "DAC TH72M Aluminum Alloy",
+      "Seat Height": "11.0 in",
+      "Packed Size": "13.8 x 3.9 in",
+      "Material": "Ripstop Polyester"
+    },
+    "priceHistory": [
+      150,
+      150,
+      135,
+      125,
+      119
+    ],
+    "pros": [
+      "Real chair comfort at just 1.0 lb trail weight",
+      "Supports up to 265 lbs capacity",
+      "DAC aluminum pole frame shock-corded for 10-sec assembly"
+    ],
+    "cons": [
+      "Low 11-inch seat height requires deep squat",
+      "Feet can sink into soft mud without ground sheet"
+    ],
+    "verdict": "The premier ultralight camp chair for backcountry comfort."
+  },
+  {
+    "id": "chair-rei-flexlite-air",
+    "imageUrl": "https://backpackinglight.com/wp-content/uploads/2024/08/rei-flexlite-air-chair.jpg",
+    "name": "REI Co-op Flexlite Air Chair",
+    "brand": "REI Co-op",
+    "category": "poles_chairs",
+    "categoryName": "Poles & Chairs",
+    "profiles": [
+      "budget",
+      "ultralight"
+    ],
+    "msrp": 100,
+    "currentPrice": 79,
+    "discountPercent": 21,
+    "rating": 4.6,
+    "reviewCount": 175,
+    "weightOz": 16,
+    "weightDisplay": "1 lb 0 oz (16 oz)",
+    "dealBadge": "REI Member Deal",
+    "valueRating": 9.4,
+    "specs": {
+      "Weight Capacity": "250 lbs",
+      "Frame": "Aluminum Alloy",
+      "Seat Height": "11.0 in",
+      "Packed Size": "15 x 5 in",
+      "Material": "Ripstop Nylon"
+    },
+    "priceHistory": [
+      100,
+      100,
+      89,
+      85,
+      79
+    ],
+    "pros": [
+      "Sub-1 lb weight (16 oz)",
+      "$79 sale price is $40 cheaper than Helinox",
+      "Quick assembly frame"
+    ],
+    "cons": [
+      "Slightly narrower seating bucket",
+      "250 lb capacity rating"
+    ],
+    "verdict": "Best value 1-lb ultralight chair for long days on the trail."
+  },
+  {
+    "id": "light-bd-spot-400",
+    "imageUrl": "https://cdn.snowys.com.au/content/images/thumbs/1247458_spot-400-headlamp-graphite.jpeg",
+    "name": "Black Diamond Spot 400 Headlamp",
+    "brand": "Black Diamond",
+    "category": "lighting",
+    "categoryName": "Headlamps & Lights",
+    "profiles": [
+      "adult",
+      "youth",
+      "budget"
+    ],
+    "msrp": 50,
+    "currentPrice": 39,
+    "discountPercent": 22,
+    "rating": 4.8,
+    "reviewCount": 340,
+    "weightOz": 2.7,
+    "weightDisplay": "0 lbs 2.7 oz (2.7 oz)",
+    "dealBadge": "400 Lumen Waterproof",
+    "valueRating": 9.6,
+    "specs": {
+      "Max Lumens": "400 Lumens",
+      "Beam Distance": "100 meters",
+      "Dual-Fuel Power": "3 AAA or BD 1500 Li-ion",
+      "Water Rating": "IPX8 Waterproof (1.1m Submerged)",
+      "Modes": "Proximity, Distance, Dimming, Strobe, Red Night Vision"
+    },
+    "priceHistory": [
+      50,
+      50,
+      45,
+      42,
+      39
+    ],
+    "pros": [
+      "IPX8 waterproof rating handles torrential rain",
+      "PowerTap instant max brightness toggle",
+      "Red night-vision LED preserves night vision"
+    ],
+    "cons": [
+      "Menu tap sequencing requires 5 mins practice",
+      "AAA batteries included (rechargeable sold separate)"
+    ],
+    "verdict": "The definitive 400 lumen waterproof headlamp for wilderness night navigation."
+  },
+  {
+    "id": "light-petzl-actik-core",
+    "imageUrl": "https://dbyvw4eroffpi.cloudfront.net/product-media/3JS7/2000/2000/Petzl-Actik-Core-Headlamp.jpg",
+    "name": "Petzl Actik Core Headlamp w/ Core Battery",
+    "brand": "Petzl",
+    "category": "lighting",
+    "categoryName": "Headlamps & Lights",
+    "profiles": [
+      "adult",
+      "youth"
+    ],
+    "msrp": 80,
+    "currentPrice": 64,
+    "discountPercent": 20,
+    "rating": 4.8,
+    "reviewCount": 210,
+    "weightOz": 3.1,
+    "weightDisplay": "0 lbs 3.1 oz (3.1 oz)",
+    "dealBadge": "600 Lumens + USB Batt",
+    "valueRating": 9.3,
+    "specs": {
+      "Max Lumens": "600 Lumens",
+      "Beam Distance": "115 meters",
+      "Dual-Fuel Power": "Included USB Core Battery or 3 AAA",
+      "Water Rating": "IPX4 Weather Resistant",
+      "Modes": "Wide / Mixed Beam, Red LED, Lock Function"
+    },
+    "priceHistory": [
+      80,
+      80,
+      75,
+      69,
+      64
+    ],
+    "pros": [
+      "Massive 600 lumens brightness",
+      "Includes USB rechargeable Core battery",
+      "Phosphorescent reflector glows in dark inside tent"
+    ],
+    "cons": [
+      "IPX4 weather resistance (splashproof, not submersed)",
+      "Slightly higher cost"
+    ],
+    "verdict": "High power 600 lumen headlamp with included rechargeable USB core battery."
+  },
+  {
+    "id": "light-nitecore-nu25",
+    "imageUrl": "https://www.andrew-amanda.com/static/images/products/main/20221011152145_76819.super.jpg",
+    "name": "Nitecore NU25 UL Headlamp",
+    "brand": "Nitecore",
+    "category": "lighting",
+    "categoryName": "Headlamps & Lights",
+    "profiles": [
+      "ultralight",
+      "budget"
+    ],
+    "msrp": 37,
+    "currentPrice": 29,
+    "discountPercent": 22,
+    "rating": 4.9,
+    "reviewCount": 180,
+    "weightOz": 1.6,
+    "weightDisplay": "0 lbs 1.6 oz (1.6 oz)",
+    "dealBadge": "1.6 oz UL Feather",
+    "valueRating": 9.8,
+    "specs": {
+      "Max Lumens": "400 Lumens",
+      "Power Source": "Built-in 650mAh USB-C Battery",
+      "Weight": "1.62 oz Total",
+      "Water Rating": "IP66 Water & Dust Resistant",
+      "Strap": "Ultralight Paracord Headband"
+    },
+    "priceHistory": [
+      37,
+      37,
+      33,
+      31,
+      29
+    ],
+    "pros": [
+      "Mind-blowing 1.6 oz total weight",
+      "Direct USB-C fast charging port built in",
+      "Dual spotlight + floodlight + red light"
+    ],
+    "cons": [
+      "Built-in battery cannot be field swapped",
+      "Paracord headband minimalist fit"
+    ],
+    "verdict": "The gold standard headlamp for ultralight backpackers."
+  },
+  {
+    "id": "light-biolite-325",
+    "imageUrl": "https://d2j6dbq0eux0bg.cloudfront.net/images/113852578/5060716617.jpg",
+    "name": "Biolite HeadLamp 325",
+    "brand": "Biolite",
+    "category": "lighting",
+    "categoryName": "Headlamps & Lights",
+    "profiles": [
+      "youth",
+      "ultralight"
+    ],
+    "msrp": 40,
+    "currentPrice": 32,
+    "discountPercent": 20,
+    "rating": 4.6,
+    "reviewCount": 110,
+    "weightOz": 1.8,
+    "weightDisplay": "0 lbs 1.8 oz (1.8 oz)",
+    "dealBadge": "Flush 3D Fit",
+    "valueRating": 9.2,
+    "specs": {
+      "Max Lumens": "325 Lumens",
+      "Power Source": "USB Micro-Rechargeable",
+      "Weight": "1.76 oz",
+      "Design": "3D SlimFit Flush Front",
+      "Modes": "White Spot, White Strobe, Red Flood, Dimming"
+    },
+    "priceHistory": [
+      40,
+      40,
+      36,
+      34,
+      32
+    ],
+    "pros": [
+      "Flush 3D SlimFit front sits completely flat against forehead without bouncing",
+      "Ultra-soft moisture wicking fabric band",
+      "1.8 oz ultralight profile"
+    ],
+    "cons": [
+      "Micro-USB charging (not USB-C)",
+      "325 lumens is moderate max brightness"
+    ],
+    "verdict": "Best bounce-free flush headlamp for trail running and active youth."
+  }
+]
