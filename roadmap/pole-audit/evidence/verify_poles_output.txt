@@ -1,0 +1,16 @@
+PASS  products array located
+INFO  total products = 70 (informational — catalog is actively edited by other sessions; headlamp edits were 1:1 swaps)
+PASS  poles products = 5 (expect 5)
+PASS  present: Black Diamond Pursuit Trekking Poles
+PASS  present: Black Diamond Alpine Carbon Cork Poles
+PASS  present: Cascade Mountain Tech Carbon Fiber Quick Lock (Cork)
+PASS  present: Gossamer Gear LT5 Three Piece Carbon Poles
+PASS  present: Cascade Mountain Tech Aluminum Quick Lock Poles
+PASS  removed: Durston Iceline
+PASS  removed: Leki Ultra Trail
+PASS  no duplicate product ids ([])
+PASS  poles tab click renders cards (5)
+PASS  Gossamer Gear LT5 visible in rendered DOM
+PASS  zero JS errors (clean)
+
+ALL CHECKS PASSED
