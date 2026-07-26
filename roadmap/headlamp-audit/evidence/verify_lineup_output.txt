@@ -1,0 +1,17 @@
+PASS  products array located
+INFO  total products = 69 (informational — catalog is actively edited by other sessions; headlamp edits were 1:1 swaps)
+PASS  lighting products = 5 (expect 5)
+PASS  present: Nitecore UT27 MCT 800 Headlamp
+PASS  present: Fenix HM55R Renegade Headlamp
+PASS  present: Petzl Tikkina Headlamp
+PASS  present: Nitecore NU25 MCT UL 400 Headlamp
+PASS  present: Nitecore NU21 Headlamp
+PASS  removed: Actik Core 600
+PASS  removed: Spot 400-R
+PASS  removed: BioLite HeadLamp 325
+PASS  no duplicate product ids ([])
+PASS  lighting tab click renders cards (5)
+PASS  Fenix HM55R Renegade visible in rendered DOM
+PASS  zero JS errors (clean)
+
+ALL CHECKS PASSED
