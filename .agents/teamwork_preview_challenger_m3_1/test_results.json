@@ -1,0 +1,617 @@
+{
+  "total": 122,
+  "passed": 121,
+  "failed": 1,
+  "details": [
+    {
+      "status": "PASS",
+      "description": "PRODUCTS array loaded and has 38 products",
+      "extraInfo": "Length: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "CATEGORIES array loaded and has 10 categories",
+      "extraInfo": "Length: 10"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"'\" renders without error",
+      "extraInfo": "Table rows: 4"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"\\\"\" renders without error",
+      "extraInfo": "Table rows: 4"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"<script>\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"tent & bag\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"\\\\\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"/\" renders without error",
+      "extraInfo": "Table rows: 13"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"[tents]\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"(ultralight)\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"*\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"?\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"+\" renders without error",
+      "extraInfo": "Table rows: 7"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"%\" renders without error",
+      "extraInfo": "Table rows: 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"$\" renders without error",
+      "extraInfo": "Table rows: 1"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"#\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"@\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"!\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \";\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \":\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"_\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"-\" renders without error",
+      "extraInfo": "Table rows: 32"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"~\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"⛺\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query with special chars: \"⭐\" renders without error",
+      "extraInfo": "Table rows: 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query is case-insensitive (\"PATAGONIA\" vs \"patagonia\")",
+      "extraInfo": "Upper: 1, Lower: 1"
+    },
+    {
+      "status": "PASS",
+      "description": "Search query strips leading/trailing whitespace",
+      "extraInfo": "\" Osprey \" count: 2, \"Osprey\" count: 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Search matches Brand (\"Garmin\")",
+      "extraInfo": "Count: 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Search matches Specs (\"Titanium\")",
+      "extraInfo": "Count: 1"
+    },
+    {
+      "status": "PASS",
+      "description": "Search matches Verdict (\"palace\")",
+      "extraInfo": "Count: 1"
+    },
+    {
+      "status": "PASS",
+      "description": "Empty search query returns all 38 products",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "Whitespace search query treated as empty search (38 products)",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "Non-matching search triggers emptyState display block",
+      "extraInfo": "emptyState display: block"
+    },
+    {
+      "status": "PASS",
+      "description": "Non-matching search hides tableContainer and cardContainer",
+      "extraInfo": "table: none, card: none"
+    },
+    {
+      "status": "PASS",
+      "description": "Clearing search restores 38 products and hides empty state",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: all + Profile: all",
+      "extraInfo": "Expected 38, got 38"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: all + Profile: adult",
+      "extraInfo": "Expected 25, got 25"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: all + Profile: youth",
+      "extraInfo": "Expected 22, got 22"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: all + Profile: ultralight",
+      "extraInfo": "Expected 19, got 19"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: all + Profile: budget",
+      "extraInfo": "Expected 20, got 20"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: tents + Profile: all",
+      "extraInfo": "Expected 6, got 6"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: tents + Profile: adult",
+      "extraInfo": "Expected 4, got 4"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: tents + Profile: youth",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: tents + Profile: ultralight",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: tents + Profile: budget",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: sleeping_bags + Profile: all",
+      "extraInfo": "Expected 4, got 4"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: sleeping_bags + Profile: adult",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: sleeping_bags + Profile: youth",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: sleeping_bags + Profile: ultralight",
+      "extraInfo": "Expected 1, got 1"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: sleeping_bags + Profile: budget",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: sleeping_pads + Profile: all",
+      "extraInfo": "Expected 4, got 4"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: sleeping_pads + Profile: adult",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: sleeping_pads + Profile: youth",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: sleeping_pads + Profile: ultralight",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: sleeping_pads + Profile: budget",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: backpacks + Profile: all",
+      "extraInfo": "Expected 4, got 4"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: backpacks + Profile: adult",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: backpacks + Profile: youth",
+      "extraInfo": "Expected 1, got 1"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: backpacks + Profile: ultralight",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: backpacks + Profile: budget",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: stoves + Profile: all",
+      "extraInfo": "Expected 4, got 4"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: stoves + Profile: adult",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: stoves + Profile: youth",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: stoves + Profile: ultralight",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: stoves + Profile: budget",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: electronics + Profile: all",
+      "extraInfo": "Expected 4, got 4"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: electronics + Profile: adult",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: electronics + Profile: youth",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: electronics + Profile: ultralight",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: electronics + Profile: budget",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: apparel + Profile: all",
+      "extraInfo": "Expected 4, got 4"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: apparel + Profile: adult",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: apparel + Profile: youth",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: apparel + Profile: ultralight",
+      "extraInfo": "Expected 1, got 1"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: apparel + Profile: budget",
+      "extraInfo": "Expected 1, got 1"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: poles_chairs + Profile: all",
+      "extraInfo": "Expected 4, got 4"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: poles_chairs + Profile: adult",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: poles_chairs + Profile: youth",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: poles_chairs + Profile: ultralight",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: poles_chairs + Profile: budget",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: lighting + Profile: all",
+      "extraInfo": "Expected 4, got 4"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: lighting + Profile: adult",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: lighting + Profile: youth",
+      "extraInfo": "Expected 3, got 3"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: lighting + Profile: ultralight",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Combination Category: lighting + Profile: budget",
+      "extraInfo": "Expected 2, got 2"
+    },
+    {
+      "status": "PASS",
+      "description": "Sum of category tab badges equals \"All Categories\" tab badge under Profile filter",
+      "extraInfo": "All Tab Badge: 19, Sum Categories: 19"
+    },
+    {
+      "status": "PASS",
+      "description": "Deals Only filter filters products with discountPercent >= 15",
+      "extraInfo": "Count: 34, Min discount in set: 15%"
+    },
+    {
+      "status": "PASS",
+      "description": "Initial compare selection is empty (0 items)",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "Floating compare bar hidden when 0 items selected",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "Opening compare modal with 0 items shows alert",
+      "extraInfo": "Alert: Please select at least 2 items to perform a side-by-side comparison."
+    },
+    {
+      "status": "PASS",
+      "description": "Compare modal stays hidden with 0 items",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "Selected 1 item",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "Floating compare bar is visible with 1 item",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "Opening compare modal with 1 item shows alert",
+      "extraInfo": "Alert: Please select at least 2 items to perform a side-by-side comparison."
+    },
+    {
+      "status": "PASS",
+      "description": "Selected 4 items successfully",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "Attempting to select 5th item triggers max 4 limit alert",
+      "extraInfo": "Alert: You can select a maximum of 4 items for side-by-side comparison."
+    },
+    {
+      "status": "PASS",
+      "description": "5th item is NOT added to selectedCompareIds",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "Compare modal opens with 4 items",
+      "extraInfo": "Active: true, Cols: 5"
+    },
+    {
+      "status": "PASS",
+      "description": "Compare selection reduced to 2 items in state",
+      "extraInfo": ""
+    },
+    {
+      "status": "FAIL",
+      "description": "EDGE CASE BUG DETECTED: Removing item down to 1 inside modal leaves modal active with backdrop stuck",
+      "extraInfo": "Modal Active: false, Body Overflow: "
+    },
+    {
+      "status": "PASS",
+      "description": "Closing compare modal removes active class",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "Compare selection persists across category tab changes",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "Floating compare bar remains visible with selected items from other categories",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "clearCompareSelection resets array to empty",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "Floating compare bar hides after clearCompareSelection",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "setViewMode(\"auto\") sets state.viewMode = \"auto\"",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "viewBtnAuto has active class",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "setViewMode(\"table\") sets state.viewMode = \"table\"",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "viewBtnTable has active class",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "tableContainer display is \"block\" in table mode",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "cardContainer display is \"none\" in table mode",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "setViewMode(\"grid\") sets state.viewMode = \"grid\"",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "viewBtnGrid has active class",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "tableContainer display is \"none\" in grid mode",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "cardContainer display is \"grid\" in grid mode",
+      "extraInfo": ""
+    },
+    {
+      "status": "PASS",
+      "description": "Sort price-asc correctly orders products from lowest to highest price",
+      "extraInfo": "Min: $29, Max: $539"
+    },
+    {
+      "status": "PASS",
+      "description": "Sort price-desc correctly orders products from highest to lowest price",
+      "extraInfo": "Max: $539, Min: $29"
+    },
+    {
+      "status": "PASS",
+      "description": "Sort rating correctly orders products by rating descending",
+      "extraInfo": "Top: 4.9, Bottom: 4.3"
+    },
+    {
+      "status": "PASS",
+      "description": "Sort weight correctly orders products by weight ascending (lightest first)",
+      "extraInfo": "Lightest: 1.6 oz, Heaviest: 96 oz"
+    },
+    {
+      "status": "PASS",
+      "description": "Sort discount correctly orders products by discountPercent descending",
+      "extraInfo": "Top discount: 32%, Lowest: 0%"
+    },
+    {
+      "status": "PASS",
+      "description": "Sort value correctly orders products by valueRating descending",
+      "extraInfo": "Top value: 9.9, Lowest: 8.3"
+    },
+    {
+      "status": "PASS",
+      "description": "All 38 PRODUCTS have complete and valid schema attributes",
+      "extraInfo": ""
+    }
+  ]
+}

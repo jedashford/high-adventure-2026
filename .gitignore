@@ -1,2 +1,6 @@
 images-src/
 notes/
+node_modules/
+test-results/
+.playwright-mcp/
+.DS_Store

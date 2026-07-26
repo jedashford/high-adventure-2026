@@ -1,0 +1,3940 @@
+{
+  "timestamp": "2026-07-25T00:26:25.226Z",
+  "edgeCaseInteractions": {
+    "rapidClicking": {
+      "pass": true,
+      "errors": [],
+      "activeProfile": "budget",
+      "activeCategory": "backpacks",
+      "resultsCountText": 3,
+      "renderedProductsCount": 3
+    },
+    "searchQueries": {
+      "queries": [
+        {
+          "name": "empty_string",
+          "query": "\"\"",
+          "stateQuery": "\"\"",
+          "count": 3,
+          "emptyStateVisible": false,
+          "clearBtnVisible": false
+        },
+        {
+          "name": "leading_trailing_spaces",
+          "query": "\"   tent   \"",
+          "stateQuery": "\"   tent   \"",
+          "count": 0,
+          "emptyStateVisible": true,
+          "clearBtnVisible": true
+        },
+        {
+          "name": "only_spaces",
+          "query": "\"     \"",
+          "stateQuery": "\"     \"",
+          "count": 3,
+          "emptyStateVisible": false,
+          "clearBtnVisible": false
+        },
+        {
+          "name": "newlines_tabs",
+          "query": "\"\\t\\ntent\\n\"",
+          "stateQuery": "\"\\t tent\"",
+          "count": 0,
+          "emptyStateVisible": true,
+          "clearBtnVisible": true
+        },
+        {
+          "name": "xss_script",
+          "query": "\"<script>alert(\\\"xss\\\")</script>\"",
+          "stateQuery": "\"<script>alert(\\\"xss\\\")</script>\"",
+          "count": 0,
+          "emptyStateVisible": true,
+          "clearBtnVisible": true
+        },
+        {
+          "name": "html_tags",
+          "query": "\"<div>tent</div>\"",
+          "stateQuery": "\"<div>tent</div>\"",
+          "count": 0,
+          "emptyStateVisible": true,
+          "clearBtnVisible": true
+        },
+        {
+          "name": "sql_injection",
+          "query": "\"' OR '1'='1\"",
+          "stateQuery": "\"' OR '1'='1\"",
+          "count": 0,
+          "emptyStateVisible": true,
+          "clearBtnVisible": true
+        },
+        {
+          "name": "non_matching_term",
+          "query": "\"XYZ_NON_EXISTENT_GEAR_99999\"",
+          "stateQuery": "\"XYZ_NON_EXISTENT_GEAR_99999\"",
+          "count": 0,
+          "emptyStateVisible": true,
+          "clearBtnVisible": true
+        },
+        {
+          "name": "special_characters",
+          "query": "\"5'4\\\"\"",
+          "stateQuery": "\"5'4\\\"\"",
+          "count": 0,
+          "emptyStateVisible": true,
+          "clearBtnVisible": true
+        },
+        {
+          "name": "degree_symbol",
+          "query": "\"20°F\"",
+          "stateQuery": "\"20°F\"",
+          "count": 0,
+          "emptyStateVisible": true,
+          "clearBtnVisible": true
+        },
+        {
+          "name": "case_insensitive_rei",
+          "query": "\"rei\"",
+          "stateQuery": "\"rei\"",
+          "count": 1,
+          "emptyStateVisible": false,
+          "clearBtnVisible": true
+        },
+        {
+          "name": "case_insensitive_REI",
+          "query": "\"REI\"",
+          "stateQuery": "\"REI\"",
+          "count": 1,
+          "emptyStateVisible": false,
+          "clearBtnVisible": true
+        }
+      ],
+      "clearSearchWorks": true
+    },
+    "modalSoftLock": {
+      "escapeKey": {
+        "openedOverflow": "hidden",
+        "closedOverflow": "",
+        "closedActive": false
+      },
+      "backdropClick": {
+        "closedOverflow": "",
+        "closedActive": false
+      },
+      "closeBtn": {
+        "closedOverflow": "",
+        "closedActive": false
+      },
+      "lightboxNestedInModal": {
+        "lightboxOpenedFromModal": true,
+        "overflowStateDuringLightbox": "hidden",
+        "overflowStateAfterLightboxEsc": "",
+        "compareModalActiveAfterLightboxEsc": false
+      }
+    }
+  },
+  "mobileViewportResilience": {
+    "iPhone SE (375px)": {
+      "viewport": {
+        "name": "iPhone SE (375px)",
+        "width": 375,
+        "height": 667
+      },
+      "overflowAnalysis": {
+        "viewportWidth": 375,
+        "documentScrollWidth": 375,
+        "bodyScrollWidth": 375,
+        "hasHorizontalScrollbar": false,
+        "overflowingElementsCount": 36,
+        "topOverflowingElements": [
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "tab-btn ",
+            "right": 559,
+            "width": 194,
+            "overflowAmount": 184,
+            "textSnippet": "🛌 Sleeping Bags\n5"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "",
+            "right": 510,
+            "width": 126,
+            "overflowAmount": 135,
+            "textSnippet": "🛌 Sleeping Bags"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "tab-count-badge",
+            "right": 540,
+            "width": 22,
+            "overflowAmount": 165,
+            "textSnippet": "5"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "tab-btn ",
+            "right": 761,
+            "width": 194,
+            "overflowAmount": 386,
+            "textSnippet": "🧘 Sleeping Pads\n6"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "",
+            "right": 711,
+            "width": 125,
+            "overflowAmount": 336,
+            "textSnippet": "🧘 Sleeping Pads"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "tab-count-badge",
+            "right": 742,
+            "width": 23,
+            "overflowAmount": 367,
+            "textSnippet": "6"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "tab-btn ",
+            "right": 939,
+            "width": 170,
+            "overflowAmount": 564,
+            "textSnippet": "🎒 Backpacks\n5"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "",
+            "right": 889,
+            "width": 101,
+            "overflowAmount": 514,
+            "textSnippet": "🎒 Backpacks"
+          }
+        ]
+      },
+      "touchTargets": {
+        "totalChecked": 219,
+        "violationsCount": 137,
+        "violations": [
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn active",
+            "label": "🌐 All Gear",
+            "width": 96,
+            "height": 35
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn adult-target",
+            "label": "👨 Adult (230 lb)",
+            "width": 132,
+            "height": 35
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn youth-target",
+            "label": "👦 Youth / Child (5'1\"-5'4\")",
+            "width": 197,
+            "height": 35
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn ultralight-target",
+            "label": "⚡ Ultralight",
+            "width": 104,
+            "height": 35
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn budget-target",
+            "label": "💰 Budget Value",
+            "width": 128,
+            "height": 35
+          },
+          {
+            "tagName": "INPUT",
+            "id": "gearSearch",
+            "className": "search-input",
+            "label": "Search gear by name, brand, sp",
+            "width": 311,
+            "height": 40
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Sort By:",
+            "width": 55,
+            "height": 22
+          },
+          {
+            "tagName": "SELECT",
+            "id": "sortSelect",
+            "className": "select-input",
+            "label": "⭐ Value Rating (High to Low)\n\ud83d",
+            "width": 240,
+            "height": 37
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "checkbox-label",
+            "label": "🔥 Deals Only (>15% Off)",
+            "width": 198,
+            "height": 22
+          },
+          {
+            "tagName": "INPUT",
+            "id": "dealsOnlyCheck",
+            "className": "",
+            "label": "on",
+            "width": 16,
+            "height": 16
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "viewBtnAuto",
+            "className": "view-btn active",
+            "label": "📱 Auto",
+            "width": 75,
+            "height": 34
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "viewBtnTable",
+            "className": "view-btn",
+            "label": "📊 Table",
+            "width": 80,
+            "height": 34
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "viewBtnGrid",
+            "className": "view-btn",
+            "label": "🎴 Cards",
+            "width": 83,
+            "height": 34
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          }
+        ]
+      },
+      "cardLayout": {
+        "gridDisplay": "grid",
+        "tableDisplay": "none",
+        "cardCount": 62,
+        "cardWidths": [
+          345,
+          345,
+          345,
+          345,
+          345
+        ]
+      },
+      "fontAnalysis": {
+        "smallTextCount": 186,
+        "smallTextElements": [
+          {
+            "tagName": "DIV",
+            "className": "sparkline-meta",
+            "size": "11.52px",
+            "text": "Low: $29\nHigh: $37"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "Low: $29"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "High: $37"
+          },
+          {
+            "tagName": "DIV",
+            "className": "sparkline-meta",
+            "size": "11.52px",
+            "text": "Low: $34\nHigh: $41"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "Low: $34"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "High: $41"
+          },
+          {
+            "tagName": "DIV",
+            "className": "sparkline-meta",
+            "size": "11.52px",
+            "text": "Low: $54\nHigh: $65"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "Low: $54"
+          }
+        ]
+      }
+    },
+    "iPhone XR / Pro Max (414px)": {
+      "viewport": {
+        "name": "iPhone XR / Pro Max (414px)",
+        "width": 414,
+        "height": 896
+      },
+      "overflowAnalysis": {
+        "viewportWidth": 414,
+        "documentScrollWidth": 414,
+        "bodyScrollWidth": 414,
+        "hasHorizontalScrollbar": false,
+        "overflowingElementsCount": 36,
+        "topOverflowingElements": [
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "tab-btn ",
+            "right": 559,
+            "width": 194,
+            "overflowAmount": 145,
+            "textSnippet": "🛌 Sleeping Bags\n5"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "",
+            "right": 510,
+            "width": 126,
+            "overflowAmount": 96,
+            "textSnippet": "🛌 Sleeping Bags"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "tab-count-badge",
+            "right": 540,
+            "width": 22,
+            "overflowAmount": 126,
+            "textSnippet": "5"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "tab-btn ",
+            "right": 761,
+            "width": 194,
+            "overflowAmount": 347,
+            "textSnippet": "🧘 Sleeping Pads\n6"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "",
+            "right": 711,
+            "width": 125,
+            "overflowAmount": 297,
+            "textSnippet": "🧘 Sleeping Pads"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "tab-count-badge",
+            "right": 742,
+            "width": 23,
+            "overflowAmount": 328,
+            "textSnippet": "6"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "tab-btn ",
+            "right": 939,
+            "width": 170,
+            "overflowAmount": 525,
+            "textSnippet": "🎒 Backpacks\n5"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "",
+            "right": 889,
+            "width": 101,
+            "overflowAmount": 475,
+            "textSnippet": "🎒 Backpacks"
+          }
+        ]
+      },
+      "touchTargets": {
+        "totalChecked": 219,
+        "violationsCount": 137,
+        "violations": [
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn active",
+            "label": "🌐 All Gear",
+            "width": 96,
+            "height": 35
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn adult-target",
+            "label": "👨 Adult (230 lb)",
+            "width": 132,
+            "height": 35
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn youth-target",
+            "label": "👦 Youth / Child (5'1\"-5'4\")",
+            "width": 197,
+            "height": 35
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn ultralight-target",
+            "label": "⚡ Ultralight",
+            "width": 104,
+            "height": 35
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn budget-target",
+            "label": "💰 Budget Value",
+            "width": 128,
+            "height": 35
+          },
+          {
+            "tagName": "INPUT",
+            "id": "gearSearch",
+            "className": "search-input",
+            "label": "Search gear by name, brand, sp",
+            "width": 350,
+            "height": 40
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Sort By:",
+            "width": 55,
+            "height": 22
+          },
+          {
+            "tagName": "SELECT",
+            "id": "sortSelect",
+            "className": "select-input",
+            "label": "⭐ Value Rating (High to Low)\n\ud83d",
+            "width": 240,
+            "height": 37
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "checkbox-label",
+            "label": "🔥 Deals Only (>15% Off)",
+            "width": 198,
+            "height": 22
+          },
+          {
+            "tagName": "INPUT",
+            "id": "dealsOnlyCheck",
+            "className": "",
+            "label": "on",
+            "width": 16,
+            "height": 16
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "viewBtnAuto",
+            "className": "view-btn active",
+            "label": "📱 Auto",
+            "width": 75,
+            "height": 34
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "viewBtnTable",
+            "className": "view-btn",
+            "label": "📊 Table",
+            "width": 80,
+            "height": 34
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "viewBtnGrid",
+            "className": "view-btn",
+            "label": "🎴 Cards",
+            "width": 83,
+            "height": 34
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          }
+        ]
+      },
+      "cardLayout": {
+        "gridDisplay": "grid",
+        "tableDisplay": "none",
+        "cardCount": 62,
+        "cardWidths": [
+          384,
+          384,
+          384,
+          384,
+          384
+        ]
+      },
+      "fontAnalysis": {
+        "smallTextCount": 186,
+        "smallTextElements": [
+          {
+            "tagName": "DIV",
+            "className": "sparkline-meta",
+            "size": "11.52px",
+            "text": "Low: $29\nHigh: $37"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "Low: $29"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "High: $37"
+          },
+          {
+            "tagName": "DIV",
+            "className": "sparkline-meta",
+            "size": "11.52px",
+            "text": "Low: $34\nHigh: $41"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "Low: $34"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "High: $41"
+          },
+          {
+            "tagName": "DIV",
+            "className": "sparkline-meta",
+            "size": "11.52px",
+            "text": "Low: $54\nHigh: $65"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "Low: $54"
+          }
+        ]
+      }
+    },
+    "iPad Portrait (768px)": {
+      "viewport": {
+        "name": "iPad Portrait (768px)",
+        "width": 768,
+        "height": 1024
+      },
+      "overflowAnalysis": {
+        "viewportWidth": 768,
+        "documentScrollWidth": 768,
+        "bodyScrollWidth": 768,
+        "hasHorizontalScrollbar": false,
+        "overflowingElementsCount": 30,
+        "topOverflowingElements": [
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "tab-btn ",
+            "right": 939,
+            "width": 170,
+            "overflowAmount": 171,
+            "textSnippet": "🎒 Backpacks\n5"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "",
+            "right": 889,
+            "width": 101,
+            "overflowAmount": 121,
+            "textSnippet": "🎒 Backpacks"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "tab-count-badge",
+            "right": 920,
+            "width": 22,
+            "overflowAmount": 152,
+            "textSnippet": "5"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "tab-btn ",
+            "right": 1165,
+            "width": 219,
+            "overflowAmount": 397,
+            "textSnippet": "🍳 Stoves & Cooking\n5"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "",
+            "right": 1116,
+            "width": 150,
+            "overflowAmount": 348,
+            "textSnippet": "🍳 Stoves & Cooking"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "tab-count-badge",
+            "right": 1146,
+            "width": 22,
+            "overflowAmount": 378,
+            "textSnippet": "5"
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "tab-btn ",
+            "right": 1332,
+            "width": 159,
+            "overflowAmount": 564,
+            "textSnippet": "🥾 Footwear\n5"
+          },
+          {
+            "tagName": "SPAN",
+            "id": "",
+            "className": "",
+            "right": 1283,
+            "width": 91,
+            "overflowAmount": 515,
+            "textSnippet": "🥾 Footwear"
+          }
+        ]
+      },
+      "touchTargets": {
+        "totalChecked": 219,
+        "violationsCount": 139,
+        "violations": [
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn active",
+            "label": "🌐 All Gear",
+            "width": 96,
+            "height": 35
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn adult-target",
+            "label": "👨 Adult (230 lb)",
+            "width": 132,
+            "height": 35
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn youth-target",
+            "label": "👦 Youth / Child (5'1\"-5'4\")",
+            "width": 197,
+            "height": 35
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn ultralight-target",
+            "label": "⚡ Ultralight",
+            "width": 104,
+            "height": 35
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "profile-pill-btn budget-target",
+            "label": "💰 Budget Value",
+            "width": 128,
+            "height": 35
+          },
+          {
+            "tagName": "INPUT",
+            "id": "gearSearch",
+            "className": "search-input",
+            "label": "Search gear by name, brand, sp",
+            "width": 704,
+            "height": 40
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Sort By:",
+            "width": 55,
+            "height": 22
+          },
+          {
+            "tagName": "SELECT",
+            "id": "sortSelect",
+            "className": "select-input",
+            "label": "⭐ Value Rating (High to Low)\n\ud83d",
+            "width": 240,
+            "height": 37
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "checkbox-label",
+            "label": "🔥 Deals Only (>15% Off)",
+            "width": 198,
+            "height": 22
+          },
+          {
+            "tagName": "INPUT",
+            "id": "dealsOnlyCheck",
+            "className": "",
+            "label": "on",
+            "width": 16,
+            "height": 16
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "viewBtnAuto",
+            "className": "view-btn active",
+            "label": "📱 Auto",
+            "width": 75,
+            "height": 34
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "viewBtnTable",
+            "className": "view-btn",
+            "label": "📊 Table",
+            "width": 80,
+            "height": 34
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "viewBtnGrid",
+            "className": "view-btn",
+            "label": "🎴 Cards",
+            "width": 83,
+            "height": 34
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "LABEL",
+            "id": "",
+            "className": "",
+            "label": "Compare",
+            "width": 74,
+            "height": 19
+          },
+          {
+            "tagName": "INPUT",
+            "id": "",
+            "className": "",
+            "label": "on",
+            "width": 13,
+            "height": 13
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "openCompareModalBtn",
+            "className": "btn btn-green",
+            "label": "Compare Now",
+            "width": 129,
+            "height": 35
+          },
+          {
+            "tagName": "BUTTON",
+            "id": "",
+            "className": "btn btn-secondary",
+            "label": "Clear All",
+            "width": 92,
+            "height": 35
+          }
+        ]
+      },
+      "cardLayout": {
+        "gridDisplay": "grid",
+        "tableDisplay": "none",
+        "cardCount": 62,
+        "cardWidths": [
+          359,
+          359,
+          359,
+          359,
+          359
+        ]
+      },
+      "fontAnalysis": {
+        "smallTextCount": 186,
+        "smallTextElements": [
+          {
+            "tagName": "DIV",
+            "className": "sparkline-meta",
+            "size": "11.52px",
+            "text": "Low: $29\nHigh: $37"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "Low: $29"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "High: $37"
+          },
+          {
+            "tagName": "DIV",
+            "className": "sparkline-meta",
+            "size": "11.52px",
+            "text": "Low: $34\nHigh: $41"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "Low: $34"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "High: $41"
+          },
+          {
+            "tagName": "DIV",
+            "className": "sparkline-meta",
+            "size": "11.52px",
+            "text": "Low: $54\nHigh: $65"
+          },
+          {
+            "tagName": "DIV",
+            "className": "",
+            "size": "11.52px",
+            "text": "Low: $54"
+          }
+        ]
+      }
+    }
+  },
+  "imageFallback": {
+    "hierarchyTrace": [
+      {
+        "tier": 1,
+        "src": "https://invalid-404-domain.test/fake.jpg"
+      },
+      {
+        "tier": "2",
+        "src": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "tier": "3",
+        "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20fill%3D%22%231e293b%22%2F%3E%3Cpath%20d%3D%22M60%2025%20L100%2090%20H20%20Z%22%20fill%3D%22none%22%20stroke%3D%22%2338bdf8%22%20stroke-width%3D%224%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M60%2025%20L60%2090%20M40%2090%20L60%2050%20L80%2090%22%20fill%3D%22none%22%20stroke%3D%22%2322c55e%22%20stroke-width%3D%223%22%2F%3E%3Cpath%20d%3D%22M15%2090%20H105%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%223%22%2F%3E%3C%2Fsvg%3E"
+      },
+      {
+        "tier": "4",
+        "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3..."
+      }
+    ],
+    "universalSvgPresent": true
+  },
+  "summary": []
+}

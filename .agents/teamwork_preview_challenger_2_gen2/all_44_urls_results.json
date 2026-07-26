@@ -1,0 +1,450 @@
+{
+  "summary": {
+    "totalUniqueUrls": 44,
+    "status200": 39,
+    "non200": 5,
+    "httpsCount": 43
+  },
+  "results": [
+    {
+      "index": 1,
+      "url": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 2,
+      "url": "https://images.unsplash.com/photo-1478827536114-da961b7f86d2?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1478827536114-da961b7f86d2?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 3,
+      "url": "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 4,
+      "url": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 5,
+      "url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 6,
+      "url": "https://images.unsplash.com/photo-1517824806704-9040b037703b?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1517824806704-9040b037703b?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 7,
+      "url": "https://images.unsplash.com/photo-1537225228614-56cc3556d7ed?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1537225228614-56cc3556d7ed?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 8,
+      "url": "https://images.unsplash.com/photo-1541004995602-b3e898709909?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1541004995602-b3e898709909?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 9,
+      "url": "https://cdn.absolute-snow.co.uk/fullsize/35413724RR_MAIN_Kelty_S24_CosmicDown_20Long__48623.jpg",
+      "finalUrl": "https://cdn.absolute-snow.co.uk/fullsize/35413724RR_MAIN_Kelty_S24_CosmicDown_20Long__48623.jpg",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 10,
+      "url": "https://seatosummit.com/cdn/shop/files/spark-pro-down-sleeping-bag.jpg?v=1708453401",
+      "finalUrl": "https://seatosummit.com/cdn/shop/files/spark-pro-down-sleeping-bag.jpg?v=1708453401",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 11,
+      "url": "https://www.adventurealan.com/wp-content/uploads/2021/10/REI-Magma-15-Ultralight-Sleeping-Bag.jpg",
+      "finalUrl": "https://www.adventurealan.com/wp-content/uploads/2021/10/REI-Magma-15-Ultralight-Sleeping-Bag.jpg",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 12,
+      "url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 13,
+      "url": "https://images.unsplash.com/photo-1622260614153-03223fb72052?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1622260614153-03223fb72052?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 14,
+      "url": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 15,
+      "url": "https://images.unsplash.com/photo-1525811902-f2342640856e?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1525811902-f2342640856e?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 16,
+      "url": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 17,
+      "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 18,
+      "url": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 19,
+      "url": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 20,
+      "url": "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 21,
+      "url": "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 22,
+      "url": "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 23,
+      "url": "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 24,
+      "url": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 25,
+      "url": "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 26,
+      "url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 27,
+      "url": "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 28,
+      "url": "https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 29,
+      "url": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=1200&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=1200&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 30,
+      "url": "https://rockytalkie.com/cdn/shop/files/mountain-radio-black.jpg?v=1708453401",
+      "finalUrl": "https://rockytalkie.com/cdn/shop/files/mountain-radio-black.jpg?v=1708453401",
+      "status": "HTTP_ERROR",
+      "statusCode": 404,
+      "contentType": "text/html; charset=utf-8",
+      "isHttps": true,
+      "error": "Status 404"
+    },
+    {
+      "index": 31,
+      "url": "https://rockytalkie.com/cdn/shop/files/5w-expedition-radio.jpg?v=1708453401",
+      "finalUrl": "https://rockytalkie.com/cdn/shop/files/5w-expedition-radio.jpg?v=1708453401",
+      "status": "HTTP_ERROR",
+      "statusCode": 404,
+      "contentType": "text/html; charset=utf-8",
+      "isHttps": true,
+      "error": "Status 404"
+    },
+    {
+      "index": 32,
+      "url": "https://www.motorolasolutions.com/content/dam/msi/images/products/consumer-radios/t800/t800_hero.jpg",
+      "finalUrl": "https://www.motorolasolutions.com/content/dam/msi/images/products/consumer-radios/t800/t800_hero.jpg",
+      "status": "HTTP_ERROR",
+      "statusCode": 404,
+      "contentType": "text/html;charset=utf-8",
+      "isHttps": true,
+      "error": "Status 404"
+    },
+    {
+      "index": 33,
+      "url": "https://baofeng.s3.amazonaws.com/uv-5r-black.jpg",
+      "finalUrl": "https://baofeng.s3.amazonaws.com/uv-5r-black.jpg",
+      "status": "HTTP_ERROR",
+      "statusCode": 404,
+      "contentType": "application/xml",
+      "isHttps": true,
+      "error": "Status 404"
+    },
+    {
+      "index": 34,
+      "url": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 35,
+      "url": "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 36,
+      "url": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 37,
+      "url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 38,
+      "url": "https://images.unsplash.com/photo-1525811902-f2342640856e?auto=format&fit=crop&w=800&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1525811902-f2342640856e?auto=format&fit=crop&w=800&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 39,
+      "url": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 40,
+      "url": "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=800&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=800&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 41,
+      "url": "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 42,
+      "url": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=800&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=800&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 43,
+      "url": "https://images.unsplash.com/photo-1517824806704-9040b037703b?auto=format&fit=crop&w=800&q=80",
+      "finalUrl": "https://images.unsplash.com/photo-1517824806704-9040b037703b?auto=format&fit=crop&w=800&q=80",
+      "status": "OK",
+      "statusCode": 200,
+      "contentType": "image/jpeg",
+      "isHttps": true,
+      "error": null
+    },
+    {
+      "index": 44,
+      "url": "http://www.w3.org/2000/svg",
+      "finalUrl": "https://www.w3.org/2000/svg",
+      "status": "HTTP_ERROR",
+      "statusCode": 403,
+      "contentType": "text/html; charset=UTF-8",
+      "isHttps": false,
+      "error": "Status 403"
+    }
+  ]
+}
