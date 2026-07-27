@@ -1,0 +1,1259 @@
+<title>The $70 Carbon Wall — Budget Trekking Pole Audit</title>
+
+<style>
+  /* ============================================================
+     Sawtooth High Adventure — gear audit
+     Inherits the project field-guide system (styles.css):
+     cream paper / deep pine / rust ember / lake blue.
+     Dark theme is a selected counterpart (pine-black), not an inversion.
+     Risk colors validated via dataviz validate_palette.js against
+     both surfaces — see the method note in the footer.
+     ============================================================ */
+
+  :root {
+    color-scheme: light;
+
+    /* --- inherited field-guide chrome --- */
+    --paper:      #f4efe2;
+    --paper-deep: #ece5d3;
+    --card:       #fbf8f0;
+    --ink:        #23291f;
+    --ink-soft:   #4a5341;
+    --ink-mute:   #6f7663;
+    --pine:       #1e3a2f;
+    --fir:        #2d5240;
+    --moss:       #5a7360;
+    --rust:       #b4531f;
+    --ember:      #c96a2e;
+    --lake:       #4f83a0;
+    --line:       #cfc5ad;
+    --line-soft:  #e0d8c4;
+
+    /* --- validated risk scale (light, surface #f4efe2: ALL CHECKS PASS) --- */
+    --risk-low:  #17693a;
+    --risk-mod:  #b07d00;
+    --risk-high: #b02418;
+    --risk-unk:  #6f7663;
+
+    /* --- data marks --- */
+    --mark:       #b4531f;   /* single hue for magnitude; no value-ramp on products */
+    --mark-alt:   #4f83a0;   /* reference rows (aluminum, premium) */
+    --grid:       #ddd4bf;
+    --axis:       #c2b79c;
+
+    --serif: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+    --sans:  ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --paper:      #131711;
+      --paper-deep: #0e120d;
+      --card:       #1b201a;
+      --ink:        #eee9dc;
+      --ink-soft:   #c3c9b6;
+      --ink-mute:   #949c88;
+      --pine:       #a8c4ae;
+      --fir:        #8fae97;
+      --moss:       #7d9484;
+      --rust:       #e08650;
+      --ember:      #eda06a;
+      --lake:       #7fb3ce;
+      --line:       #333c30;
+      --line-soft:  #262e24;
+
+      /* validated dark steps (surface #131711): CVD ΔE 9.4, normal 16.8, all ≥3:1 */
+      --risk-low:  #2eb489;
+      --risk-mod:  #d2a52a;
+      --risk-high: #e4634e;
+      --risk-unk:  #949c88;
+
+      --mark:      #e08650;
+      --mark-alt:  #7fb3ce;
+      --grid:      #2b332a;
+      --axis:      #3d473b;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --paper:      #131711;
+    --paper-deep: #0e120d;
+    --card:       #1b201a;
+    --ink:        #eee9dc;
+    --ink-soft:   #c3c9b6;
+    --ink-mute:   #949c88;
+    --pine:       #a8c4ae;
+    --fir:        #8fae97;
+    --moss:       #7d9484;
+    --rust:       #e08650;
+    --ember:      #eda06a;
+    --lake:       #7fb3ce;
+    --line:       #333c30;
+    --line-soft:  #262e24;
+    --risk-low:  #2eb489;
+    --risk-mod:  #d2a52a;
+    --risk-high: #e4634e;
+    --risk-unk:  #949c88;
+    --mark:      #e08650;
+    --mark-alt:  #7fb3ce;
+    --grid:      #2b332a;
+    --axis:      #3d473b;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    background-color: var(--paper);
+    color: var(--ink);
+    line-height: 1.58;
+    -webkit-font-smoothing: antialiased;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420' viewBox='0 0 420 420'%3E%3Cg fill='none' stroke='%231e3a2f' stroke-opacity='0.05' stroke-width='1.2'%3E%3Cpath d='M-20 80 Q80 20 180 70 T420 60'/%3E%3Cpath d='M-20 110 Q90 50 190 100 T440 90'/%3E%3Cpath d='M-20 140 Q100 85 200 130 T440 120'/%3E%3Cpath d='M-20 260 Q120 200 220 250 T440 240'/%3E%3Cpath d='M-20 290 Q130 235 230 280 T440 270'/%3E%3Ccircle cx='320' cy='180' r='26'/%3E%3Ccircle cx='320' cy='180' r='44'/%3E%3Ccircle cx='320' cy='180' r='64'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  :root[data-theme="dark"] body,
+  :root:where(:not([data-theme="light"])) body { }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) body { background-blend-mode: screen; background-image: none; }
+  }
+  :root[data-theme="dark"] body { background-image: none; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px 96px; }
+
+  .topbar { height: 7px; background: linear-gradient(90deg, var(--rust) 0 38%, var(--pine) 38% 100%); }
+
+  /* ---------- masthead ---------- */
+  header.mast { padding: 52px 0 30px; }
+  .kicker {
+    font-size: 11.5px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--rust); font-weight: 700;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(40px, 7.2vw, 76px); line-height: .98;
+    color: var(--pine); margin: 16px 0 0; letter-spacing: -.02em;
+    text-wrap: balance;
+  }
+  h1 em { font-style: italic; color: var(--rust); }
+  .dek {
+    font-family: var(--serif); font-size: clamp(16px, 2.1vw, 20.5px);
+    color: var(--ink-soft); max-width: 62ch; margin: 18px 0 0; line-height: 1.5;
+  }
+  .byline {
+    margin-top: 20px; font-size: 12.5px; color: var(--ink-mute);
+    letter-spacing: .04em; border-top: 1px solid var(--line); padding-top: 14px;
+  }
+
+  /* ---------- stat band ---------- */
+  .statband {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+    margin: 34px 0 0;
+  }
+  .stat { background: var(--card); padding: 16px 18px; }
+  .stat b {
+    display: block; font-family: var(--sans); font-size: 30px; font-weight: 700;
+    color: var(--pine); line-height: 1.05; letter-spacing: -.02em;
+  }
+  .stat span {
+    display: block; margin-top: 5px; font-size: 11px; letter-spacing: .085em;
+    text-transform: uppercase; color: var(--ink-mute); font-weight: 600;
+  }
+
+  /* ---------- sections ---------- */
+  section { margin-top: 60px; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--rust); font-weight: 700; margin-bottom: 10px;
+  }
+  h2 {
+    font-family: var(--serif); font-size: clamp(26px, 3.6vw, 38px);
+    color: var(--pine); margin: 0 0 12px; line-height: 1.12; letter-spacing: -.015em;
+    text-wrap: balance;
+  }
+  h3 {
+    font-family: var(--serif); font-size: 20px; color: var(--fir);
+    margin: 30px 0 8px; line-height: 1.25;
+  }
+  p { margin: 0 0 14px; max-width: 72ch; }
+  p.lead { font-size: 17px; color: var(--ink-soft); }
+  a { color: var(--rust); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible, th[role="button"]:focus-visible {
+    outline: 2px solid var(--rust); outline-offset: 2px;
+  }
+  strong { font-weight: 700; color: var(--ink); }
+
+  /* ---------- verdict ---------- */
+  .verdict {
+    background: var(--card); border: 1px solid var(--line);
+    border-left: 5px solid var(--rust); padding: 26px 28px; margin-top: 8px;
+  }
+  .verdict .no {
+    font-family: var(--serif); font-size: clamp(34px, 5.6vw, 52px);
+    color: var(--rust); line-height: 1; margin: 0 0 12px; font-weight: 700;
+  }
+  .verdict p { margin-bottom: 10px; }
+  .verdict p:last-child { margin-bottom: 0; }
+
+  /* ---------- two-column mechanism ---------- */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 20px; }
+  @media (max-width: 720px) { .split { grid-template-columns: 1fr; } }
+  .mech {
+    background: var(--card); border: 1px solid var(--line); padding: 20px 22px;
+  }
+  .mech .tag {
+    font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+    font-weight: 700; padding: 3px 8px; border: 1px solid currentColor;
+    display: inline-block; margin-bottom: 12px;
+  }
+  .mech.a .tag { color: var(--risk-high); }
+  .mech.b .tag { color: var(--risk-mod); }
+  .mech h4 { font-family: var(--serif); font-size: 18px; margin: 0 0 8px; color: var(--pine); }
+  .mech p { font-size: 14.5px; margin-bottom: 8px; }
+  .mech .q {
+    font-family: var(--serif); font-style: italic; font-size: 14.5px;
+    color: var(--ink-soft); border-left: 2px solid var(--line);
+    padding-left: 12px; margin: 10px 0 0;
+  }
+
+  /* ---------- figures / charts ---------- */
+  figure {
+    margin: 22px 0 0; background: var(--card);
+    border: 1px solid var(--line); padding: 20px 22px 16px;
+  }
+  figcaption {
+    font-size: 13px; color: var(--ink-mute); margin-top: 14px;
+    border-top: 1px solid var(--line-soft); padding-top: 11px; line-height: 1.5;
+  }
+  figcaption b { color: var(--ink-soft); }
+  .figtitle {
+    font-family: var(--serif); font-size: 19px; color: var(--pine);
+    margin: 0 0 3px; line-height: 1.25;
+  }
+  .figsub { font-size: 13px; color: var(--ink-mute); margin: 0 0 18px; }
+  .chartbox { width: 100%; overflow-x: auto; }
+  svg { display: block; max-width: 100%; height: auto; }
+  svg text { font-family: var(--sans); }
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 16px; margin-top: 14px;
+    font-size: 12.5px; color: var(--ink-soft); align-items: center;
+  }
+  .legend i {
+    width: 11px; height: 11px; border-radius: 2px; display: inline-block;
+    margin-right: 6px; vertical-align: -1px;
+  }
+  .legend .sw-open {
+    width: 11px; height: 11px; border-radius: 2px; display: inline-block;
+    margin-right: 6px; vertical-align: -1px;
+    border: 1.5px dashed var(--risk-unk); background: transparent;
+  }
+
+  /* ---------- table ---------- */
+  .tablescroll {
+    overflow-x: auto; border: 1px solid var(--line); background: var(--card);
+    margin-top: 20px;
+  }
+  table { border-collapse: collapse; width: 100%; min-width: 1020px; font-size: 13.5px; }
+  caption { text-align: left; padding: 16px 18px 0; font-size: 13px; color: var(--ink-mute); }
+  th, td { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line-soft); }
+  thead th {
+    background: var(--paper-deep); font-size: 10.5px; letter-spacing: .09em;
+    text-transform: uppercase; color: var(--ink-soft); font-weight: 700;
+    border-bottom: 1.5px solid var(--line); position: sticky; top: 0; white-space: nowrap;
+  }
+  tbody tr:hover { background: color-mix(in srgb, var(--rust) 5%, transparent); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.name { font-weight: 600; min-width: 210px; }
+  td.name small { display: block; font-weight: 400; color: var(--ink-mute); font-size: 12px; margin-top: 2px; }
+  tr.over td { opacity: .72; }
+  tr.pick td { background: color-mix(in srgb, var(--rust) 8%, transparent); }
+  tr.pick td.name::before {
+    content: "PICK"; font-size: 9.5px; letter-spacing: .1em; font-weight: 700;
+    color: var(--paper); background: var(--rust); padding: 2px 6px; margin-right: 7px;
+    vertical-align: 1.5px;
+  }
+
+  .pill {
+    display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .07em;
+    text-transform: uppercase; padding: 2.5px 7px; border-radius: 2px;
+    border: 1px solid currentColor; white-space: nowrap;
+  }
+  .pill.low  { color: var(--risk-low); }
+  .pill.mod  { color: var(--risk-mod); }
+  .pill.high { color: var(--risk-high); }
+  .pill.unk  { color: var(--risk-unk); border-style: dashed; }
+  .pill::before { content: ""; }
+  .pill.low::before  { content: "\2713\00a0"; }
+  .pill.mod::before  { content: "\25B2\00a0"; }
+  .pill.high::before { content: "\2715\00a0"; }
+  .pill.unk::before  { content: "?\00a0"; }
+
+  /* ---------- verdict cards ---------- */
+  .cards { display: grid; gap: 14px; margin-top: 22px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    padding: 18px 20px; display: grid; grid-template-columns: 44px 1fr; gap: 16px;
+  }
+  .card.win { border-left: 4px solid var(--risk-low); }
+  .card.no  { border-left: 4px solid var(--risk-high); }
+  .card.maybe { border-left: 4px solid var(--risk-mod); }
+  .rank {
+    font-family: var(--serif); font-size: 30px; color: var(--line);
+    line-height: 1; font-weight: 700; text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .card h4 {
+    font-family: var(--serif); font-size: 18.5px; margin: 0 0 3px;
+    color: var(--pine); line-height: 1.2;
+  }
+  .card .meta {
+    font-size: 12.5px; color: var(--ink-mute); margin-bottom: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+  .card .meta b { color: var(--rust); font-size: 14px; }
+  .card p { font-size: 14.5px; margin-bottom: 9px; }
+  .card .ev {
+    font-family: var(--serif); font-style: italic; font-size: 14px;
+    color: var(--ink-soft); border-left: 2px solid var(--line);
+    padding-left: 12px; margin: 0 0 9px;
+  }
+  .card .ev cite { display: block; font-style: normal; font-size: 12px; color: var(--ink-mute); margin-top: 4px; }
+  .card .call {
+    font-size: 14px; font-weight: 600; color: var(--ink);
+    border-top: 1px solid var(--line-soft); padding-top: 9px; margin: 0;
+  }
+
+  /* ---------- callouts ---------- */
+  .note {
+    background: var(--paper-deep); border: 1px solid var(--line);
+    padding: 20px 22px; margin-top: 20px;
+  }
+  .note h4 {
+    font-family: var(--serif); font-size: 19px; margin: 0 0 9px; color: var(--pine);
+  }
+  .note p:last-child, .note ul:last-child { margin-bottom: 0; }
+  ul, ol { margin: 0 0 14px; padding-left: 22px; max-width: 72ch; }
+  li { margin-bottom: 7px; }
+  ol.rules { counter-reset: r; list-style: none; padding-left: 0; }
+  ol.rules li {
+    counter-increment: r; position: relative; padding-left: 38px; margin-bottom: 11px;
+  }
+  ol.rules li::before {
+    content: counter(r); position: absolute; left: 0; top: 1px;
+    width: 25px; height: 25px; border: 1.5px solid var(--rust); color: var(--rust);
+    font-size: 12.5px; font-weight: 700; display: grid; place-items: center;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .flags { display: grid; gap: 10px; margin-top: 16px; }
+  .flag {
+    display: grid; grid-template-columns: auto 1fr; gap: 12px;
+    font-size: 14.5px; border-bottom: 1px solid var(--line-soft); padding-bottom: 10px;
+  }
+  .flag:last-child { border-bottom: 0; }
+  .flag .fx { font-weight: 700; color: var(--risk-high); font-size: 12px; letter-spacing: .06em; padding-top: 2px; white-space: nowrap; }
+
+  footer.foot {
+    margin-top: 66px; border-top: 2px solid var(--pine); padding-top: 20px;
+    font-size: 12.5px; color: var(--ink-mute); line-height: 1.6;
+  }
+
+  /* tooltip */
+  #tip {
+    position: fixed; pointer-events: none; opacity: 0; transition: opacity .1s;
+    background: var(--pine); color: var(--paper); font-size: 12.5px;
+    padding: 8px 11px; max-width: 260px; z-index: 50; line-height: 1.45;
+    font-variant-numeric: tabular-nums; box-shadow: 0 3px 14px rgba(0,0,0,.22);
+  }
+  #tip b { color: #fff; display: block; margin-bottom: 3px; font-size: 13px; }
+  :root[data-theme="dark"] #tip { background: #2b332a; color: var(--ink); border: 1px solid var(--line); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+
+<div class="topbar"></div>
+<div class="wrap">
+
+  <header class="mast">
+    <div class="kicker">Sawtooth High Adventure 2026 · Gear Audit</div>
+    <h1>The <em>$70 carbon</em> wall</h1>
+    <p class="dek">You asked for carbon fiber, super strong, won't collapse under weight, $40–70.
+      A 17-agent sweep found 57 products and put 9 through adversarial review. The answer is that
+      those three requirements are not simultaneously purchasable — and the reason is more useful
+      than the answer.</p>
+    <div class="byline">Verified 26 July 2026 · all prices per pair · 57 products discovered, 9 deep-investigated, 2 adversarial lenses</div>
+  </header>
+
+  <div class="statband">
+    <div class="stat"><b>57</b><span>Products found</span></div>
+    <div class="stat"><b>9</b><span>Deep-investigated</span></div>
+    <div class="stat"><b>1</b><span>Survived review</span></div>
+    <div class="stat"><b>0</b><span>In-budget at top strength tier</span></div>
+    <div class="stat"><b>4</b><span>With zero strength data</span></div>
+  </div>
+
+  <!-- ============ VERDICT ============ -->
+  <section id="verdict">
+    <div class="eyebrow">The trilemma</div>
+    <h2>Can you get all three under $70?</h2>
+    <div class="verdict">
+      <p class="no">No.</p>
+      <p><strong>In this price band the two failure modes trade against each other.</strong> Poles
+        that engineer out lock slip do it by adding joints and folding architecture — which costs
+        shaft stiffness. Poles with genuinely stiff shafts in this band use plastic-bodied flip-lock
+        clamps that the most recent independent test documents collapsing under load.</p>
+      <p>Every pole that scores top-tier on measured stiffness <em>and</em> has metal lock bodies
+        costs <strong>$79 or more</strong>. Nothing in your band clears both bars. That is not a
+        gap in the research — it is the shape of the market.</p>
+      <p><strong>The cheapest fix is $9.</strong> Move the ceiling to $79 and the Freevane Kodiak
+        answers your requirement literally: 9/9 measured strength, roughly twice as stiff as
+        anything in budget, and the only metal lock bodies within reach.</p>
+    </div>
+
+    <div class="split">
+      <div class="mech a">
+        <div class="tag">Failure mode A · lock slip</div>
+        <h4>The pole shortens under your weight</h4>
+        <p>A flip lock resists creep purely by <strong>friction</strong>. This is the failure you
+          described, and it is usually a <em>setting</em>, not a broken part — which means it is
+          fixable, but only by a human who keeps fixing it.</p>
+        <p class="q">"The poles often collapsed on us when unexpectedly weighted, which felt unsafe
+          on uneven terrain."
+          <cite style="display:block;font-style:normal;font-size:12px;margin-top:5px;">
+          OutdoorGearLab on the Cascade Mountain Tech Carbon Quick Lock, May 2026 — Locking scored 3.0/10</cite></p>
+      </div>
+      <div class="mech b">
+        <div class="tag">Failure mode B · shaft snap</div>
+        <h4>The tube breaks and the trip ends</h4>
+        <p>Carbon fails <strong>catastrophically and silently</strong>; aluminum bends. Every
+          documented snap in this corpus follows one script: tip wedged in rock, hiker slips,
+          lateral load. That is precisely what a 14-year-old on scree does.</p>
+        <p class="q">"Aluminum outperforms weak carbon… [aluminum] is likely to survive a side load
+          from a sharp edge like the edge of a talus block than Carbon."
+          <cite style="display:block;font-style:normal;font-size:12px;margin-top:5px;">
+          Alan Dixon, who deflection-tested 37 poles under a 16&nbsp;kg center load</cite></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHART 1: failure matrix ============ -->
+  <section id="matrix">
+    <div class="eyebrow">The core finding</div>
+    <h2>The two failure modes pull in opposite directions</h2>
+    <p class="lead">Position is the whole argument. The safest pole would sit in the
+      bottom-left — low on both risks. Nothing in budget gets there. The pole with the
+      <em>best</em> lock design in the entire field has the <em>weakest</em> carbon shaft, and
+      your baseline pole is the mirror image of it.</p>
+
+    <figure>
+      <p class="figtitle">Collapse risk against snap risk</p>
+      <p class="figsub">Adversarial verdicts from two independent skeptic passes. Bottom-left is safe; top-right is disqualifying.</p>
+      <div class="chartbox"><svg id="c-matrix" viewBox="0 0 700 414" role="img"
+        aria-label="Risk matrix of collapse risk across the columns against snap risk down the rows, for nine trekking poles. The safest cell, low on both, contains only the Cascade Mountain Tech Ultralight 2-Section at 64.99 dollars and the over-budget Freevane Kodiak at 79 dollars. The Paria Tri-Fold sits at low collapse risk but high snap risk. The Cascade Mountain Tech standard sits at high collapse risk with moderate snap risk. Trekology and Ozark Trail sit in the top row because their snap risk has never been established."></svg></div>
+      <div class="legend">
+        <span><i style="background:var(--mark)"></i>In budget (&le;$70)</span>
+        <span><i style="background:var(--mark-alt)"></i>Over budget</span>
+        <span>Cell tint follows the worse of the two risks</span>
+      </div>
+      <figcaption><b>Read the diagonal.</b> The Paria buys near-immunity to lock creep by pinning
+        four of its five sections — zero slip reports across roughly 1,550 reviews — and pays for it
+        with the floppiest carbon shaft on the shortlist. Your Cascade Mountain Tech has the opposite
+        profile: a top-quartile shaft on a bottom-tier lock. Two poles could not be placed on the
+        vertical axis at all, because <b>nobody has ever tested them</b>.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ CHART 2: measured stiffness ============ -->
+  <section id="stiffness">
+    <div class="eyebrow">Hard measurement</div>
+    <h2>Measured shaft stiffness — and the four poles with no data at all</h2>
+    <p class="lead">This is the only quantitative strength evidence that exists for this price
+      band: Alan Dixon's composite score across 37 poles, hanging 16&nbsp;kg at mid-span.
+      <strong>Lower is stiffer.</strong> The field average is 145.</p>
+
+    <figure>
+      <p class="figtitle">Composite stiffness score — lower is stiffer</p>
+      <p class="figsub">16&nbsp;kg center-hang test, 37 poles. Field average 145. Aluminum and premium reference rows shown for scale.</p>
+      <div class="chartbox"><svg id="c-stiff" viewBox="0 0 700 460" role="img"
+        aria-label="Horizontal bar chart of composite stiffness scores where lower is stiffer. Freevane Kodiak 43 and Black Diamond Alpine Carbon Cork 44 lead but cost 79 and 230 dollars. Cascade Mountain Tech Ultralight 71, Cascade 3K 80, Cascade standard 87, Cascade folding aluminum 95, Cascade standard well-used 99, and Paria Tri-Fold carbon 143. Four poles have no data."></svg></div>
+      <div class="legend">
+        <span><i style="background:var(--mark)"></i>Carbon, in budget</span>
+        <span><i style="background:var(--mark-alt)"></i>Reference (aluminum / premium / over budget)</span>
+      </div>
+      <figcaption><b>The single most uncomfortable number here:</b> Cascade's folding
+        <b>aluminum</b> pole (95) is stiffer than the Paria's <b>carbon</b> (143). Carbon is not
+        automatically stronger — cheap carbon is worse than decent aluminum, and it fails worse when
+        it does fail. Note also the decay row: a well-used pair of your baseline pole drifts from 87
+        to 99, a 33% loss at the tip. The 7/9 is a purchase-day number.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ CHART 3: the wall ============ -->
+  <section id="wall">
+    <div class="eyebrow">Why $70 is a wall</div>
+    <h2>What another nine dollars buys</h2>
+    <figure>
+      <p class="figtitle">Price against measured mid-span deflection</p>
+      <p class="figsub">Only five poles in this entire market segment have a measured deflection figure. Lower deflection is stiffer.</p>
+      <div class="chartbox"><svg id="c-wall" viewBox="0 0 700 380" role="img"
+        aria-label="Scatter plot of price against mid-span deflection. The 70 dollar budget ceiling is marked. Inside the ceiling, deflection ranges from 5.0 to 8.5 centimeters. Just outside at 79 dollars, the Freevane Kodiak achieves 4.0 centimeters."></svg></div>
+      <figcaption><b>The ceiling is doing real work.</b> Inside it, the best you can measure is
+        5.0&nbsp;cm. Nine dollars past it, 4.0&nbsp;cm with metal lock bodies. Wall thickness is the
+        hidden variable: the Cascade 3K and the Kodiak share identical 18/16/14&nbsp;mm outer
+        diameters and the identical 2&times;2 twill 3K weave, yet the Kodiak is nearly twice as
+        stiff. Outer diameter is not what you are buying.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ MASTER TABLE ============ -->
+  <section id="table">
+    <div class="eyebrow">Full comparison</div>
+    <h2>All nine, side by side</h2>
+    <p class="lead">Ranked for your use case: loaded multi-day, rocky scree, August meltwater
+      crossings, mixed adults and 12–17-year-olds. This table is also the accessible twin of every
+      chart above — every plotted value appears here as text.</p>
+
+    <div class="tablescroll">
+      <table>
+        <caption>Scroll horizontally for all columns. Greyed rows are over the $70 ceiling.</caption>
+        <thead>
+          <tr>
+            <th class="num">#</th>
+            <th>Pole</th>
+            <th class="num">Street</th>
+            <th class="num">Weight/pair</th>
+            <th>Sections / locks</th>
+            <th class="num">Range</th>
+            <th class="num">Collapsed</th>
+            <th>Grip</th>
+            <th class="num">Stiffness</th>
+            <th>Collapse</th>
+            <th>Snap</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="legend" style="margin-top:12px">
+      <span><b style="color:var(--ink-soft)">Stiffness</b> = Dixon composite, lower is stiffer (field avg 145)</span>
+    </div>
+  </section>
+
+  <!-- ============ VERDICT CARDS ============ -->
+  <section id="calls">
+    <div class="eyebrow">Pole by pole</div>
+    <h2>The calls, with the evidence that drove them</h2>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <!-- ============ WHAT YOU'RE MISSING ============ -->
+  <section id="missing">
+    <div class="eyebrow">Not on your radar</div>
+    <h2>Five things worth more than the pole choice</h2>
+
+    <div class="note">
+      <h4>1. The buried lede — you may have dismissed the right pole</h4>
+      <p>The <strong>Cascade Mountain Tech Ultralight Carbon 2-Section, $64.99</strong> is in
+        budget, listed in stock, and is the <strong>stiffest-per-gram pole in the entire
+        corpus</strong> — 8/9, composite 71, and a strength-to-weight figure roughly 3&times; better
+        than the field average. Critically for your stated fear, it has <strong>one friction joint
+        instead of two.</strong> Halving the number of clamps that can creep is the single most
+        valuable design property available at this price.</p>
+      <p>It reads like an ultralight-hiker toy, which is probably why it never got considered. It
+        isn't. Its 76–132&nbsp;cm range covers a short 12-year-old through a 6'2" adult. You give up
+        cork and accept a 76&nbsp;cm packed length. <em>One adversarial pass claimed its 76&nbsp;cm
+        floor was "too tall for the smallest youth" — that is mechanically wrong (a small
+        12-year-old needs ~95–105&nbsp;cm) and I am flagging it so the bad claim doesn't veto the
+        pole.</em></p>
+    </div>
+
+    <div class="note">
+      <h4>2. Aluminum, for the hardest-on-gear kids specifically</h4>
+      <p>This is the strongest thing the evidence supports that you didn't ask about. Cascade's own
+        support page says it plainly: on impact or over-torque carbon means <em>"you can break a
+        section,"</em> whereas aluminum <em>"may dent or bend"</em> and <em>"can be bent back into
+        shape."</em> Their own blog: <em>"aluminum trekking poles… are more durable than carbon
+        fiber poles."</em></p>
+      <p><strong>A bent aluminum pole walks out of the Sawtooths. A snapped carbon pole is trash and
+        possibly an injury.</strong> In-budget aluminum in the corpus: Paria Tri-Fold Alloy UL
+        $54.99, Trekology Trek-Z 2.0 $56 (which is what those middling Trek-Z reviews I mentioned
+        earlier actually cover), Leki Legacy Lite, REI Trailmade.</p>
+    </div>
+
+    <div class="note">
+      <h4>3. Costco changes the math on your baseline</h4>
+      <p>Your Cascade Mountain Tech Carbon Quick Lock appears as <strong>Costco item
+        #1654502 at $29.97–$38.99 per pair</strong> — averaging $35.21 across 493 warehouses, on
+        sale at 90 of them. Against $64.99 direct, outfitting a troop changes character entirely.
+        Membership-gated and stock is seasonal, so verify locally. Also: the cork variant reportedly
+        runs <strong>$51.99 on Amazon versus $64.99 for the EVA</strong> — don't pay $13 more for the
+        grip CleverHiker explicitly regretted choosing.</p>
+    </div>
+
+    <div class="note">
+      <h4>4. Nobody has tested a wet or grit-fouled clamp — and you're crossing meltwater</h4>
+      <p>A flip lock holds by friction alone. Water and fine grit at the clamp interface lower the
+        coefficient of friction, so a clamp tensioned "just tight enough" in a driveway can creep
+        after stream crossings and wet scree. <strong>Every slip test in evidence is a dry
+        test.</strong> For an August Sawtooth trip this converts "tighten it hard" from advice into a
+        requirement, and adds <em>re-tension after every crossing</em> to the routine. This is the
+        untested variable most likely to actually matter to you.</p>
+    </div>
+
+    <div class="note">
+      <h4>5. Warranty is the real de-risker for cheap carbon, and the spread is enormous</h4>
+      <ul>
+        <li><strong>Paria — limited lifetime</strong>, sections sold individually, with documented
+          practice far beyond the written terms: a free new pair on <em>nine-year-old</em> poles, a
+          free part on 4-year-old poles answered in 15 minutes. This converts its crack-prone ferrule
+          from trip-ending to an email.</li>
+        <li><strong>Cascade — 1 year</strong>, but sells upper/middle/lower sections individually.
+          Read the exclusions: impact, over-torque, and using poles as tent poles are all excluded —
+          i.e. the most likely real failure isn't covered.</li>
+        <li><strong>Trekology — 1 year and no replacement sections at all.</strong> Worst
+          repairability of any candidate. A broken section has no parts channel.</li>
+        <li><strong>Ozark Trail — nothing</strong> beyond 90-day Walmart returns.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ RECOMMENDATION ============ -->
+  <section id="rec">
+    <div class="eyebrow">What to do</div>
+    <h2>The recommendation</h2>
+
+    <div class="verdict" style="border-left-color:var(--risk-low)">
+      <p style="font-family:var(--serif);font-size:22px;color:var(--pine);margin-bottom:10px;line-height:1.3">
+        <strong>Primary: Cascade Mountain Tech Carbon Fiber Quick Lock, cork grip — $51.99 if the
+        cork listing is live, otherwise $64.99.</strong></p>
+      <p>You were right about this pole. It is the only candidate that clears every hard gate at
+        once: in budget, actually in stock before August, measured in the stiff quartile of 37 poles,
+        genuinely 100% carbon, spanning <strong>66–137&nbsp;cm so one SKU fits a short 12-year-old
+        and a tall adult</strong>, repairable by the section, and carrying the deepest review base in
+        the band — Best Budget at Switchback, Best for Beginners at Treeline over 500 PCT miles, and
+        Andrew Skurka's 200+ miles including 100 off-trail under a 50&nbsp;lb pack with zero slip and
+        zero breakage.</p>
+      <p>Its defect is real and it is exactly your stated fear. But it is a <strong>friction
+        setting, not a broken part</strong>: Cascade publishes the fix, it needs no tools, and
+        OutdoorGearLab fixed theirs mid-hike with a coin. Skurka's result proves a properly tensioned
+        pair does not creep. <strong>Buying it means accepting that "won't collapse" is a protocol an
+        adult owns, not a property the pole ships with.</strong> If nobody will run that protocol
+        daily, buy aluminum instead.</p>
+    </div>
+
+    <h3>Runner-up, and the better pick if you read strength strictly</h3>
+    <p><strong>Cascade Mountain Tech Ultralight Carbon 2-Section — $64.99.</strong> Measurably
+      stiffer (composite 71 vs 87, 5.0&nbsp;cm vs 6.0&nbsp;cm), best strength-to-weight in the
+      corpus, <strong>one friction joint instead of two</strong>, and 11.2&nbsp;oz/pair instead of
+      16. You give up cork and carry a longer packed pole. Verify its stock and hunt its reviews
+      first — it is the one candidate nobody in this sweep investigated for failures.</p>
+    <p>And if the ceiling can move nine dollars: <strong>Freevane Kodiak, $79</strong> — 9/9,
+      composite 43, metal lock bodies. The honest literal answer to what you asked for. Verify price
+      and stock before committing; it's the least-verified item here.</p>
+
+    <h3>Outfitting a mixed adult and youth group</h3>
+    <p>Standardize adults on the Cascade (one SKU, 66–137&nbsp;cm, cork) and put <strong>aluminum on
+      the two or three hardest-on-gear teenagers</strong> — Paria Tri-Fold Alloy UL $54.99 or
+      Trekology Trek-Z 2.0 $56. Measure every youth floor-to-hand at a 90° elbow before ordering;
+      that step alone disqualifies the Trekology 3K and the Paria carbon for your smallest kids,
+      both of which floor at 100&nbsp;cm. Then run these five rules:</p>
+    <ol class="rules">
+      <li>An adult sets every lock <em>past</em> the point of easy lever closure before the trip, and
+        re-checks at every rest stop <strong>and after every stream crossing</strong> — wet grit
+        kills clamp friction and nobody has tested for it.</li>
+      <li>Do a loaded shakedown descent inside the return window. Replace anything that creeps at
+        all.</li>
+      <li>Baskets stay on, and a wedged pole gets <em>dropped</em>, never levered. Every documented
+        carbon snap in this corpus is tip-pinned-plus-slip.</li>
+      <li>Buy one spare lower section per two pairs up front — Cascade's warranty excludes impact
+        and over-torque, which is the failure you'll actually have.</li>
+      <li>Brief the kids that over-cranking the thumb screw cracks the plastic lever. "Hard to
+        close" is the target, not "as hard as you can."</li>
+    </ol>
+  </section>
+
+  <!-- ============ GAPS ============ -->
+  <section id="gaps">
+    <div class="eyebrow">Confidence</div>
+    <h2>What's solid, what's thin, and what to check before you spend</h2>
+
+    <p><strong>Solid:</strong> Dixon's deflection dataset, verified cell-by-cell against the primary
+      spreadsheet rather than article prose. OutdoorGearLab's May 2026 test of the Cascade standard
+      (47/100, #16 of 19, Locking 3.0). All prices and stock as of 26 July 2026, checked live.
+      Warranty texts quoted from vendor pages. The Paria's 5-section pinned architecture,
+      corroborated three ways.</p>
+
+    <p><strong>Thin — treat as directional:</strong> every failure-<em>frequency</em> estimate here.
+      Amazon gated 1–3 star review bodies on every single product, Walmart served CAPTCHAs, and
+      several retailers returned 403s. Roughly 200 critical reviews across these products were never
+      read. Where this report says "zero reports found," read it as <em>"none found in accessible
+      sources."</em></p>
+
+    <div class="note" style="border-left:4px solid var(--risk-mod)">
+      <h4>Corrections this audit forced — including to my own earlier answer</h4>
+      <div class="flags">
+        <div class="flag"><span class="fx">REVERSED</span><span>My earlier reply told you the
+          Trekology sits at <strong>$68.99</strong>. That's still the live MSRP, but it is
+          <strong>$49.99 on Amazon</strong> — I quoted the brand site and should have checked the
+          street.</span></div>
+        <div class="flag"><span class="fx">REVERSED</span><span>My earlier reply framed the Cascade
+          Carbon Quick Lock as holding "Best Budget" with no caveat. It does — but I never surfaced
+          that OutdoorGearLab scored its <strong>lock 3.0/10 for collapsing under load</strong>,
+          which is the single most relevant fact to what you asked.</span></div>
+        <div class="flag"><span class="fx">FALSE CLAIM</span><span>A research pass asserted Dixon had
+          <strong>not</strong> tested the Paria Tri-Fold, and scored it 7/10 on that basis. He did
+          test it. It measures 4/9 — the weakest carbon on the shortlist. The adversarial pass caught
+          this by reading the primary spreadsheet.</span></div>
+        <div class="flag"><span class="fx">HALO</span><span>The Trekology reviews I cited earlier
+          (OutdoorGearLab, GearJunkie, CleverHiker) all cover the <strong>Trek-Z 2.0</strong> — a
+          heavier <em>aluminum folding</em> pole sharing no shaft material, lock design, or geometry
+          with the 3K carbon. That reputation does not transfer.</span></div>
+      </div>
+    </div>
+
+    <h3>Spot-check these before money moves</h3>
+    <ol>
+      <li><strong>The $51.99 Cascade cork listing</strong> and its delivery date — the $13 EVA
+        premium is the biggest avoidable cost here, and the cork ASIN read "currently unavailable."</li>
+      <li><strong>The Ultralight 2-Section, entirely uninvestigated.</strong> Confirm stock, whether
+        its single lock uses the same plastic body, and search its reviews for slip and snap. If it
+        checks out it probably becomes the primary pick.</li>
+      <li><strong>Freevane Kodiak price and stock.</strong> One source only. Nobody confirmed it is
+        purchasable.</li>
+      <li><strong>Trekology carbon content.</strong> No "100% carbon" claim exists anywhere — "3K" is
+        a weave (3,000 filaments per tow), not a content spec. Section count, wall thickness, and max
+        load are all unpublished.</li>
+      <li><strong>Whether Ozark Trail shares an OEM with Cascade.</strong> Specs match almost exactly
+        (8.0 vs 8.1 oz, both 66–137 cm, both 3-section dual quick-lock, both cork, both tungsten
+        carbide) but there is <em>no supply-chain evidence</em>, so do not assume Cascade's tested
+        durability transfers.</li>
+      <li><strong>Weights generally.</strong> Only three figures in this whole corpus are
+        scale-verified by a third party. Everything else is a vendor claim, and vendors quote
+        per-pole almost universally.</li>
+    </ol>
+  </section>
+
+  <footer class="foot">
+    <p><strong>Method.</strong> Five parallel discovery sweeps (major retail, brand-direct, expert
+      roundups, community failure reports, and a dedicated gap sweep for discounts, warehouse
+      2-packs, and new entrants) produced 57 distinct products. The nine most corroborated went to
+      per-product investigation covering spec verification, review pedigree, and a two-track failure
+      hunt separating lock slip from shaft failure. Two adversarial lenses — load mechanics and
+      carbon materials — then attempted to disqualify the finalists; eight of nine failed at least
+      one lens. 17 agents, 1,104 tool calls, zero errors.</p>
+    <p style="margin-top:10px"><strong>Design.</strong> Inherits the project's field-guide system
+      from <code>styles.css</code>. Risk-scale colors were computed, not chosen: validated against
+      both the cream (#f4efe2) and pine-black (#131711) surfaces for CVD separation, chroma, and
+      contrast. Risk always carries a word and a glyph, never color alone. Magnitude bars use a
+      single hue — no value-ramp across products.</p>
+    <p style="margin-top:10px;color:var(--ink-mute)">Prices and stock verified 26 July 2026 and will
+      drift. Nothing here is a substitute for a loaded shakedown hike inside the return window.</p>
+  </footer>
+</div>
+
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------------------------------------------------------------- data
+  // rank = overall for this use case. comp = Dixon composite (lower stiffer).
+  // mid  = mid-span deflection cm under 16kg. null = never tested.
+  var POLES = [
+    { rank:1, brand:"Cascade Mountain Tech", model:"Carbon Fiber Quick Lock (cork / EVA)",
+      short:"CMT Carbon Quick Lock", price:64.99, priceNote:"$51.99 cork [unverified]",
+      wt:"14.7–16 oz", wtNote:"OGL measured 14.65", sec:"3 / 2 plastic flip",
+      range:"66–137 cm", collapsed:"66 cm", grip:"Cork or EVA",
+      comp:87, mid:6.0, stiffRank:"9th of 37", strength:"7/9",
+      collapse:"HIGH", collapseNote:"as shipped → MOD once tensioned", snap:"MOD",
+      budget:true, survives:true, verdict:"win",
+      call:"The only pole in budget, in stock, measured in the stiff quartile, and fitting a short 12-year-old and a tall adult from one SKU.",
+      body:"The shaft is legitimately good — 7/9, composite 87, 9th of 37, and Dixon marks the material 100% carbon. SectionHiker: “thick diameter shafts, making them far less likely to break.” The lock is the liability, and it is your exact fear. But it is tool-free tightenable, Cascade publishes the fix, and Skurka ran 200+ miles under a 50 lb pack with no slip at all.",
+      ev:"The poles often collapsed on us when unexpectedly weighted, which felt unsafe on uneven terrain.",
+      evSrc:"OutdoorGearLab, May 2026 — Locking and Adjustability 3.0/10" },
+
+    { rank:2, brand:"Cascade Mountain Tech", model:"Ultralight Carbon 2-Section (EVA)",
+      short:"CMT Ultralight 2-Section", price:64.99, priceNote:"listed in stock",
+      wt:"11.2 oz", wtNote:"159 g/pole", sec:"2 / 1 flip",
+      range:"76–132 cm", collapsed:"76 cm", grip:"EVA only",
+      comp:71, mid:5.0, stiffRank:"tied 2nd of 33", strength:"8/9",
+      collapse:"LOW", collapseNote:"one friction joint, plastic", snap:"LOW",
+      budget:true, survives:null, verdict:"maybe",
+      call:"On your #1 criterion this is the best thing $64.99 buys — and its evidence gap is the only reason it isn't the primary pick.",
+      body:"Best strength-to-weight in the entire corpus, roughly 3× the field average. Dixon credits the geometry directly: “The dead-center placement of a single flip lock reinforces the middle to minimize deflection, while also reducing the number of moving parts and failure points.” Halving the friction joints is the most valuable property at this price. Nobody investigated its failure record.",
+      ev:"Tied 2nd of 33 poles overall on measured strength-to-weight.",
+      evSrc:"Alan Dixon, 16 kg center-hang test" },
+
+    { rank:3, brand:"Freevane", model:"Kodiak 3K Carbon (telescoping)",
+      short:"Freevane Kodiak", price:79.00, priceNote:"over ceiling by $9",
+      wt:"~14.7 oz", wtNote:"209 g/pole", sec:"3 / 2 METAL flip",
+      range:"—", collapsed:"63 cm", grip:"—",
+      comp:43, mid:4.0, stiffRank:"tied best of 37", strength:"9/9",
+      collapse:"LOW", collapseNote:"metal lock bodies", snap:"LOW",
+      budget:false, survives:null, verdict:"maybe",
+      call:"Nine dollars over budget buys roughly double the stiffness and the only metal lock bodies in reach.",
+      body:"It proves outer diameter is not the operative variable: the Cascade 3K has identical 18/16/14 mm geometry and the identical 2×2 twill 3K weave, and scores 80 — nearly half as stiff. The difference is wall thickness, which Cascade does not disclose. Price and stock rest on a single source; verify before committing.",
+      ev:"Thicker-than-average side walls.",
+      evSrc:"Alan Dixon, spec measurement" },
+
+    { rank:4, brand:"Cascade Mountain Tech", model:"3K Carbon Fiber Quick Lock, cork",
+      short:"CMT 3K Carbon", price:74.99, priceNote:"sold out direct; 1–3 wk Amazon",
+      wt:"16–16.6 oz", wtNote:"", sec:"3 / 2 plastic flip",
+      range:"66–137 cm", collapsed:"66 cm", grip:"Cork + EVA",
+      comp:80, mid:5.5, stiffRank:"7th of 37", strength:"7/9",
+      collapse:"MOD", collapseNote:"tightenable", snap:"MOD",
+      budget:false, survives:false, verdict:"no",
+      call:"Not a strength failure — a price and logistics failure, for a group buy in August.",
+      body:"Strength is real and the carbon is genuinely 2×2 twill woven. But it costs $10 more than the standard Cascade for an 8% deflection improvement no human will perceive, and the $64.99 Ultralight beats it outright on both stiffness and joint count. Amazon quotes 1–3 weeks with delivery Aug 11–18 — after you leave.",
+      ev:"Sold out brand-direct; the in-budget $54.99 Costco price is out of stock.",
+      evSrc:"Verified 26 July 2026" },
+
+    { rank:5, brand:"Paria Outdoor Products", model:"Tri-Fold Carbon Cork (hybrid)",
+      short:"Paria Tri-Fold Carbon", price:69.99, priceNote:"$66.49 with 5% list coupon",
+      wt:"17–18 oz", wtNote:"iRunFar measured 510 g", sec:"5 / 1 friction + pin",
+      range:"100–120 or 115–135 cm", collapsed:"38 cm", grip:"Cork + EVA",
+      comp:143, mid:8.5, stiffRank:"23rd of 37", strength:"4/9",
+      collapse:"LOW", collapseNote:"lowest in field", snap:"HIGH",
+      budget:true, survives:false, verdict:"no",
+      call:"Best in the field at not collapsing, worst carbon in the field at not snapping — and your terrain loads the mode it loses.",
+      body:"The only candidate that attacks lock slip architecturally: four of five sections are pinned, not clamped, so ~80% of its length has no friction lock to creep. Zero slip reports across ~1,550 reviews. Best warranty in the band by a mile, sections sold individually, and the only pole that stows inside a pack at 38 cm. But the shaft is the weakest carbon here, and documented cracks cluster at the carbon/aluminum ferrule — one reviewer's unused warranty replacement arrived cracked in the identical spot. A design stress riser, not a bad unit.",
+      ev:"Broke on the first trip, tip sunk three inches in mud when the hiker slipped.",
+      evSrc:"First-party 2-star review, 2023 — the literal Sawtooth stream-crossing load case" },
+
+    { rank:6, brand:"Trekology", model:"3K Carbon Fiber + 10pc kit",
+      short:"Trekology 3K Carbon", price:49.99, priceNote:"MSRP $68.99; code → $55.19",
+      wt:"~14.8 oz", wtNote:"208 g owner-weighed", sec:"3 / 2 METAL flip",
+      range:"100–135 cm", collapsed:"63–66 cm", grip:"Cork + EVA",
+      comp:null, mid:null, stiffRank:"never tested", strength:"none",
+      collapse:"MOD", collapseNote:"metal bodies; fix single-sourced", snap:"UNKNOWN",
+      budget:true, survives:false, verdict:"no",
+      call:"Real, cheap, in stock, and completely unproven on the one axis that matters — an adult's second pair at best.",
+      body:"Genuine positives: metal flip-lock bodies (better hardware than the Cascade plastic levers), 208 g independently owner-weighed, and $49.99 verified live on Amazon — $15 under the Cascade baseline. But zero independent testing exists anywhere: no Trekology row in any of the nine tabs of Dixon's spreadsheet, and the word appears zero times in his article. The SKU was created 10 April 2026, and its review corpus is the wrong load case end to end — flat walks, concrete, pavements. There is no evidence of failure because there is almost no evidence of load. No replacement sections sold at all.",
+      ev:"“3K” is a weave descriptor — 3,000 filaments per tow — not a carbon-content spec. Trekology never claims 100% carbon anywhere.",
+      evSrc:"Brand pages, 26 July 2026" },
+
+    { rank:7, brand:"Hiker Hunger", model:"HH1 100% Carbon, cork",
+      short:"Hiker Hunger HH1", price:56.97, priceNote:"$59.97 less 5% coupon",
+      wt:"14.6 oz", wtNote:"OGL measured; 15.2 claimed", sec:"3 / 2 plastic flip",
+      range:"61–137 cm", collapsed:"61 cm", grip:"Cork + EVA",
+      comp:null, mid:null, stiffRank:"no quantitative data", strength:"none",
+      collapse:"HIGH", collapseNote:"tension screw backs off", snap:"HIGH",
+      budget:true, survives:false, verdict:"no",
+      call:"Fine for a maintenance-minded adult on trail; disqualified for youth on scree by the only expert who has handled it.",
+      body:"The only candidate whose vendor publishes a remedy for your exact fear — their FAQ literally asks “My trekking poles keep collapsing.” A company writes a canned answer because the complaint is routine. Two independent testers report slip under body weight, and one identifies the mechanically damning detail: the tension setting itself does not hold, so the fix does not stay fixed.",
+      ev:"The bottom part of the pole isn't snug enough and shortens as you put weight on it… frequently, as the little metal screw that tightens the locks loosens up.",
+      evSrc:"Andalucia Hiking, hands-on — corroborated by Virtual Sherpa" },
+
+    { rank:8, brand:"Foxelli", model:"HOG1 100% Carbon",
+      short:"Foxelli HOG1", price:69.97, priceNote:"the $139.97 anchor is permanent",
+      wt:"14–15.2 oz", wtNote:"", sec:"3 / 2 flip",
+      range:"61–137 cm", collapsed:"61 cm", grip:"Cork + EVA",
+      comp:null, mid:null, stiffRank:"no quantitative data", strength:"none",
+      collapse:"MOD", collapseNote:"documented tightening sequence", snap:"HIGH",
+      budget:true, survives:false, verdict:"no",
+      call:"Paying the Cascade price for a shaft an expert calls under-reinforced and explicitly unsuited to off-trail use.",
+      body:"The only quasi-independent assessment (Mountain IQ, 3/5) calls the carbon “noticeably thinner than in the other carbon poles we tested,” the pole “under reinforced,” and says “we definitely got the feeling that the pole is not designed for off-trail use.” A documented backcountry snap in Olympic National Park required a duct-tape walk-out. It sells its own lower section as a $24.97 consumer SKU that has accumulated thank-you reviews.",
+      ev:"Foxelli's own manual instructs a full-body-weight test before EVERY use, and to stop at “even the slightest sign of cracking.”",
+      evSrc:"Manufacturer manual — a vendor anticipating structural failure" },
+
+    { rank:9, brand:"Ozark Trail (Walmart)", model:"Carbon Cork Quick Lock 2-pack",
+      short:"Ozark Trail Carbon Cork", price:33.33, priceNote:"Camping Clearance",
+      wt:"16 oz", wtNote:"", sec:"3 / 2 flip",
+      range:"66–137 cm", collapsed:"66 cm", grip:"Cork",
+      comp:null, mid:null, stiffRank:"zero coverage anywhere", strength:"none",
+      collapse:"HIGH", collapseNote:"highest; tightening does not hold", snap:"UNKNOWN",
+      budget:true, survives:false, verdict:"no",
+      call:"Saving $31 a pair against a documented, un-fixable mid-load collapse mode, on talus, with kids.",
+      body:"Every retrievable critical review is a slip report — 3 of 3, two ending in returns. The escape hatch does not open: the adjustment nut “turns too freely” and backs itself off. Published section lengths against a 54-inch max extension leave only ~4 inches of tube overlap per joint at full extension, which is the mechanical reason it fails where reviewers say it does. And there is no positive stop — sections pull clean out, restrained only by a printed line, with no instructions in the box.",
+      ev:"The bottom section kept sliding up when putting weight on it… This happened 3× even making sure the screws were on tight.",
+      evSrc:"Verified purchaser, 1-star titled “Kept collapsing on me”" }
+  ];
+
+  // Reference rows for the stiffness chart only (not purchasable candidates)
+  var STIFF_REF = [
+    { label:"BD Alpine Carbon Cork", comp:44, note:"$230 — premium reference", ref:true },
+    { label:"Cascade folding ALUMINUM",          comp:95, note:"bends, doesn't snap", ref:true },
+    { label:"Cascade standard, well used",       comp:99, note:"same pole after miles — 33% tip loss", ref:true }
+  ];
+
+  var RISK_ORDER = { "LOW":1, "MOD":2, "HIGH":3, "UNKNOWN":null };
+
+  function riskClass(r) {
+    if (r === "LOW") return "low";
+    if (r === "MOD") return "mod";
+    if (r === "HIGH") return "high";
+    return "unk";
+  }
+  function riskWord(r) { return r === "MOD" ? "MODERATE" : r; }
+  function cssVar(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+
+  // ---------------------------------------------------------------- tooltip
+  var tip = document.getElementById("tip");
+  function showTip(html, ev) {
+    tip.innerHTML = html;
+    tip.style.opacity = "1";
+    var pad = 14, r = tip.getBoundingClientRect();
+    var x = ev.clientX + pad, y = ev.clientY + pad;
+    if (x + r.width > window.innerWidth - 8) x = ev.clientX - r.width - pad;
+    if (y + r.height > window.innerHeight - 8) y = ev.clientY - r.height - pad;
+    tip.style.left = x + "px"; tip.style.top = y + "px";
+  }
+  function hideTip() { tip.style.opacity = "0"; }
+
+  function svgEl(n, attrs) {
+    var e = document.createElementNS("http://www.w3.org/2000/svg", n);
+    for (var k in attrs) if (attrs[k] !== null && attrs[k] !== undefined) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  // ================================================================ CHART 1
+  // Two ordinal axes -> a matrix of cells, NOT a jittered scatter.
+  // Jittering to de-overlap would displace marks along the encoding axis
+  // itself and misstate the risk, so poles are listed inside their true cell.
+  function drawMatrix() {
+    var svg = document.getElementById("c-matrix");
+    svg.innerHTML = "";
+    var COLS = ["LOW", "MOD", "HIGH"];               // collapse risk, left→right
+    var ROWS = ["UNKNOWN", "HIGH", "MOD", "LOW"];    // snap risk, top→bottom
+    var colLab = ["Low", "Moderate", "High"];
+    var rowLab = ["Unknown", "High", "Moderate", "Low"];
+
+    var W = 700, L = 108, R = 18, T = 56, B = 54;
+    var rh = 84, cw = (W - L - R) / 3;
+    var ph = ROWS.length * rh;
+    var H = T + ph + B;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+
+    function cellPoles(c, r) {
+      return POLES.filter(function (p) {
+        var pc = p.collapse === "MOD" ? "MOD" : p.collapse;
+        var pr = RISK_ORDER[p.snap] === null ? "UNKNOWN" : p.snap;
+        return pc === c && pr === r;
+      });
+    }
+
+    // column headers
+    COLS.forEach(function (c, i) {
+      var t = svgEl("text", { x:L + i * cw + cw / 2, y:T - 20, "font-size":"12.5",
+        fill:cssVar("--ink-soft"), "text-anchor":"middle", "font-weight":"700" });
+      t.textContent = colLab[i]; svg.appendChild(t);
+    });
+    var ax = svgEl("text", { x:L + (W - L - R) / 2, y:16, "font-size":"11",
+      fill:cssVar("--rust"), "text-anchor":"middle", "font-weight":"700", "letter-spacing":"0.13em" });
+    ax.textContent = "COLLAPSE RISK  —  LOCK SLIPS UNDER WEIGHT  →";
+    svg.appendChild(ax);
+
+    ROWS.forEach(function (r, ri) {
+      var y = T + ri * rh;
+      // row label
+      var rl = svgEl("text", { x:L - 14, y:y + 20, "font-size":"12.5",
+        fill: r === "UNKNOWN" ? cssVar("--risk-unk") : cssVar("--ink-soft"),
+        "text-anchor":"end", "font-weight":"700" });
+      rl.textContent = rowLab[ri]; svg.appendChild(rl);
+      if (r === "UNKNOWN") {
+        var rl2 = svgEl("text", { x:L - 14, y:y + 36, "font-size":"10.5",
+          fill:cssVar("--risk-unk"), "text-anchor":"end", "font-style":"italic" });
+        rl2.textContent = "never tested"; svg.appendChild(rl2);
+      }
+
+      COLS.forEach(function (c, ci) {
+        var x = L + ci * cw;
+        // severity wash: worse of the two risks; UNKNOWN reads as its own state
+        var sev = r === "UNKNOWN" ? "unk"
+          : Math.max(RISK_ORDER[c], RISK_ORDER[r]) === 3 ? "high"
+          : Math.max(RISK_ORDER[c], RISK_ORDER[r]) === 2 ? "mod" : "low";
+        var washCol = sev === "high" ? cssVar("--risk-high")
+          : sev === "mod" ? cssVar("--risk-mod")
+          : sev === "low" ? cssVar("--risk-low") : cssVar("--risk-unk");
+        // 2px surface gap between cells instead of borders
+        svg.appendChild(svgEl("rect", { x:x + 1, y:y + 1, width:cw - 2, height:rh - 2,
+          fill:washCol, opacity: sev === "unk" ? "0.05" : "0.085" }));
+
+        if (ci === 0 && r === "LOW") {
+          var sz = svgEl("text", { x:x + 9, y:y + rh - 8, "font-size":"10",
+            fill:cssVar("--risk-low"), "font-weight":"700", "letter-spacing":"0.11em" });
+          sz.textContent = "SAFEST CELL"; svg.appendChild(sz);
+        }
+
+        var list = cellPoles(c, r);
+        list.forEach(function (p, k) {
+          var ly = y + 20 + k * 30;
+          var g = svgEl("g", { tabindex:"0", role:"img",
+            "aria-label": p.short + ", " + p.price.toFixed(2) + " dollars, collapse risk " +
+              riskWord(p.collapse) + ", snap risk " + riskWord(p.snap) });
+          var col = p.budget ? cssVar("--mark") : cssVar("--mark-alt");
+          // small mark carries the budget distinction; text stays in ink
+          g.appendChild(svgEl("rect", { x:x + 9, y:ly - 8, width:4, height:10,
+            fill:col, rx:"1" }));
+          var nm = svgEl("text", { x:x + 19, y:ly, "font-size":"11.5",
+            fill:cssVar("--ink"), "font-weight":"600" });
+          nm.textContent = p.short.length > 21 ? p.short.slice(0, 20) + "…" : p.short;
+          g.appendChild(nm);
+          var pr = svgEl("text", { x:x + 19, y:ly + 13, "font-size":"10.5",
+            fill:cssVar("--ink-mute") });
+          pr.setAttribute("style", "font-variant-numeric:tabular-nums");
+          pr.textContent = "$" + p.price.toFixed(2) + (p.budget ? "" : " · over");
+          g.appendChild(pr);
+          g.appendChild(svgEl("rect", { x:x + 3, y:ly - 12, width:cw - 8, height:28, fill:"transparent" }));
+
+          var html = "<b>" + p.short + "</b>$" + p.price.toFixed(2) +
+            (p.budget ? " — in budget" : " — over ceiling") +
+            "<br>Collapse: " + riskWord(p.collapse) + " (" + p.collapseNote + ")" +
+            "<br>Snap: " + riskWord(p.snap) +
+            "<br>Stiffness: " + (p.comp ? "composite " + p.comp + ", " + p.stiffRank : "never tested");
+          g.addEventListener("mousemove", function (e) { showTip(html, e); });
+          g.addEventListener("mouseleave", hideTip);
+          g.addEventListener("focus", function () {
+            var bb = g.getBoundingClientRect();
+            showTip(html, { clientX:bb.left + bb.width / 2, clientY:bb.top });
+          });
+          g.addEventListener("blur", hideTip);
+          svg.appendChild(g);
+        });
+      });
+    });
+
+    // y axis title
+    var ay = svgEl("text", { x:18, y:T + ph / 2, "font-size":"11",
+      fill:cssVar("--rust"), "text-anchor":"middle", "font-weight":"700",
+      "letter-spacing":"0.13em", transform:"rotate(-90 18 " + (T + ph / 2) + ")" });
+    ay.textContent = "←  SNAP RISK  —  SHAFT BREAKS";
+    svg.appendChild(ay);
+
+    var fn = svgEl("text", { x:L, y:T + ph + 30, "font-size":"11",
+      fill:cssVar("--ink-mute"), "font-style":"italic" });
+    fn.textContent = "Empty cells mean no pole in this field lands there.";
+    svg.appendChild(fn);
+  }
+
+  // ================================================================ CHART 2
+  function drawStiff() {
+    var svg = document.getElementById("c-stiff");
+    svg.innerHTML = "";
+    var rows = POLES.filter(function (p) { return p.comp; })
+      .map(function (p) { return { label:p.short, comp:p.comp, note:"$" + p.price.toFixed(2) + " · " + p.stiffRank, ref:!p.budget }; })
+      .concat(STIFF_REF)
+      .sort(function (a, b) { return a.comp - b.comp; });
+    var noData = POLES.filter(function (p) { return !p.comp; });
+
+    var W = 700, L = 208, R = 62, T = 34, rowH = 27, gap = 6;
+    var bandH = 54;
+    var ph = rows.length * (rowH + gap);
+    var H = T + ph + bandH + 46;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    var pw = W - L - R;
+    var max = 150;
+    function bw(v) { return (v / max) * pw; }
+
+    // gridlines + ticks
+    [0, 50, 100, 150].forEach(function (v) {
+      svg.appendChild(svgEl("line", { x1:L + bw(v), y1:T - 8, x2:L + bw(v), y2:T + ph,
+        stroke:cssVar("--grid"), "stroke-width":"1" }));
+      var t = svgEl("text", { x:L + bw(v), y:T - 14, "font-size":"11",
+        fill:cssVar("--ink-mute"), "text-anchor":"middle" });
+      t.textContent = v; svg.appendChild(t);
+    });
+    // field average marker
+    svg.appendChild(svgEl("line", { x1:L + bw(145), y1:T - 8, x2:L + bw(145), y2:T + ph,
+      stroke:cssVar("--ink-mute"), "stroke-width":"1.5" }));
+    var fa = svgEl("text", { x:L + bw(145) + 5, y:T + ph + 15, "font-size":"10.5",
+      fill:cssVar("--ink-mute"), "font-weight":"700" });
+    fa.textContent = "field avg 145";
+    svg.appendChild(fa);
+
+    rows.forEach(function (r, i) {
+      var y = T + i * (rowH + gap);
+      var col = r.ref ? cssVar("--mark-alt") : cssVar("--mark");
+      var g = svgEl("g", { tabindex:"0", role:"img",
+        "aria-label": r.label + ", composite " + r.comp + ", " + r.note });
+
+      var lb = svgEl("text", { x:L - 12, y:y + rowH/2 + 4, "font-size":"12",
+        fill:cssVar("--ink"), "text-anchor":"end", "font-weight": r.ref ? "400" : "600" });
+      lb.textContent = r.label;
+      g.appendChild(lb);
+
+      // thin mark, 4px rounded data-end anchored to baseline
+      g.appendChild(svgEl("rect", { x:L, y:y + 5, width:Math.max(bw(r.comp), 5), height:rowH - 10,
+        fill:col, rx:"4" }));
+      g.appendChild(svgEl("rect", { x:L, y:y + 5, width:5, height:rowH - 10, fill:col }));
+
+      var vt = svgEl("text", { x:L + bw(r.comp) + 9, y:y + rowH/2 + 4, "font-size":"12",
+        fill:cssVar("--ink-soft"), "font-weight":"700" });
+      vt.setAttribute("style", "font-variant-numeric:tabular-nums");
+      vt.textContent = r.comp;
+      g.appendChild(vt);
+
+      g.appendChild(svgEl("rect", { x:L - 200, y:y, width:W - L + 200, height:rowH, fill:"transparent" }));
+
+      var html = "<b>" + r.label + "</b>Composite " + r.comp + " — lower is stiffer<br>" + r.note;
+      g.addEventListener("mousemove", function (e) { showTip(html, e); });
+      g.addEventListener("mouseleave", hideTip);
+      g.addEventListener("focus", function () {
+        var bb = g.getBoundingClientRect();
+        showTip(html, { clientX:bb.left + 220, clientY:bb.top });
+      });
+      g.addEventListener("blur", hideTip);
+      svg.appendChild(g);
+    });
+
+    // explicit no-data band — absence is the finding, so it is drawn, not omitted
+    var by = T + ph + 30;
+    svg.appendChild(svgEl("line", { x1:L - 200, y1:by, x2:W - R, y2:by,
+      stroke:cssVar("--line"), "stroke-width":"1" }));
+    var nd = svgEl("text", { x:L - 12, y:by + 20, "font-size":"12",
+      fill:cssVar("--risk-unk"), "text-anchor":"end", "font-weight":"700" });
+    nd.textContent = "NO DATA EXISTS";
+    svg.appendChild(nd);
+    var nd2 = svgEl("text", { x:L, y:by + 20, "font-size":"12", fill:cssVar("--ink-mute") });
+    nd2.textContent = noData.map(function (p) { return p.short; }).join(" · ");
+    svg.appendChild(nd2);
+    var nd3 = svgEl("text", { x:L, y:by + 37, "font-size":"11", fill:cssVar("--ink-mute"), "font-style":"italic" });
+    nd3.textContent = "Four of nine candidates have never been strength-tested by anyone.";
+    svg.appendChild(nd3);
+  }
+
+  // ================================================================ CHART 3
+  function drawWall() {
+    var svg = document.getElementById("c-wall");
+    svg.innerHTML = "";
+    var W = 700, H = 380, L = 66, R = 30, T = 30, B = 72;
+    var pw = W - L - R, ph = H - T - B;
+    var pts = POLES.filter(function (p) { return p.mid; });
+
+    var xMin = 30, xMax = 90, yMin = 3.5, yMax = 9;
+    function px(v) { return L + ((v - xMin) / (xMax - xMin)) * pw; }
+    function py(v) { return T + ((v - yMin) / (yMax - yMin)) * ph; }
+
+    // y grid
+    [4, 5, 6, 7, 8, 9].forEach(function (v) {
+      svg.appendChild(svgEl("line", { x1:L, y1:py(v), x2:L + pw, y2:py(v),
+        stroke:cssVar("--grid"), "stroke-width":"1" }));
+      var t = svgEl("text", { x:L - 10, y:py(v) + 4, "font-size":"11",
+        fill:cssVar("--ink-mute"), "text-anchor":"end" });
+      t.textContent = v + " cm"; svg.appendChild(t);
+    });
+    // x ticks
+    [30, 40, 50, 60, 70, 80, 90].forEach(function (v) {
+      var t = svgEl("text", { x:px(v), y:T + ph + 20, "font-size":"11",
+        fill:cssVar("--ink-mute"), "text-anchor":"middle" });
+      t.textContent = "$" + v; svg.appendChild(t);
+    });
+
+    // the ceiling
+    svg.appendChild(svgEl("rect", { x:px(70), y:T, width:L + pw - px(70), height:ph,
+      fill:cssVar("--ink-mute"), opacity:"0.07" }));
+    svg.appendChild(svgEl("line", { x1:px(70), y1:T, x2:px(70), y2:T + ph,
+      stroke:cssVar("--rust"), "stroke-width":"1.5" }));
+    // ceiling label sits low, clear of the data marks near the top of the plot
+    var cl = svgEl("text", { x:px(70) - 7, y:T + ph - 10, "font-size":"11",
+      fill:cssVar("--rust"), "font-weight":"700", "text-anchor":"end" });
+    cl.textContent = "$70 ceiling";
+    svg.appendChild(cl);
+
+    // axis labels
+    var ax = svgEl("text", { x:L + pw/2, y:H - 30, "font-size":"11.5",
+      fill:cssVar("--ink-soft"), "text-anchor":"middle", "font-weight":"700", "letter-spacing":"0.1em" });
+    ax.textContent = "STREET PRICE PER PAIR";
+    svg.appendChild(ax);
+    var ay = svgEl("text", { x:15, y:T + ph/2, "font-size":"11.5",
+      fill:cssVar("--ink-soft"), "text-anchor":"middle", "font-weight":"700",
+      "letter-spacing":"0.1em", transform:"rotate(-90 15 " + (T + ph/2) + ")" });
+    ay.textContent = "DEFLECTION  →  floppier";
+    svg.appendChild(ay);
+
+    pts.forEach(function (p) {
+      var cx = px(p.price), cy = py(p.mid);
+      var col = p.budget ? cssVar("--mark") : cssVar("--mark-alt");
+      var g = svgEl("g", { tabindex:"0", role:"img",
+        "aria-label": p.short + ", $" + p.price.toFixed(2) + ", " + p.mid + " centimeters deflection" });
+      g.appendChild(svgEl("circle", { cx:cx, cy:cy, r:9.5, fill:cssVar("--card") }));
+      g.appendChild(svgEl("circle", { cx:cx, cy:cy, r:7, fill:col }));
+      g.appendChild(svgEl("circle", { cx:cx, cy:cy, r:15, fill:"transparent" }));
+      // over-ceiling points label to the RIGHT of the dot: keeps them clear of the
+      // ceiling rule and of the dense in-budget cluster to their left
+      var over = p.price > 72;
+      var anchor = over ? "start" : "middle";
+      var dx = over ? 14 : 0;
+      var dy = over ? 4 : -14;
+      var lbl = svgEl("text", { x:cx + dx, y:cy + dy, "font-size":"11.5",
+        fill:cssVar("--ink"), "text-anchor":anchor, "font-weight":"600" });
+      lbl.textContent = p.short;
+      g.appendChild(lbl);
+      var html = "<b>" + p.short + "</b>$" + p.price.toFixed(2) + " · " + p.mid +
+        " cm mid-span deflection<br>Composite " + p.comp + " — " + p.stiffRank;
+      g.addEventListener("mousemove", function (e) { showTip(html, e); });
+      g.addEventListener("mouseleave", hideTip);
+      g.addEventListener("focus", function () {
+        var r = g.getBoundingClientRect();
+        showTip(html, { clientX:r.left + r.width/2, clientY:r.top });
+      });
+      g.addEventListener("blur", hideTip);
+      svg.appendChild(g);
+    });
+  }
+
+  // ================================================================ TABLE
+  function drawTable() {
+    var tb = document.getElementById("tbody");
+    tb.innerHTML = "";
+    POLES.forEach(function (p) {
+      var tr = document.createElement("tr");
+      if (!p.budget) tr.className = "over";
+      if (p.rank === 1) tr.className = "pick";
+      tr.innerHTML =
+        '<td class="num">' + p.rank + '</td>' +
+        '<td class="name">' + p.short + '<small>' + p.brand + ' · ' + p.model + '</small></td>' +
+        '<td class="num">$' + p.price.toFixed(2) + '<small style="display:block;color:var(--ink-mute);font-size:11.5px">' + (p.priceNote || '') + '</small></td>' +
+        '<td class="num">' + p.wt + (p.wtNote ? '<small style="display:block;color:var(--ink-mute);font-size:11.5px">' + p.wtNote + '</small>' : '') + '</td>' +
+        '<td>' + p.sec + '</td>' +
+        '<td class="num">' + p.range + '</td>' +
+        '<td class="num">' + p.collapsed + '</td>' +
+        '<td>' + p.grip + '</td>' +
+        '<td class="num">' + (p.comp ? '<strong>' + p.comp + '</strong><small style="display:block;color:var(--ink-mute);font-size:11.5px">' + p.stiffRank + '</small>'
+          : '<span class="pill unk">none</span>') + '</td>' +
+        '<td><span class="pill ' + riskClass(p.collapse) + '">' + riskWord(p.collapse) + '</span></td>' +
+        '<td><span class="pill ' + riskClass(p.snap) + '">' + riskWord(p.snap) + '</span></td>';
+      tb.appendChild(tr);
+    });
+  }
+
+  // ================================================================ CARDS
+  function drawCards() {
+    var wrap = document.getElementById("cards");
+    wrap.innerHTML = "";
+    POLES.forEach(function (p) {
+      var d = document.createElement("div");
+      d.className = "card " + p.verdict;
+      var badge = p.survives === true ? "SURVIVED adversarial review"
+        : p.survives === false ? "FAILED adversarial review" : "not adversarially tested";
+      d.innerHTML =
+        '<div class="rank">' + p.rank + '</div>' +
+        '<div>' +
+          '<h4>' + p.short + '</h4>' +
+          '<div class="meta"><b>$' + p.price.toFixed(2) + '</b> · ' + p.wt + ' · ' + p.sec +
+            ' · ' + p.range + ' · ' + (p.comp ? 'composite ' + p.comp : 'no strength data') +
+            ' · <em>' + badge + '</em></div>' +
+          '<p>' + p.body + '</p>' +
+          '<p class="ev">&ldquo;' + p.ev + '&rdquo;<cite>' + p.evSrc + '</cite></p>' +
+          '<p class="call">' + p.call + '</p>' +
+        '</div>';
+      wrap.appendChild(d);
+    });
+  }
+
+  function renderAll() { drawMatrix(); drawStiff(); drawWall(); }
+  drawTable(); drawCards(); renderAll();
+
+  // re-render charts on theme change so tokens are re-read
+  var mq = window.matchMedia("(prefers-color-scheme: dark)");
+  if (mq.addEventListener) mq.addEventListener("change", renderAll);
+  new MutationObserver(renderAll).observe(document.documentElement, {
+    attributes:true, attributeFilter:["data-theme"]
+  });
+  window.addEventListener("resize", function () { hideTip(); });
+})();
+</script>
