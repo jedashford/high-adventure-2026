@@ -1,0 +1,831 @@
+<title>Where Money Stops Buying Strength — Whole-Market Trekking Pole Audit</title>
+
+<style>
+  /* ============================================================
+     Sawtooth High Adventure — whole-market strength audit
+     Inherits the project field-guide system (styles.css).
+     All data marks use ONE hue (no value-ramp across products).
+     Risk pills use the 3-tier scale validated with the dataviz
+     validator against BOTH surfaces; risk always carries a word
+     and a glyph, never colour alone.
+     ============================================================ */
+  :root {
+    color-scheme: light;
+    --paper:#f4efe2; --paper-deep:#ece5d3; --card:#fbf8f0;
+    --ink:#23291f; --ink-soft:#4a5341; --ink-mute:#6f7663;
+    --pine:#1e3a2f; --fir:#2d5240; --rust:#b4531f; --ember:#c96a2e; --lake:#4f83a0;
+    --line:#cfc5ad; --line-soft:#e0d8c4;
+    --risk-low:#17693a; --risk-mod:#b07d00; --risk-high:#b02418; --risk-unk:#6f7663;
+    --mark:#b4531f; --mark-quiet:#d9b48f; --grid:#ddd4bf;
+    --serif:Georgia,"Iowan Old Style","Palatino Linotype",Palatino,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --paper:#131711; --paper-deep:#0e120d; --card:#1b201a;
+      --ink:#eee9dc; --ink-soft:#c3c9b6; --ink-mute:#949c88;
+      --pine:#a8c4ae; --fir:#8fae97; --rust:#e08650; --ember:#eda06a; --lake:#7fb3ce;
+      --line:#333c30; --line-soft:#262e24;
+      --risk-low:#2eb489; --risk-mod:#d2a52a; --risk-high:#e4634e; --risk-unk:#949c88;
+      --mark:#e08650; --mark-quiet:#6b5a49; --grid:#2b332a;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --paper:#131711; --paper-deep:#0e120d; --card:#1b201a;
+    --ink:#eee9dc; --ink-soft:#c3c9b6; --ink-mute:#949c88;
+    --pine:#a8c4ae; --fir:#8fae97; --rust:#e08650; --ember:#eda06a; --lake:#7fb3ce;
+    --line:#333c30; --line-soft:#262e24;
+    --risk-low:#2eb489; --risk-mod:#d2a52a; --risk-high:#e4634e; --risk-unk:#949c88;
+    --mark:#e08650; --mark-quiet:#6b5a49; --grid:#2b332a;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);background:var(--paper);color:var(--ink);
+       line-height:1.58;-webkit-font-smoothing:antialiased}
+  .topbar{height:7px;background:linear-gradient(90deg,var(--rust) 0 26%,var(--pine) 26% 100%)}
+  .wrap{max-width:1090px;margin:0 auto;padding:0 24px 96px}
+
+  header.mast{padding:52px 0 26px}
+  .kicker{font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--rust);font-weight:700}
+  h1{font-family:var(--serif);font-weight:700;font-size:clamp(38px,6.6vw,70px);line-height:1;
+     color:var(--pine);margin:16px 0 0;letter-spacing:-.02em;text-wrap:balance}
+  h1 em{font-style:italic;color:var(--rust)}
+  .dek{font-family:var(--serif);font-size:clamp(16px,2.1vw,20.5px);color:var(--ink-soft);
+       max-width:64ch;margin:18px 0 0;line-height:1.5}
+  .byline{margin-top:20px;font-size:12.5px;color:var(--ink-mute);letter-spacing:.04em;
+          border-top:1px solid var(--line);padding-top:14px}
+
+  .statband{display:grid;grid-template-columns:repeat(auto-fit,minmax(126px,1fr));gap:1px;
+            background:var(--line);border:1px solid var(--line);margin:32px 0 0}
+  .stat{background:var(--card);padding:15px 17px}
+  .stat b{display:block;font-size:29px;font-weight:700;color:var(--pine);line-height:1.05;letter-spacing:-.02em}
+  .stat span{display:block;margin-top:4px;font-size:10.5px;letter-spacing:.085em;text-transform:uppercase;
+             color:var(--ink-mute);font-weight:600}
+
+  section{margin-top:58px}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:10px}
+  h2{font-family:var(--serif);font-size:clamp(25px,3.5vw,37px);color:var(--pine);margin:0 0 12px;
+     line-height:1.12;letter-spacing:-.015em;text-wrap:balance}
+  h3{font-family:var(--serif);font-size:20px;color:var(--fir);margin:30px 0 8px;line-height:1.25}
+  h4{font-family:var(--serif);font-size:18px;color:var(--pine);margin:0 0 8px}
+  p{margin:0 0 14px;max-width:74ch}
+  p.lead{font-size:17px;color:var(--ink-soft)}
+  a{color:var(--rust);text-underline-offset:2px}
+  a:focus-visible,button:focus-visible,g:focus-visible{outline:2px solid var(--rust);outline-offset:2px}
+
+  .verdict{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--rust);padding:26px 28px}
+  .verdict .big{font-family:var(--serif);font-size:clamp(26px,4.2vw,40px);color:var(--rust);
+                line-height:1.08;margin:0 0 14px;font-weight:700;text-wrap:balance}
+  .verdict p:last-child{margin-bottom:0}
+
+  figure{margin:22px 0 0;background:var(--card);border:1px solid var(--line);padding:20px 22px 16px}
+  figcaption{font-size:13px;color:var(--ink-mute);margin-top:14px;border-top:1px solid var(--line-soft);
+             padding-top:11px;line-height:1.5}
+  figcaption b{color:var(--ink-soft)}
+  .figtitle{font-family:var(--serif);font-size:19px;color:var(--pine);margin:0 0 3px;line-height:1.25}
+  .figsub{font-size:13px;color:var(--ink-mute);margin:0 0 18px}
+  .chartbox{width:100%;overflow-x:auto}
+  svg{display:block;max-width:100%;height:auto}
+  svg text{font-family:var(--sans)}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;font-size:12.5px;color:var(--ink-soft);align-items:center}
+  .legend i{width:11px;height:11px;border-radius:2px;display:inline-block;margin-right:6px;vertical-align:-1px}
+
+  .tablescroll{overflow-x:auto;border:1px solid var(--line);background:var(--card);margin-top:20px}
+  table{border-collapse:collapse;width:100%;min-width:960px;font-size:13px}
+  caption{text-align:left;padding:15px 17px 0;font-size:13px;color:var(--ink-mute)}
+  th,td{padding:8px 11px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line-soft)}
+  thead th{background:var(--paper-deep);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+           color:var(--ink-soft);font-weight:700;border-bottom:1.5px solid var(--line);
+           position:sticky;top:0;white-space:nowrap}
+  tbody tr:hover{background:color-mix(in srgb,var(--rust) 5%,transparent)}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  td.name{font-weight:600;min-width:190px}
+  tr.pick td{background:color-mix(in srgb,var(--rust) 9%,transparent)}
+  tr.alu td.name::after{content:"ALU";font-size:9px;letter-spacing:.08em;font-weight:700;
+    color:var(--paper);background:var(--fir);padding:1.5px 5px;margin-left:7px;vertical-align:1px}
+  tr.dim td{opacity:.62}
+
+  .pill{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+        padding:2px 6px;border-radius:2px;border:1px solid currentColor;white-space:nowrap}
+  .pill.low{color:var(--risk-low)} .pill.mod{color:var(--risk-mod)}
+  .pill.high{color:var(--risk-high)} .pill.unk{color:var(--risk-unk);border-style:dashed}
+  .pill.low::before{content:"\2713\00a0"} .pill.mod::before{content:"\25B2\00a0"}
+  .pill.high::before{content:"\2715\00a0"} .pill.unk::before{content:"?\00a0"}
+
+  .note{background:var(--paper-deep);border:1px solid var(--line);padding:20px 22px;margin-top:18px}
+  .note.warn{border-left:4px solid var(--risk-mod)}
+  .note.good{border-left:4px solid var(--risk-low)}
+  .note.bad{border-left:4px solid var(--risk-high)}
+  .note p:last-child,.note ul:last-child{margin-bottom:0}
+  ul,ol{margin:0 0 14px;padding-left:22px;max-width:74ch}
+  li{margin-bottom:7px}
+  blockquote{margin:12px 0;padding:0 0 0 14px;border-left:2px solid var(--line);
+             font-family:var(--serif);font-style:italic;color:var(--ink-soft);max-width:70ch}
+  blockquote cite{display:block;font-style:normal;font-family:var(--sans);font-size:12px;
+                  color:var(--ink-mute);margin-top:5px}
+
+  .pcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:14px;margin-top:20px}
+  .pcard{background:var(--card);border:1px solid var(--line);padding:19px 20px;border-top:4px solid var(--rust)}
+  .pcard.you{border-top-color:var(--risk-low)}
+  .pcard.son{border-top-color:var(--lake)}
+  .pcard .who{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+             color:var(--rust);margin-bottom:7px}
+  .pcard.you .who{color:var(--risk-low)} .pcard.son .who{color:var(--lake)}
+  .pcard .price{font-size:25px;font-weight:700;color:var(--pine);letter-spacing:-.02em;margin:2px 0 8px}
+  .pcard p{font-size:14px;margin-bottom:8px}
+  .pcard ul{font-size:13.5px;padding-left:18px;margin-bottom:8px}
+
+  ol.rules{counter-reset:r;list-style:none;padding-left:0}
+  ol.rules li{counter-increment:r;position:relative;padding-left:38px;margin-bottom:11px}
+  ol.rules li::before{content:counter(r);position:absolute;left:0;top:1px;width:25px;height:25px;
+    border:1.5px solid var(--rust);color:var(--rust);font-size:12.5px;font-weight:700;
+    display:grid;place-items:center;font-variant-numeric:tabular-nums}
+
+  .flags{display:grid;gap:10px;margin-top:14px}
+  .flag{display:grid;grid-template-columns:auto 1fr;gap:12px;font-size:14px;
+        border-bottom:1px solid var(--line-soft);padding-bottom:10px}
+  .flag:last-child{border-bottom:0}
+  .flag .fx{font-weight:700;color:var(--risk-high);font-size:11.5px;letter-spacing:.06em;padding-top:2px;white-space:nowrap}
+
+  footer.foot{margin-top:64px;border-top:2px solid var(--pine);padding-top:20px;
+              font-size:12.5px;color:var(--ink-mute);line-height:1.6}
+  #tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .1s;background:var(--pine);
+       color:var(--paper);font-size:12.5px;padding:8px 11px;max-width:270px;z-index:50;line-height:1.45;
+       font-variant-numeric:tabular-nums;box-shadow:0 3px 14px rgba(0,0,0,.22)}
+  #tip b{color:#fff;display:block;margin-bottom:3px;font-size:13px}
+  :root[data-theme="dark"] #tip{background:#2b332a;color:var(--ink);border:1px solid var(--line)}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="topbar"></div>
+<div class="wrap">
+
+  <header class="mast">
+    <div class="kicker">Sawtooth High Adventure 2026 · Whole-Market Audit</div>
+    <h1>Where money <em>stops buying</em> strength</h1>
+    <p class="dek">The price ceiling came off. 83 poles surveyed, 37 with instrumented deflection data,
+      13 investigated in depth, three adversarial lenses, 23 video transcripts. The answer is a single
+      number, and it is far lower than anyone selling poles would like it to be.</p>
+    <div class="byline">Verified 26 July 2026 · all prices per pair · 25 agents · unbounded budget · optimized for shaft strength and lock holding</div>
+  </header>
+
+  <div class="statband">
+    <div class="stat"><b>83</b><span>Poles surveyed</span></div>
+    <div class="stat"><b>37</b><span>With load data</span></div>
+    <div class="stat"><b>$79.90</b><span>Where the curve ends</span></div>
+    <div class="stat"><b>2</b><span>Of 37 with stiff shaft + good lock</span></div>
+    <div class="stat"><b>0</b><span>Ultimate-load tests, any price</span></div>
+  </div>
+
+  <!-- ================= HEADLINE ================= -->
+  <section id="headline">
+    <div class="eyebrow">The answer</div>
+    <h2>The strength-per-dollar curve terminates at $79.90</h2>
+    <div class="verdict">
+      <p class="big">Nothing priced $80&ndash;$300 is stiffer than a $79 pole.</p>
+      <p>Across a 37-pole instrumented dataset, the set of poles that are the stiffest available at
+        their price or below &mdash; the Pareto frontier &mdash; is <strong>four poles long and ends at
+        $79.90</strong>. Above that, money buys lock hardware, parts channels, warranty service, and a
+        few ounces. It does not buy shaft strength.</p>
+      <p>The $220 you'd spend going from the $79 pole to the most expensive pole in the field buys a
+        shaft that is <strong>48 composite points worse</strong>. Price correlates with stiffness at
+        <strong>r&nbsp;=&nbsp;+0.218</strong> &mdash; positive, meaning dearer poles were on average
+        very slightly <em>floppier</em>. What actually predicts stiffness is
+        <strong>upper-shaft diameter (r&nbsp;=&nbsp;&minus;0.702)</strong>. Going from a 12&nbsp;mm to
+        an 18&nbsp;mm upper improves median stiffness <strong>~4.7&times;</strong>. Going from the
+        cheapest pole to the dearest improves it <strong>not at all</strong>.</p>
+    </div>
+  </section>
+
+  <!-- ================= CHART 1: THE KNEE ================= -->
+  <section id="knee">
+    <div class="eyebrow">The evidence</div>
+    <h2>Every measured pole, plotted against its price</h2>
+    <p class="lead">One dot per pole. Lower is stiffer. If money bought strength, the cloud would slope
+      down and to the right. It doesn't slope at all &mdash; and the frontier line stops dead at $79.90.</p>
+
+    <figure>
+      <p class="figtitle">Price against measured stiffness &mdash; 33 of 37 poles</p>
+      <p class="figsub">Composite score from a 16&nbsp;kg mid-span hang test. Lower is stiffer. Four poles score worse than 220 and sit off-scale; they are listed beneath.</p>
+      <div class="chartbox"><svg id="c-knee" viewBox="0 0 760 470" role="img"
+        aria-label="Scatter plot of price against composite stiffness for 33 trekking poles. The Pareto frontier of stiffest-at-or-below-price runs through the 50 dollar CMT Folding Aluminum at 95, the 55 dollar TrailBuddy at 76, the 65 dollar CMT Carbon Ultralight at 71, and terminates at the 79 dollar Freevane Kodiak at 43. From there a flat line extends right to 300 dollars, showing no pole above 79 dollars is stiffer."></svg></div>
+      <div class="legend">
+        <span><i style="background:var(--mark)"></i>Pole (measured)</span>
+        <span><i style="background:var(--risk-low)"></i>On the frontier &mdash; best available at its price</span>
+      </div>
+      <figcaption><b>Off-scale, and all of them expensive:</b> Gossamer Gear FT3 $242 (261) &middot;
+        Zpacks Carbon $129.90 (261) &middot; <b>Leki Hemp.one $280 (317)</b> &middot;
+        <b>Ruta Locura Yana $190 (434)</b> &mdash; the floppiest pole tested is a $190 carbon pole with
+        12&nbsp;mm shafts. Note also the two aluminum poles <em>on</em> the frontier at $50 and $55,
+        out-measuring every pole priced $190&ndash;$280.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ================= CHART 2: TALUS END ================= -->
+  <section id="talus">
+    <div class="eyebrow">The metric that matters for you</div>
+    <h2>Not mid-span &mdash; the talus end</h2>
+    <p class="lead">Everyone quotes mid-span deflection. The number that predicts <em>your</em> failure
+      is <strong>tip-clamped</strong>: tip fixed, load at the handle. That loads the lower shaft &mdash;
+      the end that wedges between boulders &mdash; and it is where <strong>every documented pole failure
+      in this audit occurred</strong>. At 250&ndash;300&nbsp;lb of body-plus-pack, this is your number.</p>
+
+    <figure>
+      <p class="figtitle">Tip-clamped deflection &mdash; the wedged-tip load case</p>
+      <p class="figsub">Centimetres of deflection with the tip clamped and load at the handle. Shorter bar = stiffer at the end that breaks. Failure mode labelled per pole.</p>
+      <div class="chartbox"><svg id="c-talus" viewBox="0 0 760 520" role="img"
+        aria-label="Horizontal bar chart of tip-clamped deflection. Freevane Kodiak is best at 11.75 centimetres, followed by the fifty dollar CMT Folding Aluminum at 13.8, Black Diamond Alpine Carbon Cork and CMT Carbon Ultralight tied at 14.0, CMT Carbon 3K at 14.5, Durston Iceline at 15.3, GrassSticks bamboo at 16.8, and the Cascade incumbent at 16.75 new degrading to 22.25 when well used."></svg></div>
+      <figcaption><b>Two things to notice.</b> A <b>$50 aluminum folding pole is 2nd best in the entire
+        field</b> at the end that matters &mdash; better than the $230 Black Diamond. And the incumbent
+        Cascade degrades from 16.75 to <b>22.25 when well used</b>, a 33% loss, while its mid-span
+        number barely moves. The carbon is fine; <b>the clamp system is what wears</b>, and worst at the
+        joint furthest from your hand.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ================= CHART 3: MATERIAL ================= -->
+  <section id="material">
+    <div class="eyebrow">Your aluminum question</div>
+    <h2>Material doesn't determine strength. Wall thickness does.</h2>
+    <p class="lead">You own a Walmart pole that slides and bends, so aluminum feels disqualified. Here
+      is every measured pole sorted by material. If material governed strength, the two rows would
+      separate. They overlap almost completely &mdash; and the <em>best</em> aluminum out-measures
+      two-thirds of the carbon.</p>
+
+    <figure>
+      <p class="figtitle">Stiffness by material &mdash; the distributions overlap</p>
+      <p class="figsub">Each dot is one pole. Left is stiffer. Aluminum spans 76 to 216; carbon spans 43 to 434. Neither material owns a range.</p>
+      <div class="chartbox"><svg id="c-mat" viewBox="0 0 760 300" role="img"
+        aria-label="Strip plot comparing carbon and aluminum poles on composite stiffness. Aluminum ranges from 76 for the TrailBuddy to 216 for the Fizan. Carbon ranges from 43 for the Kodiak to 434 for the Ruta Locura Yana. The distributions overlap heavily, showing material does not determine stiffness."></svg></div>
+      <figcaption><b>Young's modulus is essentially constant across aluminum alloys</b> &mdash; 6063 is
+        68.9&nbsp;GPa, 6061 is 69, 7075-T6 is 71.7. A 4% spread. Alloy does not make aluminum stiffer;
+        only diameter and wall do. And every carbon finalist <b>back-computes to 47&ndash;81&nbsp;GPa
+        &mdash; at or below aluminum's 71.7</b>. The stiffest pole of 37 computes to ~73&nbsp;GPa,
+        statistically identical to aluminum. It wins on having the thickest wall in the set.</figcaption>
+    </figure>
+
+    <div class="note good">
+      <h4>Your bend-aversion should not transfer &mdash; and here's the mechanism</h4>
+      <p>What 7075-T6 buys isn't stiffness, it's <strong>yield strength</strong>: the load at which flex
+        stops springing back and becomes the permanent set you hate. <strong>430&ndash;480&nbsp;MPa for
+        7075-T6 versus ~97&nbsp;MPa</strong> for the commodity extrusion alloy most plausible in a
+        20-year-old sub-$20 pole. That's roughly <strong>4.5&ndash;5&times; the yield</strong>, before
+        you multiply by fatter geometry.</p>
+      <p><strong>Your two complaints were two different products.</strong> "Slides" was a plastic
+        internal twist-expander &mdash; the worst lock mechanism ever sold, and the audit penalised
+        every twist lock in the field. "Bends" was a low-yield, thin-wall, small-diameter shaft. Neither
+        is a property of aluminum.</p>
+      <p>Two authorities agree against your instinct. The tester whose data underpins this entire audit
+        awards an explicit bonus captioned <code>"aluminum durability bend-not-break"</code> to every
+        aluminum pole and <strong>no carbon pole</strong>. And <strong>Leki warranties carbon shafts for
+        one year against breakage and aluminum shafts for life.</strong> The company that makes both has
+        priced the risk.</p>
+    </div>
+
+    <div class="note bad">
+      <h4>But "7075" on a box is not a strength claim</h4>
+      <p>The same alloy designation appears in the data at composite <strong>76, 95, 135, 147, 161, and
+        216</strong>. In aluminum, the honest proxy for wall thickness is <strong>weight</strong> &mdash;
+        confirmed quantitatively here: two poles sharing a 16&nbsp;mm centre and the same material class
+        differed 1.74&times; in mass and 1.70&times; in stiffness, agreeing to 2.3%. <strong>A light
+        aluminum pole is a weak aluminum pole and no alloy fixes it.</strong></p>
+      <p><strong>These are your Walmart pole in modern packaging:</strong> Fizan Aluminum Ultralight
+        $70 (composite 216, and Dixon's notes literally record it as <em>bends</em> <strong>and</strong>
+        <em>slides</em> &mdash; your exact two complaints, on sale today) &middot; REI Trailmade $85
+        (180) &middot; Montem "Ultra&nbsp;Strong" $75 (161) &middot; <strong>Leki Legacy Lite $110</strong>
+        &mdash; 12&nbsp;mm lower section, and an REI owner near your build reported a
+        <strong>permanent 30&deg; bend on his first outing</strong> at "very little torque."</p>
+    </div>
+  </section>
+
+  <!-- ================= WHAT MONEY BUYS ================= -->
+  <section id="tranches">
+    <div class="eyebrow">Plain English</div>
+    <h2>What each tranche of money actually buys</h2>
+    <div class="tablescroll">
+      <table>
+        <caption>Marginal value by price band, computed from the measured field.</caption>
+        <thead><tr><th>Tranche</th><th>What it buys</th><th class="num">Stiffness gained</th></tr></thead>
+        <tbody>
+          <tr><td class="name">First $50&ndash;79</td><td><strong>The shaft.</strong> This is the only money in the market that buys measured strength. $29 moving from a $50 folding aluminum pole to the $79 Kodiak buys 52 composite points <em>and</em> the first full-marks lock in the field.</td><td class="num"><strong>$0.56<br><small>per point</small></strong></td></tr>
+          <tr><td class="name">Next $60<br><small>$79 &rarr; $140</small></td><td>A <strong>lock architecture</strong>, not a stiffer shaft. At $119.95 bamboo buys a joint that cannot slip because it doesn't exist; the MSR DynaLock Explore buys a stainless-steel cam and an anti-slip protocol printed in the box.</td><td class="num">flat or worse</td></tr>
+          <tr><td class="name">Next $100<br><small>$130 &rarr; $230</small></td><td><strong>Evidence and a parts channel.</strong> ~25 owner-years of documented zero lock slip, a forged-aluminium lever, $14.99 replacement sections that are actually obtainable, and stock on a shelf.</td><td class="num"><strong>zero</strong><br><small>44 vs 43 = tie</small></td></tr>
+          <tr class="dim"><td class="name">Past $240</td><td>It gets <em>worse</em>. The $299.95 Komperdell (91) and $269.95 Komperdell (103) are both less stiff than the $60 incumbent. The $280 Leki Hemp.one is composite 317.</td><td class="num">&minus;48 points<br><small>for +$220</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:16px"><strong>Where money stops helping:</strong> at <strong>$79.90 for shaft
+      strength</strong>, at <strong>~$230 for lock <em>evidence</em></strong>, and
+      <strong>nowhere at all</strong> for a lock that holds by design in an adjustable pole. That last
+      one is a real hole in the market, not a budget problem.</p>
+  </section>
+
+  <!-- ================= YOUR PICKS ================= -->
+  <section id="picks">
+    <div class="eyebrow">Sized to you: 5'10" &middot; 250&ndash;300 lb loaded &middot; yours + your son's</div>
+    <h2>What to actually buy</h2>
+    <p class="lead">Your load is the deciding input. At 250&ndash;300&nbsp;lb of body plus pack, the
+      entire thin-wall ultralight tier is out &mdash; and those are the <em>expensive</em> poles.
+      Gossamer Gear LT5 at $195 scored <strong>2/10</strong> on strength here; Durston Iceline at $199
+      scored <strong>3/10</strong>. Both are widely recommended premium poles. At your load a hard
+      plant on a wedged tip is exactly the eccentric side-load that snaps thin carbon.</p>
+
+    <div class="pcards">
+      <div class="pcard you">
+        <div class="who">For you &mdash; primary</div>
+        <h4>Freevane Kodiak Telescoping 3K</h4>
+        <div class="price">$79.90</div>
+        <ul>
+          <li><strong>#1 of 37</strong> on composite (43), on strength-per-gram, <em>and</em> on tip-clamped (11.75) &mdash; the talus metric</li>
+          <li><strong>12.5&nbsp;mm lower section</strong> vs the $230 BD's 10.5 &mdash; the exact zone that snaps</li>
+          <li>Metal lever, 2 friction joints, tension adjustable <strong>with bare fingers</strong> &mdash; no hex key to lose in scree</li>
+          <li>Only pole in the market publishing wall thickness (~1.0&nbsp;mm), validated independently by mass balance</li>
+          <li>63&ndash;135&nbsp;cm covers you at 5'10" with real headroom for descents</li>
+        </ul>
+        <p style="color:var(--ink-mute);font-size:13px"><strong>Accepting:</strong> ~8 traceable owners since a late-2025 launch; <strong>zero replacement parts exist</strong>; the "Lifetime Warranty" explicitly excludes <em>pole breakage</em>. <strong>Buy two pairs, not spares.</strong></p>
+      </div>
+
+      <div class="pcard">
+        <div class="who">For you &mdash; if you want a track record</div>
+        <h4>Black Diamond Alpine Carbon Cork</h4>
+        <div class="price">$229.95</div>
+        <ul>
+          <li>Stiffest mid-span of all 37 (3.5&nbsp;cm) &mdash; a statistical <em>tie</em> with the Kodiak, not a win</li>
+          <li>The only pole where "the lock holds" is an empirical fact: <strong>~25 owner-years</strong> of documented zero slip, including 1,000+ miles of talus</li>
+          <li><strong>$14.99 replacement lower sections</strong>, actually obtainable</li>
+          <li>In stock at REI while BD direct is sold out</li>
+        </ul>
+        <p style="color:var(--ink-mute);font-size:13px"><strong>Accepting:</strong> it snaps into sharp shards at the <strong>thinnest tip zone in the field (10.5&nbsp;mm)</strong>, and the most decision-relevant report in the audit is against it on your terrain. Warranty is 2 years, defects only.</p>
+      </div>
+
+      <div class="pcard son">
+        <div class="who">For your son</div>
+        <h4>TrailBuddy 7075-T6 Aluminum</h4>
+        <div class="price">$55</div>
+        <ul>
+          <li><strong>6th stiffest of 37</strong> &mdash; out-measures <em>every pole priced $190&ndash;$280</em></li>
+          <li>Same 12.5&nbsp;mm lower section as the Kodiak; 18/16/14 with a 16&nbsp;mm centre</li>
+          <li><strong>Bends and keeps walking</strong> instead of shattering &mdash; the mode a teenager can walk out of</li>
+          <li>At $55 a wrecked pole is a $27 problem and spares are affordable</li>
+        </ul>
+        <p style="color:var(--ink-mute);font-size:13px"><strong>Accepting:</strong> Locks 0/1 and Handle 0/2 &mdash; a great shaft on hardware the tester failed. <strong>You must own his lock tensioning</strong> as a pre-trip task and a rest-stop habit.</p>
+      </div>
+    </div>
+
+    <div class="note warn">
+      <h4>Should your answer differ from your son's? Yes &mdash; and the reason is failure <em>mode</em>, not failure probability</h4>
+      <p>You will run a lock protocol. A teenager will not. And youth generate the wedge-and-lever event
+        more often, on the terrain where it matters, with less warning. So <strong>you take the pole with
+        the best measured shaft and accept a maintenance routine</strong> &mdash; because you'll actually
+        perform it, and the Kodiak's routine is a bare-thumb twist, not a hex key. <strong>He takes the
+        pole that fails gracefully.</strong></p>
+      <p><strong>Measure him before ordering:</strong> floor-to-hand with the elbow at 90&deg;. The
+        TrailBuddy floors low enough for any teenager; note that the Kodiak's 63&nbsp;cm floor also fits
+        him, so one model for both is viable if you'd rather standardise.</p>
+    </div>
+
+    <div class="note bad">
+      <h4>Supply is the real risk, not the choice</h4>
+      <p>As of 26 July: the <strong>Kodiak is sold out at Freevane</strong>, with ~20 units on Amazon at
+        $79.90 and delivery slipping to <strong>5&ndash;14 August</strong>. The BD is in stock at REI.
+        Durston Iceline is sold out until September. The Cascade incumbent's $12.99 lower section is
+        <strong>sold out with a reported 3-month wait</strong> &mdash; which removes the main thing that
+        justified its price. MSR DynaLock Explore is effectively end-of-life: out of stock at MSR,
+        delisted at REI, one confirmed retailer.</p>
+      <p><strong>If your trip date is firm, order today and treat the August window as a real risk.</strong>
+        The fallback that is actually purchasable in quantity is the BD at REI.</p>
+    </div>
+  </section>
+
+  <!-- ================= FULL TABLE ================= -->
+  <section id="full">
+    <div class="eyebrow">The whole measured field</div>
+    <h2>All 37 poles with instrumented data</h2>
+    <p class="lead">Ranked by composite stiffness, lower is stiffer. This is the accessible twin of every
+      chart above &mdash; every plotted value appears here as text. <strong>Lk</strong> is the lock
+      score: 1 = full marks, 0 = no credit, &minus;1 = penalised. Every &minus;1 in the field is a twist
+      lock, which is the mechanism on your current pole.</p>
+    <div class="tablescroll">
+      <table>
+        <caption>Scroll horizontally for all columns. Aluminum poles are tagged. Scroll down for the expensive floppy tail.</caption>
+        <thead><tr>
+          <th class="num">#</th><th>Pole</th><th class="num">Price</th>
+          <th class="num">Comp</th><th class="num">Mid</th><th class="num">Tip</th>
+          <th class="num">Lk</th><th>Config</th><th>Failure mode</th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= VIDEO ================= -->
+  <section id="video">
+    <div class="eyebrow">What video added</div>
+    <h2>The only load-to-failure numbers that exist &mdash; and why they don't survive scrutiny</h2>
+    <p class="lead">You asked for YouTube evidence, and it earned its place &mdash; though not where I
+      expected. 23 full transcripts were retrieved and verified. The single destructive test in
+      existence produced real numbers and then invalidated them on camera.</p>
+
+    <div class="note warn">
+      <h4>goHUNT, 2018 &mdash; the only absolute pound figures anywhere</h4>
+      <blockquote>we're gonna take this scale and we're gonna slowly hang weight from it starting with
+        ten and hopefully working all the way up to sixty to see at what point that these things break
+        <cite>Verified verbatim against the raw caption file</cite></blockquote>
+      <p>The aluminum Leki Legacy reached <em>"there it is 125 pounds"</em>; the carbon BD Distance Z
+        fractured earlier. <strong>Then the rig failed:</strong></p>
+      <blockquote>we've gone up to 85 pounds we were gonna do 80 we accidentally went all the way up to
+        85 and our zip tie broke that was holding the weight onto the pole
+        <cite>Same source &mdash; they improvised a tape fix and continued</cite></blockquote>
+      <p><strong>So the absolute numbers are not trustworthy.</strong> Three further caveats, all from
+        the comments: this is a <em>bending</em> test and says nothing about lock slip; the failure mode
+        was observed to be <strong>wall buckling</strong> (<em>"the walls of the poles collapse first and
+        then the entire pole shears in half"</em>) which independently corroborates the
+        wall-thickness-governs finding; and the BD Distance Z is a trail-<em>running</em> folding pole,
+        so its result must not be generalised to carbon backpacking poles. <strong>n=1 per pole, no
+        weight normalisation, 2018 models.</strong></p>
+    </div>
+
+    <div class="note">
+      <h4>Where video was genuinely decisive</h4>
+      <ul>
+        <li><strong>The bend-and-continue account, on your exact scenario</strong> &mdash; an MSR
+          DynaLock Explore owner in Oregon: the tip wedged between rocks, he slipped forward and bent
+          it, <em>"all I had to do was just kind of reform it back... I really think the carbon poles
+          would have broke."</em></li>
+        <li><strong>A 100% carbon failure rate from one high-load user</strong> (135,669 views):
+          <em>"they break on me all the time, actually every time &mdash; every single pair of
+          carbon-fiber poles I have ever owned."</em></li>
+        <li><strong>The direct answer to your fear</strong>, from someone who has abused aluminum for a
+          year: <em>"I never seen an aluminum one break. I've seen them bend but you can bend it back to
+          pretty much normal."</em></li>
+        <li><strong>The tester's own disclaimer</strong>, which bounds this entire audit: deflection
+          testing <em>"does not address sudden forces"</em> &mdash; the only load that has broken any
+          pole in the evidence base.</li>
+        <li><strong>An on-camera hand-break of the $195 Gossamer LT5</strong>, plus the strongest
+          single account against the #1 pole from an experienced long-trail hiker whose first failure
+          was your exact "slides" mode on day two.</li>
+      </ul>
+      <p style="margin-top:12px;color:var(--ink-mute);font-size:13.5px">Retrievals that <strong>failed</strong>
+        were reported as failures rather than paraphrased, and two transcripts were <strong>discarded for
+        wrong-model attribution</strong> (a reviewer holding a folding Panther while the title said
+        Telescoping). One vendor review corpus was found to be partly templated &mdash; the same
+        reassuring sentence appears verbatim under four different reviewer names, so that reassurance is
+        worthless.</p>
+    </div>
+  </section>
+
+  <!-- ================= GAPS ================= -->
+  <section id="gaps">
+    <div class="eyebrow">Confidence</div>
+    <h2>What's measured, what's asserted, and what nobody knows</h2>
+
+    <div class="note bad">
+      <h4>The single biggest caveat, and it bounds everything above</h4>
+      <p><strong>No instrumented ultimate-load, fatigue, or cold-temperature test exists for any pole in
+        this shortlist at any price.</strong> The entire quantitative backbone is one non-destructive
+        elastic deflection dataset &mdash; n&nbsp;=&nbsp;1 pair per pole, one tester &mdash; whose own
+        disclaimer excludes sudden forces. <strong>Every "strength" score in this market, including the
+        excellent ones this audit rests on, is a stiffness proxy wearing a strength label.</strong></p>
+      <p>There is also an unclosed <strong>span confound</strong>: deflection scales with the cube of
+        length and per-pole test lengths aren't published. Fixed poles were tested at 125&ndash;130&nbsp;cm
+        while adjustables span 59&ndash;158&nbsp;cm. <strong>Composite gaps under ~30% may be inside the
+        noise</strong> &mdash; another reason to read 43-vs-44 as a tie.</p>
+    </div>
+
+    <div class="note warn">
+      <h4>Corrections this round forced &mdash; including two to my own earlier work</h4>
+      <div class="flags">
+        <div class="flag"><span class="fx">MY ERROR</span><span>I told you YouTube transcripts were
+          <strong>gated and unavailable</strong>. Wrong. I tested three methods, all failed, and
+          generalised from my methods to the platform. <strong><code>yt-dlp</code> works and was already
+          installed</strong> &mdash; it returned a full transcript first try. The fleet got 23 that way,
+          and I re-verified their quotes against raw caption files.</span></div>
+        <div class="flag"><span class="fx">MY ERROR</span><span>I called the goHUNT load test "the best
+          evidence in the audit." Its rig <strong>failed mid-test</strong>. I should have read the
+          transcript before promoting the chapter markers.</span></div>
+        <div class="flag"><span class="fx">DATA FIX</span><span>The field-average composite is
+          <strong>141.4, not 145</strong>, and average strength&times;weight is <strong>29,928, not
+          30,807</strong> &mdash; recomputed from raw rows. <em>Nine of ten research passes propagated
+          the wrong figure uncritically</em>, including my earlier summary.</span></div>
+        <div class="flag"><span class="fx">REVERSED</span><span>The Cascade incumbent's replacement
+          lower section &mdash; the repairability that justified recommending it &mdash; is
+          <strong>sold out with a 3-month wait</strong>.</span></div>
+        <div class="flag"><span class="fx">UNRESOLVED</span><span>Dixon's summary tab and raw tab
+          <strong>disagree on which Cascade pair was new versus well-used</strong> (6.0/5.5 vs 5.5/6.0).
+          The noise-floor conclusion holds either way, which is why it's stated as instrument noise
+          rather than a wear measurement.</span></div>
+      </div>
+    </div>
+
+    <h3>Check these before spending</h3>
+    <ol>
+      <li><strong>Kodiak stock and delivery date.</strong> Sold out at the vendor; ~20 Amazon units with
+        an August 5&ndash;14 window against a firm trip date. This is the highest-risk item in the plan.</li>
+      <li><strong>The Kodiak's owner base is ~8 people.</strong> Its measurements are excellent and its
+        social proof is close to nonexistent. That is a genuine bet, stated plainly.</li>
+      <li><strong>Its warranty excludes pole breakage.</strong> Read freevane.com/pages/warranty
+        yourself before ordering.</li>
+      <li><strong>TrailBuddy's lock.</strong> Scored 0/1, and OutdoorGearLab had a plastic lever break
+        out of the box. Inspect on arrival and load-test inside the return window.</li>
+      <li><strong>Wall thickness is unpublished for eight of ten finalists.</strong> Black Diamond,
+        Komperdell, MSR, Leki and Cascade all decline to state it. Freevane is the only one that does.</li>
+      <li><strong>Nobody has ever tested a lock wet or grit-fouled under load</strong> &mdash; your #1
+        documented failure mode, and you're crossing August meltwater. The only related datum is a note
+        that mud opens a 5&nbsp;mm gap in two Leki <em>folding</em> poles, which is a reason to avoid
+        folding/cord/button architectures for this trip.</li>
+    </ol>
+
+    <h3>The protocol, whichever you buy</h3>
+    <p>Every lever-lock pole in this audit, <strong>including the $230 BD</strong>, is documented
+      shipping under-tensioned.</p>
+    <ol class="rules">
+      <li>At home before the trip: tension every clamp past the point of easy closure. Verify by leaning
+        your <em>full</em> weight on each pole. <strong>Re-verify after 24 hours.</strong></li>
+      <li><strong>Blue Loctite</strong> on every adjuster bolt &mdash; factory threadlocker demonstrably
+        wears and the bolt backs off.</li>
+      <li><strong>Sharpie the set position</strong> on each shaft. A real owner's creep-detection trick,
+        and it's free.</li>
+      <li>Re-check at every break <strong>and after every stream crossing</strong>. Wipe lower shafts
+        before collapsing &mdash; grit travels up the tube.</li>
+      <li>Teach your son two rules: <strong>never lever a planted pole sideways</strong> (the mechanism
+        behind every documented snap here), and never extend past the stop mark.</li>
+      <li>Carry a splint sleeve and a spare pole. The Kodiak has no spare parts at all; the BD's $15
+        lower section must be ordered before you leave.</li>
+    </ol>
+    <p><em>The only pole in this field that needs none of that is the one you cannot adjust.</em></p>
+  </section>
+
+  <footer class="foot">
+    <p><strong>Method.</strong> Six parallel discovery sweeps (flagship carbon, cottage/ultralight,
+      mountaineering and heavy-duty aluminum, YouTube rankings, YouTube destructive tests, quantitative
+      datasets and the $70&ndash;130 mid-tier) surveyed 83 distinct poles. Thirteen went to per-pole
+      strength dossiers covering geometry, wall thickness, lock mechanics and a two-track failure hunt
+      separating lock slip from shaft failure. Three adversarial lenses &mdash; load mechanics, materials,
+      and evidence quality &mdash; then attempted to disqualify each finalist. A judge computed the
+      Pareto frontiers, price/stiffness correlations, the instrument noise floor, and wall-thickness
+      inversions from raw spreadsheet rows. 25 agents, 1,166 tool calls, zero errors, ~103 minutes.</p>
+    <p style="margin-top:10px"><strong>Design.</strong> Inherits the project's field-guide system from
+      <code>styles.css</code>. All data marks use a single hue &mdash; no value-ramp across products, which
+      would double-encode bar length as colour. Risk colours were computed rather than chosen, validated
+      for CVD separation, chroma and contrast against both the cream (#f4efe2) and pine-black (#131711)
+      surfaces, and every risk value carries a word and a glyph so meaning never rides on hue alone.</p>
+    <p style="margin-top:10px;color:var(--ink-mute)">Prices and stock verified 26 July 2026 and will
+      drift. Nothing here substitutes for a loaded shakedown descent inside the return window.</p>
+  </footer>
+</div>
+
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  "use strict";
+  // comp = composite (lower stiffer) · mid/tip = cm deflection · lk = lock score · alu = aluminum
+  var P=[
+   {r:1,n:"Freevane Kodiak",p:79.90,pl:"$79.90",comp:43,s:9,mid:4.0,tip:11.75,lk:1,cfg:"Carbon 3K / telescope",mode:"SNAP",pick:1},
+   {r:2,n:"BD Alpine Carbon Cork",p:229.95,pl:"$229.95",comp:44,s:9,mid:3.5,tip:14.0,lk:1,cfg:"Carbon / telescope",mode:"SNAP (shards)",pick:1},
+   {r:3,n:"GrassSticks bamboo",p:119.95,pl:"$119.95",comp:62,s:9,mid:4.5,tip:16.8,lk:0,cfg:"Bamboo / FIXED length",mode:"SPLITS (tape-repairable)"},
+   {r:4,n:"CMT Carbon UL 2-section",p:65,pl:"$65",comp:71,s:8,mid:5.0,tip:14.0,lk:0,cfg:"Carbon / telescope",mode:"SNAP"},
+   {r:5,n:"Durston Iceline",p:194,pl:"$189–199",comp:73,s:8,mid:5.0,tip:15.3,lk:1,cfg:"Carbon + Al connector",mode:"BENDS then SNAPS at connector"},
+   {r:6,n:"TrailBuddy 7075-T6",p:55,pl:"$55",comp:76,s:8,mid:5.0,tip:17.5,lk:0,cfg:"ALUMINUM / telescope",mode:"BENDS",alu:1,pick:1},
+   {r:7,n:"CMT Carbon 3K",p:74.99,pl:"$74.99",comp:80,s:7,mid:5.5,tip:14.5,lk:0,cfg:"Carbon 3K / telescope",mode:"SNAP"},
+   {r:8,n:"Diorite Gear Carbon",p:189.99,pl:"$189.99",comp:86,s:7,mid:5.0,tip:21.5,lk:0,cfg:"Carbon / telescope",mode:"—"},
+   {r:9,n:"CMT Carbon Quick Lock (new)",p:62.49,pl:"$59.99–64.99",comp:87,s:7,mid:6.0,tip:16.75,lk:0,cfg:"Carbon / telescope",mode:"SNAP"},
+   {r:10,n:"Komperdell Carbon Ultra Zero",p:299.95,pl:"$299.95",comp:91,s:6,mid:5.5,tip:22.0,lk:1,cfg:"Carbon / telescope",mode:"SNAP"},
+   {r:11,n:"CMT Folding Aluminum",p:50,pl:"$50",comp:95,s:6,mid:6.0,tip:13.80,lk:0,cfg:"ALUMINUM / Z-pole",mode:"BENDS",alu:1},
+   {r:12,n:"BD Pursuit Carbon FLZ",p:225,pl:"$220–230",comp:97,s:6,mid:6.5,tip:16.25,lk:1,cfg:"Carbon / Z-pole",mode:"SNAP"},
+   {r:13,n:"Leki Black Series FX",p:250,pl:"$250",comp:98,s:6,mid:6.0,tip:18.0,lk:1,cfg:"Carbon PRC1000 / Z-pole",mode:"SNAP; mud opens 5mm gap"},
+   {r:14,n:"CMT Carbon Quick Lock (WELL USED)",p:65,pl:"$65",comp:99,s:6,mid:5.5,tip:22.25,lk:0,cfg:"Carbon / telescope",mode:"SNAP",worn:1},
+   {r:15,n:"Freevane Panther",p:87.20,pl:"$87.20",comp:101,s:6,mid:6.0,tip:18.5,lk:1,cfg:"Carbon T700 / Z-pole",mode:"SNAP, non-repairable"},
+   {r:16,n:"Komperdell Carbon FXP Team",p:269.95,pl:"$269.95",comp:103,s:6,mid:6.0,tip:18.3,lk:-1,cfg:"Carbon / Z-pole, FIXED",mode:"SNAP (day-2, unprovoked)"},
+   {r:17,n:"Gossamer Gear LT5",p:195,pl:"$195",comp:104,s:6,mid:6.0,tip:19.5,lk:-1,cfg:"Carbon / twist-lock",mode:"SNAP; no tubing warranty"},
+   {r:18,n:"Leki Makalu FX Carbon",p:230,pl:"$230",comp:115,s:5,mid:6.5,tip:18.5,lk:1,cfg:"Carbon / Z-pole",mode:"SNAP"},
+   {r:19,n:"MSR DynaLock Ascent Carbon",p:189.95,pl:"$189.95",comp:118,s:5,mid:7.0,tip:20.0,lk:1,cfg:"Kevlar-reinf. carbon / Z-pole",mode:"SNAP at ball-detent hole"},
+   {r:20,n:"Leki SkyTera Carbon Lite",p:190,pl:"$190",comp:128,s:5,mid:6.0,tip:23.25,lk:1,cfg:"Carbon / telescope",mode:"SNAP"},
+   {r:21,n:"BD Distance FLZ Aluminum",p:200,pl:"$170–230",comp:135,s:4,mid:7.0,tip:22.0,lk:1,cfg:"ALUMINUM / Z-pole",mode:"BENDS (best lock furniture, 7/7)",alu:1},
+   {r:22,n:"REI Co-op Swiftland TT",p:189,pl:"$189",comp:137,s:4,mid:7.0,tip:22.0,lk:0,cfg:"Carbon / Z-pole",mode:"undersized ferrules"},
+   {r:23,n:"Paria Tri-Fold Carbon",p:75,pl:"$70–80",comp:143,s:4,mid:8.5,tip:18.25,lk:1,cfg:"Carbon / Z-pole",mode:"SNAP"},
+   {r:24,n:"REI Co-op Flash",p:169,pl:"$169",comp:144,s:4,mid:7.0,tip:26.3,lk:0,cfg:"Carbon / telescope",mode:"—"},
+   {r:25,n:"BD Pursuit (aluminum)",p:165,pl:"$160–170",comp:147,s:4,mid:7.0,tip:25.5,lk:1,cfg:"ALUMINUM 7000 / telescope",mode:"BENDS",alu:1},
+   {r:26,n:"Leki UltraTrail FX.One",p:220,pl:"$220",comp:152,s:4,mid:8.5,tip:19.5,lk:0,cfg:"Carbon HRC / Z-pole",mode:"SNAP"},
+   {r:27,n:"Montem Ultra Strong",p:75,pl:"$75",comp:161,s:4,mid:7.5,tip:25.8,lk:0,cfg:"ALUMINUM 7075 / telescope",mode:"BENDS",alu:1},
+   {r:28,n:"Leki Skyterra FX",p:220,pl:"$220",comp:172,s:3,mid:8.0,tip:22.75,lk:1,cfg:"Carbon HRC / Z-pole",mode:"mud opens 5mm joint gap"},
+   {r:29,n:"REI Co-op Trailmade",p:85,pl:"$79.95–90",comp:180,s:3,mid:8.0,tip:27.75,lk:1,cfg:"ALUMINUM 7065 / telescope",mode:"BENDS",alu:1},
+   {r:30,n:"Komperdell FX L Vario Summit",p:250,pl:"$250",comp:192,s:2,mid:8.0,tip:27.5,lk:1,cfg:"Carbon / Z-pole",mode:"SNAP"},
+   {r:31,n:"Zpacks Minimalist 2025",p:129.90,pl:"$129.90",comp:197,s:2,mid:8.0,tip:30.0,lk:-1,cfg:"Carbon / twist-lock",mode:"SNAP"},
+   {r:32,n:"BD Distance FLZ Carbon",p:239.95,pl:"$239.95",comp:211,s:1,mid:10.0,tip:23.0,lk:1,cfg:"Carbon / Z-pole",mode:"SNAP at spring button"},
+   {r:33,n:"Fizan aluminum ultralight",p:70,pl:"$70",comp:216,s:1,mid:8.5,tip:27.5,lk:-1,cfg:"ALUMINUM 7001 / twist-lock",mode:"BENDS and SLIDES",alu:1,yours:1,lside:1},
+   {r:34,n:"Gossamer Gear FT3",p:242,pl:"$240–245",comp:261,s:1,mid:11.0,tip:29.2,lk:0,cfg:"Carbon / Z-pole",mode:"SNAP",off:1},
+   {r:35,n:"Zpacks Carbon 2025",p:129.90,pl:"$129.90",comp:261,s:1,mid:10.0,tip:29.75,lk:-1,cfg:"Carbon / twist-lock",mode:"SNAP",off:1},
+   {r:36,n:"Leki Hemp.one vario",p:280,pl:"$280",comp:317,s:0,mid:13.5,tip:28.25,lk:1,cfg:"Hemp + resin",mode:"—",off:1},
+   {r:37,n:"Ruta Locura Yana",p:190,pl:"$190",comp:434,s:0,mid:13.0,tip:35.75,lk:-1,cfg:"Carbon / twist-lock",mode:"SNAP",off:1}
+  ];
+  var FRONTIER=[{p:50,c:95},{p:55,c:76},{p:65,c:71},{p:79.90,c:43}];
+
+  function cv(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+  function E(t,a){var e=document.createElementNS("http://www.w3.org/2000/svg",t);
+    for(var k in a) if(a[k]!==null&&a[k]!==undefined) e.setAttribute(k,a[k]); return e;}
+  var tip=document.getElementById("tip");
+  function show(h,ev){tip.innerHTML=h;tip.style.opacity="1";
+    var pad=14,r=tip.getBoundingClientRect(),x=ev.clientX+pad,y=ev.clientY+pad;
+    if(x+r.width>innerWidth-8)x=ev.clientX-r.width-pad;
+    if(y+r.height>innerHeight-8)y=ev.clientY-r.height-pad;
+    tip.style.left=x+"px";tip.style.top=y+"px";}
+  function hide(){tip.style.opacity="0";}
+  function wire(g,html){
+    g.addEventListener("mousemove",function(e){show(html,e);});
+    g.addEventListener("mouseleave",hide);
+    g.addEventListener("focus",function(){var b=g.getBoundingClientRect();
+      show(html,{clientX:b.left+b.width/2,clientY:b.top});});
+    g.addEventListener("blur",hide);
+  }
+  function tipHtml(d){
+    return "<b>"+d.n+"</b>"+d.pl+" · composite <b>"+d.comp+"</b> (rank "+d.r+" of 37)"+
+      "<br>mid-span "+d.mid+" cm · tip-clamped "+d.tip+" cm"+
+      "<br>lock score "+(d.lk===1?"1 (full marks)":d.lk===0?"0 (no credit)":"−1 (penalised twist lock)")+
+      "<br>"+d.cfg+"<br>fails by: "+d.mode;
+  }
+
+  /* ---------------- CHART 1: the knee ---------------- */
+  function knee(){
+    var svg=document.getElementById("c-knee"); svg.innerHTML="";
+    var W=760,H=470,L=64,R=30,T=28,B=62, pw=W-L-R, ph=H-T-B;
+    var xMin=40,xMax=310,yMin=30,yMax=225;
+    function px(v){return L+((v-xMin)/(xMax-xMin))*pw;}
+    function py(v){return T+((v-yMin)/(yMax-yMin))*ph;}
+
+    [50,100,150,200].forEach(function(v){
+      svg.appendChild(E("line",{x1:L,y1:py(v),x2:L+pw,y2:py(v),stroke:cv("--grid"),"stroke-width":"1"}));
+      var t=E("text",{x:L-9,y:py(v)+4,"font-size":"11",fill:cv("--ink-mute"),"text-anchor":"end"});
+      t.textContent=v; svg.appendChild(t);
+    });
+    [50,100,150,200,250,300].forEach(function(v){
+      var t=E("text",{x:px(v),y:T+ph+20,"font-size":"11",fill:cv("--ink-mute"),"text-anchor":"middle"});
+      t.textContent="$"+v; svg.appendChild(t);
+    });
+    var ax=E("text",{x:L+pw/2,y:H-22,"font-size":"11",fill:cv("--rust"),"text-anchor":"middle",
+      "font-weight":"700","letter-spacing":".13em"});
+    ax.textContent="PRICE PER PAIR  →"; svg.appendChild(ax);
+    var ay=E("text",{x:15,y:T+ph/2,"font-size":"11",fill:cv("--rust"),"text-anchor":"middle",
+      "font-weight":"700","letter-spacing":".13em",transform:"rotate(-90 15 "+(T+ph/2)+")"});
+    ay.textContent="←  STIFFER      COMPOSITE      FLOPPIER  →"; svg.appendChild(ay);
+
+    // frontier: stepped path + the flat ray that is the punchline
+    var d="M"+px(FRONTIER[0].p)+","+py(FRONTIER[0].c);
+    for(var i=1;i<FRONTIER.length;i++){
+      d+="L"+px(FRONTIER[i].p)+","+py(FRONTIER[i-1].c)+"L"+px(FRONTIER[i].p)+","+py(FRONTIER[i].c);
+    }
+    svg.appendChild(E("path",{d:d,fill:"none",stroke:cv("--risk-low"),"stroke-width":"2"}));
+    svg.appendChild(E("line",{x1:px(79.9),y1:py(43),x2:px(305),y2:py(43),
+      stroke:cv("--risk-low"),"stroke-width":"1.5","stroke-dasharray":"5 4"}));
+    var ft=E("text",{x:px(150),y:py(43)-9,"font-size":"11.5",fill:cv("--risk-low"),"font-weight":"700"});
+    ft.textContent="nothing above $79.90 is stiffer than this line"; svg.appendChild(ft);
+    // knee marker — annotation lives in the axis margin, clear of every data mark
+    svg.appendChild(E("line",{x1:px(79.9),y1:T,x2:px(79.9),y2:T+ph,stroke:cv("--risk-low"),
+      "stroke-width":"1","stroke-dasharray":"2 3",opacity:".55"}));
+    var kt=E("text",{x:px(79.9),y:T+ph+37,"font-size":"11",fill:cv("--risk-low"),
+      "font-weight":"700","text-anchor":"middle"});
+    kt.textContent="↑ THE KNEE — $79.90"; svg.appendChild(kt);
+
+    P.filter(function(d){return !d.off;}).forEach(function(d){
+      var cx=px(d.p),cy=py(d.comp);
+      var fi=-1;
+      FRONTIER.forEach(function(f,i){if(Math.abs(f.p-d.p)<1.5&&f.c===d.comp)fi=i;});
+      var onF=fi>=0;
+      var col=onF?cv("--risk-low"):cv("--mark");
+      var g=E("g",{tabindex:"0",role:"img","aria-label":d.n+", "+d.pl+", composite "+d.comp});
+      g.appendChild(E("circle",{cx:cx,cy:cy,r:8.5,fill:cv("--card")}));
+      g.appendChild(E("circle",{cx:cx,cy:cy,r:onF?6.5:5,fill:col}));
+      g.appendChild(E("circle",{cx:cx,cy:cy,r:15,fill:"transparent"}));
+      if(d.pick||d.yours||d.comp>=200||onF){
+        // frontier labels alternate above/below so neighbours can't collide;
+        // crowded low-price/high-composite poles flip to the left.
+        var side = d.p>250 || d.lside ? -1 : 1;
+        var dy = onF ? (fi%2 ? -12 : 17) : 4;
+        var lbl=E("text",{x:cx+side*12,y:cy+dy,"font-size":"10.5",fill:cv("--ink"),
+          "text-anchor":side<0?"end":"start","font-weight":d.pick?"700":"400"});
+        lbl.textContent=d.n.length>26?d.n.slice(0,25)+"…":d.n;
+        g.appendChild(lbl);
+      }
+      wire(g,tipHtml(d)); svg.appendChild(g);
+    });
+  }
+
+  /* ---------------- CHART 2: talus end ---------------- */
+  function talus(){
+    var svg=document.getElementById("c-talus"); svg.innerHTML="";
+    var rows=P.slice().sort(function(a,b){return a.tip-b.tip;}).slice(0,16);
+    var W=760,L=228,R=118,T=32,rowH=26,gap=5;
+    var ph=rows.length*(rowH+gap), H=T+ph+40;
+    svg.setAttribute("viewBox","0 0 "+W+" "+H);
+    var pw=W-L-R, max=24;
+    function bw(v){return Math.min(v/max,1)*pw;}
+    [0,6,12,18,24].forEach(function(v){
+      svg.appendChild(E("line",{x1:L+bw(v),y1:T-8,x2:L+bw(v),y2:T+ph,stroke:cv("--grid"),"stroke-width":"1"}));
+      var t=E("text",{x:L+bw(v),y:T-14,"font-size":"10.5",fill:cv("--ink-mute"),"text-anchor":"middle"});
+      t.textContent=v+(v===24?" cm":""); svg.appendChild(t);
+    });
+    rows.forEach(function(d,i){
+      var y=T+i*(rowH+gap);
+      var g=E("g",{tabindex:"0",role:"img","aria-label":d.n+", tip-clamped "+d.tip+" centimetres, "+d.mode});
+      var nm=E("text",{x:L-11,y:y+rowH/2+4,"font-size":"11.5",fill:cv("--ink"),"text-anchor":"end",
+        "font-weight":d.pick?"700":"400"});
+      nm.textContent=(d.n.length>32?d.n.slice(0,31)+"…":d.n);
+      g.appendChild(nm);
+      g.appendChild(E("rect",{x:L,y:y+5,width:Math.max(bw(d.tip),5),height:rowH-10,
+        fill:d.worn?cv("--mark-quiet"):cv("--mark"),rx:"4"}));
+      g.appendChild(E("rect",{x:L,y:y+5,width:5,height:rowH-10,fill:d.worn?cv("--mark-quiet"):cv("--mark")}));
+      var vt=E("text",{x:L+bw(d.tip)+8,y:y+rowH/2+4,"font-size":"11",fill:cv("--ink-soft"),"font-weight":"700"});
+      vt.setAttribute("style","font-variant-numeric:tabular-nums"); vt.textContent=d.tip;
+      g.appendChild(vt);
+      var md=E("text",{x:W-R+52,y:y+rowH/2+4,"font-size":"9.5",
+        fill:/BEND|SPLIT/.test(d.mode)?cv("--risk-low"):cv("--ink-mute"),
+        "text-anchor":"end","font-weight":"700","letter-spacing":".05em"});
+      md.textContent=/BEND/.test(d.mode)?"BENDS":/SPLIT/.test(d.mode)?"SPLITS":"SNAPS";
+      g.appendChild(md);
+      g.appendChild(E("rect",{x:L-220,y:y,width:W-L+220,height:rowH,fill:"transparent"}));
+      wire(g,tipHtml(d)); svg.appendChild(g);
+    });
+    var fn=E("text",{x:L-11,y:T+ph+26,"font-size":"10.5",fill:cv("--ink-mute"),"text-anchor":"end","font-style":"italic"});
+    fn.textContent="pale bar = same pole after heavy use"; svg.appendChild(fn);
+  }
+
+  /* ---------------- CHART 3: material strip ---------------- */
+  function mat(){
+    var svg=document.getElementById("c-mat"); svg.innerHTML="";
+    var W=760,L=96,R=28,T=52,pw=W-L-R, GRIDB=T+118;
+    svg.setAttribute("viewBox","0 0 "+W+" 262");
+    var groups=[
+      {k:"ALUMINUM",f:function(d){return d.alu;}},
+      {k:"CARBON",f:function(d){return !d.alu && !/Bamboo|Hemp/i.test(d.cfg);}}
+    ];
+    var xMin=40,xMax=450;
+    function px(v){return L+((v-xMin)/(xMax-xMin))*pw;}
+    // ticks sit BELOW the strips so they cannot collide with the header
+    [50,100,150,200,300,434].forEach(function(v){
+      svg.appendChild(E("line",{x1:px(v),y1:T-8,x2:px(v),y2:GRIDB,stroke:cv("--grid"),"stroke-width":"1"}));
+      var t=E("text",{x:px(v),y:GRIDB+16,"font-size":"10.5",fill:cv("--ink-mute"),"text-anchor":"middle"});
+      t.textContent=v; svg.appendChild(t);
+    });
+    var hd=E("text",{x:L,y:22,"font-size":"10.5",fill:cv("--rust"),"font-weight":"700","letter-spacing":".13em"});
+    hd.textContent="←  STIFFER          COMPOSITE SCORE          FLOPPIER  →"; svg.appendChild(hd);
+
+    groups.forEach(function(gr,gi){
+      var y=T+22+gi*66;
+      var lb=E("text",{x:L-12,y:y+4,"font-size":"12",fill:cv("--ink"),"text-anchor":"end","font-weight":"700"});
+      lb.textContent=gr.k; svg.appendChild(lb);
+      var list=P.filter(gr.f);
+      var rng=list.map(function(d){return d.comp;});
+      var lo=Math.min.apply(null,rng),hi=Math.max.apply(null,rng);
+      svg.appendChild(E("line",{x1:px(lo),y1:y,x2:px(hi),y2:y,stroke:cv("--line"),"stroke-width":"2"}));
+      var rl=E("text",{x:L-12,y:y+19,"font-size":"10",fill:cv("--ink-mute"),"text-anchor":"end"});
+      rl.textContent=lo+"–"+hi+"  (n="+list.length+")"; svg.appendChild(rl);
+      list.forEach(function(d){
+        var cx=px(d.comp);
+        var g=E("g",{tabindex:"0",role:"img","aria-label":d.n+", composite "+d.comp+", "+gr.k});
+        g.appendChild(E("circle",{cx:cx,cy:y,r:7,fill:cv("--card")}));
+        g.appendChild(E("circle",{cx:cx,cy:y,r:5,fill:cv("--mark")}));
+        g.appendChild(E("circle",{cx:cx,cy:y,r:13,fill:"transparent"}));
+        wire(g,tipHtml(d)); svg.appendChild(g);
+      });
+      // annotate the extremes that carry the argument
+      var best=list.reduce(function(a,b){return a.comp<b.comp?a:b;});
+      var bt=E("text",{x:px(best.comp),y:y-13,"font-size":"10",fill:cv("--ink"),"text-anchor":"middle","font-weight":"700"});
+      bt.textContent=best.n.split(" ").slice(0,2).join(" "); svg.appendChild(bt);
+    });
+
+    var note=E("text",{x:L,y:GRIDB+42,"font-size":"11",fill:cv("--ink-mute"),"font-style":"italic"});
+    note.textContent="The best aluminum out-measures most of the carbon field. The worst carbon is 5.7× floppier than the best.";
+    svg.appendChild(note);
+  }
+
+  /* ---------------- table ---------------- */
+  function table(){
+    var tb=document.getElementById("tbody"); tb.innerHTML="";
+    P.forEach(function(d){
+      var tr=document.createElement("tr");
+      var cls=[]; if(d.alu)cls.push("alu"); if(d.pick)cls.push("pick"); if(d.comp>=190)cls.push("dim");
+      tr.className=cls.join(" ");
+      var lk=d.lk===1?'<span class="pill low">1</span>':d.lk===0?'<span class="pill unk">0</span>':'<span class="pill high">&minus;1</span>';
+      tr.innerHTML='<td class="num">'+d.r+'</td>'+
+        '<td class="name">'+d.n+(d.yours?' <small style="color:var(--risk-high);font-weight:700">← YOUR CURRENT POLE’S PROFILE</small>':'')+'</td>'+
+        '<td class="num">'+d.pl+'</td>'+
+        '<td class="num"><strong>'+d.comp+'</strong></td>'+
+        '<td class="num">'+d.mid+'</td>'+
+        '<td class="num">'+d.tip+'</td>'+
+        '<td class="num">'+lk+'</td>'+
+        '<td>'+d.cfg+'</td>'+
+        '<td>'+d.mode+'</td>';
+      tb.appendChild(tr);
+    });
+  }
+
+  function render(){knee();talus();mat();}
+  table(); render();
+  var mq=matchMedia("(prefers-color-scheme: dark)");
+  if(mq.addEventListener)mq.addEventListener("change",render);
+  new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+  addEventListener("resize",hide);
+})();
+</script>
