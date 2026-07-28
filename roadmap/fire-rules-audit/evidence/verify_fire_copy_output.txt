@@ -1,0 +1,28 @@
+PASS  BEFORE: hedged "stove-only / fireside may be" copy present
+PASS  BEFORE: stale "No fire or trail closures currently posted" present
+PASS  BEFORE: Toxaway "fireside" present
+PASS  BEFORE: no broken in-page anchors ([])
+PASS  BEFORE: zero JS/console errors
+INFO  BEFORE: mobile 390px scrollWidth=443 clientWidth=390
+PASS  AFTER: hedged "stove-only" copy removed
+PASS  AFTER: stale no-closures claim removed
+PASS  AFTER: Toxaway "fireside" removed
+PASS  AFTER: permanent no-campfire statement present
+PASS  AFTER: both closed drainages named
+PASS  AFTER: Cabin Creek Fire object lesson present
+PASS  AFTER: Stage 1 stove 3-ft clearance rule present
+PASS  AFTER: fishing license age present
+PASS  AFTER: SNRA fire danger status present
+PASS  AFTER: Grandjean closure noted
+PASS  AFTER: no-campfire block placed above Storms in Safety
+PASS  AFTER: links USFS Sawtooth Wilderness regulations
+PASS  AFTER: no broken in-page anchors ([])
+PASS  AFTER: zero JS/console errors
+INFO  AFTER: mobile 390px scrollWidth=443 clientWidth=390
+PASS  mobile overflow unchanged vs main (443 -> 443; pre-existing wide tables)
+PASS  PACKCHECK: stove 3-ft clearance present
+PASS  PACKCHECK: bare "+ firestarter" line replaced
+PASS  PACKCHECK: fishing license age present
+PASS  PACKCHECK: zero JS/console errors
+
+ALL CHECKS PASSED
