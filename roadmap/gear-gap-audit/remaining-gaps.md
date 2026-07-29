@@ -1,10 +1,10 @@
 # Remaining gear-hub gaps
 
-Two categories are still missing from `gemini-code-1784928132429.html`. They were identified
+One category is still missing from `gemini-code-1784928132429.html`. They were identified
 by diffing the 50-item packing list in `packcheck.html` against the 18 categories in the gear
 hub, so each one is grounded in something the trip already tells families to bring.
 
-**Status: 1 of 3 DONE.** First Aid & Blister Care shipped 2026-07-29 once the rate limiting eased; see `research/firstaid-verified.md`. The two below are still outstanding. Research was attempted 2026-07-28 and failed. Every product feed and
+**Status: 2 of 3 DONE.** First Aid & Blister Care shipped 2026-07-29 once the rate limiting eased; see `research/firstaid-verified.md`. Layers & Insulation shipped the same day. Only Sun & Bug Protection remains. Research was attempted 2026-07-28 and failed. Every product feed and
 retailer returned `HTTP 429` from the egress proxy, and eleven research agents stalled or lost
 their connection without writing output. No price, weight, or rating could be verified, and the
 repo rule in `CLAUDE.md` forbids inventing those values to fill required fields. Retry when the
@@ -31,7 +31,7 @@ Also worth writing up: what a pre-built kit leaves out that this trip needs, giv
 with zero cell service. Prescription meds, an epinephrine plan, group-scale ibuprofen, elastic
 wrap, trauma shears, irrigation for wound cleaning.
 
-## 2. Layers & Insulation
+## 2. Layers & Insulation — DONE (2026-07-29)
 
 Camps sit at 8,000-8,700 ft and nights reach the 30s even in August. The hub has Rain Shells
 but nothing for insulation, base layers, or socks.
