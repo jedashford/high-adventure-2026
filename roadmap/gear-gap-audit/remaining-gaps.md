@@ -1,10 +1,10 @@
-# Remaining gear-hub gaps
+# Gear-hub gaps — ALL CLOSED (2026-07-29)
 
-One category is still missing from `gemini-code-1784928132429.html`. They were identified
+All three categories have now been added from `gemini-code-1784928132429.html`. They were identified
 by diffing the 50-item packing list in `packcheck.html` against the 18 categories in the gear
 hub, so each one is grounded in something the trip already tells families to bring.
 
-**Status: 2 of 3 DONE.** First Aid & Blister Care shipped 2026-07-29 once the rate limiting eased; see `research/firstaid-verified.md`. Layers & Insulation shipped the same day. Only Sun & Bug Protection remains. Research was attempted 2026-07-28 and failed. Every product feed and
+**Status: 3 of 3 DONE.** All three categories shipped 2026-07-29 once the egress rate limiting eased. The gear hub now carries 133 products across 21 categories. Research lives in `research/firstaid-verified.md`, `research/layers-verified.md`, and `research/sun-bug-verified.md`. Kept as a record of what was missing and why it took two attempts. Research was attempted 2026-07-28 and failed. Every product feed and
 retailer returned `HTTP 429` from the egress proxy, and eleven research agents stalled or lost
 their connection without writing output. No price, weight, or rating could be verified, and the
 repo rule in `CLAUDE.md` forbids inventing those values to fill required fields. Retry when the
@@ -47,7 +47,7 @@ Products to verify:
   sleeping
 - Beanie, synthetic tees
 
-## 3. Sun & Bug Protection
+## 3. Sun & Bug Protection — DONE (2026-07-29)
 
 `index.html` says "UV at 9,000 ft burns fast" and calls for reapplication every 2-3 hours.
 Granite and lingering snowfields add heavy reflected UV. Nothing in the hub covers it.
