@@ -129,7 +129,9 @@ capacity is the point: one boil covers both freeze-dried pouches instead of two.
 
 ## Titanium vs aluminium — and a sizing error this caught
 
-**No titanium heat-exchanger pot exists, and none will.** Titanium conducts heat at roughly
+**CORRECTED 2026-07-29: one titanium heat-exchanger pot DID exist. See the Sol Ti section below.**
+No titanium heat-exchanger pot is sold today, but the original wording here ("none will") was
+false and was published to the guide before being caught. Titanium conducts heat at roughly
 **1/11th** the rate of aluminium (~22 vs ~237 W/m·K). A fin ring only helps if heat conducts
 from the fin through the pot wall into the water; in titanium it would not. That is why every
 heat-exchanger pot verified in this pass — Jetboil FluxRing, MSR WindBurner/Reactor, Olicamp
@@ -163,3 +165,88 @@ non-issue at this scale.
 The Fire-Maple XK6 and Olicamp XTS remain listed in Cookware — they are still the cheapest
 verified route to heat-exchanger efficiency for anyone outfitting the 12-person group stoves,
 where the 48-56 L requirement makes fuel efficiency real.
+
+## CORRECTION (2026-07-29): "no titanium heat-exchanger pot exists, and none will" was FALSE
+
+This claim was published to the gear hub and is wrong. It was caught when the user asked the
+obvious follow-up: what about titanium *with* the heat exchanger?
+
+**The Jetboil Sol Ti (2011) was exactly that** — a titanium pot body with an **aluminium
+FluxRing welded to its base**. It was sold in the US. So the hybrid the physics argument said
+could not work was in fact built and shipped.
+
+**Why it failed, and why nobody repeated it:** titanium and aluminium have different rates of
+thermal expansion, so repeated heat cycling fatigued the joint. Documented failures include
+fins melting and detaching, and galvanic corrosion at the dissimilar-metal boundary (white
+powder between ring and pot base). One user report, verbatim: *"The flux ring material got so
+hot that it started dripping down onto the ground."* Jetboil discontinued the titanium option
+around 2015 and dropped warranty support; only Sol Ti accessory parts remain on their
+Discontinued Products page. Chris Townsend, who covered it, hedges to *"I guess there are
+possibly insurmountable technical problems"* — far short of the absolute the guide asserted.
+
+**The correct claim is about the market, not physics.** Ti-to-Al joining is real industrial
+practice (explosion welding, friction-stir welding, CMT welding-brazing). It is hard at
+cookware gauges and price points, not impossible. Accurate wording: *no titanium
+heat-exchanger pot is currently sold, and the one commercial attempt failed on joint
+reliability.*
+
+Two secondary corrections from the same fact-check:
+
+- **"Irrelevant when boiling" was overstated.** True for plain water — nucleate boiling holds
+  the wetted wall near 100°C regardless of the metal's lateral conduction. False for anything
+  with solids or thickened liquid; hikers report scorched rings from oatmeal and stew at a
+  nominal boil. It holds for THIS trip only because we boil plain water and pour into pouches.
+- **The 1/11 conductivity ratio is sound** for the materials actually involved (CP titanium
+  ~17-22 W/m·K vs cookware aluminium ~180-193 W/m·K). Worth noting it is alloy-specific: with
+  Ti-6Al-4V the ratio would be nearer 1/35, but no backpacking pot uses that alloy.
+- **Titanium really is lighter in practice**, despite being ~1.67x denser, because the higher
+  strength allows roughly 3x thinner walls. Confirmed by real product weights.
+
+Brands re-confirmed to have NO heat-exchanger product: TOAKS, Vargo, Evernew, Keith Titanium,
+Boundless Voyage, Soto, Widesea (their HX pot is aluminium), Alocs, Lixada, TOMSHOO.
+
+## CORRECTION (2026-07-29): the TOAKS "sold out" findings were a scrape artifact
+
+An earlier pass in this file reported "TOAKS 1600 ml $52.95 — sold out". **That is wrong.**
+Re-checked against the authoritative Shopify endpoints: `pot-1600.js` returns `"price": 5295`,
+`"available": true`, `"inventory_quantity": 108` with `"inventory_management": "shopify"` (a
+tracked, real count), and the rendered add-to-cart button carries no `disabled` attribute.
+
+**Root cause, worth remembering for every future pass:** the Shopify theme's static markup
+always contains `<span class="badge price__badge-sold-out">Sold out</span>` and a JS constant
+`soldOut: 'Sold out'`, regardless of actual stock. They are only *displayed* when a variant is
+genuinely unavailable. A text scrape — or a WebFetch summarization pass — sees the literal
+string and misreports it. **Trust the `.js` endpoint's `available` field and the button's
+disabled state, never a text match on "Sold out".** This is the same class of error that made
+WebFetch report GSI products as sold out earlier in this audit.
+
+Any other "sold out" call in this file that was made by page-text reading rather than the
+`.js` endpoint should be treated as suspect until re-checked.
+
+## Two pots checked on request (2026-07-29)
+
+**Kuvik 1600 ml Titanium Pot with Bail Handle — NO heat exchanger.** Surfaced by an Amazon
+search for "titanium pot with heat exchanger" as a sponsored/thematic result, which is
+misleading. Raw HTML from kuvik.com grepped for "heat" and "exchang" returns **zero matches**.
+Verbatim description: *"EFFICIENT DESIGN... offers an optimal balance between capacity (54 fl
+oz) and weight (7.5 oz)... the integrated bail handle adds versatility... Constructed from
+Grade-1 titanium."* Plain-wall pot. **$49.99** (schema.org Offer and Shopify `.js` `"price":
+4999`), 7.5 oz, 1600 ml, in stock at kuvik.com. Kuvik is a real brand — their own About page
+says *"founded in 2020... based in the beautiful state of South Dakota."* (A search summary
+claiming Denver, Colorado was false; the primary source says South Dakota.)
+Source: https://kuvik.com/products/kuvik-1600ml-titanium-pot and its `.js`
+
+**TOAKS CKW-1600, "1600ml Pot with Pan" — NO heat exchanger.** $54.95, verbatim *"Pot only:
+5.6 oz (158g)"* / *"Pot with Pan: 8.2 oz (231g)"*, pot 1600 ml (1750 ml to rim) plus a 490 ml
+pan, titanium with no coating. In stock.
+Source: https://www.toaksoutdoor.com/products/ckw-1600 and its `.js`
+
+**Neither is a better duo pot than the TOAKS POT-1300-BH already recommended.** Re-verified
+that pot today: **$52.95, "Weight: 5 oz (141 g)", 1300 ml, in stock (10 units tracked)** —
+the guide's existing figures are confirmed accurate. The plain POT-1600 costs the *same*
+$52.95 while weighing 1.9 oz more (6.9 oz with lid) and dropping the bail handle, and the
+CKW-1600's pan is dead weight when meals go into pouches.
+
+**Data-quality note for future scripted checks:** TOAKS' Shopify variant-level `"weight"`
+field (283 g for POT-1600, 340 g for CKW-1600 and POT-1300-BH) is *shipping* weight, not the
+published spec. Pull weights from the rendered description text, never from `products.json`.
