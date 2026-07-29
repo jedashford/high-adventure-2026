@@ -1052,6 +1052,85 @@
             <button class="btn" onclick="resetFilters()">Reset All Filters</button>
         </div>
 
+
+        <!-- Stove Comparison + Regulator Explainer -->
+        <section class="guide-box" aria-labelledby="stoveCompareHeading" style="margin-bottom:25px;">
+            <style>
+                .stove-cmp table { font-size:0.86rem; }
+                .stove-cmp th, .stove-cmp td { padding:9px 11px; white-space:nowrap; }
+                .stove-cmp .yes { color:#4ade80; }
+                .stove-cmp .no  { color:var(--text-muted); }
+                .stove-cmp .hx  { color:#38bdf8; }
+                .stove-cmp .oos { color:#f59e0b; }
+                .stove-cmp .sq  { color:var(--text-muted); font-size:0.78rem; }
+                .stove-cmp em   { color:var(--text-muted); font-style:italic; }
+                .verdict-box { background:#0f172a; border-left:4px solid var(--accent-green); border-radius:8px; padding:16px 18px; margin-bottom:18px; }
+                .verdict-box h3 { color:var(--accent-green-light); margin:0 0 8px 0; font-size:1.02rem; }
+                .verdict-box p { margin:0 0 8px 0; color:var(--text-secondary); line-height:1.55; }
+                .verdict-box p:last-child { margin-bottom:0; }
+                .test-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:14px; margin-top:16px; }
+                .test-card { background:#0f172a; border:1px solid var(--card-border); border-radius:8px; padding:14px 16px; }
+                .test-card h4 { color:var(--accent-blue); margin:0 0 8px 0; font-size:0.95rem; }
+                .test-card ul { margin:0 0 8px 0; padding-left:18px; color:var(--text-secondary); font-size:0.87rem; line-height:1.6; }
+                .caveat { color:var(--accent-amber); font-size:0.82rem; line-height:1.5; margin:0; }
+            </style>
+            <h2 id="stoveCompareHeading">&#128293; Stove Comparison &mdash; All 11, Side by Side</h2>
+
+            <div class="verdict-box">
+                <h3>Do you need a pressure regulator on this trip? No.</h3>
+                <p>A regulator holds the burner&rsquo;s output steady as canister pressure falls. Pressure falls for two reasons: <b>cold</b>, and the canister running low. Our trip is <b>August 10&ndash;13</b>, camps at 8,000&ndash;8,700 ft, nights in the 30s &mdash; so a morning canister sits around 35&ndash;45&deg;F. Isobutane doesn&rsquo;t start losing pressure until about <b>11&deg;F</b>. We are 25+ degrees clear of the problem a regulator solves.</p>
+                <p>The head-to-head test below had to chill canisters to <b>&minus;9&deg;C (16&deg;F)</b> before a difference appeared &mdash; and even then both stoves still boiled in about two minutes. At our temperatures, regulated and unregulated behave the same.</p>
+                <p><b>What actually decides fuel use is the heat exchanger, not the regulator.</b> The two <span class="hx" style="color:#38bdf8">Integrated</span> Jetboils are <em style="color:var(--text-muted)">unregulated</em> and still get ~23&ndash;27 L per canister, while every regulated bare burner sits far below that. Spend on the heat exchanger and the wind shielding; treat a regulator as a nice-to-have you should not pay extra for this August.</p>
+                <p style="color:var(--text-muted); font-size:0.86rem;">The one case it would matter: a shoulder-season or winter trip, or running canisters to truly empty. If you ever want both, the <b>Jetboil MiniMo</b> is the only regulated integrated system here.</p>
+            </div>
+
+            <div class="table-wrapper stove-cmp">
+                <table>
+                    <thead><tr><th>Stove</th><th>Price</th><th>Weight</th><th>Regulator</th><th>Burner</th><th>Fuel per 230&nbsp;g can</th><th>Boil</th><th>Stock</th></tr></thead>
+                    <tbody>
+                    <tr><td><b>BRS-3000T</b></td><td>$19.99</td><td>0.88 oz</td><td><span class='no'>No</span></td><td>Bare</td><td><em>not published</em></td><td><em>not published</em></td><td>In stock <span class='sq'>GGG</span></td></tr>
+                    <tr><td><b>MSR PocketRocket 2</b></td><td>$49.95</td><td>2.6 oz</td><td><span class='no'>No</span></td><td>Bare</td><td>~16 L</td><td>3.5 min / 1 L</td><td><b class='oos'>Out</b> at MSR</td></tr>
+                    <tr><td><b>Soto Amicus</b></td><td>$49.95</td><td>2.9 oz</td><td><span class='no'>No</span></td><td>Bare</td><td><em>not published</em></td><td><em>not published</em></td><td>In stock</td></tr>
+                    <tr><td><b>GSI Glacier Canister-Top</b></td><td>$64.95</td><td>3.10 oz&dagger;</td><td><span class='no'>No</span></td><td>Bare</td><td><em>not published</em></td><td><em>not published</em></td><td>In stock</td></tr>
+                    <tr><td><b>Soto WindMaster</b></td><td>$69.95</td><td>3.0 oz</td><td><b class='yes'>YES</b></td><td>Bare</td><td><em>not published</em></td><td>2 cups &lt;2.5 min&#42;</td><td><b class='oos'>Out</b> at Soto</td></tr>
+                    <tr><td><b>MSR PocketRocket Deluxe</b></td><td>$84.95</td><td>2.9 oz</td><td><b class='yes'>YES</b></td><td>Bare</td><td><em>not published</em></td><td>3.3 min / 1 L</td><td><b class='oos'>Out</b> at MSR</td></tr>
+                    <tr><td><b>Jetboil Flash</b></td><td>$115.99</td><td>13.1 oz</td><td><span class='no'>No</span></td><td><b class='hx'>Integrated</b></td><td><b>~23 L</b></td><td>120 s / 0.5 L</td><td>In stock</td></tr>
+                    <tr><td><b>Jetboil MiniMo</b></td><td>$116.99</td><td><em>unverified</em></td><td><b class='yes'>YES</b></td><td><b class='hx'>Integrated</b></td><td><b>~27 L</b></td><td>2 min 15 s / 0.5 L</td><td>In stock</td></tr>
+                    <tr><td><b>Jetboil Stash</b></td><td>$164.99</td><td>7.1 oz</td><td><span class='no'>No</span></td><td><b class='hx'>Integrated</b></td><td><b>~27 L</b></td><td>150 s / 0.5 L</td><td>In stock</td></tr>
+                    <tr><td><b>MSR WindBurner</b></td><td>$199.95</td><td>15.3 oz</td><td><b class='yes'>YES</b></td><td><b class='hx'>Integrated</b></td><td>~18 L</td><td>4.5 min / 1 L</td><td><b class='oos'>Out</b> at MSR</td></tr>
+                    <tr><td><b>MSR Reactor 1.0 L</b></td><td>$269.95</td><td>14.9 oz</td><td><b class='yes'>YES</b></td><td><b class='hx'>Integrated</b></td><td>~20 L</td><td>3.5 min / 1 L</td><td><b class='oos'>Out</b> at MSR</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="color:var(--text-muted); font-size:0.82rem; margin-top:-14px;">
+                All figures from each manufacturer&rsquo;s own page, verified 2026-07-28/29. &ldquo;Not published&rdquo; means the maker publishes no such figure &mdash; not that we failed to look. MSR quotes litres per 227&nbsp;g canister and Jetboil per 100&nbsp;g; both are normalised here to a 230&nbsp;g canister, and they are each maker&rsquo;s own lab protocol rather than a common test.
+                &dagger; GSI publishes no weight; 3.10&nbsp;oz is derived from their shipping-weight field. &#42; Soto&rsquo;s own marketing claim, not a measured result.
+            </p>
+
+            <div class="test-grid">
+                <div class="test-card">
+                    <h4>Independent test &mdash; 5 stoves, 16&nbsp;oz boil</h4>
+                    <ul>
+                        <li>Jetboil Stash &mdash; <b>4&nbsp;g</b>, 2:00</li>
+                        <li>Jetboil Flash &mdash; <b>5&nbsp;g</b>, 1:41</li>
+                        <li>MSR WindBurner &mdash; 7&nbsp;g, 2:40</li>
+                        <li>Soto WindMaster &mdash; 9&nbsp;g, 2:54</li>
+                        <li>MSR PocketRocket 2 &mdash; 11&nbsp;g, 2:32</li>
+                    </ul>
+                    <p class="caveat">&#9888; Reads as a stove ranking but is partly a <b>pot</b> ranking: the two bare burners ran a plain titanium mug while the integrated systems used their own heat-exchanger pots. Cold tap water, no wind, one trial each.</p>
+                </div>
+                <div class="test-card">
+                    <h4>Head-to-head &mdash; PocketRocket Deluxe vs Soto WindMaster</h4>
+                    <ul>
+                        <li><b>Calm:</b> PRD 2:02 / 8.2&nbsp;g &middot; WM 2:15 / 7.6&nbsp;g</li>
+                        <li><b>Wind</b> (12.5&nbsp;km/h fan): PRD 5:48 / 23&nbsp;g &middot; WM 8:21 / 26.6&nbsp;g</li>
+                        <li><b>Cold</b> (cans at &minus;9&deg;C): PRD 2:09 / 11.5&nbsp;g &middot; WM 2:12 / <b>8.9&nbsp;g</b></li>
+                    </ul>
+                    <p class="caveat">&#9888; This tester found the <b>PocketRocket Deluxe</b> better in wind &mdash; which <b>contradicts</b> the two other videos, both of which crown the WindMaster. Single trial, one household fan, and in his own words: &ldquo;I&rsquo;m not running a really strict variable lab here.&rdquo; Treat the wind question as <b>unresolved</b>; it does not matter for our three group boilers, which are integrated and shielded anyway.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Sawtooth Wilderness Duo Pick Guide Box -->
         <section class="guide-box" aria-labelledby="guideHeading">
             <h2 id="guideHeading">⛺ Sawtooth Wilderness Duo Builds (Jed + Ollie Trip Recommender)</h2>
@@ -1949,10 +2028,10 @@
                 rating: 4.8,
                 reviewCount: 550,
                 specs: {
+                    "Pressure Regulator": "No",
+                    "Water Boiled": "16 L per 227 g canister — vs ~23 L for the Flash",
                     "Burner Type": "Canister Micro Burner",
                     "Boil Speed": "3.5 min / 1 Liter",
-                    "Water Boiled": "16 L per 227 g canister — vs ~23 L for the Flash",
-                    "Pressure Regulator": "No",
                     "Fuel Type": "Isobutane-Propane Canister",
                     "Case": "Hard Protective Case",
                     "Wind Shield": "WindClip Shield"
@@ -1986,10 +2065,10 @@
                 rating: 4.8,
                 reviewCount: 380,
                 specs: {
+                    "Pressure Regulator": "No",
+                    "Water Boiled": "10 L per 100 g canister (~23 L per 230 g)",
                     "Burner Type": "Integrated Heat-Exchange Pot",
                     "Boil Speed": "120 sec / 0.5 Liter",
-                    "Water Boiled": "10 L per 100 g canister (~23 L per 230 g)",
-                    "Pressure Regulator": "No",
                     "Fuel Type": "Isobutane Canister",
                     "Case": "Insulated Cozy w/ Color Indicator",
                     "Wind Shield": "FluxRing Guard"
@@ -2023,11 +2102,11 @@
                 rating: 4.7,
                 reviewCount: 190,
                 specs: {
-                    "Burner Type": "Recessed Wind-Resistant Burner",
+                    "Pressure Regulator": "No",
                     "Output": "2800 kcal/h · 3260 W · 10,210 BTU",
+                    "Burner Type": "Recessed Wind-Resistant Burner",
                     "Burn Time": "Approx. 1.5 hr on a 250 g canister",
                     "Fuel Type": "Isobutane Canister",
-                    "Pressure Regulator": "No",
                     "Igniter": "Integrated Stealth Piezo",
                     "Pot Supports": "4 Spring-Loaded Arms"
                 },
@@ -2060,9 +2139,9 @@
                 rating: "n/a",
                 reviewCount: "rating not verified — REI unreachable",
                 specs: {
-                    "Burner Type": "Recessed Wind-Resistant Burner",
-                    "Output": "2800 kcal/h · 3260 W · 11,000 BTU",
                     "Pressure Regulator": "Yes — Soto Micro Regulator",
+                    "Output": "2800 kcal/h · 3260 W · 11,000 BTU",
+                    "Burner Type": "Recessed Wind-Resistant Burner",
                     "Pot Supports": "4Flex 4-arm as shipped; TriFlex 3-arm sold separately",
                     "Boil Claim": "2 cups in under 2.5 min in strong wind (Soto's own claim)",
                     "Fuel Type": "Isobutane Canister"
@@ -2096,10 +2175,10 @@
                 rating: "n/a",
                 reviewCount: "rating not verified",
                 specs: {
-                    "Burner Type": "Canister-Top Burner",
-                    "Output": "10,900 BTU",
-                    "Igniter": "Piezo ignition",
                     "Pressure Regulator": "No",
+                    "Output": "10,900 BTU",
+                    "Burner Type": "Canister-Top Burner",
+                    "Igniter": "Piezo ignition",
                     "Boil Speed": "Not published by GSI",
                     "Fuel Type": "Isobutane Canister"
                 },
@@ -2132,11 +2211,11 @@
                 rating: 4.3,
                 reviewCount: 129,
                 specs: {
+                    "Pressure Regulator": "No",
+                    "Water Boiled": "12 L per 100 g canister (~27 L per 230 g)",
                     "Burner Type": "Integrated Heat-Exchange Pot",
                     "Volume": "0.8 Liter",
                     "Boil Speed": "150 sec / 0.5 Liter",
-                    "Water Boiled": "12 L per 100 g canister (~27 L per 230 g)",
-                    "Pressure Regulator": "No",
                     "Fuel Type": "Isobutane Canister"
                 },
                 priceHistory: [],
@@ -2167,11 +2246,11 @@
                 rating: 4.6,
                 reviewCount: 315,
                 specs: {
+                    "Pressure Regulator": "Yes — the only regulated Jetboil here",
+                    "Water Boiled": "12 L per 100 g canister (~27 L per 230 g)",
                     "Burner Type": "Integrated Heat-Exchange Pot",
                     "Volume": "1 Liter Short",
                     "Boil Speed": "2 min 15 sec / 0.5 Liter",
-                    "Water Boiled": "12 L per 100 g canister (~27 L per 230 g)",
-                    "Pressure Regulator": "Yes — the only regulated Jetboil here",
                     "Weight": "NOT PUBLISHED RELIABLY — Jetboil's own page prints '12 oz | 415 g', and those differ by 2.6 oz",
                     "Fuel Type": "Isobutane Canister"
                 },
@@ -2204,11 +2283,11 @@
                 rating: 4.58,
                 reviewCount: 231,
                 specs: {
+                    "Pressure Regulator": "Yes",
+                    "Water Boiled": "18 L per 227 g canister",
                     "Burner Type": "Enclosed Radiant Burner + Heat Exchanger",
                     "Volume": "1.0 Liter",
                     "Boil Speed": "4.5 min / 1 Liter",
-                    "Water Boiled": "18 L per 227 g canister",
-                    "Pressure Regulator": "Yes",
                     "Fuel Type": "Isobutane Canister"
                 },
                 priceHistory: [],
@@ -2240,11 +2319,11 @@
                 rating: 4.57,
                 reviewCount: 173,
                 specs: {
+                    "Pressure Regulator": "Yes — internal",
+                    "Water Boiled": "20 L per 227 g canister (22 L on the larger pots)",
                     "Burner Type": "Radiant Burner + Internal Heat Exchanger",
                     "Sizes": "1.0 L $269.95 · 1.7 L $289.95 · 2.5 L $319.95",
                     "Boil Speed": "3.5 min / 1 Liter",
-                    "Water Boiled": "20 L per 227 g canister (22 L on the larger pots)",
-                    "Pressure Regulator": "Yes — internal",
                     "Fuel Type": "Isobutane Canister"
                 },
                 priceHistory: [],
@@ -2276,9 +2355,9 @@
                 rating: 4.7,
                 reviewCount: 47,
                 specs: {
-                    "Burner Type": "Micro Titanium Burner",
-                    "Output": "2700 W",
                     "Pressure Regulator": "No",
+                    "Output": "2700 W",
+                    "Burner Type": "Micro Titanium Burner",
                     "Materials": "Titanium alloy, copper, stainless steel",
                     "Gas Consumption": "~140 g/hr for 1 L",
                     "Fuel Type": "Isobutane Canister"
@@ -2347,8 +2426,9 @@
                 rating: 4.8,
                 reviewCount: 280,
                 specs: {
-                    "Burner Type": "Pressure-Regulated Burner",
+                    "Pressure Regulator": "Yes",
                     "Boil Speed": "3.3 min / 1 Liter",
+                    "Burner Type": "Pressure-Regulated Burner",
                     "Igniter": "Push-Button Piezo Igniter",
                     "Wind Shield": "Broad Lip Wind Protection",
                     "Weight": "2.9 oz"
