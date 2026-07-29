@@ -270,6 +270,136 @@ $109→$115.99. None of the historical points are verifiable. All four arrays we
 `[]`; the function returns an empty string for `history.length < 2`, so the sparkline
 simply does not render. Do not repopulate these without dated primary sources.
 
+## Second pass (2026-07-29): the five never-researched stoves
+
+The first pass verified the four in-guide stoves plus four candidates. This pass covers the
+remaining five named across the four video transcripts. **Three were added; two cannot be
+responsibly listed at all.**
+
+## MSR Reactor Stove Systems — ADDED
+
+**Confidence:** CONFIRMED
+
+**Answer:** Sold only as three pot-size variants, never stove-only. Prices differ per variant
+and the **rendered page reports them wrong** — it showed "$269.95" for all three. The Shopify
+JSON endpoint (`/products/reactor-stove-systems.json`) is authoritative and shows: **1.0 L
+$269.95** (min weight "14.9 oz (0.42 kg)", sku 14268), **1.7 L $289.95** ("1 lb 1 oz
+(0.49 kg)", sku 14269), **2.5 L $319.95** ("1 lb 5 oz (0.61 kg)", sku 06902). Weights include
+the pot — included items are "Reactor Pot and Stove, BPA-Free Strainer Lid, PackTowl Pot
+Protector, and folding/locking handle". Regulator confirmed verbatim: "Patent-pending radiant
+burner, heat exchanger and internal pressure regulator". Boil 1 L: 3.5 min (1.0 L pot), 3 min
+(larger). Water boiled per 227 g canister: "20 liters" (1.0 L), "22 liters" (larger). MSR
+publishes **no BTU figure** — left blank rather than guessed. Rating "4.566474 / 5 from 173
+reviews" (MSR-hosted). **All three sizes "Sale Out of Stock"** with waitlist as of 2026-07-28.
+
+**The video's "~$200" is stale by roughly $70.** Printed $269.95 with the staleness called out.
+
+**Method note worth keeping:** for cascadedesigns.com, trust `/products/<handle>.json` over the
+rendered page. The render collapsed three different variant prices into one.
+
+**Source:** https://www.cascadedesigns.com/products/reactor-stove-systems and its .json endpoint;
+https://www.cascadedesigns.com/collections/stove-systems
+
+## BRS-3000T Ultralight Titanium Stove — ADDED, with a safety caveat
+
+**Confidence:** CONFIRMED (price/weight/specs); safety concern CONFIRMED against primary sources
+
+**Answer:** **No manufacturer price exists** — BRS Outdoor is a Chinese OEM with no US price
+sheet. The only price verifiable by opening a live page is **$19.99 at Garage Grown Gear**
+(`"price":1999`, `"available":true`, `<meta property="availability" content="in stock">`).
+Amazon carries at least 8 competing listings but bot-blocked every attempt, so no Amazon price
+is reported. Weight verbatim from GGG's spec sheet: "BRS-3000T Stove: 0.88oz | 26g" plus
+"Storage pouch: 0.07oz | 2g". Output "2700w". Rating 4.7 / 47 reviews, read from the product
+page's schema markup.
+
+**The pot-support failure is real, not rumor.** Two documented incidents from a primary source
+that was opened directly. Mechanism, verbatim: "the pot supports are blasted with heat" causing
+"creep deformation" — "It's a gradual softening of the metal. The metal slowly droops."
+Titanium's "maximum service rating is around 750°F/400°C, but flame temperatures reach
+3500°F/1970°C". One failure occurred after only 10-12 minutes boiling "about 750 ml of water
+and some ramen noodles" — a **light** load. OutdoorGearLab's own testing saw no deformation but
+flagged stability: "The smaller legs of the BRS makes it less stable for larger skillets."
+
+Net: intermittent rather than universal, but the mechanism is physical and the documented
+failure happened under a load lighter than a group dinner. **This is why the guide entry says
+plainly not to put a group pot on it.** For a trip where a 14-year-old stands over the pot,
+that caveat is the whole point of listing the stove.
+
+**Source:** https://www.garagegrowngear.com/products/brs-3000-t-stove-by-brs-outdoor ;
+https://adventuresinstoving.blogspot.com/2017/02/the-brs-3000t-worlds-lightest-stove.html ;
+https://adventuresinstoving.blogspot.com/2017/03/brs-3000t-failure-2.html ;
+https://www.outdoorgearlab.com/reviews/camping-and-hiking/backpacking-stove/brs-3000t
+
+## MSR PocketRocket (the original) — NOT ADDED: DISCONTINUED
+
+**Confidence:** DISCONTINUED — no standalone SKU exists
+
+**Answer:** There is no plain "PocketRocket Stove" in MSR's current catalog. The live
+`/collections/canister-stoves` page lists all 14 current canister stoves and the original is not
+among them. The guessed product URL `/products/pocketrocket-stove` returns **HTTP 404**. The
+burner survives only inside the **"PocketRocket Stove Kit"** (sku 14272, $139.95), whose own
+description reads verbatim: "A complete cook-and-eat kit for two, pairing the original
+PocketRocket stove with our best-selling cook set." The kit page isolates the stove component
+at "86 g/3 oz".
+
+**No price was published for it.** A standalone price would be fiction, and $139.95 for a
+cookset bundle is not a fair stand-in for "an inexpensive stove". This is precisely the failure
+mode the GSI "Pinnacle Dualist II" finding established: do not list what cannot be bought. The
+live answer to "the classic cheap unregulated MSR" is the **PocketRocket 2 at $49.95**, already
+in the guide.
+
+**Source:** https://www.cascadedesigns.com/collections/canister-stoves ;
+https://www.cascadedesigns.com/products/pocketrocket-stove (404) ;
+https://www.cascadedesigns.com/products/pocketrocket-stove-kit
+
+## Kovea Spider KB-1109 — NOT ADDED: no purchasable US listing
+
+**Confidence:** PARTIAL on specs, UNVERIFIED on price and availability
+
+**Answer:** Specs are well corroborated across three independently-opened reviews: weight
+~168-173 g (5.9-6.1 oz) stove only, output ~6,000-6,100 BTU/h, and inverted/liquid-feed
+capability confirmed by all three — "a rotating coupler to enable the canister to be flipped...
+a metal feed loop that passes near the burner head, it is here that liquid fuel is heated to
+allow it to vaporise". Pressure regulator could not be confirmed either way and is **not**
+asserted.
+
+**But no current US price or in-stock listing could be opened anywhere.** Kovea's own site
+surfaces no Spider listing; ExpeditionExchange and Nomadica Outfitters both **404** (delisted);
+Drop no longer sells it; CampSaver, Amazon, Walmart and eBay all returned bot walls or 403s;
+one reachable retailer is UK-based and states it cannot ship to the US. The $52.90 / ~$55 /
+£46 figures circulating are all historical review-time mentions, not live listings.
+
+**Not added.** A product card needs a price a leader can act on, and the honest finding is that
+this stove appears to have left US retail. Revisit if a live listing surfaces.
+
+## Odoland / Etekcity generic budget stove — NOT ADDED: not a stable product
+
+**Confidence:** NOT-A-STABLE-PRODUCT
+
+**Answer:** The transcript itself could not name it — the ASR reads "it's an otoh or xity" and
+the reviewer explicitly called it one of "a bunch of generic stoves like this". Investigation
+confirms that framing is literally correct. **Odoland alone lists at least four distinct
+canister-stove ASINs** with different names and wattage claims (1400W, 3500W Windproof, 6800W
+Windproof, and a 6800W-with-windscreen). **Etekcity's own site no longer sells outdoor gear at
+all** — its live category list is "Fitness + Health, Kitchen, Personal Care + Travel,
+Electrical, Sale", and a legacy product URL 404s. The stove exists only as third-party Amazon
+listings. OutdoorGearLab's current backpacking-stove roundup mentions neither brand.
+
+The only concrete figures findable were in a **2015** Backpacking Light forum thread, where a
+named reviewer calls it "a Chinese clone of a Korean stove" for "car camping", the price quoted
+was "$9.99 on sale", and two users' weights conflict by roughly **6x** ("94 grams without the
+case" vs "1.2 pounds").
+
+**Not added, and recommended against.** There is no stable SKU, no manufacturer spec page, and
+no price that survives a week. Listing "the ~$13 Amazon one" would repeat the "$80 Ursack"
+error — a plausible-sounding street figure that exists at no verifiable retailer.
+
+## Taxonomy fix
+
+The TOAKS Titanium 750 ml Pot was filed under `category: "stoves"` while its sibling, the TOAKS
+1300 ml Bail Handle pot, sits under `"cooking"`. Moved the 750 ml to `"cooking"` so the Stoves
+tab contains stoves. This is why the tab read "5" while holding only four actual stoves.
+
 ## Known gap: REI unreachable this session
 
 Every REI.com request in this session timed out (ETIMEDOUT after 60s) — three different
