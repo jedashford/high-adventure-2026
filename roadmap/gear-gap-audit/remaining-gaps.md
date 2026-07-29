@@ -1,16 +1,16 @@
 # Remaining gear-hub gaps
 
-Three categories are still missing from `gemini-code-1784928132429.html`. They were identified
+Two categories are still missing from `gemini-code-1784928132429.html`. They were identified
 by diffing the 50-item packing list in `packcheck.html` against the 18 categories in the gear
 hub, so each one is grounded in something the trip already tells families to bring.
 
-**Status: NOT ADDED.** Research was attempted 2026-07-28 and failed. Every product feed and
+**Status: 1 of 3 DONE.** First Aid & Blister Care shipped 2026-07-29 once the rate limiting eased; see `research/firstaid-verified.md`. The two below are still outstanding. Research was attempted 2026-07-28 and failed. Every product feed and
 retailer returned `HTTP 429` from the egress proxy, and eleven research agents stalled or lost
 their connection without writing output. No price, weight, or rating could be verified, and the
 repo rule in `CLAUDE.md` forbids inventing those values to fill required fields. Retry when the
 network is healthy.
 
-## 1. First Aid & Blister Care
+## 1. First Aid & Blister Care — DONE (2026-07-29)
 
 Highest priority of the three. `index.html` states blisters are "the #1 thing that ruins this
 for a boy," and `packcheck.html` lists a "Group first-aid kit" and "Moleskin or Leukotape" with
