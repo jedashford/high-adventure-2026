@@ -126,3 +126,40 @@ heat exchanger saves perhaps 50 g of fuel over four days.
 So the pots above are listed as the honest cheap route to efficiency for anyone outfitting
 the group stoves, but the duo builds do **not** lean on them for fuel reasons. There the 1 L
 capacity is the point: one boil covers both freeze-dried pouches instead of two.
+
+## Titanium vs aluminium — and a sizing error this caught
+
+**No titanium heat-exchanger pot exists, and none will.** Titanium conducts heat at roughly
+**1/11th** the rate of aluminium (~22 vs ~237 W/m·K). A fin ring only helps if heat conducts
+from the fin through the pot wall into the water; in titanium it would not. That is why every
+heat-exchanger pot verified in this pass — Jetboil FluxRing, MSR WindBurner/Reactor, Olicamp
+XTS, Fire-Maple — is aluminium, and why TOAKS, a titanium specialist, makes none. Their own
+site search for "heat exchanger" returns zero results.
+
+**Titanium's weakness does not apply to this trip.** Poor conduction creates scorching hot
+spots, which ruins real cooking. It is irrelevant for boiling, because water convects and
+self-equalises. `packcheck.html` specifies "boiling for freeze-dried meals, so no cooking and
+no cleanup" — so the one drawback never bites.
+
+**Combined with the duo-scale fuel finding, titanium is simply the better choice for two.**
+One 230 g canister covers the trip on any setup, so the heat exchanger buys nothing here, and
+the titanium pot is lighter and larger:
+
+| | Price | Weight | Capacity |
+|---|---|---|---|
+| Fire-Maple XK6 (aluminium, HX) | $29.95 | 6.7 oz | 1.0 L |
+| TOAKS 1300 ml BH (titanium) | $52.95 | **5 oz** | **1.3 L** |
+
+**Sizing error this caught.** The Best Value duo build initially read "1 L does both pouches in
+one boil." That is false. Two freeze-dried pouches need up to 2 cups each, about 950 ml. In a
+1.0 L pot that is brim-full and cannot reach a rolling boil without spilling, so a 1 L pot
+still means two boils. **1.3 L is the smallest size that genuinely does two pouches at once.**
+Corrected 2026-07-29; the build now specifies the TOAKS 1300 ml BH.
+
+The general lesson: for a duo boiling water, **headroom matters more than fins**. Capacity is
+the spec that removes a boil; the heat exchanger only removes fuel weight, which is already a
+non-issue at this scale.
+
+The Fire-Maple XK6 and Olicamp XTS remain listed in Cookware — they are still the cheapest
+verified route to heat-exchanger efficiency for anyone outfitting the 12-person group stoves,
+where the 48-56 L requirement makes fuel efficiency real.
