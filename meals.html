@@ -17,6 +17,9 @@
 <style>
   /* page-specific: meal tables, calorie bars */
   .mealtable td { font-size: 14px; }
+  .brand { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; padding: 2px 7px; border-radius: 4px; white-space: nowrap; vertical-align: 1px; }
+  .brand.pr { background: var(--pine); color: var(--paper); }
+  .brand.mh { background: transparent; color: var(--rust); border: 1.5px solid var(--rust); }
   .mealtable .name { font-weight: 600; color: var(--pine); white-space: nowrap; }
   .mealtable .pick { color: var(--rust); }
   .kcalbar { display: flex; align-items: center; gap: 8px; min-width: 140px; }
@@ -129,7 +132,7 @@
     <ol>
       <li><a href="#calories"><span class="toc-name">How Many Calories</span><span class="toc-dots"></span><span class="toc-no">01</span></a></li>
       <li><a href="#count"><span class="toc-name">The Meal Count</span><span class="toc-dots"></span><span class="toc-no">02</span></a></li>
-      <li><a href="#peak"><span class="toc-name">Peak Refuel, Side by Side</span><span class="toc-dots"></span><span class="toc-no">03</span></a></li>
+      <li><a href="#peak"><span class="toc-name">The Pouches, Side by Side</span><span class="toc-dots"></span><span class="toc-no">03</span></a></li>
       <li><a href="#recommend"><span class="toc-name">What to Buy</span><span class="toc-dots"></span><span class="toc-no">04</span></a></li>
       <li><a href="#lunches"><span class="toc-name">Lunches &amp; Snacks — the Gap</span><span class="toc-dots"></span><span class="toc-no">05</span></a></li>
       <li><a href="#diy"><span class="toc-name">Real Food: DIY &amp; Fresh</span><span class="toc-dots"></span><span class="toc-no">06</span></a></li>
@@ -229,8 +232,9 @@
     <div class="callout">
       <h4>The one way this plan fails</h4>
       <p style="font-size:14.5px">The bars above assume <em>well-chosen</em> pouches (~1,000 calories each).
-      Pick casually and two pouches can total barely <strong>1,100 calories for the whole day</strong> — the
-      green blocks shrink by half and no snack bag can close that hole. Which pouches are which is
+      Pick casually and two pouches can total barely <strong>1,100 calories for the whole day</strong> — or just
+      <strong>770</strong> if someone grabs the two smallest Mountain House pouches — the green blocks shrink by
+      half and no snack bag can close that hole. Which pouches are which is
       <a href="#peak">No. 03</a>; the shopping list is <a href="#recommend">No. 04</a>.</p>
     </div>
   </section>
@@ -266,33 +270,51 @@
 
   <!-- ============ 03 PEAK REFUEL SIDE BY SIDE ============ -->
   <section id="peak">
-    <div class="sec-head"><span class="sec-num">No. 03</span><h2>Peak Refuel, Side by Side</h2></div>
-    <p class="sec-note">Every current Peak Refuel meal — <strong>all 20, plus the 5 desserts</strong> — verified
-    Aug 1, 2026 against the actual product pages on peakrefuel.com: calories, protein, price, and the
-    star rating each page displays. Sorted by calories so the differences are impossible to miss.</p>
+    <div class="sec-head"><span class="sec-num">No. 03</span><h2>The Pouches, Side by Side</h2></div>
+    <p class="sec-note">Both brands, one list: <strong>every current Peak Refuel product (25) and every
+    Mountain House single pouch (36)</strong>, verified Aug 1, 2026 against the actual product pages on
+    peakrefuel.com and mountainhouse.com — calories, protein, price, and the rating each site displays.
+    Sorted by calories per pouch, brands interleaved, so the differences are impossible to miss:
+    <span class="brand pr">PEAK</span> <span class="brand mh">MTN HOUSE</span></p>
 
     <div class="callout">
       <h4>Read this before comparing anything</h4>
       <ul>
-        <li><strong>Every pouch is 2 servings — and Peak Refuel's headline numbers are per <em>pouch</em>.</strong>
-        Most competitors print per-serving numbers, so Peak looks bigger than it is if you compare labels casually.
-        All numbers below are per pouch. A hungry teen after 6 miles eats the whole pouch — <strong>plan in pouches, not servings.</strong></li>
-        <li><strong>The spread is huge:</strong> 530 to 1,120 calories per pouch at nearly the same price.
-        Two badly-chosen pouches give a boy ~1,100 calories of hot food a day; two well-chosen ones give ~2,100+. Same money.</li>
-        <li><strong>No meal claims gluten-free.</strong> Three are tagged vegan (both granolas' cousins: Mountain Berry Granola, Three Bean Chili Mac, Butternut Dal Bhat). Allergens are in the last column — collect allergies before ordering.</li>
+        <li><strong>All numbers below are per <em>pouch</em>, and nearly every pouch is 2 servings.</strong>
+        Both brands' websites print per-pouch figures (we verified Mountain House's against its own pouch-label
+        photos, 36 for 36). A hungry teen after 6 miles eats the whole pouch — <strong>plan in pouches, not
+        servings.</strong> Exceptions are marked: three Mountain House items are single-serving, and its two
+        "Classic" pouches are 3 servings.</li>
+        <li><strong>The brands are not interchangeable.</strong> The spread runs 350 to 1,120 calories per pouch.
+        Peak Refuel owns the whole top of the list — every 850+ meal is Peak — with entrée protein up to 53 g.
+        Mountain House runs $1.50–3.50 cheaper per pouch, but most of its meals are 420–660 calories:
+        <strong>an MH pouch looks like dinner and is priced like dinner, but can be a 420-calorie dinner.</strong>
+        Only one MH entrée (Fettuccine Alfredo, 820) reaches Peak's mid-range.</li>
+        <li><strong>Gluten-free is Mountain House's trump card:</strong> 18 of its meals carry third-party
+        (GFCO) certification — marked <strong>GF</strong> below. Peak Refuel claims none, on any product.
+        Allergens are in the last column; note five MH meals state no allergen line at all. Collect every boy's
+        allergies before ordering.</li>
       </ul>
     </div>
 
     <h3 class="sub">🍳 Breakfasts</h3>
     <div class="scroll-x">
     <table class="mealtable">
-      <thead><tr><th>Meal</th><th>Cal / pouch</th><th>Protein</th><th>Rating</th><th>Price</th><th>Cal per $</th><th>Water</th><th>Contains</th></tr></thead>
+      <thead><tr><th>Meal</th><th>Brand</th><th>Cal / pouch</th><th>Protein</th><th>Rating</th><th>Price</th><th>Cal per $</th><th>Water</th><th>Contains</th></tr></thead>
       <tbody>
-        <tr><td class="name pick">Biscuits &amp; Sausage Gravy</td><td><span class="kcalbar"><span class="bar" style="width:118px"></span><small>1,100</small></span></td><td class="num">34 g</td><td>4.6 ★ (304)</td><td class="num">$14.99</td><td class="num">73</td><td>1⅓ cup boiling</td><td>Milk, wheat</td></tr>
-        <tr><td class="name pick">Creamy Peaches &amp; Oats</td><td><span class="kcalbar"><span class="bar" style="width:108px"></span><small>1,010</small></span></td><td class="num">30 g</td><td>4.6 ★ (89)</td><td class="num">$12.99</td><td class="num">78</td><td>1⅓ cup boiling</td><td>Milk</td></tr>
-        <tr><td class="name">Mountain Berry Granola</td><td><span class="kcalbar low"><span class="bar" style="width:61px"></span><small>570</small></span></td><td class="num">13 g</td><td>4.9 ★ (68)</td><td class="num">$8.99</td><td class="num">63</td><td>1 cup <strong>cold</strong></td><td>Soy · vegan</td></tr>
-        <tr><td class="name">Breakfast Skillet</td><td><span class="kcalbar low"><span class="bar" style="width:58px"></span><small>540</small></span></td><td class="num">31 g</td><td>4.6 ★ (201)</td><td class="num">$14.99</td><td class="num">36</td><td>1 cup boiling</td><td>Eggs</td></tr>
-        <tr><td class="name">Strawberry Granola</td><td><span class="kcalbar low"><span class="bar" style="width:57px"></span><small>530</small></span></td><td class="num">23 g</td><td>4.8 ★ (101)</td><td class="num">$7.99</td><td class="num">66</td><td>1 cup <strong>cold</strong></td><td>Milk, soy</td></tr>
+        <tr><td class="name pick">Biscuits &amp; Sausage Gravy</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:118px"></span><small>1,100</small></span></td><td class="num">34 g</td><td>4.6 ★ (304)</td><td class="num">$14.99</td><td class="num">73</td><td>1⅓ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name pick">Creamy Peaches &amp; Oats</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:108px"></span><small>1,010</small></span></td><td class="num">30 g</td><td>4.6 ★ (89)</td><td class="num">$12.99</td><td class="num">78</td><td>1⅓ cup boiling</td><td>Milk</td></tr>
+        <tr><td class="name">Classic Biscuits &amp; Gravy <small>(3-serving pouch)</small></td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar"><span class="bar" style="width:96px"></span><small>900</small></span></td><td class="num">30 g</td><td>4.7 ★ (6)</td><td class="num">$14.99</td><td class="num">60</td><td>2¼ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Breakfast Fried Rice</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:69px"></span><small>640</small></span></td><td class="num">32 g</td><td>4.5 ★ (4)</td><td class="num">$12.49</td><td class="num">51</td><td>1¼ cup boiling</td><td>Milk, eggs, soy</td></tr>
+        <tr><td class="name">Veggie Chorizo Breakfast Scramble</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:62px"></span><small>580</small></span></td><td class="num">28 g</td><td>4.7 ★ (32)</td><td class="num">$12.49</td><td class="num">46</td><td>1⅓ cup boiling</td><td>Milk, eggs · <strong>GF</strong></td></tr>
+        <tr><td class="name">Mountain Berry Granola</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar low"><span class="bar" style="width:61px"></span><small>570</small></span></td><td class="num">13 g</td><td>4.9 ★ (68)</td><td class="num">$8.99</td><td class="num">63</td><td>1 cup <strong>cold</strong></td><td>Soy · vegan</td></tr>
+        <tr><td class="name">Biscuits and Gravy</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:58px"></span><small>540</small></span></td><td class="num">22 g</td><td>4.3 ★ (67)</td><td class="num">$11.49</td><td class="num">47</td><td>1½ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Breakfast Skillet</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar low"><span class="bar" style="width:58px"></span><small>540</small></span></td><td class="num">31 g</td><td>4.6 ★ (201)</td><td class="num">$14.99</td><td class="num">36</td><td>1 cup boiling</td><td>Eggs</td></tr>
+        <tr><td class="name">Strawberry Granola</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar low"><span class="bar" style="width:57px"></span><small>530</small></span></td><td class="num">23 g</td><td>4.8 ★ (101)</td><td class="num">$7.99</td><td class="num">66</td><td>1 cup <strong>cold</strong></td><td>Milk, soy</td></tr>
+        <tr><td class="name">Breakfast Skillet</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:56px"></span><small>520</small></span></td><td class="num">28 g</td><td>4.4 ★ (95)</td><td class="num">$12.49</td><td class="num">42</td><td>1¼ cup boiling</td><td>Milk, eggs · <strong>GF</strong></td></tr>
+        <tr><td class="name">Granola with Milk &amp; Blueberries</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:54px"></span><small>500</small></span></td><td class="num">16 g</td><td>4.8 ★ (39)</td><td class="num">$7.99</td><td class="num">63</td><td>½ cup <strong>cold</strong></td><td>Milk, wheat, coconut</td></tr>
+        <tr><td class="name">Scrambled Eggs</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:49px"></span><small>460</small></span></td><td class="num">30 g</td><td>no reviews yet</td><td class="num">$10.99</td><td class="num">42</td><td>1¼ cup boiling</td><td>Milk, eggs · <strong>GF</strong></td></tr>
+        <tr><td class="name">Scrambled Eggs with Bacon <small>(1 serving)</small></td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:38px"></span><small>350</small></span></td><td class="num">23 g</td><td>4.4 ★ (47)</td><td class="num">$10.49</td><td class="num">33</td><td>1 cup boiling</td><td>Milk, eggs · <strong>GF</strong></td></tr>
       </tbody>
     </table>
     </div>
@@ -300,23 +322,49 @@
     <h3 class="sub">🍲 Lunch &amp; dinner entrées</h3>
     <div class="scroll-x">
     <table class="mealtable">
-      <thead><tr><th>Meal</th><th>Cal / pouch</th><th>Protein</th><th>Rating</th><th>Price</th><th>Cal per $</th><th>Water</th><th>Contains</th></tr></thead>
+      <thead><tr><th>Meal</th><th>Brand</th><th>Cal / pouch</th><th>Protein</th><th>Rating</th><th>Price</th><th>Cal per $</th><th>Water</th><th>Contains</th></tr></thead>
       <tbody>
-        <tr><td class="name pick">Bison Ranch Mashers</td><td><span class="kcalbar"><span class="bar" style="width:120px"></span><small>1,120</small></span></td><td class="num">40 g</td><td>4.9 ★ (37)</td><td class="num">$15.99</td><td class="num">70</td><td>2 cups boiling</td><td>Milk, wheat</td></tr>
-        <tr><td class="name pick">Beef Pasta Marinara</td><td><span class="kcalbar"><span class="bar" style="width:111px"></span><small>1,040</small></span></td><td class="num">49 g</td><td>4.8 ★ (128)</td><td class="num">$14.99</td><td class="num">69</td><td>¾ cup boiling</td><td>Milk, wheat</td></tr>
-        <tr><td class="name">Backcountry Bison Bowl</td><td><span class="kcalbar"><span class="bar" style="width:100px"></span><small>930</small></span></td><td class="num">42 g</td><td>4.5 ★ (92)</td><td class="num">$15.99</td><td class="num">58</td><td>1¾ cup boiling</td><td>Milk, wheat · <em>sold out Aug 1</em></td></tr>
-        <tr><td class="name">Venison Country Casserole</td><td><span class="kcalbar"><span class="bar" style="width:99px"></span><small>920</small></span></td><td class="num">40 g</td><td>4.7 ★ (78)</td><td class="num">$15.99</td><td class="num">58</td><td>1 cup boiling</td><td>Milk, wheat</td></tr>
-        <tr><td class="name">Chicken Pesto Pasta</td><td><span class="kcalbar"><span class="bar" style="width:99px"></span><small>920</small></span></td><td class="num">43 g</td><td>4.6 ★ (130)</td><td class="num">$14.99</td><td class="num">61</td><td>⅔ cup boiling</td><td>Milk, wheat</td></tr>
-        <tr><td class="name pick">Chicken Alfredo</td><td><span class="kcalbar"><span class="bar" style="width:93px"></span><small>870</small></span></td><td class="num">53 g</td><td>4.9 ★ (206)</td><td class="num">$13.99</td><td class="num">62</td><td>¾ cup boiling</td><td>Milk, wheat</td></tr>
-        <tr><td class="name">Butternut Dal Bhat</td><td><span class="kcalbar"><span class="bar" style="width:93px"></span><small>870</small></span></td><td class="num">23 g</td><td>4.8 ★ (68)</td><td class="num">$13.99</td><td class="num">62</td><td>1⅓ cup boiling</td><td>Soy, coconut · vegan</td></tr>
-        <tr><td class="name">Chicken Coconut Curry</td><td><span class="kcalbar"><span class="bar" style="width:91px"></span><small>850</small></span></td><td class="num">44 g</td><td>4.8 ★ (149)</td><td class="num">$14.99</td><td class="num">57</td><td>1⅓ cup boiling</td><td>Coconut</td></tr>
-        <tr><td class="name">Beef Stroganoff</td><td><span class="kcalbar"><span class="bar" style="width:87px"></span><small>810</small></span></td><td class="num">41 g</td><td>4.7 ★ (214)</td><td class="num">$14.99</td><td class="num">54</td><td>1¼ cup boiling</td><td>Milk, wheat</td></tr>
-        <tr><td class="name">Sweet Pork &amp; Rice</td><td><span class="kcalbar"><span class="bar" style="width:86px"></span><small>800</small></span></td><td class="num">40 g</td><td>4.7 ★ (137)</td><td class="num">$13.99</td><td class="num">57</td><td>unstated on page</td><td>not stated on page</td></tr>
-        <tr><td class="name">White Chicken Chili</td><td><span class="kcalbar"><span class="bar" style="width:81px"></span><small>760</small></span></td><td class="num">41 g</td><td>4.6 ★ (68)</td><td class="num">$14.99</td><td class="num">51</td><td>1 cup boiling</td><td>Milk, wheat</td></tr>
-        <tr><td class="name">Homestyle Chicken &amp; Rice</td><td><span class="kcalbar"><span class="bar" style="width:79px"></span><small>740</small></span></td><td class="num">40 g</td><td>4.5 ★ (126)</td><td class="num">$13.99</td><td class="num">53</td><td>1 cup boiling</td><td>Milk, wheat</td></tr>
-        <tr><td class="name">Buffalo Goulash (MeatEater)</td><td><span class="kcalbar"><span class="bar" style="width:79px"></span><small>740</small></span></td><td class="num">45 g</td><td>4.6 ★ (43)</td><td class="num">$15.99</td><td class="num">46</td><td>1 cup boiling</td><td>Milk, wheat</td></tr>
-        <tr><td class="name">Three Bean Chili Mac</td><td><span class="kcalbar low"><span class="bar" style="width:65px"></span><small>610</small></span></td><td class="num">30 g</td><td>4.3 ★ (45)</td><td class="num">$13.99</td><td class="num">44</td><td>1⅓ cup boiling</td><td>Wheat · vegan</td></tr>
-        <tr><td class="name">Chicken Teriyaki Rice</td><td><span class="kcalbar low"><span class="bar" style="width:62px"></span><small>580</small></span></td><td class="num">40 g</td><td>4.4 ★ (120)</td><td class="num">$13.99</td><td class="num">41</td><td>1⅓ cup boiling</td><td>Soy</td></tr>
+        <tr><td class="name pick">Bison Ranch Mashers</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:120px"></span><small>1,120</small></span></td><td class="num">40 g</td><td>4.9 ★ (37)</td><td class="num">$15.99</td><td class="num">70</td><td>2 cups boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name pick">Beef Pasta Marinara</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:111px"></span><small>1,040</small></span></td><td class="num">49 g</td><td>4.8 ★ (128)</td><td class="num">$14.99</td><td class="num">69</td><td>¾ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Backcountry Bison Bowl</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:100px"></span><small>930</small></span></td><td class="num">42 g</td><td>4.5 ★ (92)</td><td class="num">$15.99</td><td class="num">58</td><td>1¾ cup boiling</td><td>Milk, wheat · <em>sold out Aug 1</em></td></tr>
+        <tr><td class="name">Venison Country Casserole</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:99px"></span><small>920</small></span></td><td class="num">40 g</td><td>4.7 ★ (78)</td><td class="num">$15.99</td><td class="num">58</td><td>1 cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Chicken Pesto Pasta</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:99px"></span><small>920</small></span></td><td class="num">43 g</td><td>4.6 ★ (130)</td><td class="num">$14.99</td><td class="num">61</td><td>⅔ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name pick">Chicken Alfredo</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:93px"></span><small>870</small></span></td><td class="num">53 g</td><td>4.9 ★ (206)</td><td class="num">$13.99</td><td class="num">62</td><td>¾ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Butternut Dal Bhat</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:93px"></span><small>870</small></span></td><td class="num">23 g</td><td>4.8 ★ (68)</td><td class="num">$13.99</td><td class="num">62</td><td>1⅓ cup boiling</td><td>Soy, coconut · vegan</td></tr>
+        <tr><td class="name">Chicken Coconut Curry</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:91px"></span><small>850</small></span></td><td class="num">44 g</td><td>4.8 ★ (149)</td><td class="num">$14.99</td><td class="num">57</td><td>1⅓ cup boiling</td><td>Coconut</td></tr>
+        <tr><td class="name pick">Fettuccine Alfredo with Chicken</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar"><span class="bar" style="width:88px"></span><small>820</small></span></td><td class="num">34 g</td><td>4.7 ★ (53)</td><td class="num">$12.49</td><td class="num">66</td><td>1⅓ cup boiling</td><td>Milk, eggs, wheat</td></tr>
+        <tr><td class="name">Beef Stroganoff</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:87px"></span><small>810</small></span></td><td class="num">41 g</td><td>4.7 ★ (214)</td><td class="num">$14.99</td><td class="num">54</td><td>1¼ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Sweet Pork &amp; Rice</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:86px"></span><small>800</small></span></td><td class="num">40 g</td><td>4.7 ★ (137)</td><td class="num">$13.99</td><td class="num">57</td><td>unstated on page</td><td>not stated on page</td></tr>
+        <tr><td class="name">White Chicken Chili</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:81px"></span><small>760</small></span></td><td class="num">41 g</td><td>4.6 ★ (68)</td><td class="num">$14.99</td><td class="num">51</td><td>1 cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Cheesy Pepperoni Pizza Bowl</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar"><span class="bar" style="width:79px"></span><small>740</small></span></td><td class="num">28 g</td><td>4.2 ★ (33)</td><td class="num">$12.49</td><td class="num">59</td><td>1⅓ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Homestyle Chicken &amp; Rice</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:79px"></span><small>740</small></span></td><td class="num">40 g</td><td>4.5 ★ (126)</td><td class="num">$13.99</td><td class="num">53</td><td>1 cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Buffalo Goulash (MeatEater)</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:79px"></span><small>740</small></span></td><td class="num">45 g</td><td>4.6 ★ (43)</td><td class="num">$15.99</td><td class="num">46</td><td>1 cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Classic Chili Mac with Beef <small>(3-serving pouch)</small></td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:74px"></span><small>690</small></span></td><td class="num">36 g</td><td>4.8 ★ (8)</td><td class="num">$14.99</td><td class="num">46</td><td>2⅓ cup boiling</td><td>Soy, wheat</td></tr>
+        <tr><td class="name">Cheesy Beef Enchilada Bowl</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:71px"></span><small>660</small></span></td><td class="num">32 g</td><td>4.6 ★ (15)</td><td class="num">$12.49</td><td class="num">53</td><td>1½ cup boiling</td><td>Milk · <strong>GF</strong></td></tr>
+        <tr><td class="name">Cajun Style Jambalaya</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:69px"></span><small>640</small></span></td><td class="num">32 g</td><td>4.8 ★ (4)</td><td class="num">$12.49</td><td class="num">51</td><td>1⅓ cup boiling</td><td>none stated · <strong>GF</strong></td></tr>
+        <tr><td class="name">Creamy Macaroni &amp; Cheese</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:66px"></span><small>620</small></span></td><td class="num">26 g</td><td>3.5 ★ (21)</td><td class="num">$11.49</td><td class="num">54</td><td>1⅓ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Three Bean Chili Mac</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar low"><span class="bar" style="width:65px"></span><small>610</small></span></td><td class="num">30 g</td><td>4.3 ★ (45)</td><td class="num">$13.99</td><td class="num">44</td><td>1⅓ cup boiling</td><td>Wheat · vegan</td></tr>
+        <tr><td class="name">Chicken and Dumplings</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:64px"></span><small>600</small></span></td><td class="num">36 g</td><td>4.8 ★ (51)</td><td class="num">$12.49</td><td class="num">48</td><td>1⅓ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Chicken Fried Rice</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:64px"></span><small>600</small></span></td><td class="num">26 g</td><td>3.6 ★ (22)</td><td class="num">$12.49</td><td class="num">48</td><td>1½ cup boiling</td><td>Milk, eggs, soy, sesame · <strong>GF</strong></td></tr>
+        <tr><td class="name">Buffalo-Style Chicken Mac &amp; Cheese</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:62px"></span><small>580</small></span></td><td class="num">36 g</td><td>4.3 ★ (48)</td><td class="num">$12.49</td><td class="num">46</td><td>1⅔ cup boiling</td><td>Milk, wheat · <em>sold out Aug 1</em></td></tr>
+        <tr><td class="name">Korean Inspired Beef</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:62px"></span><small>580</small></span></td><td class="num">22 g</td><td>3.9 ★ (17)</td><td class="num">$12.49</td><td class="num">46</td><td>1⅓ cup boiling</td><td>Soy, sesame · <strong>GF</strong></td></tr>
+        <tr><td class="name">Kung Pao Chicken</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:62px"></span><small>580</small></span></td><td class="num">32 g</td><td>4.6 ★ (14)</td><td class="num">$12.49</td><td class="num">46</td><td>1½ cup boiling</td><td>Soy, sesame · <strong>GF</strong></td></tr>
+        <tr><td class="name">Chicken Teriyaki Rice</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar low"><span class="bar" style="width:62px"></span><small>580</small></span></td><td class="num">40 g</td><td>4.4 ★ (120)</td><td class="num">$13.99</td><td class="num">41</td><td>1⅓ cup boiling</td><td>Soy</td></tr>
+        <tr><td class="name">Beef Stroganoff with Noodles</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:60px"></span><small>560</small></span></td><td class="num">24 g</td><td>4.8 ★ (63)</td><td class="num">$12.49</td><td class="num">45</td><td>1⅔ cup boiling</td><td>Milk, eggs, wheat</td></tr>
+        <tr><td class="name">Homestyle Chicken Noodle Casserole</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:60px"></span><small>560</small></span></td><td class="num">38 g</td><td>4.9 ★ (55)</td><td class="num">$12.49</td><td class="num">45</td><td>1½ cup boiling</td><td>Eggs, milk, wheat</td></tr>
+        <tr><td class="name">Chicken Fajita Bowl</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:60px"></span><small>560</small></span></td><td class="num">34 g</td><td>4.8 ★ (35)</td><td class="num">$12.49</td><td class="num">45</td><td>1½ cup boiling</td><td>none stated · <strong>GF</strong></td></tr>
+        <tr><td class="name">Chicken Tikka Masala</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:60px"></span><small>560</small></span></td><td class="num">24 g</td><td>4.8 ★ (11)</td><td class="num">$12.49</td><td class="num">45</td><td>1½ cup boiling</td><td>Milk, coconut · <strong>GF</strong></td></tr>
+        <tr><td class="name">Mexican-Style Adobo Rice &amp; Chicken</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:60px"></span><small>560</small></span></td><td class="num">30 g</td><td>4.6 ★ (20)</td><td class="num">$12.49</td><td class="num">45</td><td>1½ cup boiling</td><td>none stated · <strong>GF</strong> · <em>sold out Aug 1</em></td></tr>
+        <tr><td class="name">Pad Thai with Chicken</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:54px"></span><small>500</small></span></td><td class="num">20 g</td><td>4.5 ★ (45)</td><td class="num">$12.49</td><td class="num">40</td><td>1⅓ cup boiling</td><td>Sesame, soy, fish · <strong>GF</strong></td></tr>
+        <tr><td class="name">Rice &amp; Chicken</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:54px"></span><small>500</small></span></td><td class="num">14 g</td><td>4.5 ★ (40)</td><td class="num">$12.49</td><td class="num">40</td><td>1⅓ cup boiling</td><td>none stated · <strong>GF</strong></td></tr>
+        <tr><td class="name">Spaghetti with Beef Marinara</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:54px"></span><small>500</small></span></td><td class="num">20 g</td><td>4.5 ★ (34)</td><td class="num">$12.49</td><td class="num">40</td><td>1¾ cup boiling</td><td>Wheat</td></tr>
+        <tr><td class="name">Yellow Curry with Chicken &amp; Rice</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:54px"></span><small>500</small></span></td><td class="num">26 g</td><td>4.7 ★ (52)</td><td class="num">$12.49</td><td class="num">40</td><td>1½ cup boiling</td><td>Fish, coconut, shrimp · <strong>GF</strong></td></tr>
+        <tr><td class="name">Chicken and Mashed Potatoes</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:49px"></span><small>460</small></span></td><td class="num">44 g</td><td>4.8 ★ (56)</td><td class="num">$12.49</td><td class="num">37</td><td>1⅔ cup boiling</td><td>Milk · <strong>GF</strong></td></tr>
+        <tr><td class="name">Chicken Teriyaki</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:49px"></span><small>460</small></span></td><td class="num">22 g</td><td>4.4 ★ (23)</td><td class="num">$12.49</td><td class="num">37</td><td>1⅔ cup boiling</td><td>Soy · <strong>GF</strong></td></tr>
+        <tr><td class="name">Chili Mac with Beef</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:49px"></span><small>460</small></span></td><td class="num">24 g</td><td>4.3 ★ (34)</td><td class="num">$12.49</td><td class="num">37</td><td>1½ cup boiling</td><td>Wheat</td></tr>
+        <tr><td class="name">Beef Lasagna</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:47px"></span><small>440</small></span></td><td class="num">22 g</td><td>4.7 ★ (37)</td><td class="num">$12.49</td><td class="num">35</td><td>1½ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Pasta Primavera</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:47px"></span><small>440</small></span></td><td class="num">16 g</td><td>4.7 ★ (17)</td><td class="num">$11.49</td><td class="num">38</td><td>1⅔ cup boiling</td><td>Milk, wheat (may contain eggs)</td></tr>
+        <tr><td class="name">Beef Stew</td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:45px"></span><small>420</small></span></td><td class="num">20 g</td><td>4.8 ★ (74)</td><td class="num">$12.49</td><td class="num">34</td><td>1¾ cup boiling</td><td>none stated · <strong>GF</strong></td></tr>
       </tbody>
     </table>
     </div>
@@ -324,26 +372,32 @@
     <h3 class="sub">🍰 Desserts — the morale line</h3>
     <div class="scroll-x">
     <table class="mealtable">
-      <thead><tr><th>Dessert</th><th>Cal / pouch</th><th>Rating</th><th>Price</th><th>Water</th><th>Contains</th></tr></thead>
+      <thead><tr><th>Dessert</th><th>Brand</th><th>Cal / pouch</th><th>Rating</th><th>Price</th><th>Water</th><th>Contains</th></tr></thead>
       <tbody>
-        <tr><td class="name pick">Peach Cobbler</td><td><span class="kcalbar"><span class="bar" style="width:72px"></span><small>670</small></span></td><td>4.8 ★ (115)</td><td class="num">$11.99</td><td>⅔ cup boiling</td><td>Milk, soy, wheat, eggs</td></tr>
-        <tr><td class="name">PB Choc-Chip Cookie Bites</td><td><span class="kcalbar"><span class="bar" style="width:69px"></span><small>640</small></span></td><td>4.7 ★ (59)</td><td class="num">$7.99</td><td>none — ready to eat</td><td>Milk, wheat, soy, <strong>peanut</strong></td></tr>
-        <tr><td class="name">Chocolate Fudge Brownie Bites</td><td><span class="kcalbar"><span class="bar" style="width:65px"></span><small>610</small></span></td><td>4.6 ★ (55)</td><td class="num">$7.99</td><td>none — ready to eat</td><td>Milk, wheat, soy</td></tr>
-        <tr><td class="name">Mountain Berry Cobbler</td><td><span class="kcalbar"><span class="bar" style="width:64px"></span><small>600</small></span></td><td>4.9 ★ (51)</td><td class="num">$11.99</td><td>⅔ cup boiling</td><td>Milk, soy, wheat, eggs</td></tr>
-        <tr><td class="name">Strawberry Cheesecake Bites</td><td><span class="kcalbar low"><span class="bar" style="width:43px"></span><small>400</small></span></td><td>4.7 ★ (66)</td><td class="num">$7.99</td><td>none — ready to eat</td><td>Milk, wheat, eggs</td></tr>
+        <tr><td class="name pick">Peach Cobbler</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:72px"></span><small>670</small></span></td><td>4.8 ★ (115)</td><td class="num">$11.99</td><td>⅔ cup boiling</td><td>Milk, soy, wheat, eggs</td></tr>
+        <tr><td class="name">PB Choc-Chip Cookie Bites</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:69px"></span><small>640</small></span></td><td>4.7 ★ (59)</td><td class="num">$7.99</td><td>none — ready to eat</td><td>Milk, wheat, soy, <strong>peanut</strong></td></tr>
+        <tr><td class="name">Chocolate Fudge Brownie Bites</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:65px"></span><small>610</small></span></td><td>4.6 ★ (55)</td><td class="num">$7.99</td><td>none — ready to eat</td><td>Milk, wheat, soy</td></tr>
+        <tr><td class="name">Mountain Berry Cobbler</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar"><span class="bar" style="width:64px"></span><small>600</small></span></td><td>4.9 ★ (51)</td><td class="num">$11.99</td><td>⅔ cup boiling</td><td>Milk, soy, wheat, eggs</td></tr>
+        <tr><td class="name">Strawberry Cheesecake Bites</td><td><span class="brand pr">PEAK</span></td><td><span class="kcalbar low"><span class="bar" style="width:43px"></span><small>400</small></span></td><td>4.7 ★ (66)</td><td class="num">$7.99</td><td>none — ready to eat</td><td>Milk, wheat, eggs</td></tr>
+        <tr><td class="name">Vanilla Ice Cream Sandwich <small>(1 serving)</small></td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:15px"></span><small>140</small></span></td><td>4.0 ★ (14)</td><td class="num">$4.99</td><td>none — ready to eat</td><td>Milk, soy, wheat</td></tr>
+        <tr><td class="name">Mint Choc-Chip Ice Cream Sandwich <small>(1 serving)</small></td><td><span class="brand mh">MTN HOUSE</span></td><td><span class="kcalbar low"><span class="bar" style="width:15px"></span><small>140</small></span></td><td>4.1 ★ (15)</td><td class="num">$4.99</td><td>none — ready to eat</td><td>Milk, wheat, soy</td></tr>
       </tbody>
     </table>
     </div>
 
     <div class="intel"><span class="src">How to read the numbers</span>
-    <p>Calories, protein, prices, and ratings are <strong>per pouch, as displayed on each peakrefuel.com product
-    page on Aug 1, 2026</strong> (ratings are the count each page shows; both drift over time — re-check before a
-    bulk order). "Cal per $" is our math: calories ÷ price. Everything cooks by pouring boiling water straight
-    into the pouch — no pot to clean — except the two granolas, which take <strong>cold</strong> water, and the
-    ready-to-eat Bites. Water per pouch runs ⅔–2 cups, which is what drives the
-    <a href="packcheck.html#groupgear">group fuel math</a>. One honest gap: Sweet Pork &amp; Rice's page states
-    no water amount and no allergen line — check the physical pouch. Full verified dataset with every source URL
-    lives in the repo under <code style="font-size:12px">roadmap/meals/research/</code>.</p></div>
+    <p>Calories, protein, prices, and ratings are <strong>per pouch, as displayed on each brand's own product
+    pages on Aug 1, 2026</strong> — peakrefuel.com and mountainhouse.com. Mountain House figures were additionally
+    checked against the pouch-label photos its own pages publish (36 of 36 matched); its ratings are what the
+    site's own review widget shows, which differs from the much larger review pools at REI or Amazon. Ratings and
+    prices drift — re-check before a bulk order, and <strong>mind the tiny samples</strong>: several strong-looking
+    Mountain House ratings sit on 4–15 reviews, while the workhorse meals of both brands have 50–300.
+    "Cal per $" is our math: calories ÷ price. Everything cooks by pouring boiling water straight into the pouch —
+    no pot to clean — except the granolas (<strong>cold</strong> water) and the ready-to-eat items. Water per pouch
+    runs ½–2⅓ cups, which drives the <a href="packcheck.html#groupgear">group fuel math</a>; Mountain House meals
+    also want a 4–7-minute stand after the soak. Honest gaps: Peak's Sweet Pork &amp; Rice page states no water
+    amount or allergen line, and Mountain House states net weight nowhere. Full verified datasets with every
+    source URL live in the repo under <code style="font-size:12px">roadmap/meals/research/</code>.</p></div>
   </section>
 
   <!-- ============ 04 RECOMMENDATION ============ -->
@@ -370,11 +424,24 @@
     </div>
 
     <p style="font-size:15px;max-width:68ch"><strong>Swaps are fine — from the right shelf.</strong> Any dinner at
-    800+ calories with a 4.6★+ rating substitutes cleanly: Beef Stroganoff, Chicken Pesto Pasta, Chicken Coconut
-    Curry, Sweet Pork &amp; Rice, Venison Country Casserole. Treat the sub-700 pouches (Breakfast Skillet, both
-    granolas, Chicken Teriyaki, Three Bean Chili Mac) as <em>add-ons or small-appetite options for the youngest
-    boys</em>, never as a big teen's whole dinner. For the 12–13-year-olds, the same basket simply leaves a smaller
-    gap to fill with snacks.</p>
+    800+ calories with a 4.6★+ rating substitutes cleanly: Peak's Beef Stroganoff, Chicken Pesto Pasta, Chicken
+    Coconut Curry, Sweet Pork &amp; Rice, Venison Country Casserole — or <strong>Mountain House's one entry on
+    that shelf, Fettuccine Alfredo with Chicken</strong> (820 cal, 4.7★, $12.49 — the cheapest 800+ dinner either
+    brand sells). Treat every sub-700 pouch, whichever brand, as <em>an add-on or a small-appetite option for the
+    youngest boys</em>, never as a big teen's whole dinner. For the 12–13-year-olds, the same basket simply leaves
+    a smaller gap to fill with snacks.</p>
+
+    <div class="intel"><span class="src">Where Mountain House fits — and where it doesn't</span>
+    <p><strong>Don't build a boy's day on two Mountain House pouches.</strong> Its meals are $1.50–3.50 cheaper,
+    but most are 420–660 calories — a two-pouch MH day is 900–1,300 calories of hot food, the exact failure the
+    chart in <a href="#calories">No. 01</a> warns about, and the per-calorie math usually favors Peak anyway
+    (most MH entrées: 34–54 cal/$ vs 54–78 for the recommended Peak picks). <strong>Where MH wins outright:
+    gluten-free.</strong> If any boy needs GF, Peak offers nothing and Mountain House has 18 certified meals —
+    a GF day could be its Breakfast Skillet (520, GF) + Cheesy Beef Enchilada Bowl (660, GF), about 1,180 hot
+    calories, meaning <em>his snack bag needs to grow to roughly 1,800–2,000 calories</em>. Crowd-tested MH
+    standouts if you mix brands for variety: Homestyle Chicken Noodle Casserole (4.9★), Beef Stroganoff (4.8★),
+    Chicken and Dumplings (4.8★) — just count them as ~600-calorie meals and upsize the snacks that day.
+    And skip its two lowest-rated (Creamy Mac 3.5★, Chicken Fried Rice 3.6★).</p></div>
 
     <div class="callout">
       <h4>Ordering notes for Alex</h4>
@@ -385,8 +452,12 @@
         beat single-pouch pricing — we verified singles only, so compare at checkout.)</li>
         <li><strong>Check stock early:</strong> Backcountry Bison Bowl was already sold out Aug 1. Order the week
         of pack check, not the week of departure.</li>
-        <li><strong>Allergies first:</strong> nearly the whole lineup contains milk and/or wheat. Collect every
-        boy's allergies <em>before</em> the order goes in.</li>
+        <li><strong>Allergies first:</strong> nearly everything from both brands contains milk and/or wheat.
+        Collect every boy's allergies <em>before</em> the order goes in — and if anyone is gluten-free, the order
+        includes Mountain House (18 certified-GF meals; Peak has zero).</li>
+        <li><strong>The $4.99 morale bomb:</strong> Mountain House's freeze-dried ice cream sandwiches (140 cal)
+        are a legendary camp novelty — not nutrition, pure delight. One each on summit night is the cheapest
+        cheer on this page after the shared cobbler.</li>
         <li><strong>Adults (self-supplied):</strong> a man's 3,500–4,000 kcal/day makes the two-pouch pattern cover
         barely half the day — dads should shop the same top shelf <em>plus</em> a bigger lunch bag, or add a DIY
         third course from <a href="#diy">No. 06</a>. A shared Peach Cobbler pouch after dinner (~335 kcal each for
@@ -559,7 +630,7 @@
       <li><strong>Confirm the plan:</strong> two Peak Refuel meals a day per boy (breakfast + dinner), boys cover their own lunches and snacks — is that the final shape?</li>
       <li><strong>Who buys?</strong> One bulk order (better price, one shipment, no duplicates) or each family buys their boy's 6 pouches?</li>
       <li><strong>Cost per boy:</strong> what number do we tell parents, and how do they pay it?</li>
-      <li><strong>Allergies &amp; picky eaters:</strong> collect them before anything is ordered — several Peak Refuel meals contain nuts, dairy, gluten.</li>
+      <li><strong>Allergies &amp; picky eaters:</strong> collect them before anything is ordered — nearly everything from both brands contains dairy or gluten, several meals contain nuts. A gluten-free boy means Mountain House pouches (the only certified-GF option).</li>
       <li><strong>Adults:</strong> everyone truly solo, or do the dads pool a shared dinner one night (the trout fry is already planned)?</li>
       <li><strong>Fuel:</strong> does the <a href="packcheck.html#groupgear">group fuel math</a> still hold once real meal choices (and any simmering) are locked?</li>
     </ol>
