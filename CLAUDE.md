@@ -1,20 +1,24 @@
 ---
 scope: monorepo
 audience: every-session
-verified: 2026-07-28
+verified: 2026-08-01
 verified-against:
   - index.html
   - packcheck.html
+  - meals.html
+  - custommeals.html
   - gemini-code-1784928132429.html
   - roadmap/gear-gap-audit/research/
+  - roadmap/meals/research/
 review-cadence: never
 ---
 
 # Sawtooth High Adventure, repo rules
 
-A personal sandbox. Four hand-edited static files (`index.html`, `packcheck.html`,
-`gemini-code-1784928132429.html`, `styles.css`) published to GitHub Pages for one church
-youth group. No build step, no backend, no dependencies, no users to regress.
+A personal sandbox. Six hand-edited static files (`index.html`, `packcheck.html`,
+`meals.html`, `custommeals.html`, `gemini-code-1784928132429.html`, `styles.css`)
+published to GitHub Pages for one church youth group. No build step, no backend, no
+dependencies, no users to regress.
 
 The rules below scope down the global `~/.claude/CLAUDE.md` for every path in this repo.
 
@@ -63,17 +67,22 @@ under `roadmap/<topic>/research/` so a later session can re-check rather than re
 
 **Enforced by:** `roadmap/gear-gap-audit/research/` archive convention; advisory
 
-## PRs are optional here
+## Push finished work straight to `main`
 
-**Rule:** Do not treat a pull request as the required close out for a change. Commit to a
-branch and push. Open a PR only when the change is worth review or the user asks for one.
+**Rule:** Finished, verified changes to any file in this repo must be committed on `main`
+and pushed directly, with no feature branch and no pull request, because `main` is the
+published site.
 
-**Why:** This repo carries four unmerged branches and two open PRs for a static site with a
-single author, which is review ceremony with no reviewer. The global "Finish work with a PR"
-rule assumes a team.
+**Why:** Owner directive: this is a single-author personal project and GitHub
+Pages serves `main`, so the previous branch-and-PR flow only delayed publishing. The repo
+had accumulated four unmerged branches and open PRs with no reviewer, and every change
+waited on a manual merge before reaching the live site.
 
-**How to apply:** This overrides the global `~/.claude/CLAUDE.md` "Finish work with a PR"
-section for this repo. Still branch rather than committing straight to `main`, and still
-report what landed with links. The PR step itself is what becomes optional.
+**How to apply:** This replaces the earlier "PRs are optional here" rule and overrides the
+global `~/.claude/CLAUDE.md` "Finish work with a PR" section entirely, including its
+branch-first requirement. Verify the change first per the rules above, commit with the AI
+attribution trailer, push to `main`, and report what landed with the live URL. A branch is
+only for experimental work the owner has not asked to publish; a PR happens only when the
+owner explicitly asks for one.
 
 **Enforced by:** advisory

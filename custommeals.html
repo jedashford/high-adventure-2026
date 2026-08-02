@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Custom Meals — the Trail Kitchen Recipe Book · Sawtooth 2026">
+<meta property="og:description" content="Real backpacking recipes with real measurements, ranked by how well they work on a canister stove with a 1.6 L pot and a 5.5-inch pan.">
+<meta property="og:image" content="https://jedashford.github.io/high-adventure-2026/images/banner.jpg">
+<meta property="og:url" content="https://jedashford.github.io/high-adventure-2026/custommeals.html">
+<title>Custom Meals — Trail Kitchen Recipe Book · Sawtooth 2026</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* page-specific: recipe book */
+  h3.sub { font-family: var(--serif); color: var(--pine); margin: 26px 0 8px; font-size: 21px; }
+  .tier { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; vertical-align: 2px; white-space: nowrap; }
+  .tier.top { background: var(--pine); color: var(--paper); }
+  .tier.solid { background: #dfe8d9; color: var(--fir); border: 1px solid #b9cbae; }
+  .tier.treat { background: transparent; color: var(--lake); border: 1.5px solid var(--lake); }
+  .tier.demo { background: transparent; color: var(--rust); border: 1.5px dashed var(--rust); }
+  .rx {
+    background: rgba(255,255,255,0.55); border: 1px solid var(--line);
+    border-left: 5px solid var(--fir); border-radius: 6px;
+    padding: 20px 24px; margin: 18px 0;
+  }
+  .rx.top-shelf { border-left-color: var(--pine); }
+  .rx.demo-shelf { border-left-color: var(--rust); }
+  .rx h4 { font-family: var(--serif); font-size: 21px; color: var(--pine); margin-bottom: 2px; }
+  .rx .pitch { font-family: var(--serif); font-style: italic; color: var(--moss); font-size: 14.5px; margin-bottom: 10px; }
+  .rx .facts { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--rust); margin-bottom: 12px; }
+  .rx .facts span { white-space: nowrap; }
+  .rx-cols { display: grid; grid-template-columns: 5fr 7fr; gap: 10px 28px; }
+  .rx h5 { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--moss); margin: 6px 0 6px; }
+  .rx ul.ing { list-style: none; margin: 0; }
+  .rx ul.ing li { padding: 4px 0; border-bottom: 1px dotted var(--line); font-size: 14px; }
+  .rx ul.ing li b { color: var(--pine); }
+  .rx ol.steps { margin: 0 0 0 20px; }
+  .rx ol.steps li { font-size: 14px; margin: 5px 0; }
+  .rx ol.steps li::marker { font-family: var(--serif); font-weight: 700; color: var(--rust); }
+  .rx .note { font-size: 13px; color: var(--moss); margin-top: 10px; border-top: 1px solid var(--line); padding-top: 8px; }
+  .rx .note a { color: var(--fir); }
+  .rx.compact { padding: 14px 18px; }
+  .rx.compact h4 { font-size: 17px; }
+  .rx.compact .pitch { margin-bottom: 6px; }
+  .rx.compact p.ci { font-size: 13.5px; margin: 5px 0; }
+  .rx.compact p.ci b { color: var(--pine); }
+  .rx.compact .note { margin-top: 6px; padding-top: 6px; }
+  .rx.treat-shelf { border-left-color: var(--lake); }
+  .ranklist td { font-size: 14px; padding: 8px 14px; }
+  .ranklist tr.tierhead td { background: var(--paper-deep); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--rust); border-bottom: 2px solid var(--line); }
+  .ranklist .name a { font-weight: 700; color: var(--pine); text-decoration: none; }
+  .ranklist .name a:hover { color: var(--rust); }
+  @media (max-width: 760px) { .rx-cols { grid-template-columns: 1fr; } .rx { padding: 16px 18px; } }
+  @media print { .rx { break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<div class="topbar"></div>
+
+<nav class="sitenav" aria-label="Site">
+  <div class="wrap sitenav-in">
+    <a class="nav-mark" href="index.html">⛰&nbsp;<span>Sawtooth ’26</span></a>
+    <div class="nav-pages">
+      <a href="index.html">Trip Guide</a>
+      <a href="packcheck.html">Pack Check</a>
+      <a href="meals.html">Meals</a>
+      <a href="custommeals.html" aria-current="page">Custom Meals</a>
+      <a class="nav-contents" href="#contents">Contents</a>
+    </div>
+  </div>
+</nav>
+
+<header class="masthead">
+  <div class="wrap">
+    <img class="masthead-badge" src="images/badge.png" alt="Lakeside 14th High Adventure badge — sawtooth peaks over an alpine lake with pines, in a rust and pine ring">
+    <div class="kicker">Personal Edition · Field Manual No. 4</div>
+    <h1 class="title" style="font-size:clamp(44px,7vw,84px)">Custom <em>Meals</em></h1>
+    <p class="subtitle">The trail kitchen recipe book — real recipes, real measurements, ranked by what actually works out there</p>
+    <div class="datebar">
+      <span class="hot">One pot · one small pan · no fires</span>
+      <span>Toaks 1650 ml + 5.5" lid-pan</span>
+      <span class="go"><a href="meals.html">← The meal plan</a></span>
+    </div>
+  </div>
+</header>
+
+<div class="statband">
+  <div class="wrap">
+    <div class="stat"><b>42</b><small>recipes</small></div>
+    <div class="stat"><b>16</b><small>top-shelf picks</small></div>
+    <div class="stat"><b>25+</b><small>sources opened</small></div>
+    <div class="stat"><b>0</b><small>campfires needed</small></div>
+    <div class="stat"><b>1+1</b><small>pot · lid-pan</small></div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <nav class="toc" id="contents" aria-label="Contents">
+    <div class="toc-head">Contents</div>
+    <ol>
+      <li><a href="#ranked"><span class="toc-name">The Ranked List</span><span class="toc-dots"></span><span class="toc-no">01</span></a></li>
+      <li><a href="#dinners"><span class="toc-name">One-Pot Dinners</span><span class="toc-dots"></span><span class="toc-no">02</span></a></li>
+      <li><a href="#breakfasts"><span class="toc-name">Breakfasts</span><span class="toc-dots"></span><span class="toc-no">03</span></a></li>
+      <li><a href="#pan"><span class="toc-name">The Lid-Pan</span><span class="toc-dots"></span><span class="toc-no">04</span></a></li>
+      <li><a href="#nightone"><span class="toc-name">Night One: Fresh</span><span class="toc-dots"></span><span class="toc-no">05</span></a></li>
+      <li><a href="#lunches"><span class="toc-name">No-Cook Lunches</span><span class="toc-dots"></span><span class="toc-no">06</span></a></li>
+      <li><a href="#sweets"><span class="toc-name">Desserts &amp; Hot Drinks</span><span class="toc-dots"></span><span class="toc-no">07</span></a></li>
+      <li><a href="#method"><span class="toc-name">Method, Fuel &amp; Cleanup</span><span class="toc-dots"></span><span class="toc-no">08</span></a></li>
+    </ol>
+    <p class="toc-xref">Companion volumes: <a href="index.html">No. 1 — Trip Guide</a> · <a href="packcheck.html">No. 2 — Pack Check</a> · <a href="meals.html">No. 3 — Meals</a></p>
+  </nav>
+
+  <!-- ============ 01 RANKED LIST ============ -->
+  <section id="ranked">
+    <div class="sec-head"><span class="sec-num">No. 01</span><h2>The Ranked List</h2></div>
+    <p class="sec-note">Every recipe in the book, most viable at the top. <strong class="tier top" style="vertical-align:baseline">top shelf</strong> = build the menu around it (easy, crowd-proof, fuel-cheap) ·
+    <span class="tier solid">solid</span> = works, minor fuss · <span class="tier treat">leader treat</span> = adults will love it ·
+    <span class="tier demo">demo only</span> = fun once. Every name links to its full recipe below. Calories shown only where the source states them.</p>
+
+    <div class="scroll-x">
+    <table class="ranklist">
+      <thead><tr><th>Recipe</th><th>Category</th><th>Cal/serv.</th><th>The call</th></tr></thead>
+      <tbody>
+        <tr class="tierhead"><td colspan="4">Top shelf — make these first</td></tr>
+        <tr><td class="name"><a href="#rx-ramenbomb">The Ramen Bomb</a></td><td>Dinner</td><td class="num">—</td><td>Ramen + potatoes absorb everything; cannot be ruined</td></tr>
+        <tr><td class="name"><a href="#rx-beansrice">Beans + Rice, Fritos &amp; Cheese</a></td><td>Dinner</td><td class="num">668</td><td>Skurka's most-requested; 60-second simmer</td></tr>
+        <tr><td class="name"><a href="#rx-chickenrice">Chicken and Rice</a></td><td>Dinner</td><td class="num">—</td><td>The safest plate in the book</td></tr>
+        <tr><td class="name"><a href="#rx-oatmeal">Milk-and-Sugar Oatmeal Base</a></td><td>Breakfast</td><td class="num">—</td><td>One boil feeds the whole camp; 5 variations</td></tr>
+        <tr><td class="name"><a href="#rx-breakfastcouscous">Pistachio &amp; Raisin Couscous</a></td><td>Breakfast</td><td class="num">—</td><td>Rice-pudding energy, all-grocery</td></tr>
+        <tr><td class="name"><a href="#rx-granola">Pecan Maple Granola in a Bag</a></td><td>Breakfast</td><td class="num">580</td><td>Zero-fuel morning — made for hike-out day</td></tr>
+        <tr><td class="name"><a href="#rx-quesadilla">Pepperoni &amp; Cheese Quesadilla</a></td><td>Lid-pan</td><td class="num">455</td><td>Published for exactly this style of pan</td></tr>
+        <tr><td class="name"><a href="#rx-pizza">Tortilla Trail Pizza</a></td><td>Lid-pan</td><td class="num">—</td><td>The recipe assumes a 6-inch pan — that's this lid</td></tr>
+        <tr><td class="name"><a href="#rx-trout">Pan-Fried Trout, Two Dredges</a></td><td>Lid-pan</td><td class="num">—</td><td>The documented titanium success story</td></tr>
+        <tr><td class="name"><a href="#rx-freshquesadilla">Fresh-Veg Quesadillas</a></td><td>Night one</td><td class="num">—</td><td>Real vegetables on the night weight doesn't matter</td></tr>
+        <tr><td class="name"><a href="#rx-pbroll">PB + Honey Tortilla Roll</a></td><td>Lunch</td><td class="num">~460</td><td>Fastest calories per minute of effort</td></tr>
+        <tr><td class="name"><a href="#rx-tunawrap">Tuna–Cheese–Sausage Wrap</a></td><td>Lunch</td><td class="num">~455+</td><td>Real protein at noon, shelf-stable all trip</td></tr>
+        <tr><td class="name"><a href="#rx-gorp">GORP Trail Mix, 1:1</a></td><td>Lunch</td><td class="num">302/½c</td><td>The graze layer — formula, not vibes</td></tr>
+        <tr><td class="name"><a href="#rx-pudding">Instant Pudding, Trail Style</a></td><td>Dessert</td><td class="num">354</td><td>Real dessert, zero flame, cold creek water</td></tr>
+        <tr><td class="name"><a href="#rx-drinks">Hot Drinks Bar — Cocoa + Cider</a></td><td>Drinks</td><td class="num">63/cup</td><td>The cold-night morale machine</td></tr>
+        <tr><td class="name"><a href="#rx-hotchoc">Really Hot Chocolate</a></td><td>Drinks</td><td class="num">199</td><td>The upgrade cocoa — real grated chocolate</td></tr>
+        <tr class="tierhead"><td colspan="4">Solid — works, minor fuss</td></tr>
+        <tr><td class="name"><a href="#rx-skurkapeanut">Peanut Noodles (Skurka)</a></td><td>Dinner</td><td class="num">809</td><td>Biggest stated dinner here; pull the page's sheet first</td></tr>
+        <tr><td class="name"><a href="#rx-chililime">Chili Lime Peanut Noodles</a></td><td>Dinner</td><td class="num">716</td><td>716 cal from one ramen packet</td></tr>
+        <tr><td class="name"><a href="#rx-pesto">Pesto Noodles (Skurka)</a></td><td>Dinner</td><td class="num">700</td><td>No simmer; smells like pizza</td></tr>
+        <tr><td class="name"><a href="#rx-scratchmac">Good Old Mac N Cheese</a></td><td>Dinner</td><td class="num">656</td><td>Best mac formula — if you'll dehydrate pasta at home</td></tr>
+        <tr><td class="name"><a href="#rx-sundried">Sun-Dried Tomato Couscous</a></td><td>Dinner</td><td class="num">636</td><td>Dietitian-written; pot never touches flame</td></tr>
+        <tr><td class="name"><a href="#rx-chili">Backcountry Chili (Skurka)</a></td><td>Dinner</td><td class="num">512</td><td>Boil + cozy; chips and cheese on top</td></tr>
+        <tr><td class="name"><a href="#rx-pbramen">Spicy Peanut Butter Ramen</a></td><td>Dinner</td><td class="num">463</td><td>Five-ingredient sauce mixed at home</td></tr>
+        <tr><td class="name"><a href="#rx-mashers">3-Cheese Mashers w/ Kabanos</a></td><td>Dinner</td><td class="num">411</td><td>Bag = bowl; the designated rescue meal</td></tr>
+        <tr><td class="name"><a href="#rx-jerkyramen">Jerky Ramen</a></td><td>Dinner</td><td class="num">388</td><td>Brothy beef-noodle soup from a bag</td></tr>
+        <tr><td class="name"><a href="#rx-salmonbowl">Teriyaki Salmon Rice Bowl</a></td><td>Dinner</td><td class="num">353</td><td>Five minutes; poll the crowd on fish first</td></tr>
+        <tr><td class="name"><a href="#rx-medcouscous">Mediterranean Couscous</a></td><td>Dinner</td><td class="num">—</td><td>Four ingredients; olives split the room</td></tr>
+        <tr><td class="name"><a href="#rx-chilimacdiy">Chili Mac and Cheese</a></td><td>Dinner</td><td class="num">—</td><td>Guaranteed flavors; the simmer is the tax</td></tr>
+        <tr><td class="name"><a href="#rx-blueberryoats">Blueberry Coconut Oatmeal</a></td><td>Breakfast</td><td class="num">521</td><td>Crowd-safe berries; watch the page's water typo</td></tr>
+        <tr><td class="name"><a href="#rx-tropicalcouscous">Tropical Breakfast Couscous</a></td><td>Breakfast</td><td class="num">420</td><td>½-cup boil per serving; bag is the bowl</td></tr>
+        <tr><td class="name"><a href="#rx-grits">Camp Grits</a></td><td>Breakfast</td><td class="num">—</td><td>Feeds 4 — budget the fuel or go instant</td></tr>
+        <tr><td class="name"><a href="#rx-hashbrowns">Bacon-Cheddar Hash Browns</a></td><td>Lid-pan</td><td class="num">700</td><td>Diner smell; fiddliest routine pan item</td></tr>
+        <tr><td class="name"><a href="#rx-grilledcheese">Camp Grilled Cheese</a></td><td>Lid-pan</td><td class="num">—</td><td>Comfort fallback; bread scorches faster than tortillas</td></tr>
+        <tr><td class="name"><a href="#rx-brats">Brats &amp; Tortillas</a></td><td>Night one</td><td class="num">label</td><td>Buy fully-cooked; reheating, not raw-pork cookery</td></tr>
+        <tr><td class="name"><a href="#rx-burritos">Home-Cooked Foil Burritos</a></td><td>Night one</td><td class="num">—</td><td>Sunday kitchen → Monday wilderness; stove-failure-proof</td></tr>
+        <tr class="tierhead"><td colspan="4">Leader treats — adult flavors</td></tr>
+        <tr><td class="name"><a href="#rx-revampedramen">Revamped Ramen — Soba &amp; Shiitake</a></td><td>Dinner</td><td class="num">688</td><td>Grown-up ramen</td></tr>
+        <tr><td class="name"><a href="#rx-moroccan">Moroccan Chicken Couscous</a></td><td>Dinner</td><td class="num">665</td><td>40 g protein — highest stated of any dinner here</td></tr>
+        <tr><td class="name"><a href="#rx-marbella">Chicken Marbella</a></td><td>Dinner</td><td class="num">545</td><td>Prunes + olives; the Silver Palate, outdoors</td></tr>
+        <tr><td class="name"><a href="#rx-tiramisu">Easy Trail Tiramisu</a></td><td>Dessert</td><td class="num">492</td><td>Last-night flex, one mug at a time</td></tr>
+        <tr><td class="name"><a href="#rx-apricotoats">Apricot Ginger Oatmeal</a></td><td>Breakfast</td><td class="num">419</td><td>Crystallized ginger is an adult flavor</td></tr>
+        <tr><td class="name"><a href="#rx-steak">First-Night Steak</a></td><td>Night one</td><td class="num">—</td><td>Freeze-and-center method; shared slices</td></tr>
+        <tr class="tierhead"><td colspan="4">Demo only</td></tr>
+        <tr><td class="name"><a href="#rx-pancakes">Silver-Dollar Pancakes</a></td><td>Lid-pan</td><td class="num">—</td><td>The documented titanium failure case — a party trick, not breakfast</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- ============ 02 ONE-POT DINNERS ============ -->
+  <section id="dinners">
+    <div class="sec-head"><span class="sec-num">No. 02</span><h2>One-Pot Dinners</h2></div>
+    <p class="sec-note">Eighteen dinners for the 1.6 L pot, best first. The three full cards are the ones to
+    build the menu around; everything after them is complete and shoppable, just condensed. Couscous is the fuel
+    cheat code — it never sits on the flame — and the pot-cozy trick (<a href="#method">No. 08</a>) demotes
+    almost any simmer by a tier.</p>
+
+    <div class="rx top-shelf" id="rx-ramenbomb">
+      <h4>🍜 The Ramen Bomb <span class="tier top">top shelf</span></h4>
+      <p class="pitch">The thru-hiker classic: the potatoes drink the ramen water, so nothing gets drained and everything gets eaten. It's ramen — it cannot be ruined and nobody has to be talked into it.</p>
+      <div class="facts"><span>cal not stated</span><span>~5 min flame</span><span>zero drain water</span></div>
+      <div class="rx-cols">
+        <div><h5>One very hungry hiker</h5><ul class="ing">
+          <li><b>1–2</b> packets ramen (one seasoning sachet is enough)</li>
+          <li><b>¼–½ pouch</b> instant mashed potatoes</li>
+          <li><b>1</b> foil pack Spam, tuna, or chicken</li>
+          <li>Endorsed add-ins: Cheetos, chips, cheese</li>
+        </ul><h5>Feeds 2–3 (our build)</h5><ul class="ing">
+          <li><b>3–4</b> ramen packets + <b>1</b> full 4-serving Idahoan pouch + <b>2</b> protein pouches, 2 sachets</li>
+        </ul></div>
+        <div><h5>In camp</h5><ol class="steps">
+          <li>Boil the ramen in generous water with its seasoning — extra water is fine, you will not drain it.</li>
+          <li>Noodles done → kill the flame.</li>
+          <li>Stir in the potato flakes; they absorb the remaining water almost instantly.</li>
+          <li>Stir in the protein and add-ins.</li>
+        </ol></div>
+      </div>
+      <p class="note">One of the best fuel-per-calorie meals in this book; the starch absorbs everything, so the pot wipes clean. Source: <a href="https://hike.guide/ramen-bomb/">hike.guide</a> (deliberately loose quantities; group scaling is our build).</p>
+    </div>
+
+    <div class="rx top-shelf" id="rx-beansrice">
+      <h4>🌮 Beans + Rice with Fritos &amp; Cheese (Skurka) <span class="tier top">top shelf</span></h4>
+      <p class="pitch">The most-requested dinner on Andrew Skurka's guided trips — a walking taco in a pot, quantified to the tenth of an ounce, 60 seconds of simmer.</p>
+      <div class="facts"><span>668 cal · 27 g protein (stated)</span><span>~5 min flame</span><span>117 cal/oz</span></div>
+      <div class="rx-cols">
+        <div><h5>Per serving</h5><ul class="ing">
+          <li><b>2 oz</b> instant refried beans</li>
+          <li><b>1.5 oz</b> instant rice</li>
+          <li><b>1 oz</b> cheddar cheese, diced</li>
+          <li><b>1 oz</b> Fritos</li>
+          <li><b>0.2 oz</b> (≈2 tsp) taco seasoning</li>
+          <li><b>10+ oz</b> water</li>
+        </ul></div>
+        <div><h5>At home</h5><p style="font-size:13.5px">Bag beans + rice + seasoning together — one 3.5 oz snack bag per person; cheese rides separately. The dry bags keep 6–9 months.</p>
+        <h5>In camp</h5><ol class="steps">
+          <li>Boil the water <strong>first</strong> — solids added early scorch.</li>
+          <li>Pour in the bag; simmer only ~60 seconds, stirring.</li>
+          <li>Off heat: stir in the cheese.</li>
+          <li>Fritos at the last second so they stay crunchy. Serve in tortillas for burritos.</li>
+        </ol></div>
+      </div>
+      <p class="note">Best fuel-to-calories ratio of any dinner here; everything absorbs, one hot-water swish for the cheese film. Three bagged servings cook together in the Toaks with ~30 oz water. Source: <a href="https://andrewskurka.com/backpacking-dinner-recipe-beans-rice-with-fritos-cheese/">andrewskurka.com</a>.</p>
+    </div>
+
+    <div class="rx top-shelf" id="rx-chickenrice">
+      <h4>🍗 Chicken and Rice <span class="tier top">top shelf</span></h4>
+      <p class="pitch">Greenbelly's four-ingredient comfort classic. The plainest, safest dinner in the book — nobody has ever rejected chicken and rice.</p>
+      <div class="facts"><span>cal not stated</span><span>~10 min flame (or cozy it to ~2)</span></div>
+      <div class="rx-cols">
+        <div><h5>Per serving (grams as stated)</h5><ul class="ing">
+          <li><b>100 g</b> pre-cooked chicken pouch</li>
+          <li><b>80 g</b> instant rice</li>
+          <li><b>35 g</b> dried broccoli (specialty buy — the meal is complete without it)</li>
+          <li><b>20 g</b> olive oil</li>
+          <li><b>3 g</b> soy sauce</li>
+        </ul></div>
+        <div><h5>In camp</h5><ol class="steps">
+          <li>Boil water at 2:1 water-to-dry.</li>
+          <li>Broccoli in for 5 minutes, then rice for 5 — or boil 2 minutes and cozy-wrap 10.</li>
+          <li>Off heat, stir in chicken, soy, and the oil.</li>
+        </ol><h5>Scaling</h5><p style="font-size:13.5px">Double the grams for two. The olive oil is the cheapest calorie lever there is (250 cal/oz) — don't skip it.</p></div>
+      </div>
+      <p class="note">Absorb-style, no drain. Source: <a href="https://www.greenbelly.co/pages/best-backpacking-meals">Greenbelly</a>.</p>
+    </div>
+
+    <h3 class="sub">The solid shelf — complete and shoppable, condensed</h3>
+
+    <div class="rx compact" id="rx-jerkyramen">
+      <h4>🍜 Jerky Ramen <span class="tier solid">solid</span></h4>
+      <p class="pitch">Ramen upgraded into brothy beef-noodle soup — the jerky softens in the hot broth.</p>
+      <div class="facts"><span>388 cal · 17.6 g protein (stated)</span><span>~8–9 min flame</span></div>
+      <p class="ci"><b>Per serving:</b> 1 packet dashi powder (5 g) <em>or</em> 1 tsp vegetable bouillon · ¼ cup dehydrated vegetable mix (optional in practice) · 1 block ramen (~50 g) · 25 g beef jerky · 1½ cups water.</p>
+      <p class="ci"><b>Camp:</b> broth + vegetables into the water, boil, simmer low ~5 min; add ramen and jerky, 3–4 min more. Light for a big appetite — run 1.5 blocks per person; brothy pot gets drunk clean.</p>
+      <p class="note">Dashi is a specialty item; the page itself blesses the bouillon swap. Source: <a href="https://trail.recipes/recipes/jerky-ramen/">trail.recipes</a>.</p>
+    </div>
+
+    <div class="rx compact" id="rx-pbramen">
+      <h4>🥜 Spicy Peanut Butter Ramen <span class="tier solid">solid</span></h4>
+      <p class="pitch">Pad-thai energy from a five-ingredient sauce mixed at home. No draining.</p>
+      <div class="facts"><span>463 cal · 14.9 g protein (stated)</span><span>~8 min flame</span><span>peanut allergy check</span></div>
+      <p class="ci"><b>Per serving:</b> 1 block ramen (~50 g) · ¼ cup dehydrated vegetables (optional) · sauce: <b>1 Tbsp</b> peanut butter + <b>1 Tbsp</b> soy + <b>1 tsp</b> rice vinegar + <b>1 tsp</b> sriracha (halve for milder palates) + 1 clove minced garlic · ⅔ cup water.</p>
+      <p class="ci"><b>Home:</b> mix the sauce, decant into a small bottle (triple batch in one 4 oz bottle for a triple-batch pot). <b>Camp:</b> vegetables + water, boil, simmer ~5; ramen in 3–4 min until the low water mostly absorbs; off flame, stir the sauce through.</p>
+      <p class="note">Source: <a href="https://trail.recipes/recipes/spicy-peanut-butter-ramen/">trail.recipes</a>.</p>
+    </div>
+
+    <div class="rx compact" id="rx-chililime">
+      <h4>🍋 Chili Lime Peanut Noodles <span class="tier solid">solid</span></h4>
+      <p class="pitch">Sweet, limey, crunchy — 716 stated calories out of one ramen packet.</p>
+      <div class="facts"><span>716 cal · 18 g protein (stated)</span><span>one short boil</span><span>peanut allergy check</span></div>
+      <p class="ci"><b>Per serving:</b> 3 oz ramen (seasoning discarded) · <b>1 Tbsp</b> brown sugar · <b>¼ tsp</b> ground ginger · <b>¼ tsp</b> red pepper flakes · <b>1 Tbsp</b> chopped peanuts · <b>1</b> peanut-butter packet (2 Tbsp) · <b>1</b> True Lime packet.</p>
+      <p class="ci"><b>Camp:</b> water to barely cover the noodles, boil until done; pour off all but ~¼ cup (the book's only drain step — arc it well away from camp, or just start with less water); stir in spice bag, PB, and lime until creamy.</p>
+      <p class="note">Source: <a href="https://www.freshoffthegrid.com/backpacking-chili-lime-peanut-noodles/">Fresh Off The Grid</a>.</p>
+    </div>
+
+    <div class="rx compact" id="rx-skurkapeanut">
+      <h4>🥡 Peanut Noodles (Skurka) <span class="tier solid">solid</span></h4>
+      <p class="pitch">The guided-trip crowd favorite — 809 stated calories, boil-and-soak, no simmer at all.</p>
+      <div class="facts"><span>809 cal · 141 cal/oz (stated)</span><span>boil + 5 min soak</span><span>peanut allergy check</span></div>
+      <p class="ci"><b>Per serving:</b> ramen (flavor packet discarded) + crushed peanuts/cashews/raisins · sauce made entirely at home: peanut butter, soy, garlic, ginger, lime juice, toasted sesame oil, olive oil, honey — carried in a <b>4–8 oz wide-mouth</b> bottle (the page warns 2 oz jars pour miserably). Meal weight 5.7 oz stated.</p>
+      <p class="ci"><b>Camp:</b> boil 8+ oz water, add ramen and nuts, kill the stove, sit 5 min; stir the sauce through. Gluten-free rice-ramen swap is on the page.</p>
+      <p class="note"><strong>Caveat:</strong> exact sauce quantities live in the page's embedded spreadsheet, which resists scraping — <a href="https://andrewskurka.com/backpacking-dinner-recipe-peanut-noodles/">open the live page</a> once before shopping. Rated solid until you've pulled the sheet; cooks like a top-shelf meal after.</p>
+    </div>
+
+    <div class="rx compact" id="rx-salmonbowl">
+      <h4>🐟 Teriyaki Salmon Rice Bowl <span class="tier solid">solid</span></h4>
+      <p class="pitch">A five-minute rice bowl — dead simple, but poll the group before buying six salmon pouches.</p>
+      <div class="facts"><span>353 cal · 19.8 g protein (stated)</span><span>~5 min flame</span></div>
+      <p class="ci"><b>Per serving:</b> ⅓ cup instant rice · <b>1 Tbsp</b> nori, cut in strips · <b>1 Tbsp</b> teriyaki sauce (small bottle) · <b>1</b> pouch pink salmon (~2.5 oz) · <b>1 tsp</b> sesame seeds (optional).</p>
+      <p class="ci"><b>Camp:</b> rice + ⅓ cup water, boil ~5 min stirring; stir in nori, top with salmon, drizzle, sprinkle. 353 cal is light — run 2–3× per person. <strong>The salmon pouch is bear-hang priority trash — double-bag it.</strong></p>
+      <p class="note">Source: <a href="https://trail.recipes/recipes/teriyaki-salmon-rice-bowl/">trail.recipes</a>.</p>
+    </div>
+
+    <div class="rx compact" id="rx-sundried">
+      <h4>🍅 Sun-Dried Tomato Couscous <span class="tier solid">solid</span></h4>
+      <p class="pitch">Dietitian-written, all-grocery, pizza-adjacent — and the pot never touches the flame.</p>
+      <div class="facts"><span>636 cal · 18 g protein · 127 cal/oz (stated)</span><span>boil-only</span></div>
+      <p class="ci"><b>Per serving:</b> ½ cup (86 g) couscous · 3 pieces (15 g) sun-dried tomatoes, diced · <b>2 Tbsp</b> (20 g) pine nuts (slivered almonds is our cheaper swap) · <b>½ tsp each</b> dried parsley, oregano, basil, turmeric · <b>½ tsp</b> garlic powder · <b>¼ tsp</b> black pepper · <b>⅛ tsp</b> salt · <b>1 Tbsp</b> (14 g) olive oil · 6 oz water.</p>
+      <p class="ci"><b>Camp:</b> hot water into the bag or pot, stir, stand a few minutes; stir in the oil. Add a 7 oz chicken pouch per two servings to make it a main course (our note). Rehydrated in the bag = the pot stays clean.</p>
+      <p class="note">Source: <a href="https://backcountryfoodie.com/sun-dried-tomato-couscous-ultralight-backpacking-recipe/">Backcountry Foodie</a>.</p>
+    </div>
+
+    <div class="rx compact" id="rx-medcouscous">
+      <h4>🫒 Mediterranean Couscous <span class="tier solid">solid</span></h4>
+      <p class="pitch">Four ingredients: couscous, parmesan, pesto mix, olives. Olives split the room — let everyone opt in.</p>
+      <div class="facts"><span>cal not stated</span><span>boil-only</span></div>
+      <p class="ci"><b>Per serving (grams as stated):</b> couscous 85 g · parmesan 35 g · dry pesto mix 20 g · olives 20 g (shelf-stable pouches survive the hang fine).</p>
+      <p class="ci"><b>Camp:</b> boil at the stated 3:1 water ratio (err drier — extra liquid is wasted fuel), couscous in off the boil 5–10 min, stir in pesto, parmesan, olives. Triple the grams for a group of 2–3.</p>
+      <p class="note">Source: <a href="https://www.greenbelly.co/pages/best-backpacking-meals">Greenbelly</a>.</p>
+    </div>
+
+    <div class="rx compact" id="rx-chilimacdiy">
+      <h4>🌶 Chili Mac and Cheese <span class="tier solid">solid</span></h4>
+      <p class="pitch">Macaroni + beans + cheddar + chili powder — guaranteed crowd-pleaser flavors; the simmer time is the tax.</p>
+      <div class="facts"><span>cal not stated</span><span>~15 min as written — cozy it down</span></div>
+      <p class="ci"><b>Per serving (grams as stated):</b> dried beans 80 g · raw macaroni 80 g · cheddar 80 g (cube at home) · chili powder 10 g.</p>
+      <p class="ci"><b>Camp:</b> boil at 2:1; beans 10 min, macaroni 5 more, off heat stir in cheddar + chili powder. Our fix for the fuel: use instant refried or dehydrated pre-cooked beans (never raw dry beans) to collapse the bean step, and cozy the pasta (boil 2, wrap 10). Cheese pot needs a proper hot-water swish, scattered away from camp.</p>
+      <p class="note">Source: <a href="https://www.greenbelly.co/pages/best-backpacking-meals">Greenbelly</a>.</p>
+    </div>
+
+    <div class="rx compact" id="rx-scratchmac">
+      <h4>🧀 Good Old Mac N Cheese <span class="tier solid">solid</span></h4>
+      <p class="pitch">A real cheese-sauce ratio instead of neon powder — the best-tasting mac formula here, for leaders willing to prep at home.</p>
+      <div class="facts"><span>656 cal · 19.1 g protein (stated)</span><span>~6–7 min flame</span></div>
+      <p class="ci"><b>Per serving:</b> sauce bag: <b>1 Tbsp</b> heavy-cream powder (Nido works, per page) + <b>3 Tbsp</b> cheddar cheese powder + <b>½ tsp</b> cornstarch · ⅔ cup pre-cooked <em>and dehydrated</em> pasta · salt · <b>1 Tbsp</b> ghee.</p>
+      <p class="ci"><b>Camp:</b> pasta + ⅓ cup water, boil then ~5 min stirring; off heat, sauce bag in, then the ghee. The 3:1:½ sauce ratio scales linearly — one bag per person.</p>
+      <p class="note"><strong>Fussiest shopping list in the book:</strong> home-dehydrated pasta + cheese powder (online buy). If that's not happening, make the chili mac above. Source: <a href="https://trail.recipes/recipes/good-old-mac-n-cheese/">trail.recipes</a>.</p>
+    </div>
+
+    <div class="rx compact" id="rx-pesto">
+      <h4>🌿 Pesto Noodles (Skurka) <span class="tier solid">solid</span></h4>
+      <p class="pitch">Ramen + parmesan + sun-dried tomato + basil + olive oil. No simmer; rarely refused once it smells like pizza.</p>
+      <div class="facts"><span>700 cal · 125 cal/oz (stated)</span><span>boil-and-soak</span></div>
+      <p class="ci"><b>Per serving (from the page's own comments — the main table is an embedded sheet):</b> noodles 3.00 oz · garlic powder 0.05 oz · dried basil 0.05 oz · parmesan 0.80 oz · sun-dried tomatoes 0.80 oz · olive oil 1.00 oz · ~10 oz water. Meal weight 5.6 oz stated.</p>
+      <p class="ci"><b>Camp:</b> water boiling or near it, everything in except parmesan (tomatoes first, ramen seasoning discarded), stir, soak — the page is explicit no simmer is needed. Off stove, parmesan through. Group pattern: each person a noodle ration; parmesan/oil/tomato in shared containers. Add-ins the page suggests: salami, jerky, nuts.</p>
+      <p class="note">Source: <a href="https://andrewskurka.com/backpacking-dinner-recipe-pesto-noodles/">andrewskurka.com</a>.</p>
+    </div>
+
+    <div class="rx compact" id="rx-mashers">
+      <h4>🥔 3-Cheese Mashed Potatoes with Kabanos <span class="tier solid">solid</span></h4>
+      <p class="pitch">Rehydrates entirely in its own bag — the stove only ever boils ⅔ cup of water, and there is zero pot cleanup. Also the designated rescue meal: carry one spare bag per group.</p>
+      <div class="facts"><span>411 cal · 22.3 g protein (stated)</span><span>cheapest fuel in the book</span><span>bag = bowl</span></div>
+      <p class="ci"><b>Per serving:</b> ½ cup instant mashed potatoes · <b>1 Tbsp each</b> freeze-dried cheddar, parmesan, mozzarella (powdered) · <b>1 Tbsp</b> crispy fried onions (optional) · <b>4</b> shelf-stable Kabanos sausages (~50 g).</p>
+      <p class="ci"><b>Camp:</b> boil ⅔ cup water, pour into the bag, mix, stir in sliced sausage. Grocery-store reproduction (ours, not the source's): a flavored Idahoan pouch + Slim Jim-class snack sticks. 411 cal is a side for a hungry hiker — double the potatoes or add a soup packet.</p>
+      <p class="note">Freeze-dried cheese powders are an online buy; Kabanos lives in European delis. Source: <a href="https://trail.recipes/recipes/3-cheese-mashed-potatoes-with-kabanos/">trail.recipes</a>.</p>
+    </div>
+
+    <div class="rx compact" id="rx-chili">
+      <h4>🫘 Backcountry Chili (Skurka) <span class="tier solid">solid</span></h4>
+      <p class="pitch">Client-trip chili: refried beans, tomato powder, TVP, cheese, corn chips. Boil, cozy, done.</p>
+      <div class="facts"><span>512 cal · 93 cal/oz (stated)</span><span>boil + 10 min cozy</span></div>
+      <p class="ci"><b>Per serving:</b> instant refried beans · tomato powder · TVP · spices · cheese (own bag) · Fritos-class chips from the lunch supply · ~12 oz water (page allows up to 16 for easier cleanup). Recipe weight 5.5 oz stated. Shake the bag before pouring — spices settle (stated).</p>
+      <p class="ci"><b>Camp:</b> boil, kill the flame, stir in the chili bag, lid on ~10 min (cozy it); cheese through at the end. Group pattern: one bulk bag divided in the field.</p>
+      <p class="note"><strong>Caveats:</strong> exact quantities are in the page's embedded spreadsheet — <a href="https://andrewskurka.com/dinner-recipe-backcountry-chili/">open the live page</a> before shopping; tomato powder is an online buy; the page warns dried beef crumbles are NOT shelf-stable once opened — stick with TVP.</p>
+    </div>
+
+    <h3 class="sub">Leader treats — save these for the adults in camp</h3>
+
+    <div class="rx compact treat-shelf" id="rx-revampedramen">
+      <h4>🍄 Revamped Ramen — soba &amp; shiitake <span class="tier treat">leader treat</span></h4>
+      <p class="pitch">Grown-up ramen: soba, shiitake, jerky, soy-sesame-sriracha. Mushrooms and buckwheat are a gamble with picky eaters; adults will be delighted.</p>
+      <div class="facts"><span>688 cal (stated)</span><span>boil + 5 min</span></div>
+      <p class="ci"><b>Per serving:</b> 3.5 oz soba noodles, broken in half · ½ cup freeze-dried vegetables · 2 oz jerky · 4 dried shiitake, quartered · <b>½ tsp</b> salt · sauce: <b>1 Tbsp</b> soy + <b>1 tsp</b> toasted sesame oil + <b>1 tsp</b> sriracha.</p>
+      <p class="ci"><b>Camp:</b> dry bag into 2 cups water, boil ~5 min until noodles are tender; off heat, jerky and sauce through. Two servings fills the Toaks.</p>
+      <p class="note">Freeze-dried vegetables and shiitake are online/health-food buys. Source: <a href="https://www.freshoffthegrid.com/backpacking-revamped-ramen/">Fresh Off The Grid</a>.</p>
+    </div>
+
+    <div class="rx compact treat-shelf" id="rx-moroccan">
+      <h4>🍑 Moroccan Chicken Couscous <span class="tier treat">leader treat</span></h4>
+      <p class="pitch">Apricots, almonds, ras el hanout — the highest stated protein of any dinner in this book, and exactly the dinner a picky eater trades away.</p>
+      <div class="facts"><span>665 cal · 40 g protein (stated)</span><span>5 oz boil · zero simmer</span></div>
+      <p class="ci"><b>2 servings:</b> ½ cup couscous · 1 cup dried apricots, chopped · ¼ cup sliced almonds · <b>1 tsp</b> sea salt · <b>4 tsp</b> ras el hanout · <b>2</b> olive-oil packets (~2 Tbsp) · <b>1</b> 7-oz chicken pouch · <b>1</b> True Lemon packet · 5 oz water.</p>
+      <p class="ci"><b>Camp:</b> boil the 5 oz water with the oil; stir in the dry bag, True Lemon, and chicken; lid on, off heat, 5 minutes; fluff. The smallest boil of any dinner here — the pot barely gets dirty.</p>
+      <p class="note">Source: <a href="https://www.freshoffthegrid.com/backpackers-moroccan-chicken-couscous/">Fresh Off The Grid</a>.</p>
+    </div>
+
+    <div class="rx compact treat-shelf" id="rx-marbella">
+      <h4>🫒 Chicken Marbella <span class="tier treat">leader treat</span></h4>
+      <p class="pitch">The Silver Palate classic, trail-built: prunes, olives, brown sugar, oregano. Prunes <em>and</em> olives is a two-strike count with picky eaters — it's genuinely delicious for the adults.</p>
+      <div class="facts"><span>545 cal (stated)</span><span>4 oz boil · zero simmer</span></div>
+      <p class="ci"><b>2 servings:</b> ½ cup couscous · ½ cup dried prunes, chopped · <b>1 Tbsp</b> dried oregano · <b>1 Tbsp</b> brown sugar · <b>½ tsp</b> salt · <b>¼ tsp</b> garlic powder · <b>1</b> broth packet · <b>1 Tbsp</b> olive oil · <b>1</b> 7-oz chicken pouch · <b>1</b> 2.5-oz pouch pitted green olives · 2 vinegar packets (optional).</p>
+      <p class="ci"><b>Camp:</b> boil ½ cup water; broth, oil, couscous bag, and chicken in; covered off heat 5 minutes; finish with olives and vinegar. As fuel-cheap as dinner gets.</p>
+      <p class="note">Source: <a href="https://www.freshoffthegrid.com/backpackers-chicken-marbella/">Fresh Off The Grid</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ 03 BREAKFASTS ============ -->
+  <section id="breakfasts">
+    <div class="sec-head"><span class="sec-num">No. 03</span><h2>Breakfasts</h2></div>
+    <p class="sec-note">Seven builds. The oatmeal base and the granola bag are the workhorses — one boil (or none)
+    feeds the whole patrol. The simmered oatmeals are real porridge but cost real fuel.</p>
+
+    <div class="rx top-shelf" id="rx-oatmeal">
+      <h4>🥣 The Milk-and-Sugar Oatmeal Base — +5 variations <span class="tier top">top shelf</span></h4>
+      <p class="pitch">The exact-ratio oatmeal build: bag at home, boiling water in camp, one-minute stand, zero cleanup. One 1650 ml boil (~5 cups) feeds five bags at once.</p>
+      <div class="facts"><span>cal not stated</span><span>boil-only · 1 min stand</span><span>bag or cup = bowl</span></div>
+      <div class="rx-cols">
+        <div><h5>Base, per serving</h5><ul class="ing">
+          <li><b>½ cup</b> quick-cooking oats</li>
+          <li><b>4 Tbsp</b> milk powder</li>
+          <li>Pinch of salt · <b>1 tsp</b> sugar</li>
+          <li><b>1 cup</b> boiling water</li>
+        </ul><h5>Crowd-pick variations (as published)</h5><ul class="ing">
+          <li><b>Apple pie:</b> freeze-dried apple + pinch cinnamon + walnuts + brown sugar</li>
+          <li><b>Pumpkin spice:</b> 1 Tbsp powdered pumpkin + ½ tsp pumpkin-pie spice + brown sugar</li>
+        </ul></div>
+        <div><h5>In camp</h5><ol class="steps">
+          <li>Boiling water into the cup or bag holding the mix.</li>
+          <li>Stir, cover, stand 1 minute. Done.</li>
+        </ol><h5>Scaling</h5><p style="font-size:13.5px">Pre-bag <strong>2 base bags per person per morning</strong> and let them raid the trail-mix bag for toppings. (The page's miso and matcha variations exist; they are not for this audience.)</p></div>
+      </div>
+      <p class="note">Source: <a href="https://trail.recipes/backpacking-food-ideas/backpacking-oatmeal-5-creative-variations/">trail.recipes</a>.</p>
+    </div>
+
+    <div class="rx top-shelf" id="rx-breakfastcouscous">
+      <h4>🍚 Pistachio &amp; Raisin Breakfast Couscous <span class="tier top">top shelf</span></h4>
+      <p class="pitch">Sweet cardamom couscous that reads as rice pudding — the fastest real breakfast here that isn't oatmeal, every ingredient from a normal grocery store.</p>
+      <div class="facts"><span>cal not stated</span><span>boil-only · 5 min stand</span></div>
+      <div class="rx-cols">
+        <div><h5>1 large serving</h5><ul class="ing">
+          <li><b>½ cup</b> couscous</li>
+          <li><b>⅓ cup</b> dried milk</li>
+          <li><b>1 Tbsp</b> raisins</li>
+          <li><b>1 Tbsp</b> salted shelled pistachios, chopped</li>
+          <li><b>2–3 tsp</b> sugar · pinch of cardamom</li>
+        </ul></div>
+        <div><h5>In camp</h5><ol class="steps">
+          <li>Boil 1⅓ cups water.</li>
+          <li>Stir in the bag, off heat, covered 5 minutes. Fluff.</li>
+        </ol><h5>Scaling</h5><p style="font-size:13.5px">One bag per person; three bags cook together in the Toaks with 4 cups water. Milky pot wants a swish.</p></div>
+      </div>
+      <p class="note">Source: <a href="https://dirtygourmet.com/2011/07/09/pistachio-and-raisin-breakfast-couscous/">Dirty Gourmet</a>.</p>
+    </div>
+
+    <div class="rx top-shelf" id="rx-granola">
+      <h4>🥛 Pecan Maple Granola in a Bag <span class="tier top">top shelf</span></h4>
+      <p class="pitch">Bake it at home, pre-load the bags with milk powder, and breakfast requires no stove at all — the fastest morning in the book, made for the pack-up-and-hike-out day.</p>
+      <div class="facts"><span>580 cal/serving (stated)</span><span>zero fuel possible</span><span>zero dishes</span></div>
+      <div class="rx-cols">
+        <div><h5>Makes 2 servings</h5><ul class="ing">
+          <li><b>¾ cup</b> rolled oats · <b>½ cup</b> raw pecans, chopped</li>
+          <li><b>¼ cup each</b> unsweetened coconut, dried cranberries, maple syrup</li>
+          <li><b>1 Tbsp</b> oil (grapeseed/coconut) · <b>⅛ tsp</b> salt</li>
+          <li>Plus <b>1 Tbsp powdered milk per serving bag</b></li>
+        </ul></div>
+        <div><h5>At home</h5><ol class="steps">
+          <li>Mix all but the milk powder; bake compactly at 325°F, 20–25 min (rotate once, don't stir).</li>
+          <li>Cool, break into clumps, split into two bags with 1 Tbsp milk powder each.</li>
+        </ol><h5>In camp</h5><ol class="steps">
+          <li>~⅓ cup (3 oz) water per bag, stir, eat. Warm water dissolves some milk powders better.</li>
+        </ol></div>
+      </div>
+      <p class="note">Quadruple the bake for the group — or use store-bought granola with the same stated ratio (1 Tbsp milk powder + 3 oz water per serving; that shortcut is ours). Source: <a href="https://www.freshoffthegrid.com/pecan-maple-granola-bag/">Fresh Off The Grid</a>.</p>
+    </div>
+
+    <h3 class="sub">More breakfasts, condensed</h3>
+
+    <div class="rx compact" id="rx-blueberryoats">
+      <h4>🫐 Blueberry Coconut Oatmeal <span class="tier solid">solid</span></h4>
+      <p class="pitch">Berries-and-sugar reads as crowd-safe; docked for the simmer and a water-quantity misprint on the page.</p>
+      <div class="facts"><span>521 cal · 10 g protein (stated)</span><span>~10 min simmer — cozy it</span></div>
+      <p class="ci"><b>2 servings:</b> ½ cup quick rolled oats · ¼ cup coconut milk powder · ¼ cup freeze-dried blueberries (a normal grocery item now) · ¼ cup chopped almonds · ¼ cup coconut flakes · <b>2 Tbsp</b> hemp seeds · <b>2 Tbsp</b> sugar (double it for sweet tooths) · <b>¼ tsp</b> cinnamon · pinch salt.</p>
+      <p class="ci"><b>Camp:</b> the page prints "1/2 cups water" — an apparent typo (likely 1½ cups). Start conservative and add water as it cooks rather than trusting either number. Simmer ~10 min stirring, or boil 2 and cozy 10.</p>
+      <p class="note">Source: <a href="https://www.freshoffthegrid.com/blueberry-coconut-oatmeal/">Fresh Off The Grid</a> (typo flagged, not corrected).</p>
+    </div>
+
+    <div class="rx compact" id="rx-tropicalcouscous">
+      <h4>🍍 Tropical Breakfast Couscous <span class="tier solid">solid</span></h4>
+      <p class="pitch">Coconut, pineapple, almonds — novel enough to be fun, cheap enough on fuel to be a default.</p>
+      <div class="facts"><span>420 cal · 8.3 g protein (stated)</span><span>½ cup boil per serving</span><span>bag = bowl</span></div>
+      <p class="ci"><b>Per serving:</b> ¼ cup couscous · <b>2 Tbsp</b> coconut milk powder · <b>1 Tbsp</b> shredded coconut · <b>1 Tbsp</b> sliced almonds, toasted · <b>2 Tbsp</b> freeze-dried pineapple · <b>1 tsp</b> coconut sugar.</p>
+      <p class="ci"><b>Camp:</b> boil ½ cup water, kill the flame, pour into the mix, stir, cover 5 min, fluff. One bag per person; boil once for the group. Freeze-dried pineapple may take an online/health-food stop.</p>
+      <p class="note">Source: <a href="https://trail.recipes/recipes/tropical-breakfast-couscous/">trail.recipes</a>.</p>
+    </div>
+
+    <div class="rx compact" id="rx-grits">
+      <h4>🌽 Camp Grits <span class="tier solid">solid</span></h4>
+      <p class="pitch">Cheesy grits are an easy sell and the only 4-serving batch recipe here — but the 15–20 minute cook is the most fuel-expensive breakfast in the book.</p>
+      <div class="facts"><span>cal not stated</span><span>15–20 min as written</span><span>feeds 4</span></div>
+      <p class="ci"><b>4 servings:</b> 1 cup grits · 4 cups cold water · <b>2 Tbsp</b> butter · salt + pepper · optional white cheddar, bacon bits, country ham (raid the lunch bag).</p>
+      <p class="ci"><b>Camp:</b> grits into cold water, medium-high at a low boil stirring occasionally until thick (~15–20 min); stir in ¼ cup more water, drop to low, cover; finish with butter and cheese. Our fuel fix (not the source's): instant/quick grits on the 5-minute box directions preserve the idea at a fraction of the fuel.</p>
+      <p class="note">Starch-crusted pot follows — budget the swish. Source: <a href="https://www.dirtygourmet.com/grits/">Dirty Gourmet</a>.</p>
+    </div>
+
+    <div class="rx compact treat-shelf" id="rx-apricotoats">
+      <h4>🍑 Apricot Ginger Oatmeal <span class="tier treat">leader treat</span></h4>
+      <p class="pitch">Crystallized ginger is an adult flavor — make the base build for the group and this for the leaders.</p>
+      <div class="facts"><span>419 cal · 8 g protein (stated)</span><span>~10 min simmer — cozy it</span></div>
+      <p class="ci"><b>2 servings:</b> ½ cup rolled oats · ¼ cup dried apricots, chopped · ¼ cup crystallized ginger, chopped · ¼ cup almond slivers · ¼ cup coconut milk powder · <b>¼ tsp</b> sea salt · <b>2 tsp</b> sugar · optional coconut-oil packet (+120 cal/serving, stated).</p>
+      <p class="ci"><b>Camp:</b> bag + 2 cups water, boil, simmer ~10 min until tender (or cozy). Porridge pot needs a real swish.</p>
+      <p class="note">Source: <a href="https://www.freshoffthegrid.com/apricot-ginger-oatmeal/">Fresh Off The Grid</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ 04 LID-PAN ============ -->
+  <section id="pan">
+    <div class="sec-head"><span class="sec-num">No. 04</span><h2>The Lid-Pan</h2></div>
+    <p class="sec-note">Six recipes for the 5.5-inch titanium lid. The physics (<a href="#method">No. 08</a>)
+    favors dense, flat food — which is why quesadillas and trout are top shelf and pancakes are a party trick.</p>
+
+    <div class="rx top-shelf" id="rx-quesadilla">
+      <h4>🫓 Pepperoni &amp; Cheese Quesadilla <span class="tier top">top shelf</span></h4>
+      <p class="pitch">Pizza flavors in quesadilla form — the highest payoff-per-gram frypan meal there is, from a published recipe written for exactly this style of cooking.</p>
+      <div class="facts"><span>Serves 1</span><span>455 cal (stated)</span><span>~10 min</span><span>~2–3 min flame each</span></div>
+      <div class="rx-cols">
+        <div><h5>Per person</h5><ul class="ing">
+          <li><b>1</b> flour tortilla — street-taco size (4.5–5") so it lies flat on the lid</li>
+          <li><b>~50 g</b> grated cheddar (a generous handful)</li>
+          <li><b>8 slices</b> shelf-stable pepperoni</li>
+          <li><b>1 Tbsp</b> tubed tomato paste + <b>1 tsp</b> dried oregano + <b>2 Tbsp</b> water</li>
+          <li><b>1 tsp</b> olive oil</li>
+        </ul></div>
+        <div><h5>In camp</h5><ol class="steps">
+          <li>Stir paste, oregano, and water in a mug — that's the sauce.</li>
+          <li>Warm the oil on medium, drop to low, lay in the tortilla.</li>
+          <li>Underside toasted → flip, paint on sauce, scatter cheese, let it melt.</li>
+          <li>Add pepperoni, fold in half, slide out, cut into wedges.</li>
+        </ol><h5>At home</h5><p style="font-size:13.5px">Pre-grate the cheese into a zip bag — saves carrying a knife for it.</p></div>
+      </div>
+      <p class="note">Keep every scrap of cheese <em>inside</em> the fold — cheese on bare titanium carbonizes on a hot spot. Run it assembly-line, one per person. Pan wipes clean if nothing escaped. Source: <a href="https://trail.recipes/recipes/pepperoni-and-cheese-quesadilla/">trail.recipes</a>.</p>
+    </div>
+
+    <div class="rx top-shelf" id="rx-pizza">
+      <h4>🍕 Tortilla Trail Pizza <span class="tier top">top shelf</span></h4>
+      <p class="pitch">Hot pizza on day 2 of a wilderness trip is the biggest morale trick per ounce of effort — and the published recipe assumes a 6-inch pan. That's this lid.</p>
+      <div class="facts"><span>1 tortilla = 1 pizza</span><span>cal not stated</span><span>~3–5 min each</span></div>
+      <div class="rx-cols">
+        <div><h5>Per pizza</h5><ul class="ing">
+          <li><b>1</b> six-inch flour tortilla</li>
+          <li>Sauce: Boboli <b>5-oz</b> pouch (~4–5 pizzas per pouch, our ratio) — or the tomato-paste sauce from the quesadilla</li>
+          <li><b>~1 oz</b> mozzarella or cheddar (our ratio)</li>
+          <li>Shelf-stable toppings: pepperoni, olives, jalapeños, bacon bits, red pepper flakes, parmesan</li>
+        </ul></div>
+        <div><h5>In camp</h5><ol class="steps">
+          <li>Build the pizza cold: thin sauce layer, then cheese, then toppings.</li>
+          <li>Set in the lightly oiled pan on medium-low (start lower than the recipe says — this is titanium).</li>
+          <li>Tent foil or a lid over it so the cheese melts before the bottom scorches.</li>
+          <li>Circle the pan slowly over the burner until golden underneath.</li>
+        </ol></div>
+      </div>
+      <p class="note">Failure mode is a burnt bottom under unmelted cheese — thin sauce, the foil tent, and constant pan movement are the three counters. Wipe the pan between pizzas; sauce drips carbonize. Source: <a href="https://www.cloudlineapparel.com/blogs/cloudline/110259334-backpacking-recipe-tortilla-trail-pizza">Cloudline</a> (item quantities where it leaves them open are our build).</p>
+    </div>
+
+    <div class="rx top-shelf" id="rx-trout">
+      <h4>🐟 Pan-Fried Trout — Seasoned Dredge, Two Ways <span class="tier top">top shelf</span></h4>
+      <p class="pitch">The meal the trip is half-built around. Dense fish is the documented titanium success story — pick a dredge, mix it at home, and fry in shifts.</p>
+      <div class="facts"><span>Dredge A serves 3–4 trout</span><span>cal not stated</span><span>~10 min flame per fish</span><span>14+ needs an Idaho license</span></div>
+      <div class="rx-cols">
+        <div><h5>Dredge A — seasoned flour</h5><ul class="ing">
+          <li><b>½ cup</b> flour</li>
+          <li><b>1 tsp</b> salt · <b>½ tsp</b> black pepper</li>
+          <li><b>½ tsp</b> oregano · <b>¼ tsp</b> cayenne</li>
+          <li>Olive oil — <b>~1 Tbsp per fish</b> (our scaling for this pan)</li>
+        </ul><h5>Dredge B — cornmeal</h5><ul class="ing">
+          <li><b>½ cup</b> cornmeal</li>
+          <li>Salt + pepper (garlic powder optional)</li>
+          <li>Butter for the pan</li>
+        </ul></div>
+        <div><h5>In camp</h5><ol class="steps">
+          <li>Gut, rinse, and pat the fish <strong>dry</strong> — dry skin is the difference between crisp and stuck.</li>
+          <li>Whole fish: slash 3–4 shallow diagonal cuts per side so it cooks evenly.</li>
+          <li>Shake the fish in the dredge bag, tap off excess.</li>
+          <li>Lay into hot (not smoking) oil — ~4–5 min per side, turning once.</li>
+          <li>Done when the flesh flakes and lifts off the bone. Finish with a True Lemon packet.</li>
+        </ol><h5>At home</h5><p style="font-size:13.5px">Shake the dry dredge together in a quart zip bag; oil in a small leakproof bottle.</p></div>
+      </div>
+      <p class="note">A 5.5" pan fits one small brookie or a folded fillet — shifts, and the best fisherman eats last. Medium-low, pan always circling. The fishy wipe rag <strong>must</strong> go in the bear hang. Sources: <a href="https://www.campingrecipes.com/recipes/pan-fried-trout/">campingrecipes.com</a> · <a href="https://www.gameandfishmag.com/editorial/simple-pan-fried-trout-recipe/338081">Game &amp; Fish</a>.</p>
+    </div>
+
+    <div class="rx" id="rx-grilledcheese">
+      <h4>🥪 Camp Grilled Cheese <span class="tier solid">solid</span></h4>
+      <p class="pitch">The comfort-food fallback when someone won't eat the planned dinner — and the best use for bagel halves late in the trip.</p>
+      <div class="facts"><span>Serves 1</span><span>cal not stated</span><span>~4–6 min each</span></div>
+      <div class="rx-cols">
+        <div><h5>Per sandwich</h5><ul class="ing">
+          <li><b>2 slices</b> dense bread (sourdough travels best) or <b>1</b> bagel, halved — sized to the pan</li>
+          <li><b>1.5–2 oz</b> block cheddar, pre-sliced at home</li>
+          <li><b>~1 Tbsp</b> butter (squeeze bottle/ghee) or olive oil</li>
+        </ul></div>
+        <div><h5>In camp</h5><ol class="steps">
+          <li>Butter the outside faces generously.</li>
+          <li>Low flame from the start — bread scorches on titanium faster than tortillas.</li>
+          <li>Toast, pressing lightly, until golden; flip; keep the pan circling the whole time.</li>
+          <li>Bagels go cut-face down first.</li>
+        </ol></div>
+      </div>
+      <p class="note">Our build (no strong published backpacking version exists). Expect one sacrificial slice while dialing the flame. Bulkier than tortillas for the same calories — which is the only reason it isn't top shelf.</p>
+    </div>
+
+    <div class="rx" id="rx-hashbrowns">
+      <h4>🥔 Bacon-Cheddar Hash Browns <span class="tier solid">solid</span></h4>
+      <p class="pitch">Diner-breakfast smell in the backcountry — published, quantified, shelf-stable.</p>
+      <div class="facts"><span>Serves 2</span><span>700 cal/serving (stated)</span><span>15 min soak + ~8–10 min flame</span></div>
+      <div class="rx-cols">
+        <div><h5>Serves 2</h5><ul class="ing">
+          <li><b>1 cup</b> dehydrated hash browns (Idahoan-style carton)</li>
+          <li>Water to cover, for rehydration</li>
+          <li><b>1 Tbsp</b> oil or ghee</li>
+          <li><b>¼ cup</b> shredded cheddar</li>
+          <li><b>¼ cup</b> shelf-stable pre-cooked bacon pieces</li>
+        </ul></div>
+        <div><h5>In camp</h5><ol class="steps">
+          <li>Cover the dry potatoes with water, wait ~15 min, then <strong>squeeze the excess water out</strong> — wet potatoes steam instead of crisping.</li>
+          <li>Heat the fat; fry until they take color, stirring now and then.</li>
+          <li>Off the flame, fold in cheese and bacon.</li>
+        </ol><h5>At home</h5><p style="font-size:13.5px">Repackage potatoes, bacon, and cheese into separate zip bags.</p></div>
+      </div>
+      <p class="note">Written for a pot — on this lid, fry two half-batches so the layer stays thin. Some stick is guaranteed on titanium; full tablespoon of fat, low flame, keep it moving. Deglaze with hot water; scatter it well away from camp. Source: <a href="https://www.fusioncraftiness.com/backpacking-hashbrowns-with-bacon-and-cheese/">Fusion Craftiness</a>.</p>
+    </div>
+
+    <div class="rx demo-shelf" id="rx-pancakes">
+      <h4>🥞 Silver-Dollar Pancakes (Kodiak) <span class="tier demo">demo only</span></h4>
+      <p class="pitch">A two-minute magic trick for morale — NOT a breakfast plan. Batter on bare titanium is the documented failure case; this is the one technique that makes it survivable.</p>
+      <div class="facts"><span>1 cup mix serves 2</span><span>cal not stated</span><span>slow — 1–2 pancakes at a time</span></div>
+      <div class="rx-cols">
+        <div><h5>The demo kit</h5><ul class="ing">
+          <li><b>1 cup</b> Kodiak Cakes (or any just-add-water) mix, pre-bagged</li>
+          <li><b>1 cup</b> water (the published 1:1 ratio)</li>
+          <li><b>~2 Tbsp</b> butter + <b>1–2 oz</b> syrup</li>
+          <li>Mini chocolate chips for the show</li>
+        </ul></div>
+        <div><h5>In camp</h5><ol class="steps">
+          <li>Add water to the bag and knead; snip a corner to pipe batter.</li>
+          <li>Melt a thin pat of butter on LOW.</li>
+          <li>Pour 2–3&quot; rounds, one or two at a time — nothing bigger.</li>
+          <li>Keep the pan moving in expanding-contracting circles the whole time.</li>
+          <li>Flip at bubbles + set edges; 1–2 min more.</li>
+        </ol></div>
+      </div>
+      <p class="note">Re-butter between every pour, and expect pancake #3 to start grabbing — that's the titanium evidence playing out, not your technique. Budget 3–4 pancakes as a novelty; feeding a whole group this way would burn half a morning of fuel. Source: <a href="https://www.trailgroove.com/blogs/entry/337-how-to-make-backpacking-and-camping-pancakes/">TrailGroove</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ 05 NIGHT ONE ============ -->
+  <section id="nightone">
+    <div class="sec-head"><span class="sec-num">No. 05</span><h2>Night One: Fresh</h2></div>
+    <p class="sec-note">Day 1 is only ~6 miles after the drive, so the first dinner can be <em>real food</em>.
+    The method that makes it safe: <strong>freeze perishables solid at home</strong> so they act as their own ice
+    block thawing through day 1, pack them dead-center in the pack away from the sun side, and eat them first.
+    (USDA danger zone: 40–140°F, max ~2 hours for perishables — the freeze-and-center method keeps you out of it.)</p>
+
+    <div class="rx top-shelf" id="rx-freshquesadilla">
+      <h4>🌶 Fresh-Veg Quesadillas for the Group <span class="tier top">top shelf</span></h4>
+      <p class="pitch">The group dinner: real vegetables and fresh cheese on the one night weight doesn't matter, using the technique the lid-pan already proved.</p>
+      <div class="facts"><span>Feeds 6</span><span>cal not stated</span><span>~3 min per quesadilla</span></div>
+      <div class="rx-cols">
+        <div><h5>Per person (feeds 6)</h5><ul class="ing">
+          <li><b>2</b> street-taco flour tortillas (12 total)</li>
+          <li><b>2 oz</b> grated cheese — grate a <b>12-oz block</b> at home, freeze the bag</li>
+          <li><b>⅓</b> bell pepper + <b>2 Tbsp</b> diced onion (2 peppers + 1 onion for the group, diced at home)</li>
+          <li><b>2 Tbsp</b> canned black beans, drained well (one 15-oz can ≈ 6 people) — or pre-cooked sausage slices</li>
+          <li>Oil · hot-sauce packets</li>
+        </ul></div>
+        <div><h5>At home</h5><p style="font-size:13.5px">Dice all vegetables, bag by ingredient, refrigerate until the trailhead; pack the frozen cheese bag against them in the pack core.</p>
+        <h5>In camp</h5><ol class="steps">
+          <li>Oil, tortilla in on low, flip.</li>
+          <li>Load half the face: cheese, veg, beans. Fold, press.</li>
+          <li>Toast both sides until the cheese binds it. Assembly line, ~3 min each — two pans if another leader has one.</li>
+        </ol></div>
+      </div>
+      <p class="note">No raw meat risk, scales to the whole group, and the vegetables actually get eaten. Everything fresh gets finished at this meal — nothing carries to day 2 except whole peppers. Our build; technique per the <a href="#rx-quesadilla">quesadilla recipe</a>.</p>
+    </div>
+
+    <div class="rx" id="rx-brats">
+      <h4>🌭 Brats &amp; Tortillas <span class="tier solid">solid</span></h4>
+      <p class="pitch">Maximum enthusiasm per minute of cooking — browned brats, tortilla as bun.</p>
+      <div class="facts"><span>2 brats per person</span><span>cal per package label</span><span>~4 min per brat</span></div>
+      <div class="rx-cols">
+        <div><h5>Per person</h5><ul class="ing">
+          <li><b>2</b> bratwursts or smoked sausages — buy <strong>&quot;fully cooked&quot;</strong> on the label, so camp is reheating, not raw-pork cookery</li>
+          <li><b>2</b> tortillas · mustard packets</li>
+          <li>Leftover diced onion/pepper from the quesadillas if the two dinners merge into one feast</li>
+        </ul></div>
+        <div><h5>In camp</h5><ol class="steps">
+          <li>Slice each brat lengthwise so it lies flat — a whole cylinder barely touches a 5.5&quot; disc.</li>
+          <li>Film of oil, medium-low, cut-face down until browned; roll to finish.</li>
+          <li>Serve rolled in a tortilla. Two halves at a time; the cook eats last.</li>
+        </ol><h5>At home</h5><p style="font-size:13.5px">Freeze the sealed packages solid; pack core-of-pack.</p></div>
+      </div>
+      <p class="note">Pre-cooked sausage removes the undercooked-pork failure mode entirely; frozen packages are still cold at hour 8. Cook only what gets eaten — opened leftovers don't keep. Our build; freeze-and-center method per <a href="https://packlitelife.com/how-to/keep-food-cold-backpacking/">PackLite Life</a>.</p>
+    </div>
+
+    <div class="rx" id="rx-burritos">
+      <h4>🌯 Home-Cooked Foil Burritos <span class="tier solid">solid</span></h4>
+      <p class="pitch">Cook dinner in your kitchen Sunday, eat it in the wilderness Monday. Zero camp prep beyond warming — and the only dinner that still works if a stove fails.</p>
+      <div class="facts"><span>1 big burrito per person</span><span>cal not stated</span><span>~6–8 min warming</span></div>
+      <div class="rx-cols">
+        <div><h5>Per burrito</h5><ul class="ing">
+          <li><b>1</b> 10-inch tortilla</li>
+          <li><b>~½ cup</b> seasoned ground beef or shredded chicken, fully cooked at home</li>
+          <li><b>⅓ cup</b> cooked rice · <b>¼ cup</b> beans</li>
+          <li><b>2 Tbsp</b> cheese</li>
+        </ul></div>
+        <div><h5>At home</h5><ol class="steps">
+          <li>Cook the filling, then cool it <strong>completely in the fridge</strong> before rolling — rolling warm food is the classic danger-zone mistake.</li>
+          <li>Roll tight, wrap each in foil, freeze at least overnight.</li>
+        </ol><h5>In camp</h5><ol class="steps">
+          <li>They arrive cool after thawing all day in the pack core.</li>
+          <li>Warm foil-wrapped in the dry pan on low, quarter-turn every minute or two — the foil spreads titanium's hot spot for you.</li>
+          <li>Or unwrap and toast seam-down for a crisped skin.</li>
+        </ol></div>
+      </div>
+      <p class="note">Fully cooked + frozen solid + eaten at hour ~8 stays inside the safety window with margin. <strong>Night one only</strong> — never carry these to day 2. The foil is smellable trash: it hangs. Our build; method per <a href="https://packlitelife.com/how-to/keep-food-cold-backpacking/">PackLite Life</a>.</p>
+    </div>
+
+    <div class="rx" id="rx-steak">
+      <h4>🥩 First-Night Steak <span class="tier treat">leader treat</span></h4>
+      <p class="pitch">PackLite Life's own conclusion for the freeze-and-center method: "enjoy a steak the first night and never miss the cooler." The cook's moment after the group quesadillas — or a shared-slices flex for everyone.</p>
+      <div class="facts"><span>1 steak feeds 3–4 as tacos</span><span>cal not stated</span><span>~8 min hot flame</span></div>
+      <div class="rx-cols">
+        <div><h5>The kit</h5><ul class="ing">
+          <li><b>1–2</b> sirloin or flat-iron steaks, cut hand-size to fit the pan (<b>~8–10 oz</b> each)</li>
+          <li>Salt + pepper, pre-mixed in a film canister</li>
+          <li><b>1 Tbsp</b> high-smoke-point oil</li>
+        </ul></div>
+        <div><h5>In camp</h5><ol class="steps">
+          <li>The steak arrives thawed-but-cold. Pat it <strong>dry</strong>.</li>
+          <li>Oiled pan properly hot on medium — dense meat is the documented titanium success case.</li>
+          <li>Lay it in and <em>don't move it</em> ~2–3 min to build crust; flip, repeat.</li>
+          <li>Rest 5 min on a clean tortilla, slice thin across the grain, serve as tacos.</li>
+        </ol><h5>At home</h5><p style="font-size:13.5px">Season, double-bag or vacuum-seal, freeze rock solid.</p></div>
+      </div>
+      <p class="note">The highest single-flame item of the trip. Flawless on this kit — but feeding a whole group steak off a 5.5&quot; disc is shift-work fantasy, hence leader treat. The greasy wipe hangs. Method: <a href="https://packlitelife.com/how-to/keep-food-cold-backpacking/">PackLite Life</a>; quantities ours.</p>
+    </div>
+  </section>
+
+  <!-- ============ 06 NO-COOK LUNCHES ============ -->
+  <section id="lunches">
+    <div class="sec-head"><span class="sec-num">No. 06</span><h2>No-Cook Lunches</h2></div>
+    <p class="sec-note">The three builds that carry the midday calorie load (the group plan's
+    <a href="meals.html#lunches">gap math</a> lives on the Meals page). Calorie figures here are label math from
+    opened product pages — stated per item so you can swap brands and re-add.</p>
+
+    <div class="rx top-shelf" id="rx-pbroll">
+      <h4>🥜 PB + Honey Tortilla Roll <span class="tier top">top shelf</span></h4>
+      <p class="pitch">The standard thru-hiker lunch: the fastest calories per minute of effort on the menu, zero cleanup, survives day-4 heat.</p>
+      <div class="facts"><span>≈455–465 cal per wrap</span><span>no cook</span><span>2 wraps + raisins ≈ a 1,000-cal lunch</span></div>
+      <div class="rx-cols">
+        <div><h5>Per wrap (label math)</h5><ul class="ing">
+          <li><b>1</b> burrito-size tortilla — 210 cal (Mission label)</li>
+          <li><b>2 Tbsp</b> peanut butter — ~180–190 cal (Jif label range)</li>
+          <li><b>1 Tbsp</b> honey — ~64 cal</li>
+        </ul></div>
+        <div><h5>Build</h5><ol class="steps">
+          <li>PB spread to the edges; honey zig-zagged down the <em>middle</em> (honey at the edge = glued fingers).</li>
+          <li>Roll tight. Eat from the wrapper.</li>
+        </ol><h5>At home</h5><p style="font-size:13.5px">Repackage PB into a squeeze tube or buy single-serve cups — a communal jar and shared spoons is a hygiene incident scheduled in advance.</p></div>
+      </div>
+      <p class="note"><strong>Peanut-allergy check first</strong>; sunflower-seed butter swaps 1:1 (calories per its own label). Labels: <a href="https://www.missionfoods.com/">Mission</a>, Jif, honey per <a href="https://www.greenbelly.co/pages/best-high-calorie-backpacking-foods">Greenbelly's density table</a>.</p>
+    </div>
+
+    <div class="rx top-shelf" id="rx-tunawrap">
+      <h4>🐟 Tuna–Cheese–Sausage Wrap <span class="tier top">top shelf</span></h4>
+      <p class="pitch">The savory counterpart — real protein at lunch so dinner portions stop being an emergency.</p>
+      <div class="facts"><span>≈455 cal + sausage per wrap</span><span>~30 g protein</span><span>no cook</span></div>
+      <div class="rx-cols">
+        <div><h5>Per wrap (label math)</h5><ul class="ing">
+          <li><b>1</b> burrito tortilla — 210 cal</li>
+          <li><b>1</b> pouch chunk light tuna, 2.6 oz — 70 cal, 17 g protein (StarKist label)</li>
+          <li><b>1.5 oz</b> block cheddar, sliced — ~173 cal</li>
+          <li><b>3–4 slices</b> summer sausage — per chub label</li>
+          <li>Mayo / mustard / relish packets</li>
+        </ul></div>
+        <div><h5>Build</h5><ol class="steps">
+          <li>Cheese and sausage sliced onto the tortilla.</li>
+          <li>Tuna straight from the pouch — buy <strong>pouches, not cans</strong>, no draining.</li>
+          <li>Condiment packets, roll.</li>
+        </ol></div>
+      </div>
+      <p class="note">Foil chicken swaps for tuna 1:1. Carry whole cheese blocks and small sausage chubs sized to be finished within a day of opening. <strong>The empty tuna pouch is the smelliest trash of the trip — double-bag it and hang it.</strong></p>
+    </div>
+
+    <div class="rx top-shelf" id="rx-gorp">
+      <h4>🥨 GORP Trail Mix — the 1:1 Rule <span class="tier top">top shelf</span></h4>
+      <p class="pitch">The graze layer between meals. The published formula is mechanical: equal cups of everything — which also makes it a great pre-trip ritual where everyone builds their own.</p>
+      <div class="facts"><span>302 cal per ½ cup (stated)</span><span>batch = 6 cups = 12 servings</span><span>no cook</span></div>
+      <div class="rx-cols">
+        <div><h5>Published batch (1 cup each)</h5><ul class="ing">
+          <li>Roasted peanuts · Spanish peanuts</li>
+          <li>Cashews</li>
+          <li>Raisins · golden raisins</li>
+          <li>Dried cranberries</li>
+          <li>Morale sub (ours): swap 1 cup for M&amp;Ms or dark chocolate, 1:1</li>
+        </ul></div>
+        <div><h5>Trip math (ours, on the stated serving)</h5><ol class="steps">
+          <li>2 servings/person/day × 6 people × 4 days = 48 half-cups = <strong>24 cups = four batches</strong>.</li>
+          <li>Issue each person a quart bag per day — a communal bag dies by day 2.</li>
+        </ol></div>
+      </div>
+      <p class="note">Nut allergies: a nut-free mix (seeds, pretzels, dried fruit, candy) follows the same 1:1 rule. Source: <a href="https://www.freshoffthegrid.com/gorp-trail-mix/">Fresh Off The Grid</a> (calories are its stated third-party-calculator estimate).</p>
+    </div>
+  </section>
+
+  <!-- ============ 07 DESSERTS & DRINKS ============ -->
+  <section id="sweets">
+    <div class="sec-head"><span class="sec-num">No. 07</span><h2>Desserts &amp; Hot Drinks</h2></div>
+    <p class="sec-note">Nights in the 30s–40s are the whole use case. Two of these need no flame at all;
+    the third piggybacks on the dinner boil.</p>
+
+    <div class="rx top-shelf" id="rx-pudding">
+      <h4>🍫 Instant Pudding, Trail Style <span class="tier top">top shelf</span></h4>
+      <p class="pitch">Cold-water chocolate pudding five minutes after dinner, zero flame — the easiest real dessert in backpacking, and it converts powdered milk (the trip's least-loved ingredient) into its most-loved course.</p>
+      <div class="facts"><span>354 cal/serving (stated)</span><span>no cook</span><span>5 min + 5 min set</span></div>
+      <div class="rx-cols">
+        <div><h5>Published single (per serving)</h5><ul class="ing">
+          <li><b>¼ packet</b> instant chocolate pudding</li>
+          <li><b>2 Tbsp</b> milk powder — bagged together at home</li>
+          <li><b>½ cup</b> COLD water (creek-cold sets best)</li>
+          <li>1 chocolate-chip cookie to crumble on top</li>
+        </ul><h5>Group scale-up (ours, ×4)</h5><ul class="ing">
+          <li><b>1</b> full 3.4-oz instant pudding box + <b>½ cup</b> milk powder + <b>2 cups</b> cold water</li>
+          <li>Two boxes covers 6–8 people</li>
+        </ul></div>
+        <div><h5>In camp</h5><ol class="steps">
+          <li>Powder into a mug (or the group batch into a screw-lid container / freezer bag).</li>
+          <li>Add cold water; stir or shake hard 1–2 minutes.</li>
+          <li>Wait 4–5 minutes to set. Crumble the cookie over.</li>
+        </ol></div>
+      </div>
+      <p class="note"><strong>Instant pudding only</strong> — cook-and-serve needs a boil and real milk. Source: <a href="https://trail.recipes/recipes/double-chocolate-protein-pudding/">trail.recipes</a>.</p>
+    </div>
+
+    <div class="rx" id="rx-tiramisu">
+      <h4>🍰 Easy Trail Tiramisu <span class="tier treat">leader treat</span></h4>
+      <p class="pitch">An absurd flex dessert for the last night — layered "tiramisu" built in a mug from custard powder and ladyfingers. Modified for this group: no amaretto, cocoa drizzle instead of coffee.</p>
+      <div class="facts"><span>492 cal/serving (stated)</span><span>~20 min</span><span>one short boil</span></div>
+      <div class="rx-cols">
+        <div><h5>Per serving</h5><ul class="ing">
+          <li><b>1 Tbsp</b> vanilla custard powder + <b>3 Tbsp</b> full-cream milk powder (Nido) + <b>1 Tbsp</b> sugar — bagged at home</li>
+          <li><b>6</b> ladyfinger biscuits</li>
+          <li><b>1 tsp</b> cocoa for dusting</li>
+          <li>Drizzle (our swap): a spoonful of the cocoa mix below in <b>¼ cup</b> hot water</li>
+        </ul></div>
+        <div><h5>In camp</h5><ol class="steps">
+          <li>Boil ¼ cup water, dissolve the cocoa drizzle, set aside.</li>
+          <li>Whisk the custard bag into ¾ cup cold water in the pot; bring to a boil on medium, stirring; simmer ~1 min until thick.</li>
+          <li>Cool completely (a cold-creek dip speeds it) — start this before dishes.</li>
+          <li>Layer twice in a mug: crushed ladyfingers, drizzle, custard. Dust with cocoa.</li>
+        </ol></div>
+      </div>
+      <p class="note">Twenty minutes and a custard pot for one serving at a time — perfect for whoever helped rig the bear hangs, silly for feeding eight. Source: <a href="https://trail.recipes/recipes/easy-trail-tiramisu/">trail.recipes</a> (published version uses coffee + amaretto; dropped here).</p>
+    </div>
+
+    <div class="rx top-shelf" id="rx-drinks">
+      <h4>☕ The Hot Drinks Bar: DIY Cocoa + Spiced Cider <span class="tier top">top shelf</span></h4>
+      <p class="pitch">The highest morale-per-gram item on cold nights. One home-mixed cocoa bag plus a fistful of cider packets covers every evening and the summit break.</p>
+      <div class="facts"><span>Cocoa: 63 cal/cup (stated) · ~8 cups/batch</span><span>hot water only</span></div>
+      <div class="rx-cols">
+        <div><h5>Cocoa batch (bag at home)</h5><ul class="ing">
+          <li><b>1 cup</b> dry milk</li>
+          <li><b>½ cup</b> unsweetened cocoa</li>
+          <li><b>6 Tbsp</b> sugar</li>
+          <li><b>2 tsp</b> cornstarch + <b>½ tsp</b> fine salt</li>
+          <li>Serve: <b>¼ cup</b> mix + <b>1 cup</b> hot water</li>
+        </ul></div>
+        <div><h5>Trip math (ours)</h5><ol class="steps">
+          <li>One batch per 2 people for the 3 nights; carry in a doubled freezer bag with a ¼-cup scoop. Marshmallows ride separately.</li>
+          <li>Cider: Alpine Spiced Apple Cider single packets — empty into a cup, <b>6–8 fl oz</b> hot water, stir (label directions via retailer listings). One per person per night.</li>
+          <li>Piggyback all of it on the dinner boil — no extra fuel.</li>
+        </ol></div>
+      </div>
+      <p class="note">The cocoa mix triple-dips: drink, tiramisu drizzle, pudding topper. Source: <a href="https://www.freshoffthegrid.com/hot-cocoa-mix/">Fresh Off The Grid</a> (calories are its stated estimate).</p>
+    </div>
+
+    <div class="rx compact top-shelf" id="rx-hotchoc">
+      <h4>🍫 Really Hot Chocolate <span class="tier top">top shelf</span></h4>
+      <p class="pitch">The upgrade cocoa: real grated dark chocolate in the mix. The paste-first step is what ends clumpy-cocoa complaints forever.</p>
+      <div class="facts"><span>199 cal/serving (stated)</span><span>rides on any boil</span></div>
+      <p class="ci"><b>Per mug (bag at home):</b> <b>1 tsp</b> cocoa powder · <b>2 tsp</b> sugar · <b>10 g</b> dark chocolate (70%), grated · <b>2 Tbsp</b> full-cream milk powder · <b>½ tsp</b> cornstarch · pinch salt · pinch cayenne (skip for milder palates).</p>
+      <p class="ci"><b>Camp:</b> boil 1 cup water; work 2 Tbsp of it into the mix to make a smooth paste, then add the rest and whisk ~20 seconds. Pre-bag one per person per night.</p>
+      <p class="note">Source: <a href="https://trail.recipes/recipes/really-hot-chocolate/">trail.recipes</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ 08 METHOD ============ -->
+  <section id="method">
+    <div class="sec-head"><span class="sec-num">No. 08</span><h2>Method, Fuel &amp; Cleanup</h2></div>
+    <p class="sec-note">The four techniques that make every recipe above work on a canister stove at 8,600 ft.</p>
+
+    <div class="intel"><span class="src">The pot cozy — the biggest fuel trick there is</span>
+    <p>Most simmer-style meals don't need a flame the whole time: bring the pot to a boil, cook 1–2 minutes,
+    lid on, kill the stove, and wrap the pot in a jacket or beanie for 10 minutes. The residual heat finishes
+    the cooking. It stretches canister fuel dramatically and makes it impossible to scorch dinner —
+    on a trip where the <a href="packcheck.html#groupgear">fuel math</a> is fixed, this is the difference
+    between comfortable and rationing.</p></div>
+
+    <div class="intel"><span class="src">Titanium frying technique</span>
+    <p>The 5.5-inch lid-pan is thin titanium — testers have measured a <strong>300°F temperature spread</strong>
+    across a bare titanium pan over a canister stove. The counter-moves: a real slick of high-smoke-point oil,
+    the flame as LOW as it goes, and physically sliding the pan around over the burner so different zones take
+    turns above the flame. Dense foods (trout, quesadillas, grilled cheese) come out great; batters and eggs
+    stick even on seasoned pans — that's why the pancake recipe below is flagged demo-only.</p></div>
+
+    <div class="intel"><span class="src">Cleanup is a bear rule, not a chore</span>
+    <p>Favor recipes that absorb every drop of water — no straining means no food-scented gray water near camp.
+    For a cheesy pot, boil a splash of water in it, swish, and scatter it well away from camp and 200 ft from
+    water. Every wrapper, scrap, and the wash-water strainings are food to a bear:
+    <a href="index.html#safety">everything smellable hangs at night</a>, wrappers included.</p></div>
+
+    <div class="intel"><span class="src">Scaling for the group</span>
+    <p>The 1650 ml Toaks comfortably cooks 2–3 big portions of any one-pot recipe here. For six-plus eaters,
+    run two stoves and two pots in parallel, or cook in shifts — never overfill a titanium pot past ~⅔, or the
+    boil-over puts dinner in the dirt. The group carries <a href="index.html#safety">three canister stoves</a>,
+    so two cook-groups plus a hot-drink station is the natural formation.</p></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="peak">▲ ▲ ▲</div>
+  <p><strong>Custom Meals · the Trail Kitchen Recipe Book · Sawtooth High Adventure 2026</strong></p>
+  <p><a href="#contents">Contents ↑</a> · <a href="meals.html">The meal plan</a> · <a href="index.html">Trip guide</a></p>
+  <p>Field Manual No. 4 · Personal Edition · Sawtooth High Adventure 2026</p>
+</footer>
+
+</body>
+</html>
