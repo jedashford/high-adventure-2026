@@ -32,6 +32,44 @@
   .need-card .who { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); font-weight: 700; }
   .need-card p { font-size: 13px; color: var(--moss); margin-top: 6px; }
   h3.sub { font-family: var(--serif); color: var(--pine); margin: 26px 0 8px; font-size: 21px; }
+  .need-card .figure { display: flex; align-items: flex-end; justify-content: center; height: 52px; margin-bottom: 8px; color: var(--fir); }
+  /* ---- "where the calories come from" stacked bars ---- */
+  .fuelchart { margin: 26px 0 10px; }
+  .fuelrow { display: grid; grid-template-columns: 170px 1fr; gap: 14px; align-items: center; margin: 26px 0; }
+  .fuelrow .who { text-align: right; font-size: 14px; font-weight: 700; color: var(--pine); line-height: 1.3; }
+  .fuelrow .who small { display: block; color: var(--moss); font-weight: 600; font-size: 11.5px; }
+  .fueltrack { position: relative; height: 38px; background: rgba(255,255,255,0.55); border: 1px solid var(--line); border-radius: 4px; }
+  .fuelseg { position: absolute; top: 5px; bottom: 5px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--paper); white-space: nowrap; overflow: hidden; }
+  .seg-b { background: var(--pine); border-radius: 3px 0 0 3px; }
+  .seg-d { background: var(--fir); }
+  .seg-s { background: var(--ember); border-radius: 0 3px 3px 0; }
+  .tzone { position: absolute; top: -7px; bottom: -7px; border-left: 2px dashed var(--rust); border-right: 2px dashed var(--rust); background: rgba(180,83,31,0.07); }
+  .tzone i { position: absolute; top: -17px; left: 0; right: 0; text-align: center; font-style: normal; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rust); white-space: nowrap; }
+  .fuel-legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 6px 0 0 184px; font-size: 12.5px; color: var(--moss); font-weight: 600; }
+  .fuel-legend span::before { content: ""; display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .fuel-legend .lb::before { background: var(--pine); }
+  .fuel-legend .ld::before { background: var(--fir); }
+  .fuel-legend .ls::before { background: var(--ember); }
+  .fuel-legend .lt::before { background: rgba(180,83,31,0.12); border: 1.5px dashed var(--rust); width: 9px; height: 9px; }
+  /* ---- eating clock ---- */
+  .clock { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 18px 0 8px; }
+  .clock .stop {
+    flex: 1 1 100px; min-width: 96px; text-align: center;
+    background: rgba(255,255,255,0.6); border: 1px solid var(--line);
+    border-top: 4px solid var(--fir); border-radius: 6px; padding: 10px 6px;
+  }
+  .clock .stop.hot { border-top-color: var(--pine); }
+  .clock .stop.total { border-top-color: var(--rust); background: #f9e9db; }
+  .clock .t { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rust); font-weight: 700; }
+  .clock .e { font-size: 24px; line-height: 1.3; }
+  .clock .k { font-family: var(--serif); font-weight: 700; color: var(--pine); font-size: 17px; }
+  .clock .w { font-size: 11.5px; color: var(--moss); }
+  @media (max-width: 760px) {
+    .fuelrow { grid-template-columns: 1fr; gap: 22px; margin: 30px 0; }
+    .fuelrow .who { text-align: left; }
+    .fuel-legend { margin-left: 0; }
+    .fuelseg { font-size: 9.5px; }
+  }
   .recipe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0 24px; }
   .recipe {
     background: rgba(255,255,255,0.55); border: 1px solid var(--line);
@@ -109,13 +147,66 @@
     archived in the repo. Verified Aug 1, 2026.</p>
 
     <div class="needs">
-      <div class="need-card"><span class="who">Boys 12–13</span><b>2,800–3,200</b><p>kcal per day on this trip.
-      Federal "Active" floor: 2,400–2,600.</p></div>
-      <div class="need-card"><span class="who">Boys 14–17</span><b>3,200–3,800</b><p>kcal per day on this trip.
-      Federal "Active" floor: 2,800–3,200.</p></div>
-      <div class="need-card"><span class="who">Adult men</span><b>3,500–4,000</b><p>kcal per day on this trip.
-      Federal "Active" floor: 2,800–3,000.</p></div>
+      <div class="need-card">
+        <span class="figure" style="color:var(--moss)"><svg width="22" height="34" viewBox="0 0 24 36" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="4.2"/><path d="M12 10.5c-4.2 0-6.5 2.6-6.5 6.3v7.7h2.8V34h7.4V24.5h2.8v-7.7c0-3.7-2.3-6.3-6.5-6.3z"/></svg></span>
+        <span class="who">Boys 12–13</span><b>2,800–3,200</b><p>kcal per day on this trip.
+        Federal "Active" floor: 2,400–2,600.</p></div>
+      <div class="need-card">
+        <span class="figure" style="color:var(--fir)"><svg width="26" height="42" viewBox="0 0 24 36" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="4.2"/><path d="M12 10.5c-4.2 0-6.5 2.6-6.5 6.3v7.7h2.8V34h7.4V24.5h2.8v-7.7c0-3.7-2.3-6.3-6.5-6.3z"/></svg></span>
+        <span class="who">Boys 14–17</span><b>3,200–3,800</b><p>kcal per day on this trip.
+        Federal "Active" floor: 2,800–3,200.</p></div>
+      <div class="need-card">
+        <span class="figure" style="color:var(--pine)"><svg width="30" height="48" viewBox="0 0 24 36" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="4.2"/><path d="M12 10.5c-4.2 0-6.5 2.6-6.5 6.3v7.7h2.8V34h7.4V24.5h2.8v-7.7c0-3.7-2.3-6.3-6.5-6.3z"/></svg></span>
+        <span class="who">Adult men</span><b>3,500–4,000</b><p>kcal per day on this trip.
+        Federal "Active" floor: 2,800–3,000.</p></div>
     </div>
+
+    <h3 class="sub">Where a day's calories come from</h3>
+    <p style="font-size:14.5px;color:var(--moss);max-width:68ch;margin-bottom:4px">Same two pouches for everyone
+    (the recommended picks, ~2,050 kcal) — what changes is the snack bag, and whether it's enough to reach each
+    person's <strong style="color:var(--rust)">target zone</strong> (dashed):</p>
+
+    <div class="fuelchart" role="img" aria-label="Stacked bars showing breakfast pouch plus dinner pouch plus snack bag reaching each group's calorie target zone. Boys 12 to 13 reach their zone with about 1,000 snack calories; boys 14 to 17 need about 1,400; adult men barely reach their zone even with 1,500 and should add more food.">
+      <div class="fuelrow">
+        <div class="who">🧒 Boy 12–13<small>needs 2,800–3,200</small></div>
+        <div class="fueltrack">
+          <span class="fuelseg seg-b" style="left:0;width:24.8%">🍳 1,040</span>
+          <span class="fuelseg seg-d" style="left:24.8%;width:24%">🍲 1,010</span>
+          <span class="fuelseg seg-s" style="left:48.8%;width:23.8%">🥪 ~1,000</span>
+          <span class="tzone" style="left:66.7%;width:9.5%"><i>target</i></span>
+        </div>
+      </div>
+      <div class="fuelrow">
+        <div class="who">🧑 Boy 14–17<small>needs 3,200–3,800</small></div>
+        <div class="fueltrack">
+          <span class="fuelseg seg-b" style="left:0;width:24.8%">🍳 1,040</span>
+          <span class="fuelseg seg-d" style="left:24.8%;width:24%">🍲 1,010</span>
+          <span class="fuelseg seg-s" style="left:48.8%;width:33.3%">🥪 ~1,400</span>
+          <span class="tzone" style="left:76.2%;width:14.3%"><i>target</i></span>
+        </div>
+      </div>
+      <div class="fuelrow">
+        <div class="who">🧔 Adult man<small>needs 3,500–4,000</small></div>
+        <div class="fueltrack">
+          <span class="fuelseg seg-b" style="left:0;width:24.8%">🍳 1,040</span>
+          <span class="fuelseg seg-d" style="left:24.8%;width:24%">🍲 1,010</span>
+          <span class="fuelseg seg-s" style="left:48.8%;width:35.7%">🥪 ~1,500</span>
+          <span class="tzone" style="left:83.3%;width:11.9%"><i>target</i></span>
+        </div>
+      </div>
+      <div class="fuel-legend">
+        <span class="lb">Breakfast pouch</span>
+        <span class="ld">Dinner pouch</span>
+        <span class="ls">Lunch &amp; snack bag</span>
+        <span class="lt">Daily target zone</span>
+      </div>
+    </div>
+
+    <p style="font-size:14.5px;max-width:68ch"><strong>Read the bars left to right:</strong> the two green blocks
+    are the hot pouches — identical for everyone, and never enough on their own. The orange block is the no-cook
+    bag from <a href="#lunches">No. 05</a> that finishes the job. A 12–13-year-old lands in his zone comfortably;
+    a 14–17-year-old needs the full bag; <strong>a dad barely scrapes the bottom of his zone even with a bigger
+    bag</strong> — which is why adults should add a third course or bigger pouches (<a href="#recommend">No. 04</a>).</p>
 
     <div class="intel"><span class="src">Why these are higher than the charts you'll find online</span>
     <p>The government's calorie table (Dietary Guidelines for Americans, Table A2-2) tops out at "Active,"
@@ -136,13 +227,11 @@
     ~11,500 ft, above our 9,709 ft high point, so no altitude adjustment is included — that's honesty, not an oversight.</p></div>
 
     <div class="callout">
-      <h4>What this means for the two-pouches-a-day plan</h4>
-      <p style="font-size:14.5px">Alex's plan — a Peak Refuel breakfast and dinner per boy — is a good backbone,
-      <strong>but even the two biggest pouches in the entire lineup only add up to 2,220 calories</strong>
-      (and careless picks can add up to barely 1,100). Against a 3,200–3,800 target for the older boys, hot meals
-      cover roughly <strong>60%</strong> of the day at best. The other ~1,000–1,700 calories have to come from
-      lunch and constant snacking — that's <a href="#lunches">No. 05</a>, and it's not optional. Pick the pouches
-      well (<a href="#recommend">No. 04</a>) and the plan works; pick them casually and the boys run out of gas.</p>
+      <h4>The one way this plan fails</h4>
+      <p style="font-size:14.5px">The bars above assume <em>well-chosen</em> pouches (~1,000 calories each).
+      Pick casually and two pouches can total barely <strong>1,100 calories for the whole day</strong> — the
+      green blocks shrink by half and no snack bag can close that hole. Which pouches are which is
+      <a href="#peak">No. 03</a>; the shopping list is <a href="#recommend">No. 04</a>.</p>
     </div>
   </section>
 
@@ -157,10 +246,10 @@
     <table>
       <thead><tr><th>Day</th><th>Breakfast</th><th>Lunch</th><th>Dinner</th></tr></thead>
       <tbody>
-        <tr><td><strong>Mon</strong> Aug 10</td><td>At home / on the road</td><td>Drive stop (~Twin Falls)</td><td class="num">Trail №1 — Alice/Twin Lakes</td></tr>
-        <tr><td><strong>Tue</strong> Aug 11</td><td class="num">Trail №1</td><td class="num">Trail №1 (no-cook)</td><td class="num">Trail №2 — Toxaway Lake</td></tr>
-        <tr><td><strong>Wed</strong> Aug 12</td><td class="num">Trail №2</td><td class="num">Trail №2 (no-cook)</td><td class="num">Trail №3 — low camp</td></tr>
-        <tr><td><strong>Thu</strong> Aug 13</td><td class="num">Trail №3</td><td>Ketchum / Twin Falls ✓</td><td>Home</td></tr>
+        <tr><td><strong>Mon</strong> Aug 10</td><td>🚗 At home / on the road</td><td>🚗 Drive stop (~Twin Falls)</td><td class="num">🍲 Trail №1 — Alice/Twin Lakes</td></tr>
+        <tr><td><strong>Tue</strong> Aug 11</td><td class="num">🍳 Trail №1</td><td class="num">🥪 Trail №1 (no-cook)</td><td class="num">🍲 Trail №2 — Toxaway Lake</td></tr>
+        <tr><td><strong>Wed</strong> Aug 12</td><td class="num">🍳 Trail №2</td><td class="num">🥪 Trail №2 (no-cook)</td><td class="num">🍲 Trail №3 — low camp</td></tr>
+        <tr><td><strong>Thu</strong> Aug 13</td><td class="num">🍳 Trail №3</td><td>🍔 Ketchum / Twin Falls</td><td>🏠 Home</td></tr>
       </tbody>
     </table>
     </div>
@@ -194,7 +283,7 @@
       </ul>
     </div>
 
-    <h3 class="sub">Breakfasts</h3>
+    <h3 class="sub">🍳 Breakfasts</h3>
     <div class="scroll-x">
     <table class="mealtable">
       <thead><tr><th>Meal</th><th>Cal / pouch</th><th>Protein</th><th>Rating</th><th>Price</th><th>Cal per $</th><th>Water</th><th>Contains</th></tr></thead>
@@ -208,7 +297,7 @@
     </table>
     </div>
 
-    <h3 class="sub">Lunch &amp; dinner entrées</h3>
+    <h3 class="sub">🍲 Lunch &amp; dinner entrées</h3>
     <div class="scroll-x">
     <table class="mealtable">
       <thead><tr><th>Meal</th><th>Cal / pouch</th><th>Protein</th><th>Rating</th><th>Price</th><th>Cal per $</th><th>Water</th><th>Contains</th></tr></thead>
@@ -232,7 +321,7 @@
     </table>
     </div>
 
-    <h3 class="sub">Desserts — the morale line</h3>
+    <h3 class="sub">🍰 Desserts — the morale line</h3>
     <div class="scroll-x">
     <table class="mealtable">
       <thead><tr><th>Dessert</th><th>Cal / pouch</th><th>Rating</th><th>Price</th><th>Water</th><th>Contains</th></tr></thead>
@@ -313,6 +402,19 @@
     needs 2,800–3,800. That means <strong>every boy carries a lunch-and-snack bag worth 1,200–1,500 calories
     per day</strong> (more for the big 16–17s) — all of it no-cook, eaten as continuous grazing, not one sit-down lunch.</p>
 
+    <h3 class="sub">A boy's eating day, hour by hour</h3>
+    <p style="font-size:14.5px;color:var(--moss);max-width:68ch;margin-bottom:4px">This is what "graze
+    continuously" actually looks like — five stops, not three meals. The two green-topped stops are the only
+    times a stove lights:</p>
+    <div class="clock">
+      <div class="stop hot"><div class="t">7:00 camp</div><div class="e">🍳</div><div class="k">1,040</div><div class="w">breakfast pouch</div></div>
+      <div class="stop"><div class="t">10:00 trail</div><div class="e">🥜</div><div class="k">280</div><div class="w">trail mix</div></div>
+      <div class="stop"><div class="t">12:30 lakeside</div><div class="e">🥪</div><div class="k">765</div><div class="w">wrap: tortillas, PB, cheese, sausage</div></div>
+      <div class="stop"><div class="t">3:00 the climb</div><div class="e">🍫</div><div class="k">400</div><div class="w">bar + candy</div></div>
+      <div class="stop hot"><div class="t">6:30 camp</div><div class="e">🍲</div><div class="k">1,010</div><div class="w">dinner pouch</div></div>
+      <div class="stop total"><div class="t">day total</div><div class="e">✅</div><div class="k">~3,500</div><div class="w">in the 14–17 zone</div></div>
+    </div>
+
     <h3 class="sub">The daily bag — one per boy per day, ~1,400 kcal</h3>
     <div class="scroll-x">
     <table>
@@ -351,36 +453,36 @@
     portions per batch in a 1.6 L pot (for the whole group, run two stoves or cook in shifts). The best ones
     <strong>absorb all their water</strong> — no draining, no food-scented gray water near camp, almost no cleanup.</p>
     <div class="recipe-grid">
-      <div class="recipe"><b>The Ramen Bomb</b>
+      <div class="recipe"><b>🍜 The Ramen Bomb</b>
         <p>Ramen + a scoop of instant mashed potatoes + a foil pack of chicken. Boil the ramen, don't drain, stir in
         the potato flakes — they drink up every drop. The definitive thru-hiker dinner, and it's ramen, so zero teen resistance.</p>
         <span class="meta">~5 min flame · absorbs all water · dirt cheap</span></div>
-      <div class="recipe"><b>Cheesy Taco Rice &amp; Beans</b>
+      <div class="recipe"><b>🌮 Cheesy Taco Rice &amp; Beans</b>
         <p>Instant refried beans + instant rice + taco seasoning, 60-second simmer, stir in diced cheddar, top with
         Fritos, wrap in tortillas. A guide-published recipe (Andrew Skurka): 668 cal and 27 g protein a serving.
         A walking taco in a pot.</p>
         <span class="meta">~5 min total · 668 cal/serving · crowd-proof</span></div>
-      <div class="recipe"><b>Knorr Side + Foil-Pack Chicken</b>
+      <div class="recipe"><b>🍗 Knorr Side + Foil-Pack Chicken</b>
         <p>Any $1–2 Knorr pasta or rice side plus a pouch of chicken or tuna. The longest simmer here (7–10 min), so
         use the cozy trick: boil 2 minutes, lid on, wrap the pot in a jacket, wait 10. Plan 3 sides per 2 boys.</p>
         <span class="meta">7–10 min (or cozy) · grocery-store anywhere</span></div>
-      <div class="recipe"><b>Loaded Mac &amp; Cheese</b>
+      <div class="recipe"><b>🧀 Loaded Mac &amp; Cheese</b>
         <p>Boxed mac cooked in just enough water to absorb, plus bacon bits or foil chicken. Maximum teen approval —
         and the worst-cleanup pot of the bunch, so boil a rinse afterward, away from camp.</p>
         <span class="meta">~10 min · messiest pot · maximal morale</span></div>
-      <div class="recipe"><b>Couscous + Chicken + Parmesan</b>
+      <div class="recipe"><b>🥘 Couscous + Chicken + Parmesan</b>
         <p>The most fuel-efficient real grain there is: boil water, stir everything in, lid on, <em>off the flame</em>,
         5 minutes. Physically cannot scorch a titanium pot because it never sits on the burner.</p>
         <span class="meta">zero simmer · most fuel-efficient · can't burn</span></div>
-      <div class="recipe"><b>Instant Mashed Potato Bowls</b>
+      <div class="recipe"><b>🥔 Instant Mashed Potato Bowls</b>
         <p>Idahoan flavored pouches + hot water + bacon bits and cheese. Boiled water only, near-zero cleanup — and the
         group's <strong>rescue meal</strong>: carry a spare pouch for whoever's dinner fails or whoever is still hungry.</p>
         <span class="meta">boil water only · lightest · the safety net</span></div>
-      <div class="recipe"><b>Chili-Lime Peanut Noodles</b>
+      <div class="recipe"><b>🥡 Chili-Lime Peanut Noodles</b>
         <p>Ramen noodles + peanut butter + soy + lime + crushed peanuts. Pad-Thai-ish and genuinely good — better as a
         leader dinner than a bet on picky eaters. Peanut-allergy check first.</p>
         <span class="meta">~7 min · leaders' pick · allergy check</span></div>
-      <div class="recipe"><b>Oatmeal, Upgraded</b>
+      <div class="recipe"><b>🥣 Oatmeal, Upgraded</b>
         <p>2–3 instant packets per teen + brown sugar, dried fruit, and a spoon of peanut butter, eaten from a cup.
         Boiling water only. The DIY breakfast that competes with a $15 pouch for about a dollar.</p>
         <span class="meta">boil water only · no pot mess · ~$1</span></div>
@@ -395,30 +497,30 @@
     <table>
       <thead><tr><th>Pan meal</th><th>Verdict</th><th>The honest note</th></tr></thead>
       <tbody>
-        <tr><td><strong>Pan-fried trout</strong></td><td class="num">Do it</td><td>Dense food — the documented titanium success story, and <a href="index.html#safety">already the plan</a>. Anyone 14+ needs an Idaho fishing license.</td></tr>
-        <tr><td><strong>Quesadillas</strong></td><td class="num">Easy</td><td>Use street-taco-size (4.5–5 in) tortillas so they lie flat on the lid. Medium-low, fold-over style; keep cheese inside the fold — leaks burn onto titanium.</td></tr>
-        <tr><td><strong>Tortilla pizza</strong></td><td class="num">Easy-ish</td><td>Tomato-paste tube + cheese + shelf-stable pepperoni on a small tortilla, ~3–5 min medium-low. Huge novelty per ounce of effort — the published recipe assumes exactly a 6-inch pan.</td></tr>
-        <tr><td><strong>Grilled cheese</strong></td><td class="num">Doable</td><td>Bread scorches faster than tortilla over hot spots. Butter generously, rotate constantly.</td></tr>
-        <tr><td><strong>Hash browns</strong></td><td class="num">Fiddly</td><td>Rehydrate first, then a well-oiled pan and patience; expect some stick.</td></tr>
-        <tr><td><strong>Pancakes</strong></td><td class="num">Demo only</td><td>The documented titanium failure case. Silver-dollar size, one at a time — a fun leader trick for a few kids, not breakfast for a group.</td></tr>
-        <tr><td><strong>Scrambled eggs</strong></td><td class="num">Skip</td><td>Sticks even on seasoned titanium, per the same testing. If eggs really matter, that's the argument for a cheap nonstick aluminum skillet (MSR Quick Skillet class).</td></tr>
+        <tr><td>🐟 <strong>Pan-fried trout</strong></td><td class="num">Do it</td><td>Dense food — the documented titanium success story, and <a href="index.html#safety">already the plan</a>. Anyone 14+ needs an Idaho fishing license.</td></tr>
+        <tr><td>🫓 <strong>Quesadillas</strong></td><td class="num">Easy</td><td>Use street-taco-size (4.5–5 in) tortillas so they lie flat on the lid. Medium-low, fold-over style; keep cheese inside the fold — leaks burn onto titanium.</td></tr>
+        <tr><td>🍕 <strong>Tortilla pizza</strong></td><td class="num">Easy-ish</td><td>Tomato-paste tube + cheese + shelf-stable pepperoni on a small tortilla, ~3–5 min medium-low. Huge novelty per ounce of effort — the published recipe assumes exactly a 6-inch pan.</td></tr>
+        <tr><td>🥪 <strong>Grilled cheese</strong></td><td class="num">Doable</td><td>Bread scorches faster than tortilla over hot spots. Butter generously, rotate constantly.</td></tr>
+        <tr><td>🥔 <strong>Hash browns</strong></td><td class="num">Fiddly</td><td>Rehydrate first, then a well-oiled pan and patience; expect some stick.</td></tr>
+        <tr><td>🥞 <strong>Pancakes</strong></td><td class="num">Demo only</td><td>The documented titanium failure case. Silver-dollar size, one at a time — a fun leader trick for a few kids, not breakfast for a group.</td></tr>
+        <tr><td>🍳 <strong>Scrambled eggs</strong></td><td class="num">Skip</td><td>Sticks even on seasoned titanium, per the same testing. If eggs really matter, that's the argument for a cheap nonstick aluminum skillet (MSR Quick Skillet class).</td></tr>
       </tbody>
     </table>
     </div>
 
     <h3 class="sub">Fresh food — three tiers that actually work</h3>
-    <div class="intel"><span class="src">Tier 1 · The night-one fresh dinner</span>
+    <div class="intel"><span class="src">🌯 Tier 1 · The night-one fresh dinner</span>
     <p>Day 1 is only ~6 miles after the drive — weight and spoilage barely constrain the first dinner, and cold
     30s–40s nights are on our side. Common practice on short trips: carry in something <em>real</em> for night one —
     fresh-vegetable quesadillas, brats, or pre-cooked burritos made at home. Even frozen food thawing in a pack is a
     known first-night trick. This is the single easiest way to make this trip's food memorable.</p></div>
-    <div class="intel"><span class="src">Tier 2 · The all-trip lunch system</span>
+    <div class="intel"><span class="src">🧀 Tier 2 · The all-trip lunch system</span>
     <p><strong>Block sharp cheddar + summer sausage + sturdy tortillas.</strong> Unopened summer sausage is
     shelf-stable — the manufacturer says so outright — so carry small chubs sized to be finished within a day or so
     of opening. Keep cheese as a whole block (pre-shredded spoils faster), wrapped, out of the sun; hiker consensus
     puts block cheddar comfortably inside a 4-day window with cold nights. Shelf-stable tortilla brands (Mission-style)
     outlast the trip easily.</p></div>
-    <div class="intel"><span class="src">Tier 3 · Produce that reaches day 3–4</span>
+    <div class="intel"><span class="src">🥕 Tier 3 · Produce that reaches day 3–4</span>
     <p><strong>Carrots (up to ~5 days) and apples (weeks)</strong> are the produce that goes the distance — an apple
     per kid on day 3 is a genuine morale item. Bell pepper makes it to a mid-trip quesadilla if it doesn't get crushed.
     Avocados, cucumbers, and stone fruit are day-1-only; anything that must stay cold stays home. (Shelf-life figures
