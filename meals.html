@@ -17,6 +17,26 @@
 <style>
   /* page-specific: meal tables, calorie bars */
   .mealtable td { font-size: 14px; }
+  /* ---- wide-screen breakout: let the big comparison tables use the desktop ---- */
+  @media (min-width: 1080px) {
+    .scroll-x:has(.mealtable) {
+      --bleed: min(1380px, calc(100vw - 48px));
+      width: var(--bleed);
+      margin-left: calc((100% - var(--bleed)) / 2);
+    }
+  }
+  /* ---- sticky meal-name column while side-scrolling on small screens ---- */
+  .mealtable th:first-child, .mealtable td.name {
+    position: sticky; left: 0; z-index: 2;
+    background: #f7f2e4;
+    box-shadow: inset -1px 0 0 var(--line);
+  }
+  .mealtable th:first-child { background: var(--fir); z-index: 3; }
+  .mealtable tr:has(.brand.pr) td.name { box-shadow: inset 4px 0 0 var(--pine), inset -1px 0 0 var(--line); }
+  .mealtable tr:has(.brand.mh) td.name { box-shadow: inset 4px 0 0 var(--rust), inset -1px 0 0 var(--line); }
+  @media (max-width: 760px) {
+    .mealtable td.name { white-space: normal; min-width: 150px; max-width: 170px; font-size: 13px; line-height: 1.35; }
+  }
   .brand { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; padding: 2px 7px; border-radius: 4px; white-space: nowrap; vertical-align: 1px; }
   .brand.pr { background: var(--pine); color: var(--paper); }
   .brand.mh { background: transparent; color: var(--rust); border: 1.5px solid var(--rust); }
