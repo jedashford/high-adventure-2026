@@ -52,8 +52,16 @@
   .rx.treat-shelf { border-left-color: var(--lake); }
   .ranklist td { font-size: 14px; padding: 8px 14px; }
   .ranklist tr.tierhead td { background: var(--paper-deep); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--rust); border-bottom: 2px solid var(--line); }
-  .ranklist .name a { font-weight: 700; color: var(--pine); text-decoration: none; }
-  .ranklist .name a:hover { color: var(--rust); }
+  .ranklist .name a {
+    font-weight: 700; color: var(--pine);
+    text-decoration: underline; text-decoration-style: dotted;
+    text-decoration-color: var(--moss); text-underline-offset: 3px;
+  }
+  .ranklist .name a::after { content: " ↓"; color: var(--rust); opacity: 0.55; font-weight: 600; }
+  .ranklist .name a:hover { color: var(--rust); text-decoration-style: solid; text-decoration-color: var(--rust); }
+  /* anchored jumps land clear of the sticky nav, and the landed card lights up */
+  .rx[id] { scroll-margin-top: 64px; }
+  .rx:target { border-left-color: var(--rust); box-shadow: 0 0 0 2px var(--rust), 0 12px 30px -18px rgba(180,83,31,0.5); }
   @media (max-width: 760px) { .rx-cols { grid-template-columns: 1fr; } .rx { padding: 16px 18px; } }
   @media print { .rx { break-inside: avoid; } }
 </style>
