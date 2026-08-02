@@ -311,9 +311,10 @@ footer a { color: #e8c9a8; }
   font-size: 12px; font-weight: 700;
   letter-spacing: 0.26em; text-transform: uppercase;
 }
-.nav-pages { display: flex; align-items: stretch; }
+.nav-pages { display: flex; align-items: stretch; min-width: 0; }
 .nav-pages a {
   display: flex; align-items: center; padding: 0 16px;
+  flex: 0 0 auto; white-space: nowrap;
   color: var(--paper); opacity: 0.72; text-decoration: none;
   font-size: 12px; font-weight: 600;
   letter-spacing: 0.14em; text-transform: uppercase;
@@ -386,6 +387,11 @@ section:target .sec-num { background: var(--rust); color: var(--paper); font-sty
 
 @media (max-width: 760px) { .now-grid { grid-template-columns: 1fr; } .sec-num { font-size: 17px; } .sec-head { gap: 10px; } }
 @media (max-width: 640px) { .toc ol { columns: 1; } .toc { padding: 18px 20px 14px; } }
+@media (max-width: 720px) {
+  /* Five tabs no longer fit a phone; let the strip scroll instead of overflowing. */
+  .nav-pages { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .nav-pages::-webkit-scrollbar { display: none; }
+}
 @media (max-width: 480px) { .nav-mark span { display: none; } .nav-pages a { padding: 0 10px; letter-spacing: 0.08em; } }
 
 /* ---------- print ---------- */

@@ -52,6 +52,7 @@
 
         html {
             scroll-padding-bottom: 90px;
+            scroll-padding-top: 60px;
         }
 
         body {
@@ -937,9 +938,70 @@
                 max-width: 100%;
             }
         }
+
+        /* ---- Return nav to the rest of the Sawtooth '26 field manuals ----
+           This page keeps its own dark theme and does not load styles.css,
+           so the bar is restyled here to match rather than imported. */
+        .site-return {
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            margin: -20px -15px 22px -15px;
+            padding: 0 12px;
+            min-height: 46px;
+            display: flex;
+            align-items: center;
+            background: #0b1220;
+            border-bottom: 2px solid var(--accent-green);
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        .site-return::-webkit-scrollbar { display: none; }
+        .site-return .sr-mark {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            padding-right: 14px;
+            margin-right: 6px;
+            border-right: 1px solid var(--card-border);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        .site-return .sr-tab {
+            display: flex;
+            align-items: center;
+            min-height: 46px;
+            padding: 0 12px;
+            white-space: nowrap;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-bottom: 3px solid transparent;
+        }
+        .site-return .sr-tab:hover { color: var(--text-primary); }
+        .site-return .sr-tab[aria-current="page"] {
+            color: var(--text-primary);
+            border-bottom-color: var(--accent-green);
+        }
     </style>
 </head>
 <body>
+
+    <nav class="site-return" aria-label="Site">
+        <a class="sr-mark" href="index.html">⛰&nbsp;Sawtooth &rsquo;26</a>
+        <a class="sr-tab" href="index.html">Trip Guide</a>
+        <a class="sr-tab" href="packcheck.html">Pack Check</a>
+        <a class="sr-tab" href="meals.html">Meals</a>
+        <a class="sr-tab" href="gear.html" aria-current="page">Gear Research</a>
+    </nav>
 
     <!-- Header Section with Accessibility Roles -->
     <header role="banner">

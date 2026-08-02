@@ -7,7 +7,7 @@ verified-against:
   - packcheck.html
   - meals.html
   - custommeals.html
-  - gemini-code-1784928132429.html
+  - gear.html
   - roadmap/gear-gap-audit/research/
   - roadmap/meals/research/
 review-cadence: never
@@ -16,7 +16,7 @@ review-cadence: never
 # Sawtooth High Adventure, repo rules
 
 A personal sandbox. Six hand-edited static files (`index.html`, `packcheck.html`,
-`meals.html`, `custommeals.html`, `gemini-code-1784928132429.html`, `styles.css`)
+`meals.html`, `custommeals.html`, `gear.html`, `styles.css`)
 published to GitHub Pages for one church youth group. No build step, no backend, no
 dependencies, no users to regress.
 
