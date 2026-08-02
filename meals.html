@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Meals &amp; Trail Kitchen — Sawtooth High Adventure 2026">
+<meta property="og:description" content="Calorie targets for teens and adults, every Peak Refuel meal side by side, the buy list, and real-food ideas for the trail.">
+<meta property="og:image" content="https://jedashford.github.io/high-adventure-2026/images/banner.jpg">
+<meta property="og:url" content="https://jedashford.github.io/high-adventure-2026/meals.html">
+<title>Meals &amp; Trail Kitchen — Sawtooth High Adventure 2026</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* page-specific: meal tables, calorie bars */
+  .mealtable td { font-size: 14px; }
+  .mealtable .name { font-weight: 600; color: var(--pine); white-space: nowrap; }
+  .mealtable .pick { color: var(--rust); }
+  .kcalbar { display: flex; align-items: center; gap: 8px; min-width: 140px; }
+  .kcalbar .bar { height: 10px; background: var(--fir); border-radius: 3px; }
+  .kcalbar.low .bar { background: var(--ember); }
+  .kcalbar small { font-size: 12px; color: var(--moss); white-space: nowrap; }
+  .needs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 18px 0 8px; }
+  .need-card {
+    background: rgba(255,255,255,0.6); border: 1px solid var(--line);
+    border-top: 4px solid var(--fir); border-radius: 6px; padding: 16px 18px; text-align: center;
+  }
+  .need-card b { font-family: var(--serif); font-size: 30px; color: var(--pine); display: block; }
+  .need-card .who { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); font-weight: 700; }
+  .need-card p { font-size: 13px; color: var(--moss); margin-top: 6px; }
+  h3.sub { font-family: var(--serif); color: var(--pine); margin: 26px 0 8px; font-size: 21px; }
+  .recipe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0 24px; }
+  .recipe {
+    background: rgba(255,255,255,0.55); border: 1px solid var(--line);
+    border-left: 4px solid var(--fir); border-radius: 6px; padding: 14px 18px;
+  }
+  .recipe b { font-family: var(--serif); font-size: 17px; color: var(--pine); display: block; margin-bottom: 4px; }
+  .recipe p { font-size: 13.5px; margin-bottom: 4px; }
+  .recipe .meta { font-size: 11.5px; color: var(--moss); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+  @media (max-width: 760px) { .needs { grid-template-columns: 1fr; } .recipe-grid { grid-template-columns: 1fr; } }
+  @media print { .recipe-grid { grid-template-columns: 1fr 1fr; } .recipe, .need-card { break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<div class="topbar"></div>
+
+<nav class="sitenav" aria-label="Site">
+  <div class="wrap sitenav-in">
+    <a class="nav-mark" href="index.html">⛰&nbsp;<span>Sawtooth ’26</span></a>
+    <div class="nav-pages">
+      <a href="index.html">Trip Guide</a>
+      <a href="packcheck.html">Pack Check</a>
+      <a href="meals.html" aria-current="page">Meals</a>
+      <a class="nav-contents" href="#contents">Contents</a>
+    </div>
+  </div>
+</nav>
+
+<header class="masthead">
+  <div class="wrap">
+    <img class="masthead-badge" src="images/badge.png" alt="Lakeside 14th High Adventure badge — sawtooth peaks over an alpine lake with pines, in a rust and pine ring">
+    <div class="kicker">Lakeside 14th Young Men · Field Manual No. 3</div>
+    <h1 class="title" style="font-size:clamp(44px,7vw,84px)">The <em>Menu</em></h1>
+    <p class="subtitle">Calories, Peak Refuel side by side, and real food worth cooking at 8,600 ft</p>
+    <div class="datebar">
+      <span class="hot">Hungry boys hike badly</span>
+      <span>Trip departs Mon · Aug 10</span>
+      <span class="go"><a href="index.html">← Trip guide</a></span>
+    </div>
+  </div>
+</header>
+
+<div class="statband">
+  <div class="wrap">
+    <div class="stat"><b>3,200–3,800</b><small>kcal/day · boys 14–17</small></div>
+    <div class="stat"><b>2,220</b><small>kcal · best two pouches</small></div>
+    <div class="stat"><b>~1,300</b><small>kcal gap · lunch &amp; snacks</small></div>
+    <div class="stat"><b>6</b><small>pouches per boy</small></div>
+    <div class="stat"><b>7–8 lb</b><small>food per person</small></div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <nav class="toc" id="contents" aria-label="Contents">
+    <div class="toc-head">Contents</div>
+    <ol>
+      <li><a href="#calories"><span class="toc-name">How Many Calories</span><span class="toc-dots"></span><span class="toc-no">01</span></a></li>
+      <li><a href="#count"><span class="toc-name">The Meal Count</span><span class="toc-dots"></span><span class="toc-no">02</span></a></li>
+      <li><a href="#peak"><span class="toc-name">Peak Refuel, Side by Side</span><span class="toc-dots"></span><span class="toc-no">03</span></a></li>
+      <li><a href="#recommend"><span class="toc-name">What to Buy</span><span class="toc-dots"></span><span class="toc-no">04</span></a></li>
+      <li><a href="#lunches"><span class="toc-name">Lunches &amp; Snacks — the Gap</span><span class="toc-dots"></span><span class="toc-no">05</span></a></li>
+      <li><a href="#diy"><span class="toc-name">Real Food: DIY &amp; Fresh</span><span class="toc-dots"></span><span class="toc-no">06</span></a></li>
+      <li><a href="#resources"><span class="toc-name">What Other Groups Do</span><span class="toc-dots"></span><span class="toc-no">07</span></a></li>
+      <li><a href="#foodquestions"><span class="toc-name">Open Questions for Alex</span><span class="toc-dots"></span><span class="toc-no">08</span></a></li>
+    </ol>
+    <p class="toc-xref">Companion volumes: <a href="index.html">No. 1 — Trip Guide</a> · <a href="packcheck.html">No. 2 — Pack Check</a></p>
+  </nav>
+
+  <!-- ============ 01 CALORIES ============ -->
+  <section id="calories">
+    <div class="sec-head"><span class="sec-num">No. 01</span><h2>How Many Calories</h2></div>
+    <p class="sec-note">The number every food decision hangs on. Built from the federal dietary tables,
+    NOLS's ration-planning tiers, and Philmont's own commissary target for teenage Scouts — full sources
+    archived in the repo. Verified Aug 1, 2026.</p>
+
+    <div class="needs">
+      <div class="need-card"><span class="who">Boys 12–13</span><b>2,800–3,200</b><p>kcal per day on this trip.
+      Federal "Active" floor: 2,400–2,600.</p></div>
+      <div class="need-card"><span class="who">Boys 14–17</span><b>3,200–3,800</b><p>kcal per day on this trip.
+      Federal "Active" floor: 2,800–3,200.</p></div>
+      <div class="need-card"><span class="who">Adult men</span><b>3,500–4,000</b><p>kcal per day on this trip.
+      Federal "Active" floor: 2,800–3,000.</p></div>
+    </div>
+
+    <div class="intel"><span class="src">Why these are higher than the charts you'll find online</span>
+    <p>The government's calorie table (Dietary Guidelines for Americans, Table A2-2) tops out at "Active,"
+    which it defines as <em>"walking more than 3 miles per day at 3 to 4 miles per hour"</em> — <strong>with no
+    pack</strong>. We're doing roughly double that distance with 25–35 lb on, climbing 1,000–1,600 ft a day. So the
+    federal "Active" column is the <strong>floor</strong>, not the target. Two independent institutions that ration
+    real trips like ours agree on the bump: <strong>NOLS</strong> plans <em>"roughly 3,000–3,500 calories each"</em>
+    (1.75–2.0 lb of food per person per day) for a moderately strenuous backpacking trip, and <strong>Philmont
+    Scout Ranch</strong> — teenage Scouts, multi-day treks, similar elevations — says <em>"we shoot for about
+    3,000 calories a day per participant."</em></p></div>
+
+    <div class="intel"><span class="src">The rule we planned by</span>
+    <p><strong>When methods disagree, plan high.</strong> The failure mode on a youth trip is a 13-year-old who
+    bonks at mile 4 on day 3 with zero cell service — not a leader who carries half a pound of extra food back out.
+    Two honest caveats for parents: a boy who eats 3,000 of a planned 3,500 over four days is completely fine
+    (a modest shortfall on a 4-day trip is normal), and nobody should be planned <em>below</em> the federal
+    "Active" floor for his age. We checked altitude too: the research on altitude appetite effects starts at
+    ~11,500 ft, above our 9,709 ft high point, so no altitude adjustment is included — that's honesty, not an oversight.</p></div>
+
+    <div class="callout">
+      <h4>What this means for the two-pouches-a-day plan</h4>
+      <p style="font-size:14.5px">Alex's plan — a Peak Refuel breakfast and dinner per boy — is a good backbone,
+      <strong>but even the two biggest pouches in the entire lineup only add up to 2,220 calories</strong>
+      (and careless picks can add up to barely 1,100). Against a 3,200–3,800 target for the older boys, hot meals
+      cover roughly <strong>60%</strong> of the day at best. The other ~1,000–1,700 calories have to come from
+      lunch and constant snacking — that's <a href="#lunches">No. 05</a>, and it's not optional. Pick the pouches
+      well (<a href="#recommend">No. 04</a>) and the plan works; pick them casually and the boys run out of gas.</p>
+    </div>
+  </section>
+
+  <!-- ============ 02 MEAL COUNT ============ -->
+  <section id="count">
+    <div class="sec-head"><span class="sec-num">No. 02</span><h2>The Meal Count</h2></div>
+    <p class="sec-note">Straight from the <a href="index.html#plan">day-by-day plan</a>: we eat on the road
+    Monday and eat out Thursday after the hike, so the trail only has to cover
+    <strong>3 dinners, 3 breakfasts, and 3 lunches</strong> per person — plus snacks every day.</p>
+
+    <div class="scroll-x">
+    <table>
+      <thead><tr><th>Day</th><th>Breakfast</th><th>Lunch</th><th>Dinner</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Mon</strong> Aug 10</td><td>At home / on the road</td><td>Drive stop (~Twin Falls)</td><td class="num">Trail №1 — Alice/Twin Lakes</td></tr>
+        <tr><td><strong>Tue</strong> Aug 11</td><td class="num">Trail №1</td><td class="num">Trail №1 (no-cook)</td><td class="num">Trail №2 — Toxaway Lake</td></tr>
+        <tr><td><strong>Wed</strong> Aug 12</td><td class="num">Trail №2</td><td class="num">Trail №2 (no-cook)</td><td class="num">Trail №3 — low camp</td></tr>
+        <tr><td><strong>Thu</strong> Aug 13</td><td class="num">Trail №3</td><td>Ketchum / Twin Falls ✓</td><td>Home</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p style="font-size:15px;max-width:68ch">Alex's plan is <strong>two Peak Refuel meals a day for the boys</strong> —
+    that maps exactly onto the 3 breakfasts + 3 dinners above: <strong>6 pouches per boy</strong>.
+    Adults are on their own for food, but the same math applies to anyone following this page.
+    Every hot meal happens on the <a href="index.html#safety">three canister stoves — campfires are banned on the
+    whole route</a>, and everything smellable hangs at night, so all food needs to pack down into a bear hang.</p>
+    <p style="font-size:15px;max-width:68ch"><strong>What six pouches cost:</strong> $78–96 per boy depending on
+    picks — the recommended basket in <a href="#recommend">No. 04</a> comes to <strong>$85.94</strong> — before
+    the no-cook lunch-and-snack bag each boy also needs (<a href="#lunches">No. 05</a>).</p>
+  </section>
+
+  <!-- ============ 03 PEAK REFUEL SIDE BY SIDE ============ -->
+  <section id="peak">
+    <div class="sec-head"><span class="sec-num">No. 03</span><h2>Peak Refuel, Side by Side</h2></div>
+    <p class="sec-note">Every current Peak Refuel meal — <strong>all 20, plus the 5 desserts</strong> — verified
+    Aug 1, 2026 against the actual product pages on peakrefuel.com: calories, protein, price, and the
+    star rating each page displays. Sorted by calories so the differences are impossible to miss.</p>
+
+    <div class="callout">
+      <h4>Read this before comparing anything</h4>
+      <ul>
+        <li><strong>Every pouch is 2 servings — and Peak Refuel's headline numbers are per <em>pouch</em>.</strong>
+        Most competitors print per-serving numbers, so Peak looks bigger than it is if you compare labels casually.
+        All numbers below are per pouch. A hungry teen after 6 miles eats the whole pouch — <strong>plan in pouches, not servings.</strong></li>
+        <li><strong>The spread is huge:</strong> 530 to 1,120 calories per pouch at nearly the same price.
+        Two badly-chosen pouches give a boy ~1,100 calories of hot food a day; two well-chosen ones give ~2,100+. Same money.</li>
+        <li><strong>No meal claims gluten-free.</strong> Three are tagged vegan (both granolas' cousins: Mountain Berry Granola, Three Bean Chili Mac, Butternut Dal Bhat). Allergens are in the last column — collect allergies before ordering.</li>
+      </ul>
+    </div>
+
+    <h3 class="sub">Breakfasts</h3>
+    <div class="scroll-x">
+    <table class="mealtable">
+      <thead><tr><th>Meal</th><th>Cal / pouch</th><th>Protein</th><th>Rating</th><th>Price</th><th>Cal per $</th><th>Water</th><th>Contains</th></tr></thead>
+      <tbody>
+        <tr><td class="name pick">Biscuits &amp; Sausage Gravy</td><td><span class="kcalbar"><span class="bar" style="width:118px"></span><small>1,100</small></span></td><td class="num">34 g</td><td>4.6 ★ (304)</td><td class="num">$14.99</td><td class="num">73</td><td>1⅓ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name pick">Creamy Peaches &amp; Oats</td><td><span class="kcalbar"><span class="bar" style="width:108px"></span><small>1,010</small></span></td><td class="num">30 g</td><td>4.6 ★ (89)</td><td class="num">$12.99</td><td class="num">78</td><td>1⅓ cup boiling</td><td>Milk</td></tr>
+        <tr><td class="name">Mountain Berry Granola</td><td><span class="kcalbar low"><span class="bar" style="width:61px"></span><small>570</small></span></td><td class="num">13 g</td><td>4.9 ★ (68)</td><td class="num">$8.99</td><td class="num">63</td><td>1 cup <strong>cold</strong></td><td>Soy · vegan</td></tr>
+        <tr><td class="name">Breakfast Skillet</td><td><span class="kcalbar low"><span class="bar" style="width:58px"></span><small>540</small></span></td><td class="num">31 g</td><td>4.6 ★ (201)</td><td class="num">$14.99</td><td class="num">36</td><td>1 cup boiling</td><td>Eggs</td></tr>
+        <tr><td class="name">Strawberry Granola</td><td><span class="kcalbar low"><span class="bar" style="width:57px"></span><small>530</small></span></td><td class="num">23 g</td><td>4.8 ★ (101)</td><td class="num">$7.99</td><td class="num">66</td><td>1 cup <strong>cold</strong></td><td>Milk, soy</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sub">Lunch &amp; dinner entrées</h3>
+    <div class="scroll-x">
+    <table class="mealtable">
+      <thead><tr><th>Meal</th><th>Cal / pouch</th><th>Protein</th><th>Rating</th><th>Price</th><th>Cal per $</th><th>Water</th><th>Contains</th></tr></thead>
+      <tbody>
+        <tr><td class="name pick">Bison Ranch Mashers</td><td><span class="kcalbar"><span class="bar" style="width:120px"></span><small>1,120</small></span></td><td class="num">40 g</td><td>4.9 ★ (37)</td><td class="num">$15.99</td><td class="num">70</td><td>2 cups boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name pick">Beef Pasta Marinara</td><td><span class="kcalbar"><span class="bar" style="width:111px"></span><small>1,040</small></span></td><td class="num">49 g</td><td>4.8 ★ (128)</td><td class="num">$14.99</td><td class="num">69</td><td>¾ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Backcountry Bison Bowl</td><td><span class="kcalbar"><span class="bar" style="width:100px"></span><small>930</small></span></td><td class="num">42 g</td><td>4.5 ★ (92)</td><td class="num">$15.99</td><td class="num">58</td><td>1¾ cup boiling</td><td>Milk, wheat · <em>sold out Aug 1</em></td></tr>
+        <tr><td class="name">Venison Country Casserole</td><td><span class="kcalbar"><span class="bar" style="width:99px"></span><small>920</small></span></td><td class="num">40 g</td><td>4.7 ★ (78)</td><td class="num">$15.99</td><td class="num">58</td><td>1 cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Chicken Pesto Pasta</td><td><span class="kcalbar"><span class="bar" style="width:99px"></span><small>920</small></span></td><td class="num">43 g</td><td>4.6 ★ (130)</td><td class="num">$14.99</td><td class="num">61</td><td>⅔ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name pick">Chicken Alfredo</td><td><span class="kcalbar"><span class="bar" style="width:93px"></span><small>870</small></span></td><td class="num">53 g</td><td>4.9 ★ (206)</td><td class="num">$13.99</td><td class="num">62</td><td>¾ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Butternut Dal Bhat</td><td><span class="kcalbar"><span class="bar" style="width:93px"></span><small>870</small></span></td><td class="num">23 g</td><td>4.8 ★ (68)</td><td class="num">$13.99</td><td class="num">62</td><td>1⅓ cup boiling</td><td>Soy, coconut · vegan</td></tr>
+        <tr><td class="name">Chicken Coconut Curry</td><td><span class="kcalbar"><span class="bar" style="width:91px"></span><small>850</small></span></td><td class="num">44 g</td><td>4.8 ★ (149)</td><td class="num">$14.99</td><td class="num">57</td><td>1⅓ cup boiling</td><td>Coconut</td></tr>
+        <tr><td class="name">Beef Stroganoff</td><td><span class="kcalbar"><span class="bar" style="width:87px"></span><small>810</small></span></td><td class="num">41 g</td><td>4.7 ★ (214)</td><td class="num">$14.99</td><td class="num">54</td><td>1¼ cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Sweet Pork &amp; Rice</td><td><span class="kcalbar"><span class="bar" style="width:86px"></span><small>800</small></span></td><td class="num">40 g</td><td>4.7 ★ (137)</td><td class="num">$13.99</td><td class="num">57</td><td>unstated on page</td><td>not stated on page</td></tr>
+        <tr><td class="name">White Chicken Chili</td><td><span class="kcalbar"><span class="bar" style="width:81px"></span><small>760</small></span></td><td class="num">41 g</td><td>4.6 ★ (68)</td><td class="num">$14.99</td><td class="num">51</td><td>1 cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Homestyle Chicken &amp; Rice</td><td><span class="kcalbar"><span class="bar" style="width:79px"></span><small>740</small></span></td><td class="num">40 g</td><td>4.5 ★ (126)</td><td class="num">$13.99</td><td class="num">53</td><td>1 cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Buffalo Goulash (MeatEater)</td><td><span class="kcalbar"><span class="bar" style="width:79px"></span><small>740</small></span></td><td class="num">45 g</td><td>4.6 ★ (43)</td><td class="num">$15.99</td><td class="num">46</td><td>1 cup boiling</td><td>Milk, wheat</td></tr>
+        <tr><td class="name">Three Bean Chili Mac</td><td><span class="kcalbar low"><span class="bar" style="width:65px"></span><small>610</small></span></td><td class="num">30 g</td><td>4.3 ★ (45)</td><td class="num">$13.99</td><td class="num">44</td><td>1⅓ cup boiling</td><td>Wheat · vegan</td></tr>
+        <tr><td class="name">Chicken Teriyaki Rice</td><td><span class="kcalbar low"><span class="bar" style="width:62px"></span><small>580</small></span></td><td class="num">40 g</td><td>4.4 ★ (120)</td><td class="num">$13.99</td><td class="num">41</td><td>1⅓ cup boiling</td><td>Soy</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sub">Desserts — the morale line</h3>
+    <div class="scroll-x">
+    <table class="mealtable">
+      <thead><tr><th>Dessert</th><th>Cal / pouch</th><th>Rating</th><th>Price</th><th>Water</th><th>Contains</th></tr></thead>
+      <tbody>
+        <tr><td class="name pick">Peach Cobbler</td><td><span class="kcalbar"><span class="bar" style="width:72px"></span><small>670</small></span></td><td>4.8 ★ (115)</td><td class="num">$11.99</td><td>⅔ cup boiling</td><td>Milk, soy, wheat, eggs</td></tr>
+        <tr><td class="name">PB Choc-Chip Cookie Bites</td><td><span class="kcalbar"><span class="bar" style="width:69px"></span><small>640</small></span></td><td>4.7 ★ (59)</td><td class="num">$7.99</td><td>none — ready to eat</td><td>Milk, wheat, soy, <strong>peanut</strong></td></tr>
+        <tr><td class="name">Chocolate Fudge Brownie Bites</td><td><span class="kcalbar"><span class="bar" style="width:65px"></span><small>610</small></span></td><td>4.6 ★ (55)</td><td class="num">$7.99</td><td>none — ready to eat</td><td>Milk, wheat, soy</td></tr>
+        <tr><td class="name">Mountain Berry Cobbler</td><td><span class="kcalbar"><span class="bar" style="width:64px"></span><small>600</small></span></td><td>4.9 ★ (51)</td><td class="num">$11.99</td><td>⅔ cup boiling</td><td>Milk, soy, wheat, eggs</td></tr>
+        <tr><td class="name">Strawberry Cheesecake Bites</td><td><span class="kcalbar low"><span class="bar" style="width:43px"></span><small>400</small></span></td><td>4.7 ★ (66)</td><td class="num">$7.99</td><td>none — ready to eat</td><td>Milk, wheat, eggs</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="intel"><span class="src">How to read the numbers</span>
+    <p>Calories, protein, prices, and ratings are <strong>per pouch, as displayed on each peakrefuel.com product
+    page on Aug 1, 2026</strong> (ratings are the count each page shows; both drift over time — re-check before a
+    bulk order). "Cal per $" is our math: calories ÷ price. Everything cooks by pouring boiling water straight
+    into the pouch — no pot to clean — except the two granolas, which take <strong>cold</strong> water, and the
+    ready-to-eat Bites. Water per pouch runs ⅔–2 cups, which is what drives the
+    <a href="packcheck.html#groupgear">group fuel math</a>. One honest gap: Sweet Pork &amp; Rice's page states
+    no water amount and no allergen line — check the physical pouch. Full verified dataset with every source URL
+    lives in the repo under <code style="font-size:12px">roadmap/meals/research/</code>.</p></div>
+  </section>
+
+  <!-- ============ 04 RECOMMENDATION ============ -->
+  <section id="recommend">
+    <div class="sec-head"><span class="sec-num">No. 04</span><h2>What to Buy</h2></div>
+    <p class="sec-note">The tables in No. 03 reduce to one rule: <strong>at nearly identical prices, buy from
+    the top.</strong> The 530–610-calorie pouches cost about the same as the 1,000+ ones — there is no reason a
+    hungry teen's dinner should ever be a 580-calorie Chicken Teriyaki when Beef Pasta Marinara is 1,040 for
+    the same $14.99.</p>
+
+    <h3 class="sub">The recommended basket — per boy, 6 pouches, $85.94</h3>
+    <div class="scroll-x">
+    <table>
+      <thead><tr><th>Slot</th><th>Pouch</th><th>Cal</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Breakfast ×1</td><td><strong>Biscuits &amp; Sausage Gravy</strong> · $14.99</td><td class="num">1,100</td><td>The biggest breakfast in the lineup, 304 reviews at 4.6★.</td></tr>
+        <tr><td>Breakfast ×2</td><td><strong>Creamy Peaches &amp; Oats</strong> · $12.99 ea</td><td class="num">1,010 ea</td><td>Best calories-per-dollar of any Peak Refuel product (78 cal/$), kid-safe flavor.</td></tr>
+        <tr><td>Dinner ×1</td><td><strong>Bison Ranch Mashers</strong> · $15.99</td><td class="num">1,120</td><td>The single biggest meal Peak Refuel sells, 4.9★.</td></tr>
+        <tr><td>Dinner ×1</td><td><strong>Beef Pasta Marinara</strong> · $14.99</td><td class="num">1,040</td><td>Second-biggest dinner, 49 g protein, spaghetti-adjacent = teen-proof.</td></tr>
+        <tr><td>Dinner ×1</td><td><strong>Chicken Alfredo</strong> · $13.99</td><td class="num">870</td><td>The crowd favorite: 4.9★ across 206 reviews, most protein per pouch (53 g).</td></tr>
+        <tr><td colspan="2"><strong>Trip total per boy</strong></td><td class="num">6,150</td><td>≈ 2,050 kcal/day of hot food — the strongest 60% backbone the lineup can produce.</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p style="font-size:15px;max-width:68ch"><strong>Swaps are fine — from the right shelf.</strong> Any dinner at
+    800+ calories with a 4.6★+ rating substitutes cleanly: Beef Stroganoff, Chicken Pesto Pasta, Chicken Coconut
+    Curry, Sweet Pork &amp; Rice, Venison Country Casserole. Treat the sub-700 pouches (Breakfast Skillet, both
+    granolas, Chicken Teriyaki, Three Bean Chili Mac) as <em>add-ons or small-appetite options for the youngest
+    boys</em>, never as a big teen's whole dinner. For the 12–13-year-olds, the same basket simply leaves a smaller
+    gap to fill with snacks.</p>
+
+    <div class="callout">
+      <h4>Ordering notes for Alex</h4>
+      <ul>
+        <li><strong>Group order:</strong> 7 boys × 6 pouches = 42 pouches ≈ <strong>$600</strong> at the basket
+        above. One bulk order beats seven families ordering separately — no duplicates, one shipping charge, and
+        allergies get checked once, before checkout. (Peak Refuel also sells multi-meal packs and buckets that may
+        beat single-pouch pricing — we verified singles only, so compare at checkout.)</li>
+        <li><strong>Check stock early:</strong> Backcountry Bison Bowl was already sold out Aug 1. Order the week
+        of pack check, not the week of departure.</li>
+        <li><strong>Allergies first:</strong> nearly the whole lineup contains milk and/or wheat. Collect every
+        boy's allergies <em>before</em> the order goes in.</li>
+        <li><strong>Adults (self-supplied):</strong> a man's 3,500–4,000 kcal/day makes the two-pouch pattern cover
+        barely half the day — dads should shop the same top shelf <em>plus</em> a bigger lunch bag, or add a DIY
+        third course from <a href="#diy">No. 06</a>. A shared Peach Cobbler pouch after dinner (~335 kcal each for
+        two) is the cheapest morale upgrade on this page.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 05 LUNCHES & SNACKS ============ -->
+  <section id="lunches">
+    <div class="sec-head"><span class="sec-num">No. 05</span><h2>Lunches &amp; Snacks — the Gap</h2></div>
+    <p class="sec-note">The recommended pouches deliver ~2,050 kcal a day. The targets in No. 01 say a teen
+    needs 2,800–3,800. That means <strong>every boy carries a lunch-and-snack bag worth 1,200–1,500 calories
+    per day</strong> (more for the big 16–17s) — all of it no-cook, eaten as continuous grazing, not one sit-down lunch.</p>
+
+    <h3 class="sub">The daily bag — one per boy per day, ~1,400 kcal</h3>
+    <div class="scroll-x">
+    <table>
+      <thead><tr><th>Item</th><th>≈ Cal</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>2 tortillas</td><td class="num">300</td><td>The vehicle — crush-proof where bread isn't. Shelf-stable brands last all trip.</td></tr>
+        <tr><td>Peanut butter (2 tbsp) + honey</td><td class="num">250</td><td>Squeeze pouch or single-serve cups — no communal jar. <strong>Peanut-allergy check first.</strong></td></tr>
+        <tr><td>Trail mix (2 oz)</td><td class="num">280</td><td>Nuts are the densest calories a boy can carry (peanuts ~166 cal/oz).</td></tr>
+        <tr><td>1 bar (granola/protein)</td><td class="num">250</td><td>The mid-climb pocket snack.</td></tr>
+        <tr><td>Summer sausage or jerky (1 oz)</td><td class="num">100</td><td>Unopened summer sausage is shelf-stable — carry small chubs.</td></tr>
+        <tr><td>Block cheddar (1 oz)</td><td class="num">115</td><td>~115 cal/oz; pairs with the tortilla + sausage as a real wrap.</td></tr>
+        <tr><td>Candy (fun-size)</td><td class="num">150</td><td>Morale is a nutrient on day 3.</td></tr>
+        <tr><td><strong>Total</strong></td><td class="num"><strong>~1,445</strong></td><td>Hits the gap. Big appetites: add a second bar and more trail mix.</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="intel"><span class="src">Why no-cook lunches are also a fuel strategy</span>
+    <p>If lunch never touches a stove, the canisters only ever boil breakfast and dinner water — which keeps the
+    <a href="packcheck.html#groupgear">group fuel math</a> predictable. Calorie density is the packing rule:
+    olive oil 250 cal/oz (a glug in any dinner is the cheapest upgrade there is), walnuts 185, dark chocolate 169,
+    peanuts 166, cheddar 115, raisins 85. Everything in the bag survives an 80° day, and all of it — wrappers
+    included — goes in the bear hang at night.</p></div>
+  </section>
+
+  <!-- ============ 06 DIY & FRESH ============ -->
+  <section id="diy">
+    <div class="sec-head"><span class="sec-num">No. 06</span><h2>Real Food: DIY &amp; Fresh</h2></div>
+    <p class="sec-note">Kept deliberately separate from the freeze-dried plan: this is the
+    "more interesting than a pouch" layer. Everything here obeys the trip's hard rules — canister
+    stoves only (<a href="index.html#safety">no fires, ever</a>), everything hangs at night, nothing
+    needs a cooler. And none of it is exotic: it's what long-trail hikers actually eat.</p>
+
+    <h3 class="sub">The one-pot classics</h3>
+    <p style="font-size:14.5px;color:var(--moss);max-width:68ch;margin-bottom:6px">Each of these feeds 2–3 teen
+    portions per batch in a 1.6 L pot (for the whole group, run two stoves or cook in shifts). The best ones
+    <strong>absorb all their water</strong> — no draining, no food-scented gray water near camp, almost no cleanup.</p>
+    <div class="recipe-grid">
+      <div class="recipe"><b>The Ramen Bomb</b>
+        <p>Ramen + a scoop of instant mashed potatoes + a foil pack of chicken. Boil the ramen, don't drain, stir in
+        the potato flakes — they drink up every drop. The definitive thru-hiker dinner, and it's ramen, so zero teen resistance.</p>
+        <span class="meta">~5 min flame · absorbs all water · dirt cheap</span></div>
+      <div class="recipe"><b>Cheesy Taco Rice &amp; Beans</b>
+        <p>Instant refried beans + instant rice + taco seasoning, 60-second simmer, stir in diced cheddar, top with
+        Fritos, wrap in tortillas. A guide-published recipe (Andrew Skurka): 668 cal and 27 g protein a serving.
+        A walking taco in a pot.</p>
+        <span class="meta">~5 min total · 668 cal/serving · crowd-proof</span></div>
+      <div class="recipe"><b>Knorr Side + Foil-Pack Chicken</b>
+        <p>Any $1–2 Knorr pasta or rice side plus a pouch of chicken or tuna. The longest simmer here (7–10 min), so
+        use the cozy trick: boil 2 minutes, lid on, wrap the pot in a jacket, wait 10. Plan 3 sides per 2 boys.</p>
+        <span class="meta">7–10 min (or cozy) · grocery-store anywhere</span></div>
+      <div class="recipe"><b>Loaded Mac &amp; Cheese</b>
+        <p>Boxed mac cooked in just enough water to absorb, plus bacon bits or foil chicken. Maximum teen approval —
+        and the worst-cleanup pot of the bunch, so boil a rinse afterward, away from camp.</p>
+        <span class="meta">~10 min · messiest pot · maximal morale</span></div>
+      <div class="recipe"><b>Couscous + Chicken + Parmesan</b>
+        <p>The most fuel-efficient real grain there is: boil water, stir everything in, lid on, <em>off the flame</em>,
+        5 minutes. Physically cannot scorch a titanium pot because it never sits on the burner.</p>
+        <span class="meta">zero simmer · most fuel-efficient · can't burn</span></div>
+      <div class="recipe"><b>Instant Mashed Potato Bowls</b>
+        <p>Idahoan flavored pouches + hot water + bacon bits and cheese. Boiled water only, near-zero cleanup — and the
+        group's <strong>rescue meal</strong>: carry a spare pouch for whoever's dinner fails or whoever is still hungry.</p>
+        <span class="meta">boil water only · lightest · the safety net</span></div>
+      <div class="recipe"><b>Chili-Lime Peanut Noodles</b>
+        <p>Ramen noodles + peanut butter + soy + lime + crushed peanuts. Pad-Thai-ish and genuinely good — better as a
+        leader dinner than a bet on picky eaters. Peanut-allergy check first.</p>
+        <span class="meta">~7 min · leaders' pick · allergy check</span></div>
+      <div class="recipe"><b>Oatmeal, Upgraded</b>
+        <p>2–3 instant packets per teen + brown sugar, dried fruit, and a spoon of peanut butter, eaten from a cup.
+        Boiling water only. The DIY breakfast that competes with a $15 pouch for about a dollar.</p>
+        <span class="meta">boil water only · no pot mess · ~$1</span></div>
+    </div>
+
+    <h3 class="sub">The lid-pan, honestly: what a 5.5-inch titanium fry pan can do</h3>
+    <p style="font-size:14.5px;color:var(--moss);max-width:68ch;margin-bottom:6px">Backpacking Light forum testers
+    who instrumented bare titanium pans measured a <strong>300°F spread</strong> across the pan over a canister
+    stove — that's the hot-spot problem in one number. Technique: real oil, flame LOW, keep sliding the pan around
+    the burner. What that means for each idea:</p>
+    <div class="scroll-x">
+    <table>
+      <thead><tr><th>Pan meal</th><th>Verdict</th><th>The honest note</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Pan-fried trout</strong></td><td class="num">Do it</td><td>Dense food — the documented titanium success story, and <a href="index.html#safety">already the plan</a>. Anyone 14+ needs an Idaho fishing license.</td></tr>
+        <tr><td><strong>Quesadillas</strong></td><td class="num">Easy</td><td>Use street-taco-size (4.5–5 in) tortillas so they lie flat on the lid. Medium-low, fold-over style; keep cheese inside the fold — leaks burn onto titanium.</td></tr>
+        <tr><td><strong>Tortilla pizza</strong></td><td class="num">Easy-ish</td><td>Tomato-paste tube + cheese + shelf-stable pepperoni on a small tortilla, ~3–5 min medium-low. Huge novelty per ounce of effort — the published recipe assumes exactly a 6-inch pan.</td></tr>
+        <tr><td><strong>Grilled cheese</strong></td><td class="num">Doable</td><td>Bread scorches faster than tortilla over hot spots. Butter generously, rotate constantly.</td></tr>
+        <tr><td><strong>Hash browns</strong></td><td class="num">Fiddly</td><td>Rehydrate first, then a well-oiled pan and patience; expect some stick.</td></tr>
+        <tr><td><strong>Pancakes</strong></td><td class="num">Demo only</td><td>The documented titanium failure case. Silver-dollar size, one at a time — a fun leader trick for a few kids, not breakfast for a group.</td></tr>
+        <tr><td><strong>Scrambled eggs</strong></td><td class="num">Skip</td><td>Sticks even on seasoned titanium, per the same testing. If eggs really matter, that's the argument for a cheap nonstick aluminum skillet (MSR Quick Skillet class).</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sub">Fresh food — three tiers that actually work</h3>
+    <div class="intel"><span class="src">Tier 1 · The night-one fresh dinner</span>
+    <p>Day 1 is only ~6 miles after the drive — weight and spoilage barely constrain the first dinner, and cold
+    30s–40s nights are on our side. Common practice on short trips: carry in something <em>real</em> for night one —
+    fresh-vegetable quesadillas, brats, or pre-cooked burritos made at home. Even frozen food thawing in a pack is a
+    known first-night trick. This is the single easiest way to make this trip's food memorable.</p></div>
+    <div class="intel"><span class="src">Tier 2 · The all-trip lunch system</span>
+    <p><strong>Block sharp cheddar + summer sausage + sturdy tortillas.</strong> Unopened summer sausage is
+    shelf-stable — the manufacturer says so outright — so carry small chubs sized to be finished within a day or so
+    of opening. Keep cheese as a whole block (pre-shredded spoils faster), wrapped, out of the sun; hiker consensus
+    puts block cheddar comfortably inside a 4-day window with cold nights. Shelf-stable tortilla brands (Mission-style)
+    outlast the trip easily.</p></div>
+    <div class="intel"><span class="src">Tier 3 · Produce that reaches day 3–4</span>
+    <p><strong>Carrots (up to ~5 days) and apples (weeks)</strong> are the produce that goes the distance — an apple
+    per kid on day 3 is a genuine morale item. Bell pepper makes it to a mid-trip quesadilla if it doesn't get crushed.
+    Avocados, cucumbers, and stone fruit are day-1-only; anything that must stay cold stays home. (Shelf-life figures
+    are backpacker consensus plus a retailer produce guide — not lab data — sized here for a 4-day trip with cold nights.)</p></div>
+  </section>
+
+  <!-- ============ 07 RESOURCES ============ -->
+  <section id="resources">
+    <div class="sec-head"><span class="sec-num">No. 07</span><h2>What Other Groups Do</h2></div>
+    <p class="sec-note">A reality check worth knowing: the big annual PCT thru-hiker survey reports
+    that the people who hike for a living mostly eat <strong>ramen, Knorr sides, and instant mashed
+    potatoes</strong> — with freeze-dried pouches (Peak Refuel among the favorites) as the premium option,
+    not the default. Both approaches on this page are legitimate; here's where to steal ideas from.</p>
+
+    <div class="scroll-x">
+    <table>
+      <thead><tr><th>Resource</th><th>Best for</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://www.freshoffthegrid.com/backpacking-recipes/">Fresh Off The Grid — backpacking index</a></td><td>The best free grocery-store-ingredient recipes (one-pot dinners, snacks), written fuel-consciously. Start here.</td></tr>
+        <tr><td><a href="https://store.nols.edu/products/nols-cookery-7th-edition">NOLS Cookery, 7th ed. ($16.95)</a></td><td><strong>The</strong> book for group/youth expedition cooking — 50 years of institutional use, ration planning for cook groups. The most relevant single purchase for a church youth program.</td></tr>
+        <tr><td><a href="https://backcountryfoodie.com/">Backcountry Foodie</a></td><td>Run by a registered dietitian who thru-hikes: 250+ recipes, a meal planner, and a hiking calorie calculator. The nutrition-credibility pick.</td></tr>
+        <tr><td><a href="https://andrewskurka.com/backpacking-dinner-recipe-beans-rice-with-fritos-cheese/">Andrew Skurka's recipes</a></td><td>A small set of guide-tested one-pot dinners with exact weights and calories — the taco rice &amp; beans above is his.</td></tr>
+        <tr><td><a href="https://trail.recipes/">trail.recipes</a></td><td>Big searchable database including small-frypan meals, with per-serving calories.</td></tr>
+        <tr><td><a href="https://www.dirtygourmet.com/">Dirty Gourmet</a></td><td>Recipes organized by activity, for leaders who actually like cooking.</td></tr>
+        <tr><td><a href="https://www.halfwayanywhere.com/pacific-crest-trail-survey/">Halfway Anywhere PCT survey</a></td><td>What hundreds of thru-hikers actually eat each year, in data form.</td></tr>
+        <tr><td><a href="https://www.reddit.com/r/trailmeals/">r/trailmeals</a></td><td>The community idea firehose — search "ramen bomb."</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- ============ 08 OPEN QUESTIONS ============ -->
+  <section id="foodquestions">
+    <div class="sec-head"><span class="sec-num">No. 08</span><h2>Open Questions for Alex</h2></div>
+    <ol class="questions">
+      <li><strong>Confirm the plan:</strong> two Peak Refuel meals a day per boy (breakfast + dinner), boys cover their own lunches and snacks — is that the final shape?</li>
+      <li><strong>Who buys?</strong> One bulk order (better price, one shipment, no duplicates) or each family buys their boy's 6 pouches?</li>
+      <li><strong>Cost per boy:</strong> what number do we tell parents, and how do they pay it?</li>
+      <li><strong>Allergies &amp; picky eaters:</strong> collect them before anything is ordered — several Peak Refuel meals contain nuts, dairy, gluten.</li>
+      <li><strong>Adults:</strong> everyone truly solo, or do the dads pool a shared dinner one night (the trout fry is already planned)?</li>
+      <li><strong>Fuel:</strong> does the <a href="packcheck.html#groupgear">group fuel math</a> still hold once real meal choices (and any simmering) are locked?</li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <div class="peak">▲ ▲ ▲</div>
+  <p><strong>Meals &amp; Trail Kitchen · Sawtooth High Adventure · August 10–13, 2026</strong></p>
+  <p><a href="#contents">Contents ↑</a> · <a href="index.html">Trip guide</a> · <a href="packcheck.html">Pack check</a></p>
+  <p>Field Manual No. 3 · Lakeside 14th Young Men · Sawtooth High Adventure 2026</p>
+</footer>
+
+</body>
+</html>
