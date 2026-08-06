@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="3D Flyover · Alice–Toxaway Loop · Sawtooth High Adventure 2026">
+<meta property="og:description" content="Fly the whole 18.6-mile loop over real terrain — satellite imagery draped on USGS elevation.">
+<meta property="og:url" content="https://jedashford.github.io/high-adventure-2026/trail3d.html">
+<title>3D Flyover — Alice–Toxaway Loop · Sawtooth ’26</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"
+      integrity="sha384-MinO0mNliZ3vwppuPOUnGa+iq619pfMhLVUXfC4LHwSCvF9H+6P/KO4Q7qBOYV5V" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
+<style>
+.stage{position:relative;margin:14px auto 8px;max-width:1400px;padding:0 14px}
+#map3d{height:min(82vh,820px);min-height:460px;border:1px solid var(--line);border-radius:8px;background:#0e1512}
+.hud{position:absolute;left:26px;bottom:26px;z-index:5;background:rgba(30,58,47,.92);color:var(--paper);border-radius:8px;padding:12px 16px;font:600 13px/1.5 var(--sans);min-width:230px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.hud b{font-family:var(--serif);font-size:19px;display:block}
+.hud .day-chip{display:inline-block;border-radius:4px;padding:1px 8px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.ctl3d{position:absolute;top:26px;left:26px;z-index:5;display:flex;flex-wrap:wrap;gap:8px;max-width:75%}
+.ctl3d button,.ctl3d a{border:0;border-radius:6px;padding:9px 14px;font:700 12px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;background:rgba(255,255,255,.94);color:var(--pine);box-shadow:0 2px 8px rgba(0,0,0,.35);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.ctl3d button:hover,.ctl3d a:hover{background:var(--paper)}
+.ctl3d button.primary{background:var(--rust);color:#fff}
+.ctl3d button.primary:hover{background:var(--ember)}
+.ctl3d button[aria-pressed="true"]{outline:2px solid var(--rust)}
+.note3d{max-width:980px;margin:0 auto;padding:0 28px;font-size:13.5px;color:var(--moss)}
+.marker3d{width:22px;height:22px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.marker3d span{transform:rotate(45deg);font-size:11px;line-height:1}
+.maplibregl-popup-content{font-family:var(--sans);border-radius:8px;padding:12px 15px}
+.maplibregl-popup-content h4{font-family:var(--serif);color:var(--pine);margin:0 0 4px;font-size:15px}
+.maplibregl-popup-content p{margin:0;font-size:12.5px;line-height:1.45}
+@media (max-width:700px){.ctl3d{top:14px;left:14px}.hud{left:14px;bottom:14px;min-width:0;padding:9px 12px}.hud b{font-size:16px}}
+</style>
+</head>
+<body>
+
+<div class="topbar"></div>
+
+<nav class="sitenav" aria-label="Site">
+  <div class="wrap sitenav-in">
+    <a class="nav-mark" href="index.html">⛰&nbsp;<span>Sawtooth ’26</span></a>
+    <div class="nav-pages">
+      <a href="index.html">Trip Guide</a>
+      <a href="trail.html" aria-current="page">Trail Map</a>
+      <a href="packcheck.html">Pack Check</a>
+      <a href="meals.html">Meals</a>
+      <a href="gear.html">Gear Research</a>
+    </div>
+  </div>
+</nav>
+
+<header class="masthead" style="padding-top:34px">
+  <div class="wrap">
+    <div class="kicker">Field Manual No. 4 · Plate II</div>
+    <h1 class="title" style="font-size:clamp(38px,6vw,64px)">The Loop in <em>Three Dimensions</em></h1>
+    <p class="subtitle">Satellite imagery draped over real USGS terrain — drag to spin, pinch/scroll to zoom,
+    <strong>hold Ctrl (or two fingers) and drag to tilt</strong>. Or just press <strong>▶ Fly the loop</strong>.</p>
+  </div>
+</header>
+
+<div class="stage">
+  <div id="map3d"></div>
+  <div class="ctl3d">
+    <button class="primary" id="btn-fly">▶ Fly the loop</button>
+    <button id="btn-speed" title="Flyover speed">2×</button>
+    <button data-day="1">D1</button>
+    <button data-day="2">D2</button>
+    <button data-day="3">D3–4</button>
+    <button id="btn-grade" aria-pressed="false" title="Color the route by steepness">Grade</button>
+    <button id="btn-base" title="Toggle satellite / topo">Topo</button>
+    <a href="trail.html">↩ 2D Atlas</a>
+  </div>
+  <div class="hud" id="hud" style="display:none">
+    <span class="day-chip" id="hud-day"></span>
+    <b id="hud-mile"></b>
+    <span id="hud-note"></span>
+  </div>
+</div>
+<p class="note3d">Terrain: AWS Open Data / Mapzen global elevation (1.35× vertical exaggeration) ·
+imagery Esri World Imagery · topo USGS · route © OpenStreetMap contributors.
+Take it offline instead: <a href="sawtooth-loop.gpx" download><strong>GPX</strong></a> for Gaia/AllTrails/Garmin ·
+<a href="sawtooth-loop.kml" download><strong>KML</strong></a> for Google Earth.
+Old phone struggling? The <a href="trail.html">2D atlas</a> has everything.</p>
+
+<footer style="margin-top:44px">
+  <div class="peak">▲ ▲ ▲</div>
+  <p><strong>Lakeside 14th Ward · Sawtooth High Adventure · August 10–13, 2026</strong></p>
+  <p><a href="trail.html">Field Manual No. 4 — Trail Atlas</a> · <a href="index.html">Trip Guide</a></p>
+</footer>
+
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"
+        integrity="sha384-SYKAG6cglRMN0RVvhNeBY0r3FYKNOJtznwA0v7B5Vp9tr31xAHsZC0DqkQ/pZDmj" crossorigin="anonymous"></script>
+<script src="trail-data.js"></script>
+<script>
+'use strict';
+const C = { d1:'#b4531f', d2:'#3b8ec2', d3:'#3e8a55', spur:'#c9a84c' };
+const GRADE_COLORS = { '-4':'#143f6b','-3':'#2a6ba3','-2':'#4f94c4','-1':'#8fc1dd',
+                       '0':'#b6ad97','1':'#e8b04b','2':'#dd7a33','3':'#c43d20','4':'#7e1c10' };
+
+const routeLine = [...TRAIL.legs.day1, ...TRAIL.legs.day2a.slice(1), ...TRAIL.legs.day2b.slice(1),
+                   ...TRAIL.legs.day3a.slice(1), ...TRAIL.legs.day3b.slice(1)];
+const RM = 3958.8, toR = d => d * Math.PI / 180;
+const hav = (a, b) => 2 * RM * Math.asin(Math.sqrt(
+  Math.sin(toR(b[0]-a[0])/2)**2 + Math.cos(toR(a[0]))*Math.cos(toR(b[0]))*Math.sin(toR(b[1]-a[1])/2)**2));
+const cum = [0];
+for (let i = 1; i < routeLine.length; i++) cum.push(cum[i-1] + hav(routeLine[i-1], routeLine[i]));
+const totalMi = cum[cum.length-1];
+function atMile(mi) {
+  if (mi <= 0) return routeLine[0];
+  for (let i = 1; i < cum.length; i++) if (cum[i] >= mi) {
+    const f = (mi - cum[i-1]) / (cum[i] - cum[i-1] || 1);
+    return [routeLine[i-1][0] + (routeLine[i][0]-routeLine[i-1][0])*f,
+            routeLine[i-1][1] + (routeLine[i][1]-routeLine[i-1][1])*f];
+  }
+  return routeLine[routeLine.length-1];
+}
+const eleAtMile = mi => TRAIL.profile.main.reduce((b,p) => Math.abs(p[0]-mi) < Math.abs(b[0]-mi) ? p : b)[1];
+const lngLat = p => [p[1], p[0]];
+
+const map = new maplibregl.Map({
+  container: 'map3d',
+  center: [-114.92, 43.965], zoom: 11.6, pitch: 58, bearing: -35,
+  maxPitch: 78, attributionControl: { compact: true },
+  style: { version: 8, sources: {
+      sat:  { type: 'raster', tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'], tileSize: 256, maxzoom: 17, attribution: 'Esri, Maxar, Earthstar Geographics' },
+      topo: { type: 'raster', tiles: ['https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}'], tileSize: 256, maxzoom: 16, attribution: 'USGS The National Map' },
+      dem:  { type: 'raster-dem', tiles: ['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'], tileSize: 256, encoding: 'terrarium', maxzoom: 14, attribution: 'Terrain: Mapzen/AWS Open Data' },
+    },
+    layers: [
+      { id: 'base-sat',  type: 'raster', source: 'sat' },
+      { id: 'base-topo', type: 'raster', source: 'topo', layout: { visibility: 'none' } },
+    ] },
+});
+map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right');
+map.addControl(new maplibregl.ScaleControl({ unit: 'imperial' }), 'bottom-right');
+
+map.on('load', () => {
+  map.setTerrain({ source: 'dem', exaggeration: 1.35 });
+
+  // route by day
+  const dayFeature = (pts, c) => ({ type: 'Feature', properties: { c }, geometry: { type: 'LineString', coordinates: pts.map(lngLat) } });
+  map.addSource('route-days', { type: 'geojson', data: { type: 'FeatureCollection', features: [
+    dayFeature(TRAIL.legs.day1, C.d1),
+    dayFeature([...TRAIL.legs.day2a, ...TRAIL.legs.day2b.slice(1)], C.d2),
+    dayFeature([...TRAIL.legs.day3a, ...TRAIL.legs.day3b.slice(1)], C.d3),
+  ] } });
+  map.addSource('route-grade', { type: 'geojson', data: { type: 'FeatureCollection',
+    features: TRAIL.grade.segs.map(s => ({ type: 'Feature', properties: { c: GRADE_COLORS[s.b] },
+      geometry: { type: 'LineString', coordinates: s.pts.map(lngLat) } })) } });
+  map.addSource('spurs', { type: 'geojson', data: { type: 'FeatureCollection', features: [
+    dayFeature(TRAIL.legs.spurEdith, C.spur), dayFeature(TRAIL.legs.spurPass, C.spur) ] } });
+
+  const casing = (id, src) => map.addLayer({ id, type: 'line', source: src,
+    paint: { 'line-color': '#ffffff', 'line-width': 7, 'line-opacity': .85 },
+    layout: { 'line-cap': 'round', 'line-join': 'round' } });
+  const colored = (id, src, w) => map.addLayer({ id, type: 'line', source: src,
+    paint: { 'line-color': ['get', 'c'], 'line-width': w },
+    layout: { 'line-cap': 'round', 'line-join': 'round' } });
+  casing('days-casing', 'route-days'); colored('days-line', 'route-days', 4.5);
+  casing('grade-casing', 'route-grade'); colored('grade-line', 'route-grade', 5);
+  ['grade-casing', 'grade-line'].forEach(id => map.setLayoutProperty(id, 'visibility', 'none'));
+  map.addLayer({ id: 'spur-line', type: 'line', source: 'spurs',
+    paint: { 'line-color': C.spur, 'line-width': 3, 'line-dasharray': [1.5, 1.8] } });
+
+  // markers
+  const PINS = [
+    [43.98441,-114.87189,'#6b6455','🚗','Tin Cup Trailhead','Mile 0 · 7,014 ft. Start and finish.'],
+    [43.93824,-114.95647,'#2d5240','⛺','Twin Lakes — night 1','Mile 6.8 · 8,860 ft.'],
+    [43.94400,-114.96100,'#b4531f','⚠','Snowyside Pass','Mile 8.1 · 9,415 ft — high point. Cross before 11 AM.'],
+    [43.97000,-114.95600,'#2d5240','⛺','Toxaway — night 2','Mile ~12.3 · 8,323 ft. Best group lake.'],
+    [43.97276,-114.96955,'#4f83a0','★','Sand Mountain Pass','Day-hike saddle · 9,282 ft.'],
+    [43.97690,-114.95932,'#4f83a0','★','Edith Lake','Day-hike bowl · 8,671 ft.'],
+    [43.97926,-114.93170,'#4f83a0','★','Farley Lake','Mile 14.4 · lunch stop, waterfalls.'],
+    [44.00550,-114.87000,'#2d5240','⛺','Yellow Belly Lake','Night-3 option · outside wilderness.'],
+    [43.94800,-114.93000,'#b4531f','⚠','The no-railing bridge','Mile ~5 · crossing #5. One at a time.'],
+  ];
+  PINS.forEach(p => {
+    const el = document.createElement('div');
+    el.className = 'marker3d'; el.style.background = p[2];
+    el.innerHTML = `<span>${p[3]}</span>`;
+    new maplibregl.Marker({ element: el, anchor: 'bottom' })
+      .setLngLat([p[1], p[0]])
+      .setPopup(new maplibregl.Popup({ offset: 18 }).setHTML(`<h4>${p[4]}</h4><p>${p[5]}</p>`))
+      .addTo(map);
+  });
+});
+
+/* ---------- controls ---------- */
+document.getElementById('btn-base').addEventListener('click', (e) => {
+  const topoOn = map.getLayoutProperty('base-topo', 'visibility') !== 'none';
+  map.setLayoutProperty('base-topo', 'visibility', topoOn ? 'none' : 'visible');
+  map.setLayoutProperty('base-sat', 'visibility', topoOn ? 'visible' : 'none');
+  e.target.textContent = topoOn ? 'Topo' : 'Satellite';
+});
+document.getElementById('btn-grade').addEventListener('click', (e) => {
+  const on = e.target.getAttribute('aria-pressed') !== 'true';
+  e.target.setAttribute('aria-pressed', String(on));
+  ['grade-casing','grade-line'].forEach(id => map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none'));
+  ['days-casing','days-line'].forEach(id => map.setLayoutProperty(id, 'visibility', on ? 'none' : 'visible'));
+});
+const DAY_RANGE = { 1: [0, 6.83], 2: [6.83, 12.34], 3: [12.34, totalMi] };
+document.querySelectorAll('[data-day]').forEach(b => b.addEventListener('click', () => {
+  stopFly();
+  const [a, z] = DAY_RANGE[b.dataset.day];
+  const mid = atMile((a + z) / 2);
+  map.flyTo({ center: [mid[1], mid[0]], zoom: 12.6, pitch: 62,
+              bearing: (Number(b.dataset.day) - 1) * 70 - 30, duration: 2200 });
+}));
+
+/* ---------- the flyover ---------- */
+let flying = false, flyMi = 0, lastT = 0, speed = 2, curBearing = null;
+const SPEEDS = [1, 2, 4];
+const hud = document.getElementById('hud');
+const btnFly = document.getElementById('btn-fly');
+const dayOf = mi => mi <= 6.83 ? ['Day 1', C.d1] : mi <= 12.34 ? ['Day 2', C.d2] : ['Day 3–4', C.d3];
+const HUD_NOTES = [[0,'Leaving the trailhead along Pettit Lake'],[1.4,'Into the wilderness — Pettit Creek canyon'],
+  [3.5,'The crossings zone — bridge at ~mile 5'],[5.8,'Alice Lake · El Capitan on the left'],[6.8,'Twin Lakes bench — night 1'],
+  [7.4,'Climbing above treeline'],[8.1,'SNOWYSIDE PASS — 9,415 ft'],[8.6,'The 2-mile switchback descent'],
+  [10.9,'Three-way junction — we turn right'],[11.8,'Toxaway north shore — night 2'],[12.9,'Waterfalls & the boulder field'],
+  [14.4,'Farley Lake — lunch'],[15.5,'Down the open valley'],[16.4,'McDonald junction — right to the cutoff'],
+  [17.3,'Over the little saddle'],[18.3,'Back to the cars']];
+const noteAt = mi => HUD_NOTES.reduce((a, n) => mi >= n[0] ? n : a)[1];
+const lerpAngle = (a, b, t) => { let d = ((b - a + 540) % 360) - 180; return a + d * t; };
+
+function frame(t) {
+  if (!flying) return;
+  const dt = Math.min(0.1, (t - lastT) / 1000); lastT = t;
+  flyMi += dt * 0.075 * speed;                       // 0.075 mi/s at 1×
+  if (flyMi >= totalMi) { stopFly(); return; }
+  const here = atMile(flyMi), ahead = atMile(Math.min(totalMi, flyMi + 0.25));
+  const tgt = Math.atan2((ahead[1]-here[1]) * Math.cos(here[0]*Math.PI/180), ahead[0]-here[0]) * 180 / Math.PI;
+  curBearing = curBearing == null ? tgt : lerpAngle(curBearing, tgt, Math.min(1, dt * 1.6));
+  map.jumpTo({ center: [here[1], here[0]], bearing: curBearing, pitch: 63, zoom: 13.8 });
+  const [dLabel, dCol] = dayOf(flyMi);
+  document.getElementById('hud-day').textContent = dLabel;
+  document.getElementById('hud-day').style.background = dCol;
+  document.getElementById('hud-mile').textContent = `Mile ${flyMi.toFixed(1)} · ${eleAtMile(flyMi).toLocaleString()} ft`;
+  document.getElementById('hud-note').textContent = noteAt(flyMi);
+  requestAnimationFrame(frame);
+}
+function startFly() {
+  flying = true; hud.style.display = ''; btnFly.textContent = '⏸ Pause';
+  if (flyMi >= totalMi - 0.1) flyMi = 0;
+  curBearing = map.getBearing(); lastT = performance.now();
+  requestAnimationFrame(frame);
+}
+function stopFly() { flying = false; btnFly.textContent = flyMi > 0.1 && flyMi < totalMi - 0.1 ? '▶ Resume' : '▶ Fly the loop'; }
+btnFly.addEventListener('click', () => (flying ? stopFly() : startFly()));
+document.getElementById('btn-speed').addEventListener('click', (e) => {
+  speed = SPEEDS[(SPEEDS.indexOf(speed) + 1) % SPEEDS.length];
+  e.target.textContent = speed + '×';
+});
+['mousedown', 'touchstart', 'wheel'].forEach(ev => map.getCanvas().addEventListener(ev, stopFly, { passive: true }));
+</script>
+
+</body>
+</html>

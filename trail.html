@@ -188,7 +188,10 @@ body.map-fs{overflow:hidden}
       mile dots (miles from the trailhead), even the route lines themselves. Use the buttons
       (top-left) to jump to a day or go fullscreen; switch to satellite top-right.
       <a href="https://www.alltrails.com/trail/us/idaho/alice-toxaway-loop-2" target="_blank" rel="noopener">4,121
-      more photos on AllTrails ↗</a> · trail lines © OpenStreetMap (ODbL) · elevations USGS 3DEP.</div>
+      more photos on AllTrails ↗</a> · <a href="trail3d.html"><strong>fly it in 3D ⛰</strong></a> ·
+      offline backup: <a href="sawtooth-loop.gpx" download>GPX</a> (Gaia / AllTrails / Garmin) ·
+      <a href="sawtooth-loop.kml" download>KML</a> (Google Earth) ·
+      trail lines © OpenStreetMap (ODbL) · elevations USGS 3DEP.</div>
     </div>
 
     <div class="route-legend" id="legend-days">
@@ -872,11 +875,13 @@ const ViewCtl = L.Control.extend({
       '<button data-v="day2" class="d2" title="Zoom to Day 2">D2</button>' +
       '<button data-v="day3" class="d3" title="Zoom to Days 3–4">D3–4</button>' +
       '<button data-v="mode" title="Repaint the route by steepness">Grade</button>' +
+      '<button data-v="3d" title="Fly the loop over real terrain" style="color:#b4531f">3D</button>' +
       '<button data-v="fs" title="Fullscreen">⛶</button>';
     L.DomEvent.disableClickPropagation(div);
     div.addEventListener('click', (e) => {
       const v = e.target.dataset.v;
       if (!v) return;
+      if (v === '3d') { location.href = 'trail3d.html'; return; }
       if (v === 'fs') {
         const shell = document.querySelector('.atlas-map-shell');
         const on = !shell.classList.contains('fs');
