@@ -20,11 +20,13 @@
 /* ============ Trail Atlas — page-local styles ============ */
 .atlas-map-shell{position:relative;margin:10px 0 8px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 10px 30px -18px rgba(30,58,47,.45)}
 #map{height:min(80vh,760px);min-height:440px;background:var(--paper-deep)}
-/* fullscreen mode */
-.atlas-map-shell.fs{position:fixed;inset:0;z-index:9999;margin:0;border-radius:0;border:0}
-.atlas-map-shell.fs #map{height:100vh}
+/* fullscreen mode — shell is re-parented to <body> while active */
+.atlas-map-shell.fs{position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;height:100dvh;z-index:9999;margin:0;border-radius:0;border:0}
+.atlas-map-shell.fs #map{height:100%;min-height:0}
 .atlas-map-shell.fs .map-caption{display:none}
+.atlas-map-shell.fs .leaflet-top{top:env(safe-area-inset-top,0)}
 body.map-fs{overflow:hidden}
+#map-home-placeholder{display:none}
 /* map view control */
 .mapctl{display:flex;gap:0;background:#fff;border:2px solid rgba(0,0,0,.2);border-radius:6px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.2)}
 .mapctl button{border:0;background:#fff;padding:7px 11px;font:700 11px/1 var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--pine);cursor:pointer;border-right:1px solid #e5e0d1}
@@ -53,7 +55,10 @@ body.map-fs{overflow:hidden}
 /* pins */
 .pin{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)}
 .pin span{transform:rotate(45deg);font-size:13px;line-height:1}
-.pin-mile{background:var(--pine);color:var(--paper);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font:700 10px/1 var(--sans);border:2px solid var(--paper);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+/* mile markers: perpendicular tick on the line + number chip floated off it */
+.mm{position:relative;width:0;height:0}
+.mm-tick{position:absolute;left:-1.25px;top:-7px;width:2.5px;height:14px;border-radius:2px;box-shadow:0 0 0 1.5px rgba(255,255,255,.9);transform:rotate(var(--a))}
+.mm-chip{position:absolute;left:-9px;top:-9px;width:18px;height:18px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font:700 9.5px/1 var(--sans);border:1.5px solid #f4efe2;box-shadow:0 1px 4px rgba(0,0,0,.35);transform:rotate(var(--a)) translateY(-16px) rotate(calc(-1 * var(--a)))}
 .leaflet-popup-content-wrapper{border-radius:8px;background:var(--paper);color:var(--ink);font-family:var(--sans)}
 .leaflet-popup-content{margin:14px 16px;font-size:13.5px;line-height:1.5}
 .leaflet-popup-content h4{font-family:var(--serif);color:var(--pine);font-size:16px;margin:0 0 4px}
@@ -703,26 +708,44 @@ function latLngAtMile(mi) {
   }
   return routeLine[routeLine.length-1];
 }
-/* interactive mile markers — tap for mile / day / elevation / what's next */
+/* interactive mile markers at EVERY mile, measured along the mapped line
+   (same arc-length math as the elevation profile, full-resolution polyline) */
 const MILE_NOTES = {
-  2: 'Along Pettit Lake\'s south shore — wilderness boundary just ahead, then the Pettit Creek climb begins.',
-  4: 'Climbing Pettit Creek. The six-crossings zone — the no-railing bridge is at crossing #5, near mile 5.',
-  6: 'Almost there: Alice Lake at 6.0, the Twin Lakes bench at 6.8. Night-1 camps.',
-  8: 'The big moment — Snowyside Pass tops out at mile 8.1 (9,415 ft). Be here before 11 AM.',
-  10: 'Descending the two miles of switchbacks into the Toxaway basin.',
-  12: 'Toxaway\'s north shore. Camp zone starts near the mile-12.3 junction — good sites hide below the trail.',
-  14: 'Dropping past the waterfalls toward Farley Lake (mile 14.4) — lunch water.',
-  16: 'Valley floor. McDonald junction at 16.4: turn right for the cars, straight on for Yellow Belly Lake.',
-  18: 'On the Pettit Lake Cutoff — one small saddle between you and the trailhead.',
+  1: 'Rounding Pettit Lake\'s south shore. The loop fork was at ~0.25 mi — you stayed left.',
+  2: 'Wilderness boundary zone — the Pettit Creek climb begins.',
+  3: 'Into the canyon. First creek crossings coming up.',
+  4: 'The six-crossings zone. Loose rock; in afternoon sun this stretch bakes.',
+  5: 'Crossing #5 is THE no-railing bridge (~mile 4.7–5.3). One at a time.',
+  6: 'Alice Lake at 6.0 under El Capitan. Night-1 fallback camp.',
+  7: 'The Twin Lakes bench (6.8) — first-choice night-1 camp. Meadows and ponds.',
+  8: 'The big moment — Snowyside Pass tops out at 8.1 (9,415 ft). Be here before 11 AM.',
+  9: 'On the descent switchbacks — two rocky miles down into the Toxaway basin.',
+  10: 'Lower switchbacks. The three-way junction is at 10.9: TURN RIGHT along the lake.',
+  11: 'Toxaway\'s northwest shore. Sand Mountain Pass climbs away to the left — not our route.',
+  12: 'Toxaway north shore camp zone — good sites hide on footpaths below the trail.',
+  13: 'Leaving Toxaway past Bowknot — waterfall country, boulder field below.',
+  14: 'Dropping beside the cascades to Farley Lake (14.4) — the lunch stop.',
+  15: 'Below Farley, easing into the open valley.',
+  16: 'Valley floor. McDonald junction at 16.4: right for the cars, straight for Yellow Belly Lake.',
+  17: 'On the Pettit Lake Cutoff, climbing the little saddle (7,524 ft).',
+  18: 'Over the saddle — downhill to the trailhead, 0.6 mi to go.',
 };
 const eleAtMile = (mi) => TRAIL.profile.main.reduce((b, p) => Math.abs(p[0]-mi) < Math.abs(b[0]-mi) ? p : b)[1];
-for (let m = 2; m < cum[cum.length-1]; m += 2) {
+const totalMi = cum[cum.length-1];
+for (let m = 1; m < totalMi; m += 1) {
   const day = m <= 6.83 ? 'Day 1' : m <= 12.34 ? 'Day 2' : 'Day 3–4';
   const col = m <= 6.83 ? C.d1 : m <= 12.34 ? C.d2 : C.d3;
+  // local trail bearing → tick sits perpendicular across the line, chip floats off it
+  const a = latLngAtMile(Math.max(0, m - 0.05)), b = latLngAtMile(Math.min(totalMi, m + 0.05));
+  const brg = Math.atan2((b[1]-a[1]) * Math.cos(a[0]*Math.PI/180), b[0]-a[0]) * 180 / Math.PI;
   L.marker(latLngAtMile(m), {
-    icon: L.divIcon({ className: '', html: `<div class="pin-mile">${m}</div>`, iconSize: [20,20], iconAnchor: [10,10] })
+    icon: L.divIcon({ className: '', iconSize: [0,0], iconAnchor: [0,0],
+      html: `<div class="mm" style="--a:${(brg+90).toFixed(0)}deg">` +
+            `<div class="mm-tick" style="background:${col}"></div>` +
+            `<div class="mm-chip" style="background:${col}">${m}</div></div>` })
   }).bindPopup(`<div class="pp-meta" style="color:${col}">${day} · ${eleAtMile(m).toLocaleString()} ft</div>` +
-               `<h4>Mile ${m} of ${cum[cum.length-1].toFixed(1)}</h4><p>${MILE_NOTES[m] || ''}</p>`).addTo(map);
+               `<h4>Mile ${m} of ${totalMi.toFixed(1)}</h4><p>${MILE_NOTES[m] || ''}</p>` +
+               `<div class="pp-src">Measured along the mapped trail line — matches the elevation chart's mile axis.</div>`).addTo(map);
 }
 
 /* clickable route segments — wide invisible hit lines over each leg */
@@ -800,7 +823,21 @@ const ViewCtl = L.Control.extend({
       if (!v) return;
       if (v === 'fs') {
         const shell = document.querySelector('.atlas-map-shell');
-        const on = shell.classList.toggle('fs');
+        const on = !shell.classList.contains('fs');
+        if (on) {
+          // re-parent to <body> so position:fixed is measured against the real viewport
+          const ph = document.createElement('div');
+          ph.id = 'map-home-placeholder';
+          shell.parentNode.insertBefore(ph, shell);
+          document.body.appendChild(shell);
+          shell.classList.add('fs');
+        } else {
+          shell.classList.remove('fs');
+          const ph = document.getElementById('map-home-placeholder');
+          ph.parentNode.insertBefore(shell, ph);
+          ph.remove();
+          shell.scrollIntoView({ block: 'center' });
+        }
         document.body.classList.toggle('map-fs', on);
         e.target.textContent = on ? '✕' : '⛶';
         map.scrollWheelZoom[on ? 'enable' : 'disable']();
