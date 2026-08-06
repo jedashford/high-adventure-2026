@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Trail Atlas · Alice–Toxaway Loop · Sawtooth High Adventure 2026">
+<meta property="og:description" content="Interactive map of our 18.6-mile loop — camps, hazards, highlights, elevation, and current conditions. Field Manual No. 4.">
+<meta property="og:image" content="https://jedashford.github.io/high-adventure-2026/images/banner.jpg">
+<meta property="og:url" content="https://jedashford.github.io/high-adventure-2026/trail.html">
+<title>Trail Atlas — Alice–Toxaway Loop · Sawtooth ’26</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ============ Trail Atlas — page-local styles ============ */
+.atlas-map-shell{position:relative;margin:10px 0 8px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 10px 30px -18px rgba(30,58,47,.45)}
+#map{height:min(74vh,640px);min-height:420px;background:var(--paper-deep)}
+.map-caption{padding:10px 16px;font-size:12.5px;color:var(--moss);border-top:1px solid var(--line);background:var(--paper-deep)}
+.map-caption b{color:var(--fir)}
+/* layer chips */
+.chiprow{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.chip{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:rgba(255,255,255,.6);cursor:pointer;color:var(--ink);user-select:none;transition:all .12s ease}
+.chip .dot{width:11px;height:11px;border-radius:50%;flex:0 0 auto}
+.chip[aria-pressed="false"]{opacity:.4;border-style:dashed}
+.chip:hover{border-color:var(--fir)}
+/* route legend */
+.route-legend{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0 4px;font-size:12.5px;color:var(--moss)}
+.route-legend span{display:inline-flex;align-items:center;gap:7px;font-weight:600}
+.rl-line{display:inline-block;width:30px;height:0;border-top:4px solid}
+.rl-dash{border-top-style:dashed;border-top-width:3px}
+/* pins */
+.pin{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.pin span{transform:rotate(45deg);font-size:13px;line-height:1}
+.pin-mile{background:var(--pine);color:var(--paper);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font:700 10px/1 var(--sans);border:2px solid var(--paper);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.leaflet-popup-content-wrapper{border-radius:8px;background:var(--paper);color:var(--ink);font-family:var(--sans)}
+.leaflet-popup-content{margin:14px 16px;font-size:13.5px;line-height:1.5}
+.leaflet-popup-content h4{font-family:var(--serif);color:var(--pine);font-size:16px;margin:0 0 4px}
+.leaflet-popup-content .pp-meta{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.leaflet-popup-content .pp-src{margin-top:8px;padding-top:7px;border-top:1px dotted var(--line);font-size:11.5px;color:var(--moss)}
+.leaflet-popup-content .pp-src a{color:var(--rust);font-weight:600}
+.leaflet-popup-content p{margin:0 0 6px}
+/* profile */
+.profile-shell{border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.65);padding:18px 18px 8px;margin:16px 0;position:relative}
+.profile-shell h3{font-family:var(--serif);color:var(--pine);font-size:18px;margin-bottom:2px}
+.profile-sub{font-size:12.5px;color:var(--moss);margin-bottom:8px}
+#profile{width:100%;height:auto;display:block;touch-action:pan-y}
+.prof-tip{position:absolute;pointer-events:none;background:var(--pine);color:var(--paper);font:600 12px/1.4 var(--sans);padding:6px 10px;border-radius:6px;white-space:nowrap;transform:translate(-50%,-130%);opacity:0;transition:opacity .1s}
+.spur-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+.spur-card{border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.55);padding:14px 16px}
+.spur-card h4{font-family:var(--serif);color:var(--pine);font-size:16px;margin-bottom:2px}
+.spur-card .meta{font-size:12px;color:var(--moss);text-transform:uppercase;letter-spacing:.07em;font-weight:600;margin-bottom:6px}
+.spur-card svg{width:100%;height:auto;display:block}
+.spur-card p{font-size:13.5px;margin-top:8px}
+/* day-stat chips inside cards */
+.seg-stats{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 4px}
+.seg-stats span{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line);border-radius:4px;padding:3px 8px;background:rgba(255,255,255,.6);color:var(--fir)}
+.day-card .zoomlink{font-size:12px;font-weight:700;color:var(--rust);text-decoration:none}
+/* hazard cards */
+.hz{border:1px solid var(--line);border-left:4px solid var(--rust);background:rgba(255,255,255,.55);border-radius:6px;padding:14px 18px;margin:12px 0}
+.hz .where{font-size:11.5px;color:var(--rust);font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.hz h4{font-family:var(--serif);color:var(--pine);font-size:17px;margin:2px 0 4px}
+.hz p{font-size:14px;margin:4px 0}
+.hz .brief{font-size:13px;background:#f9e9db;border-radius:4px;padding:8px 12px;margin-top:8px}
+.hz .brief b{color:var(--rust);text-transform:uppercase;font-size:11px;letter-spacing:.1em}
+.hz .src-line{font-size:11.5px;color:var(--moss);margin-top:6px}
+.hz .src-line a{color:var(--rust)}
+/* verification tags */
+.v-tag{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:3px;vertical-align:2px}
+.v-ok{background:#dfe8d9;color:var(--fir);border:1px solid #b9cbae}
+.v-un{background:transparent;color:var(--rust);border:1px dashed var(--rust)}
+.toc-xref a{display:inline}
+/* voices media */
+.video-list{list-style:none;margin:0 0 10px;columns:2;column-gap:40px}
+.video-list li{break-inside:avoid;padding:7px 0;border-bottom:1px dotted var(--line);font-size:14.5px}
+.video-list a{font-weight:600;text-decoration:none}
+.video-list small{color:var(--moss)}
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+.photo-grid .ph{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff;margin:0;box-shadow:0 10px 30px -18px rgba(30,58,47,.45)}
+.photo-grid img{display:block;width:100%;height:220px;object-fit:cover}
+.photo-grid figcaption{padding:10px 14px;font-size:12.5px;color:var(--moss);background:var(--paper-deep);border-top:1px solid var(--line)}
+@media (max-width:700px){.photo-grid{grid-template-columns:1fr}.video-list{columns:1}}
+@media (max-width:760px){.spur-grid{grid-template-columns:1fr}#map{height:60vh}}
+@media print{.atlas-map-shell,.chiprow,.route-legend{display:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar"></div>
+
+<nav class="sitenav" aria-label="Site">
+  <div class="wrap sitenav-in">
+    <a class="nav-mark" href="index.html">⛰&nbsp;<span>Sawtooth ’26</span></a>
+    <div class="nav-pages">
+      <a href="index.html">Trip Guide</a>
+      <a href="trail.html" aria-current="page">Trail Map</a>
+      <a href="packcheck.html">Pack Check</a>
+      <a href="meals.html">Meals</a>
+      <a href="gear.html">Gear Research</a>
+      <a class="nav-contents" href="#contents">Contents</a>
+    </div>
+  </div>
+</nav>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="kicker">Field Manual No. 4 · Lakeside 14th · High Adventure 2026</div>
+    <h1 class="title">Trail <em>Atlas</em></h1>
+    <p class="subtitle">Alice–Toxaway Loop, mile by mile — camps · hazards · highlights · conditions</p>
+    <div class="datebar">
+      <span class="hot">On trail Mon Aug 10 → Thu Aug 13</span>
+      <span>Alice first · clockwise</span>
+      <span class="go"><a href="index.html#plan">Full trip plan →</a></span>
+    </div>
+  </div>
+</header>
+
+<div class="statband">
+  <div class="wrap">
+    <div class="stat"><b>18.6</b><small>mile loop</small></div>
+    <div class="stat"><b>~2,900</b><small>ft of climbing</small></div>
+    <div class="stat"><b>9,415</b><small>ft · Snowyside Pass</small></div>
+    <div class="stat"><b style="white-space:nowrap;font-size:clamp(17px,2.4vw,26px);line-height:1.5">6.8&thinsp;/&thinsp;5.5&thinsp;/&thinsp;6.3</b><small>miles per day</small></div>
+    <div class="stat"><b>0</b><small>bars of cell service</small></div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <nav class="toc" id="contents" aria-label="Contents">
+    <div class="toc-head">Contents</div>
+    <ol>
+      <li><a href="#atlas"><span class="toc-name">The Map</span><span class="toc-dots"></span><span class="toc-no">01</span></a></li>
+      <li><a href="#profile-sec"><span class="toc-name">The Climb, Drawn Out</span><span class="toc-dots"></span><span class="toc-no">02</span></a></li>
+      <li><a href="#days"><span class="toc-name">Three Days, Mile by Mile</span><span class="toc-dots"></span><span class="toc-no">03</span></a></li>
+      <li><a href="#sidetrips"><span class="toc-name">Side Trips From Camp</span><span class="toc-dots"></span><span class="toc-no">04</span></a></li>
+      <li><a href="#hazards"><span class="toc-name">The Leader Briefing</span><span class="toc-dots"></span><span class="toc-no">05</span></a></li>
+      <li><a href="#camps"><span class="toc-name">Camps, Lake by Lake</span><span class="toc-dots"></span><span class="toc-no">06</span></a></li>
+      <li><a href="#conditions"><span class="toc-name">Conditions Right Now</span><span class="toc-dots"></span><span class="toc-no">07</span></a></li>
+      <li><a href="#voices"><span class="toc-name">Voices From the Trail</span><span class="toc-dots"></span><span class="toc-no">08</span></a></li>
+      <li><a href="#sources"><span class="toc-name">Sources &amp; Method</span><span class="toc-dots"></span><span class="toc-no">09</span></a></li>
+    </ol>
+    <p class="toc-xref">Companion volumes: <a href="index.html">No. 1 — Trip Guide</a> · <a href="packcheck.html">No. 2 — Pack Check</a> · <a href="meals.html">No. 3 — Meals</a></p>
+  </nav>
+
+  <!-- ============ 01 THE MAP ============ -->
+  <section id="atlas">
+    <div class="sec-head"><span class="sec-num">No. 01</span><h2>The Map</h2></div>
+    <p class="sec-note">The real trail lines (OpenStreetMap) on the real USGS topo. Tap any pin.
+    Colors are the days: <strong style="color:#b4531f">Day 1</strong>,
+    <strong style="color:#2f7dad">Day 2</strong>, <strong style="color:#2f7442">Day 3</strong>.
+    Dashed = optional pack-free side trips. We are <em>skipping</em> the old high route over
+    Sand Mountain Pass — it stays on the map as a day hike.</p>
+
+    <div class="chiprow" id="chips" role="group" aria-label="Toggle pin categories"></div>
+
+    <div class="atlas-map-shell">
+      <div id="map" role="application" aria-label="Interactive trail map of the Alice–Toxaway loop"></div>
+      <div class="map-caption"><b>Basemap:</b> USGS topographic (switch to satellite, top-right).
+      Mile markers count from the trailhead, clockwise. Trail lines © OpenStreetMap contributors (ODbL) ·
+      elevations USGS 3DEP.</div>
+    </div>
+
+    <div class="route-legend">
+      <span><span class="rl-line" style="border-color:#b4531f"></span>Day 1 · TH → Alice / Twin</span>
+      <span><span class="rl-line" style="border-color:#3b8ec2"></span>Day 2 · Snowyside → Toxaway</span>
+      <span><span class="rl-line" style="border-color:#3e8a55"></span>Day 3–4 · valley out</span>
+      <span><span class="rl-line rl-dash" style="border-color:#8a6d3b"></span>optional side trips</span>
+    </div>
+  </section>
+
+  <!-- ============ 02 ELEVATION ============ -->
+  <section id="profile-sec">
+    <div class="sec-head"><span class="sec-num">No. 02</span><h2>The Climb, Drawn Out</h2></div>
+    <p class="sec-note">Every tenth of a mile, elevation from the USGS 3D Elevation Program.
+    Run your finger along it — the map pin follows. Day&nbsp;1 does two-thirds of all the climbing;
+    after Snowyside Pass at mile 8.1, the trip is essentially downhill for ten miles.</p>
+
+    <div class="profile-shell">
+      <h3>Main loop — 18.6 mi, ~2,900 ft of climbing</h3>
+      <div class="profile-sub">Trailhead 7,014 ft → Snowyside Pass 9,415 ft → out at 7,024 ft · hover / touch to explore</div>
+      <svg id="profile" viewBox="0 0 940 320" preserveAspectRatio="xMidYMid meet" aria-label="Elevation profile of the loop"></svg>
+      <div class="prof-tip" id="proftip"></div>
+    </div>
+
+    <div class="spur-grid">
+      <div class="spur-card">
+        <h4>Side trip · Edith Lake</h4>
+        <div class="meta">1.0 mi one-way · +490 ft · from Toxaway camp</div>
+        <svg id="spur-edith" viewBox="0 0 420 150" preserveAspectRatio="xMidYMid meet" aria-label="Edith Lake spur elevation profile"></svg>
+        <p>Leaves the north shore of Toxaway right at camp — the perfect evening or dawn hike.
+        Edith sits in a hanging basin at 8,671 ft, up "beautifully sculpted granite" (Leidecker).
+        <strong>Day-hike only:</strong> ~2 campsites, and the Forest Service closed most of them
+        for restoration in 2024. <a href="#sidetrips">Details ↓</a></p>
+      </div>
+      <div class="spur-card">
+        <h4>Side trip · Sand Mountain Pass</h4>
+        <div class="meta">2.0 mi one-way · +890 ft · from the mile-10.9 junction</div>
+        <svg id="spur-pass" viewBox="0 0 420 150" preserveAspectRatio="xMidYMid meet" aria-label="Sand Mountain Pass spur elevation profile"></svg>
+        <p>The climb we cut from the packing route, kept as a pack-free hike: 20 mellow
+        switchbacks to the 9,282-ft divide — Leidecker says it "never really feels like you
+        are gaining much altitude" — with Toxaway below and views across Sawtooth Valley to
+        the White Clouds. <a href="#sidetrips">Details ↓</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 DAY BY DAY ============ -->
+  <section id="days">
+    <div class="sec-head"><span class="sec-num">No. 03</span><h2>Three Days, Mile by Mile</h2></div>
+    <p class="sec-note">Distances measured on the mapped trail lines; climbs from USGS elevation data.
+    Times assume a loaded youth-group pace of ~1.5 mph plus breaks — generous on purpose.</p>
+
+    <div class="timeline">
+      <div class="day">
+        <div class="day-dot"><b>M</b><small>Aug 10</small></div>
+        <div class="day-card">
+          <h3 style="color:#b4531f">Day 1 — Trailhead → Alice Lake (or Twin) <a class="zoomlink" href="#atlas" data-zoom="day1">map ↑</a></h3>
+          <div class="seg-stats"><span>6.8 mi</span><span>+1,925 ft</span><span>7,014 → 8,883 ft</span><span>~5–6 hrs</span></div>
+          <p>On trail by ~2 PM after the drive. The loop forks a quarter-mile in — <strong>stay left
+          along Pettit Lake</strong> (the right-hand cutoff is how we come home Thursday). Then steady
+          shade-and-granite climbing up Pettit Creek with <strong>lots of loose rock</strong> and
+          <strong>six creek crossings</strong> — in August mostly rock-hops and logs, with the famous
+          no-railing bridge at crossing five (~mile 5). Alice Lake arrives at mile 6.0 (~8,600 ft)
+          under El Capitan; Twin Lakes is 0.9 mi and +260 ft farther and is usually the quieter camp.
+          Water is everywhere on this leg — filter and go, don't carry heavy.</p>
+          <p class="meta">Camp: Twin Lakes preferred · Alice peninsula as fallback · dinner on stoves — no fires, all trip</p>
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-dot"><b>T</b><small>Aug 11</small></div>
+        <div class="day-card">
+          <h3 style="color:#2f7dad">Day 2 — Over Snowyside Pass → Toxaway Lake <a class="zoomlink" href="#atlas" data-zoom="day2">map ↑</a></h3>
+          <div class="seg-stats"><span>5.5 mi</span><span>+534 ft</span><span>high pt 9,415 ft @ mi 8.1</span><span>~4–5 hrs</span></div>
+          <p><strong>Leave camp by 7–8 AM — the National Weather Service's mountain rule is to be
+          off high ground by noon.</strong> The climb from Twin Lakes to Snowyside Pass is short
+          but rocky, with the last mile fully above treeline; the top is the high point of the
+          entire trip. Then a two-mile switchback descent to Toxaway Lake. The mile-10.9 junction
+          is a <strong>three-way where hikers genuinely take the wrong fork</strong>: our route
+          turns <strong>right (east) along the lake</strong>; the fork climbing uphill is the Sand
+          Mountain Pass trail we are not taking with packs. Camp along Toxaway's north shore near
+          the mile-12.3 junction. Arrive by early afternoon: swim (shoreline only — this lake earns
+          a hypothermia warning), fish for brook trout, nap, or take a side trip.</p>
+          <p class="meta">Camp: Toxaway north shore — the best group lake on the loop · afternoon wind is normal, stake tents well</p>
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-dot"><b>W</b><small>Aug 12</small></div>
+        <div class="day-card">
+          <h3 style="color:#2f7442">Day 3 — Down the Yellow Belly valley <a class="zoomlink" href="#atlas" data-zoom="day3">map ↑</a></h3>
+          <div class="seg-stats"><span>4.1–6.3 mi</span><span>+406 ft</span><span>8,191 → 7,024 ft</span><span>~3–5 hrs</span></div>
+          <p>The new plan: instead of hauling packs over the old high route, we simply follow
+          the Toxaway drainage downhill — steeply at first through a rocky boulder field beside
+          a chain of waterfalls (a large one has a spur trail to its base), past Farley Lake
+          (mile 14.4, the lunch stop), through open valley to the McDonald Lake junction at
+          mile 16.4. Two endings, Alex's call on the day:
+          <strong>(a) camp low</strong> near Yellow Belly Lake — it's outside the wilderness
+          boundary, has a swim-worthy northeast cove, and makes Thursday a 2-mile stroll; or
+          <strong>(b) push all the way out</strong> (6.3 mi total) and car-camp or start driving.
+          Anyone with energy can bank the Edith Lake spur at dawn before packing up.</p>
+          <p class="meta">Camp: Yellow Belly Lake area (option a) · Farley is NOT the group camp — sites are few and small</p>
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-dot"><b>Th</b><small>Aug 13</small></div>
+        <div class="day-card">
+          <h3>Day 4 — Out the cutoff, drive home</h3>
+          <div class="seg-stats"><span>~2.1 mi</span><span>+400 ft over the saddle</span><span>~1.5 hrs</span></div>
+          <p>From the McDonald junction the Pettit Lake Cutoff hops one small forested saddle
+          (7,524 ft) and drops straight back to the cars. Out by mid-morning, lunch in Ketchum
+          or Twin Falls, parents get the ETA text from coverage near Twin Falls.</p>
+          <p class="meta">Drive ~6 hr · no night driving — that's why the fourth day exists</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 SIDE TRIPS ============ -->
+  <section id="sidetrips">
+    <div class="sec-head"><span class="sec-num">No. 04</span><h2>Side Trips From Camp</h2></div>
+    <p class="sec-note">This is where the trip gets great. All three leave from (or next to) the
+    Toxaway camp, all are pack-free, and none are required. Pick by group energy.</p>
+
+    <div class="intel"><span class="src">The guidebook day loop — Sand Mountain Pass + Edith Lake</span>
+      <p><strong>6.1 mi loop · +1,468 ft · half a day.</strong> Matt Leidecker's <em>Exploring the
+      Sawtooths</em> describes exactly this: "Campers based at Toxaway Lake can day hike to Sand
+      Mountain Pass, around to Edith Lake, and down to the Toxaway trail for a 6.1-mile loop with
+      1,468 feet of climbing." Both segments were maintained by trail crews July 4–5, 2026. Do it
+      clockwise (pass first) so the climbing happens in cool morning air. The strongest
+      Day-2-afternoon or Day-3-morning option for the fast half of the group.</p>
+    </div>
+    <div class="intel"><span class="src">Just Edith Lake</span>
+      <p><strong>1.0 mi one-way · +490 ft.</strong> Leaves the north shore of Toxaway steps from
+      camp and climbs granite benches into the Edith basin at 8,671 ft. Best evening walk on
+      the trip. <strong>Not a camp:</strong> reports describe only ~2 sites, one report says
+      camping isn't allowed, and the USFS 2024 trail report noted "most campsites at Edith Lake
+      closed for vegetation restoration" (the 2026 report no longer carries the note, but nothing
+      rescinds it — it's on the permit-call question list). Stock animals are banned overnight
+      within 200 yards.</p>
+    </div>
+    <div class="intel"><span class="src">Just the pass</span>
+      <p><strong>2.0 mi one-way · +890 ft from the mile-10.9 junction.</strong> The switchbacks
+      we're not carrying packs up. Drop packs at the junction on Day 2 and climb light: 20
+      switchbacks to the 9,282-ft divide with the South Fork Payette. From the saddle — "views
+      all the way back down to and across Sawtooth Valley to the White Cloud Mountains," with
+      Toxaway directly below. Budget 2–3 hrs round trip and watch the sky: it's all exposure up
+      there, and the NWS rule of thumb is to be off high ground by noon.</p>
+    </div>
+  </section>
+
+  <!-- ============ 05 HAZARDS ============ -->
+  <section id="hazards">
+    <div class="sec-head"><span class="sec-num">No. 05</span><h2>The Leader Briefing</h2></div>
+    <p class="sec-note">Every named risk on this route, where it lives, and the one-line brief for
+    the boys. Each has a pin on <a href="#atlas">the map</a>. This list was fact-checked against
+    trip reports and Forest Service sources — nothing invented, nothing omitted that we found.</p>
+    <div id="hazard-cards"></div>
+  </section>
+
+  <!-- ============ 06 CAMPS ============ -->
+  <section id="camps">
+    <div class="sec-head"><span class="sec-num">No. 06</span><h2>Camps, Lake by Lake</h2></div>
+    <p class="sec-note">From a lake-by-lake read of a decade of dated trip reports
+    (verified Aug 6, 2026 — sources in <a href="#sources">No. 09</a>). Rule of thumb everywhere:
+    camp 100 ft from water and trail (we teach 200), stoves only, hang everything scented.</p>
+
+    <table>
+      <thead><tr><th>Lake</th><th>Group verdict</th><th>What the reports say</th></tr></thead>
+      <tbody>
+        <tr><td><b>Twin Lakes</b><br><small>8,860 ft · mi 6.8</small></td>
+          <td><span class="tag ok">night 1 — first choice</span></td>
+          <td>Sites on the forested east side plus "an incredible campsite right in between the two lakes."
+          Quieter than Alice but not empty. ~1 mi past and ~260 ft above Alice.</td></tr>
+        <tr><td><b>Alice Lake</b><br><small>~8,600 ft · mi 6.0</small></td>
+          <td><span class="tag ok">night 1 — fallback</span></td>
+          <td>"A lot" of campsites and a lot of people. A north-side peninsula holds a whole group's tents
+          with peaks on three sides. Bold chipmunks &amp; trash reported — hang food, keep a clean camp.</td></tr>
+        <tr><td><b>Toxaway Lake</b><br><small>8,323 ft · mi 12.3</small></td>
+          <td><span class="tag ok">night 2 — the group lake</span></td>
+          <td>Best group camping on the loop, but the sites hide: watch for small footpaths dropping
+          right (lakeside) from the main trail — the good camps aren't visible from it. Sandy-beach
+          swimming. Afternoon wind is routine; bugs worse than Alice.</td></tr>
+        <tr><td><b>Farley Lake</b><br><small>7,745 ft · mi 14.4</small></td>
+          <td><span class="tag tbd">avoid for groups</span></td>
+          <td>"Shoreline… limited in campsites," popular, and multiple parties report arriving to
+          find it full — one settled for "a hilltop spot that was VERY windy." Lunch stop, not a camp.</td></tr>
+        <tr><td><b>Edith Lake</b><br><small>8,671 ft · side trip</small></td>
+          <td><span class="tag tbd">day-hike only</span></td>
+          <td>~2 sites, possibly still closed for restoration; one report says camping isn't allowed.
+          Confirm on the permit call; plan to visit, not sleep.</td></tr>
+        <tr><td><b>Yellow Belly Lake</b><br><small>7,076 ft · mi ~16.8</small></td>
+          <td><span class="tag ok">night 3 — option a</span></td>
+          <td>Outside the wilderness boundary (verified against the USFS GIS layer). No developed
+          campground — dispersed sites near the trail and the rough 4WD road; "the long peninsula
+          and cove on the northeast corner" is called out as the great spot, with good swimming.</td></tr>
+        <tr><td><b>McDonald Lake</b><br><small>7,097 ft · mi 16.4</small></td>
+          <td><span class="tag tbd">unverified</span></td>
+          <td>No source documents established sites; the wilderness boundary crosses the lake.
+          Treat as scenery, not a plan.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="intel"><span class="src">Fishing (Idaho license required at 14+)</span>
+      <p><strong>Toxaway:</strong> brook trout (IDFG-observed) — "they can grow to good sizes here."
+      <strong>Farley:</strong> brook trout (IDFG-observed 2004). <strong>Alice &amp; Twin:</strong> brook
+      trout per consistent angler reports (IDFG has no survey records for Alice; Twin reportedly
+      fishes better). <strong>Yellow Belly:</strong> the best diversity on the route — brook, rainbow,
+      westslope cutthroat, and bull trout in IDFG surveys (<em>bull trout must be released</em>).
+      A caught trout pan-fried on the stove is legal and glorious.
+      <a href="https://idfg.idaho.gov/ifwis/fishingplanner/water/1149712439612" target="_blank" rel="noopener">IDFG Fishing Planner ↗</a></p>
+    </div>
+  </section>
+
+  <!-- ============ 07 CONDITIONS ============ -->
+  <section id="conditions">
+    <div class="sec-head"><span class="sec-num">No. 07</span><h2>Conditions Right Now</h2></div>
+    <p class="sec-note">Checked August 6, 2026 — four days before we walk. Anything here can change:
+    <strong>re-check the alerts page within 72 hours of departure.</strong></p>
+    <div id="conditions-cards"></div>
+    <div class="linkrow">
+      <a class="btn" href="https://www.fs.usda.gov/r04/sawtooth/alerts">Sawtooth alerts — check before we go ↗</a>
+      <a class="btn ghost" href="https://forecast.weather.gov/MapClick.php?lat=43.96&lon=-114.94">Pinpoint weather — Toxaway basin ↗</a>
+      <a class="btn ghost" href="https://inciweb.wildfire.gov/">Wildfire map — InciWeb ↗</a>
+    </div>
+  </section>
+
+  <!-- ============ 08 VOICES ============ -->
+  <section id="voices">
+    <div class="sec-head"><span class="sec-num">No. 08</span><h2>Voices From the Trail</h2></div>
+    <p class="sec-note">Dated, quoted, linked — what recent hikers actually said, plus the best
+    film and photos of the route. Quotes are anecdotes, not agency fact; that's why they carry dates.</p>
+    <div id="voices-cards"></div>
+
+    <h3 style="font-family:var(--serif);color:var(--pine);margin:26px 0 4px">See it before you hike it</h3>
+    <p class="sec-note" style="margin-bottom:12px">Six films of this exact loop, each link verified live —
+    the 2025 and 2026 ones show current trail conditions. Great pack-check-night viewing with the boys.</p>
+    <div id="video-list"></div>
+
+    <div id="photo-grid" class="photo-grid"></div>
+  </section>
+
+  <!-- ============ 09 SOURCES ============ -->
+  <section id="sources">
+    <div class="sec-head"><span class="sec-num">No. 09</span><h2>Sources &amp; Method</h2></div>
+    <p class="sec-note">How this page was built, so a later reader can re-check it instead of
+    re-researching it.</p>
+    <div class="callout">
+      <h4>Method</h4>
+      <ul>
+        <li><strong>Trail lines:</strong> OpenStreetMap trail geometry (Pettit Creek, Alice Lake–Redfish Lake,
+        Yellowbelly, Edith Lake, Pettit Lake Cutoff trails), stitched; mileage is arc length along the mapped line.</li>
+        <li><strong>Elevations:</strong> 260 samples from the USGS 3D Elevation Program point service, one per 0.1 mi.
+        Cross-checked against published anchors (trailhead ~7,000 ft, Alice 8,596 ft, Snowyside ≈9,400 ft).</li>
+        <li><strong>Lake coordinates:</strong> USGS GNIS official names database.</li>
+        <li><strong>Camps, hazards, conditions:</strong> primary Forest Service pages and signed orders first,
+        then dated first-person trip reports — every cited page was opened and read, none trusted from a search
+        snippet. Anything that couldn't be confirmed is marked <span class="v-tag v-un">unverified</span>.</li>
+        <li><strong>Working files:</strong> <code>roadmap/trail-atlas/research/</code> and
+        <code>roadmap/campsites/research/</code> in the site repository.</li>
+      </ul>
+    </div>
+    <div id="source-list"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="peak">▲ ▲ ▲</div>
+  <p><strong>Lakeside 14th Ward · Sawtooth High Adventure · August 10–13, 2026</strong></p>
+  <p><a href="#contents">Contents ↑</a> · <a href="index.html">Trip Guide</a> · <a href="packcheck.html">Pack Check</a></p>
+  <p>Field Manual No. 4 — Trail Atlas · built August 6, 2026 · trail data © OpenStreetMap contributors ·
+  topo &amp; elevation USGS · not a substitute for a paper map and compass in the pack</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="trail-data.js"></script>
+<script>
+/* ================= Trail Atlas runtime ================= */
+'use strict';
+const C = { d1:'#b4531f', d2:'#3b8ec2', d3:'#3e8a55', spur:'#8a6d3b',
+            camp:'#2d5240', hazard:'#b4531f', highlight:'#4f83a0', nav:'#6b6455' };
+
+/* ---------- PINS (hand-curated; every entry carries sources) ---------- */
+/* cat: camp | hazard | highlight | nav */
+const PINS = [
+ // --- navigation / junctions ---
+ {cat:'nav', lat:43.98441, lng:-114.87189, t:'Tin Cup (Pettit Lake) Trailhead — mile 0', d:'7,014 ft. $10/day parking, <b>cash or check only</b>. Self-issue wilderness permit box (our 8+ group needs the advance group permit — see Trip Guide No. 05). Lot can run one-in/one-out when full.',
+  src:[['USFS Tin Cup Hiker TH','https://www.fs.usda.gov/r04/sawtooth/recreation/tin-cup-hiker-trailhead','2025']]},
+ {cat:'nav', lat:43.9390, lng:-114.9546, t:'Twin Lakes junction — mile 6.8', d:'Where the Pettit Creek trail tops out at the Twin Lakes bench (8,883 ft). Night-1 camps are here; Snowyside Pass climbs west from this shelf.',
+  src:[['measured on OSM/USGS data','#sources','2026-08-06']]},
+ {cat:'nav', lat:43.9633, lng:-114.9739, t:'Toxaway NW junction — mile 10.9 · TURN RIGHT', d:'A three-way junction where hikers genuinely go wrong: "There are three options at this junction and it\'s somewhat easy to choose the wrong option without looking at a map" (Jan\'s Jaunts, Sept 2023). <b>Right (east) along Toxaway\'s shore is our route</b>; the uphill fork climbs 890 ft to Sand Mountain Pass — the optional pack-free hike, not the packing route. A wrong fork here sends you a full drainage away toward Edna/Imogene.',
+  src:[['Jan\'s Jaunts','https://jansjaunts.wordpress.com/2023/09/22/id-sawtooth-national-recreation-area-sawtooth-wilderness-tincup-trailhead-09-23/','Sept 2023']]},
+ {cat:'nav', lat:43.9722, lng:-114.9510, t:'Toxaway NE junction — mile 12.3 · camp zone', d:'Edith Lake spur leaves uphill here; group camps are along this stretch of the north shore, on small footpaths dropping lakeside from the trail.',
+  src:[['Wine Hiking Society','https://winehikingsociety.com/alice-toxaway-lake-loop-trail-guide/','n.d.']]},
+ {cat:'nav', lat:43.9956, lng:-114.8934, t:'McDonald junction — mile 16.4 · TURN RIGHT', d:'Yellowbelly valley trail meets the Pettit Lake Cutoff. <b>Right (south) over the little saddle for the cars</b>; straight on leads along Yellow Belly Lake (night-3 option a). Wilderness boundary crosses McDonald Lake just west of here.',
+  src:[['USFS wilderness GIS layer','https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_Wilderness_01/MapServer/0/query','2026-08-06']]},
+ {cat:'nav', lat:43.9440, lng:-114.9610, t:'Snowyside Pass — mile 8.1 · 9,415 ft', d:'High point of the trip, on the shoulder of 10,651-ft Snowyside Peak. <b>Cross before 1 PM.</b> Rocky switchbacks both sides; the pass itself is all exposure — no lingering if clouds build.',
+  src:[['USGS 3DEP elevation','#sources','2026-08-06']]},
+
+ // --- camps ---
+ {cat:'camp', lat:43.93824, lng:-114.95647, t:'Twin Lakes — night 1 (first choice)', d:'Sites on the forested east side; one report found "an incredible campsite right in between the two lakes." Quieter than Alice. 8,858 ft — expect 30s at night, even in August.',
+  src:[['Two Outliers','https://twooutliers.com/alice-toxaway-loop-idaho-backpacking/','2023'],['Backcountry Post','https://backcountrypost.com/threads/first-time-in-to-the-sawtooth-wilderness.10404/','Aug 2022']]},
+ {cat:'camp', lat:43.9403, lng:-114.9425, t:'Alice Lake peninsula — night 1 (fallback)', d:'The documented big-group site: a north-side peninsula "that had plenty of areas for all our tents… views of water and Sawtooth peaks on 3 sides." Busiest lake on the loop; bold rodents — hang everything. <i>(Pin location approximate.)</i>',
+  src:[['nacforadventure (12-person group)','https://nacforadventure.com/2020/09/14/nacforadventure-trip-report-toxaway-and-alice-lake/','Sept 2020'],['Wasatch Wild Child','https://wasatchwildchild.family.blog/2022/01/04/backpacking-alice-and-twin-lakes-in-the-sawtooth-range/','2021']]},
+ {cat:'camp', lat:43.9700, lng:-114.9560, t:'Toxaway north shore — night 2', d:'The best group lake on the loop. The camps hide below the trail: "small footpaths will start appearing on the right… you’ll have to descend to see what camp sites are… large enough to fit your group." Grassy sites near a sandy swim beach; outlet-end rock sites too. Afternoon wind — stake tents. <i>(Pin marks the camp stretch, not one site.)</i>',
+  src:[['Wine Hiking Society','https://winehikingsociety.com/alice-toxaway-lake-loop-trail-guide/','n.d.'],['nacforadventure','https://nacforadventure.com/2020/09/14/nacforadventure-trip-report-toxaway-and-alice-lake/','Sept 2020']]},
+ {cat:'camp', lat:44.0055, lng:-114.8700, t:'Yellow Belly Lake NE cove — night 3, option a', d:'Outside the wilderness boundary. Dispersed camping (no developed campground): "the long peninsula and cove on the northeast corner of the lake is a great area," and it’s a named swim spot. Makes Thursday a two-mile stroll to the cars. <i>(Pin location approximate.)</i>',
+  src:[['Leidecker / Outdoor Project (archived)','https://web.archive.org/web/2023id_/https://www.outdoorproject.com/united-states/idaho/yellow-belly-lake','2023 archive'],['Sawtooth Trails','https://sawtoothtrails.com/yellow-belly-trail.php','n.d.']]},
+ {cat:'camp', lat:43.97926, lng:-114.93170, t:'Farley Lake — NOT the group camp', d:'"The shoreline surrounding Farley Lake is limited in campsites"; parties report arriving to a full lake and settling for windy hilltop spots. Great lunch stop on Day 3; wrong place to need 5 tent pads at 6 PM.',
+  src:[['Leidecker / Outdoor Project (archived)','https://web.archive.org/web/2023id_/https://www.outdoorproject.com/united-states/idaho/farley-lake','2023 archive'],['Cheryl Hill','https://cherylhill.net/blog/2019/09/08/backpacking-the-alice-toxaway-loop/','July 2019']]},
+
+ // --- highlights ---
+ {cat:'highlight', lat:43.93911, lng:-114.94370, t:'Alice Lake under El Capitan', d:'The postcard of the Sawtooths — 9,901-ft El Capitan straight across the water (the classic photo is from the trailside ponds just below the lake). Most-used swim spot on the loop: "ice cold water," quick plunges only.',
+  src:[['Jennifer Carr Photography','https://www.jennifercarrphotography.com/blog/a-trip-to-idahos-sawtooth-wilderness-toxaway-lake-to-alice-lake','Aug 2019'],['Two Outliers','https://twooutliers.com/alice-toxaway-loop-idaho-backpacking/','2023']]},
+ {cat:'highlight', lat:43.97276, lng:-114.96955, t:'Sand Mountain Pass — 9,282 ft', d:'Optional pack-free climb from the mile-10.9 junction: 20 mellow switchbacks, ~890 ft. From the divide: "views all the way back down to and across Sawtooth Valley to the White Cloud Mountains," the South Fork Payette country beyond, and Toxaway directly below.',
+  src:[['Leidecker / Outdoor Project (archived)','https://web.archive.org/web/20200714221716/https://www.outdoorproject.com/united-states/idaho/toxaway-lake-sand-mountain-pass-snowyside-divide','2020 archive'],['High-Powered Planet','https://www.highpoweredplanet.com/2013/01/edna-lake.html','2013']]},
+ {cat:'highlight', lat:43.9769, lng:-114.95932, t:'Edith Lake — the evening walk', d:'Hanging basin at 8,671 ft, 1.0 mi from Toxaway camp up "beautifully sculpted granite." Golden-hour light on the peaks; day-hike destination, not a camp (USFS closed most of its sites for restoration in 2024).',
+  src:[['Leidecker / Outdoor Project (archived)','https://web.archive.org/web/20200918072107/https://www.outdoorproject.com/united-states/idaho/edith-lake-and-sand-mountain-divide','2020 archive'],['USFS trail table','https://www.fs.usda.gov/media/114044','2024-09-20']]},
+ {cat:'highlight', lat:43.9793, lng:-114.9280, t:'Farley waterfall & cascades', d:'"The trail passes by a large waterfall just past the boulder field. A short spur trail brings you to the base" — and above Farley, Toxaway Creek "descends over the light colored granite in a series of cascades." Day-3 slow-down zone (on the trail, not on the wet rock).',
+  src:[['Regensburger Photography','https://regensburgerphotography.com/alice-lake-toxaway-lake-loop/','July 2018']]},
+ {cat:'highlight', lat:43.9387, lng:-114.9500, t:'Wildflower meadows — Alice → Twin', d:'Subalpine meadows with lupine, columbine, paintbrush, and arnica in mid-summer; the Toxaway-side switchbacks are the other big bloom zone. Expect fading late-season blooms by our mid-August dates.',
+  src:[['Get Lost in America','https://getlostinamerica.com/fly-fishing-trek-alice-lakes-loop/','n.d.'],['Two Outliers','https://twooutliers.com/alice-toxaway-loop-idaho-backpacking/','2023']]},
+ {cat:'highlight', lat:43.96653, lng:-114.95911, t:'Bowknot Lake & the waterfall stretch', d:'The mile below Toxaway’s outlet: cascades, a waterfall at "Lake 8165," and reports of a natural granite "waterslide." Worth slowing down for on Day 3’s descent.',
+  src:[['Evans Outdoor Adventures','https://www.evansoutdooradventures.com/idahos-sawtooth-mountains-alice-lake-loop-backpack-sept-2015/','Sept 2015'],['Cheryl Hill','https://cherylhill.net/blog/2019/09/08/backpacking-the-alice-toxaway-loop/','July 2019']]},
+ {cat:'highlight', lat:43.9700, lng:-114.9520, t:'Toxaway swim beach', d:'Sandy entry, clear water, granite slabs for drying out — the Day-2 afternoon reward.',
+  src:[['nacforadventure','https://nacforadventure.com/2020/09/14/nacforadventure-trip-report-toxaway-and-alice-lake/','Sept 2020']]},
+
+ // --- hazards (all verified by the Aug 6 research pass — details & briefs in No. 05) ---
+ {cat:'hazard', lat:43.948, lng:-114.930, t:'THE BRIDGE — no railings · mile ~5', d:'The loop\'s only built footbridge: a log-and-timber deck on stone abutments directly over a whitewater cascade of Pettit Creek, <b>no railings on either side</b> (photo-confirmed). This is the bridge Alex remembers. <b>Brief: one at a time, no stopping mid-span, no passing; hold the group until dogs or horse strings clear.</b> <i>(Location approximate — crossing #5 of 6.)</i>',
+  src:[['Cheryl Hill (photo)','https://cherylhill.net/blog/2019/09/08/backpacking-the-alice-toxaway-loop/','Jul 2019'],['Girl on a Hike ("mile 5.3, a high bridge")','https://girlonahike.com/backpacking-alice-toxaway-loop-more.html','Sept 2020']]},
+ {cat:'hazard', lat:43.9560, lng:-114.9150, t:'Six creek crossings — Day 1', d:'Pettit Creek crosses the trail six times; <b>only #5 has the bridge</b>. In August: rock-hops and logs, maybe one boots-off wade ("The water will likely be ice cold"). <b>Brief: single-file, poles or a buddy hand on wobbly logs, hip belts unclipped for any wade, no bare feet on wet granite.</b> <i>(Pin marks the crossing zone, miles ~2.5–5.5.)</i>',
+  src:[['Cheryl Hill','https://cherylhill.net/blog/2019/09/08/backpacking-the-alice-toxaway-loop/','Jul 2019'],['Regensburger Photography','https://regensburgerphotography.com/alice-lake-toxaway-lake-loop/','Jul 2018']]},
+ {cat:'hazard', lat:43.9440, lng:-114.9610, t:'Snowyside Pass — lightning & rock', d:'~1 mile of trail above treeline with zero shelter, then a 2-mile rocky switchback descent. NWS: mountain storms "typically develop in the early afternoon… be down the mountain by noon." A hiker on this loop\'s slick granite slipped and went to the hospital; a mountain goat slipped and died. <b>Brief: off the pass by ~11 AM; thunder = descend now, spread out, 30 min after the last rumble; poles out and 10-ft spacing on the descent.</b>',
+  src:[['NWS lightning safety','https://www.weather.gov/safety/lightning-outdoors','current'],['A Life of Adventures','https://alifeofadventures.com/blog/guide-to-hiking-to-alice-lake-sawtooth-wilderness-idaho/','2022']]},
+ {cat:'hazard', lat:43.9770, lng:-114.9360, t:'Boulder field & waterfall slabs', d:'Below Toxaway the trail "descends steeply through a rocky boulder field and avalanche zone" beside a chain of waterfalls. We descend this with packs on Day 3. The falls pull kids off-trail onto water-polished granite — the exact surface that caused the hospital slip on the other side. <b>Brief: stay on the trail through the cascades, no scrambling to the base of the falls, regroup below the boulder field.</b>',
+  src:[['Regensburger Photography','https://regensburgerphotography.com/alice-lake-toxaway-lake-loop/','Jul 2018']]},
+ {cat:'hazard', lat:43.9950, lng:-114.8900, t:'Yellowbelly Creek — wade or the log', d:'Unbridged crossing near the McDonald junction: "head 100 feet upstream to a large log to cross or get those boots off and tenderfoot it across." Calf-deep or less in August. <b>Brief: default is the wade — water shoes on, hip belts unbuckled; the log is for confident kids only, one at a time, spotters both ends, no phones in hand.</b>',
+  src:[['Trail Run Project — Yellowbelly #096','https://www.trailrunproject.com/trail/7014204/yellowbelly-trail-096','n.d.'],['Skye Stoury','https://www.skyestoury.com/blog/backpacking-the-idaho-sawtooth-mountains','n.d.']]},
+ {cat:'hazard', lat:43.9611, lng:-114.9660, t:'Cold-shock water — esp. Toxaway', d:'A trail guide warns of hypothermia swimming Toxaway: "incredibly brisk water and it only gets colder in the middle." NWS: 50–60°F water causes cold shock as severe as 35°F water. <b>Brief: shoreline swims only — no island races — buddy pairs, someone dressed and watching from shore, out before shivering starts.</b>',
+  src:[['Trail Run Project','https://www.trailrunproject.com/trail/7014204/yellowbelly-trail-096','n.d.'],['NWS cold water safety','https://www.weather.gov/safety/coldwater','current']]},
+];
+
+/* ---------- verified research content (fact-checked Aug 6, 2026 — see No. 09) ---------- */
+const HAZARD_CARDS = [
+ {id:'bridge', where:'Day 1 · mile ~5 · Pettit Creek', v:'ok', title:'The bridge with no railings',
+  body:'The loop\'s only built footbridge — a flat log-and-timber deck on stacked-stone abutments, spanning directly over a whitewater cascade, <b>no railings on either side</b>. Confirmed by photograph. "The next creek crossing actually had a bridge!" (Cheryl Hill, July 2019); "At mile 5.3 cross a high bridge" (Girl on a Hike). An unrailed deck over fast water invites horseplay, and a hiker on this stretch was nearly knocked into the water by an off-leash dog.',
+  brief:'Cross one at a time. No stopping for photos mid-span, no passing. Hold the whole group back until any dog or horse party has cleared the crossing completely.',
+  src:[['Cheryl Hill','https://cherylhill.net/blog/2019/09/08/backpacking-the-alice-toxaway-loop/','Jul 2019'],['Girl on a Hike','https://girlonahike.com/backpacking-alice-toxaway-loop-more.html','Sept 2020'],['Regensburger','https://regensburgerphotography.com/alice-lake-toxaway-lake-loop/','Jul 2018']]},
+ {id:'crossings', where:'Day 1 · miles ~2.5–5.5', v:'ok', title:'Six creek crossings, one bridge',
+  body:'Pettit Creek crosses the trail six times on the way to Alice; only #5 is bridged. In August they are mostly rock-hops and balance-logs — September hikers report all crossings dry-footed — but a July report warns "your feet and legs will get wet! The water will likely be ice cold." Wet granite and logs are the top slip surface on this trail.',
+  brief:'Single-file at every crossing. Poles out or a buddy hand on the wobbly ones. Anyone wading unclips their hip belt and wears water shoes — no bare feet on wet granite. Dry-socks check at camp.',
+  src:[['Cheryl Hill','https://cherylhill.net/blog/2019/09/08/backpacking-the-alice-toxaway-loop/','Jul 2019'],['Adventures of A+K','https://adventuresofaplusk.com/backpacking-alice-lake-idahos-sawtooth-mountains/','Jul 2020'],['She Dreams of Alpine','https://www.shedreamsofalpine.com/blog/alice-lake-hike-idaho','Apr 2026']]},
+ {id:'lightning', where:'Day 2 · Snowyside Pass · 9,415 ft', v:'ok', title:'Lightning above treeline',
+  body:'Approaching the pass from either side, the group is committed to about a mile of trail "completely exposed, above the tree line" — no shelter anywhere. The National Weather Service\'s mountain rule: thunderstorms "typically develop in the early afternoon, so plan to hike early in the day and be down the mountain by noon." A September 2023 report describes a lightning storm hitting campers on Alice Lake\'s exposed peninsula at night.',
+  brief:'Leave camp 7–8 AM, top the pass by ~11. If thunder sounds: descend immediately, spread the group out, off ridges and peninsulas, away from lone trees — and wait 30 minutes after the last rumble. Camp storm drill applies at the lakes too.',
+  src:[['NWS lightning outdoors','https://www.weather.gov/safety/lightning-outdoors','current'],['Voyages with Val','https://voyageswithval.com/alice-toxaway-loop/','n.d.'],['Jan\'s Jaunts','https://jansjaunts.wordpress.com/2023/09/22/id-sawtooth-national-recreation-area-sawtooth-wilderness-tincup-trailhead-09-23/','Sept 2023']]},
+ {id:'rock', where:'Both sides of the loop', v:'ok', title:'Slick granite & scree switchbacks',
+  body:'This trail\'s rock has a record: on the Alice-side scree, one hiker reports "I slipped and fell on a super slick rock on the way down and had to go to the hospital" — the same report describes "a dead mountain goat on the trail that had slipped on a rock and died." The Snowyside descent toward Toxaway is "two mile[s]… down the rocky switchbacks," "steep and quite rocky — trekking poles are very helpful here."',
+  brief:'Poles out before every descent. 10-foot spacing so a kicked rock misses the kid below. No switchback-cutting. Any rain = slow everything down; wet granite here has hospitalized people.',
+  src:[['A Life of Adventures','https://alifeofadventures.com/blog/guide-to-hiking-to-alice-lake-sawtooth-wilderness-idaho/','2022'],['Grey Otter Outventures','https://www.greyotteroutventures.com/backpacking-the-alice-toxaway-lakes-loop/','2020'],['Get Lost in America','https://getlostinamerica.com/fly-fishing-trek-alice-lakes-loop/','n.d.']]},
+ {id:'boulders', where:'Day 3 · Toxaway → Farley descent', v:'ok', title:'Boulder field & waterfall slabs',
+  body:'Below Bowknot "the trail descends steeply through a rocky boulder field and avalanche zone as it makes its way to Farley Lake" — right beside a chain of waterfalls, including a big one with a spur trail to its base. We walk DOWN this with packs on. The falls are the day\'s best scenery and its main temptation: water-polished granite next to cascading water.',
+  brief:'Stay on the trail through the whole cascades section. Nobody scrambles down to the base of the falls. Regroup below the boulder field before spreading back out.',
+  src:[['Regensburger','https://regensburgerphotography.com/alice-lake-toxaway-lake-loop/','Jul 2018'],['SIHA — Farley Lake','https://discoversawtooth.org/farley-lake','n.d.']]},
+ {id:'ybcreek', where:'Day 3–4 · near McDonald junction', v:'ok', title:'Yellowbelly Creek: wade it or the log',
+  body:'The crossing is unbridged: "Either head 100 feet upstream to a large log to cross or get those boots off and tenderfoot it across." Knee-deep in early season, calf-deep or less by August. A lone log over moving water is a balance-stunt magnet.',
+  brief:'Default is the boots-off wade: water shoes on, hip belts unbuckled, face upstream. The log is for confident kids only — one at a time, spotters on both ends, no phones in hand.',
+  src:[['Trail Run Project #096','https://www.trailrunproject.com/trail/7014204/yellowbelly-trail-096','n.d.'],['Skye Stoury','https://www.skyestoury.com/blog/backpacking-the-idaho-sawtooth-mountains','n.d.']]},
+ {id:'coldwater', where:'Every lake · especially Toxaway', v:'ok', title:'Cold-shock water',
+  body:'These are snowmelt lakes at 8,300–8,900 ft. A trail guide warns directly about Toxaway: "please be very self-aware… of your hypothermia risks as it is incredibly brisk water and it only gets colder in the middle." NWS: cold shock from 50–60°F water "can be just as severe and dangerous… as it is from water at 35°F" — and cold-incapacitated swimmers drown quietly.',
+  brief:'Swims are shoreline-only and buddy-paired. No races to islands or across bays. One person dressed and watching from shore. Out at the first uncontrolled shiver, then warm layers.',
+  src:[['NWS cold water','https://www.weather.gov/safety/coldwater','current'],['Trail Run Project','https://www.trailrunproject.com/trail/7014204/yellowbelly-trail-096','n.d.']]},
+ {id:'altitude', where:'Whole route · 7,000–9,415 ft', v:'ok', title:'Altitude',
+  body:'The trailhead is already at 7,000 ft and both camps sit at 8,300–8,900 ft — above the ~8,000-ft threshold where acute mountain sickness begins (NIH). Boys coming from the Wasatch Front and ascending same-day commonly get headaches, poor appetite, and bad first-night sleep.',
+  brief:'Push fluids from the drive onward. Watch headache + appetite at camp 1. A kid who is vomiting, confused, or staggering descends NOW with two adults — downhill toward Pettit loses 1,300+ ft, and descent is the treatment.',
+  src:[['MedlinePlus (NIH) — AMS','https://medlineplus.gov/ency/article/000133.htm','current'],['Hiking Project (9,416 ft high point)','https://www.hikingproject.com/trail/7014206/alice-toxaway-loop','n.d.']]},
+ {id:'navigation', where:'Every junction', v:'ok', title:'Flattened signs & the three-way fork',
+  body:'"Many of the signs were low to the ground and could easily be missed… The sign is on the ground" (winters knock them flat). Near Toxaway, "there are three options at this junction and it\'s somewhat easy to choose the wrong option without looking at a map" — the wrong fork leads a full drainage away. One loop hiker who left the trail racing darkness took a face-plant fall on a rolling rock.',
+  brief:'Hard rule: every hiker stops and waits at every junction — fast kids included. A leader physically confirms the turn at the mile-10.9 and Edith forks. Offline map (GPX) on at least two phones.',
+  src:[['Girl on a Hike','https://girlonahike.com/backpacking-alice-toxaway-loop-more.html','Sept 2020'],['Jan\'s Jaunts','https://jansjaunts.wordpress.com/2023/09/22/id-sawtooth-national-recreation-area-sawtooth-wilderness-tincup-trailhead-09-23/','Sept 2023'],['Backcountry Post','https://backcountrypost.com/threads/alice-toxaway-loop-sawtooth-wilderness.9608/','2021']]},
+ {id:'raiders', where:'Alice & Toxaway camps', v:'ok', title:'Squirrels, jays — and the odd bear',
+  body:'The daily thieves are rodents, and they work day shifts: "the squirrels are also relentless in the area and WILL chew holes in your gear to get at your food" (Sept 2024). Jays and ground squirrels raid unattended lunches; deer walk through camps at night. Black bears: "Bears aren\'t common in this area, but black bears have been spotted down by the lake before." A chewed pack or lost food on night 1 of 3 is a trip-ender.',
+  brief:'Nothing edible or scented in a tent, ever — toothpaste and wrappers hang with the food (10 ft up, 4 ft out). Packs zipped and food hung even during swims. Rotating camp watch at lunch spots. Pack a patch kit for chewed mesh.',
+  src:[['Wine Hiking Society','https://winehikingsociety.com/alice-toxaway-lake-loop-trail-guide/','Sept 2024'],['Get Lost in America','https://getlostinamerica.com/fly-fishing-trek-alice-lakes-loop/','n.d.'],['No Man Before','https://nomanbefore.com/hiking-alice-lake-idaho-sawtooth-wilderness/','2023']]},
+ {id:'traffic', where:'Narrow trail · whole loop', v:'ok', title:'Horse strings & off-leash dogs',
+  body:'"Then we saw horses coming around the bend. We stepped aside and let them pass" — and, at a crossing: "I almost got knocked into the water by an off-leash dog… who charged into the water." Pets are required to be leashed here; compliance is imperfect. A spooked horse string on narrow rocky trail endangers everyone.',
+  brief:'Teach the horse drill in the parking lot: whole group steps to the downhill side, stands together, talks calmly. At bridges and logs, hold the group until dogs and stock have cleared entirely.',
+  src:[['Cheryl Hill','https://cherylhill.net/blog/2019/09/08/backpacking-the-alice-toxaway-loop/','Jul 2019'],['USFS Tin Cup TH (leash rule)','https://www.fs.usda.gov/r04/sawtooth/recreation/tin-cup-hiker-trailhead','2025']]},
+ {id:'blowdown', where:'Avalanche paths · both sides', v:'ok', title:'Blowdown can hide the trail',
+  body:'Avalanche paths cross the loop and dump trees on it: a Sept 2024 party "lost count of how many large trees we went over and under. Without the AllTrails app, we likely would have lost the trail in many places." Trail crews cleared the whole loop in early July 2026, but fresh mid-summer falls are normal. Kids following the path of least resistance around a log jam is how groups lose the trail.',
+  brief:'At any blowdown, the group regathers on the far side before moving on. Leaders carry the downloaded offline map. Climbing over logs: packs balanced, no jumping down blind.',
+  src:[['Wine Hiking Society','https://winehikingsociety.com/alice-toxaway-lake-loop-trail-guide/','Sept 2024'],['Cheryl Hill','https://cherylhill.net/blog/2019/09/08/backpacking-the-alice-toxaway-loop/','Jul 2019']]},
+];
+
+const CONDITIONS = [
+ {k:'Fire — checked Aug 6, 2026', p:'<b>No active wildfire, smoke event, or fire closure affects this loop.</b> The only fire-related closure on the forest is the Grandjean area (Order 0414-04-165, Wapiti Fire debris flows) — the opposite side of the wilderness, nowhere near our route; the 2024 Wapiti burn scar does not reach any of our drainages. Nearest large fire: the Big Grass Fire on the Oregon border, ~130 air miles southwest, with no listed smoke impact on Stanley. <a href="https://www.fs.usda.gov/r04/sawtooth/alerts" target="_blank" rel="noopener">Alerts page ↗</a>'},
+ {k:'Stage 1 fire restrictions — start Aug 7', p:'<b>The day before we drive up, Stage 1 fire restrictions take effect across the Sawtooth NRA</b> (Order 0414-00-032, Aug 7 – Oct 31): no fires anywhere outside permanent metal rings at developed sites. It changes nothing for us — our canister stoves (shut-off valve) stay legal, and campfires were already banned on this entire loop year-round by the standing wilderness order (0414-04-161). Stoves only, every night, everywhere.'},
+ {k:'Bears — status Jul 21, 2026', p:'IDFG reported <b>increased black bear activity in the Wood River Valley</b> (the SNRA\'s south side, ~40–60 road miles from us) driven by the dry year: "One unsecured attractant can be enough to bring a bear back again and again." <b>No bear-in-camp or incident report specific to this loop or the Stanley basin was found for 2025–2026</b> — but absence of reports is not absence of bears. Hangs at every camp; the trailhead and any Yellow Belly camp are legally bound by the food-storage order. <a href="https://idfg.idaho.gov/article/fish-and-game-reminds-wood-river-valley-residents-secure-attractants-black-bear-sightings" target="_blank" rel="noopener">IDFG ↗</a>'},
+ {k:'Snow — a record-low year', p:'2026 was one of Idaho\'s lowest snow years on record: statewide snowpack peaked at just <b>68% of normal</b> and the melt ran 14–30 days early (NRCS via Capital Press). Snowyside Pass "has snow late into the summer" in big years — this is not a big year; the pass is all but certain to be snow-free for Aug 10–13 (labeled inference: no summer-2026 pass report could be opened). Confirm on the permit call.'},
+ {k:'Water & crossings', p:'High creek crossings are an early-summer problem here ("Expect high creek crossings in early summer" — SIHA); with the early melt, expect <b>low August flows</b>: rock-hop crossings on the Alice side, a calf-deep-or-less wade at Yellowbelly Creek. Lakes and creeks all day for filtering — carry 1–2 L, not 4.'},
+ {k:'Crowds & the trailhead gate', p:'This is <b>the most popular loop in the SNRA</b>; even a mid-September report found "weekend crowds… arriving in force" and big groups at the lakes. Plan to reach each camp by early-to-mid afternoon. Trailhead: $10/vehicle/day, <b>cash or check only</b> (no America-the-Beautiful passes), register with plate numbers, one-in/one-out when the lot fills; parking at the Tin Cup horse-transfer lot dodges the fee for +0.5 mi of walking.'},
+ {k:'Bugs', p:'Toxaway is the loop\'s known mosquito hotspot ("the bugs were much worse here than the evening before… Bring proper bug repellent/protection"). The early-melt year likely means a milder late-season bug window by mid-August — that\'s inference, not fact, so repellent and headnets stay in the packs. They weigh nothing.'},
+];
+
+const VOICES = [
+ {k:'Jul 2019 · Cheryl Hill', p:'"The next creek crossing actually had a bridge!" — the railing-less span at crossing five — and: "We crossed the remains of an avalanche from the previous winter. It was a mess of tree trunks and branches." Her four-day clockwise trip is the closest published match to our plan. <a href="https://cherylhill.net/blog/2019/09/08/backpacking-the-alice-toxaway-loop/" target="_blank" rel="noopener">Trip report ↗</a>'},
+ {k:'Sept 2020 · a 12-person group', p:'A group our exact size camped on Alice\'s north peninsula — "plenty of areas for all our tents, as well as views of water and Sawtooth peaks on 3 sides" — then crossed Snowyside ("steep switch backs through a rock field… a false summit or two") to a grassy Toxaway camp near the sandy beach. Proof of concept for our itinerary. <a href="https://nacforadventure.com/2020/09/14/nacforadventure-trip-report-toxaway-and-alice-lake/" target="_blank" rel="noopener">Trip report ↗</a>'},
+ {k:'Sept 2023 · Jan\'s Jaunts', p:'"There are three options at this junction and it\'s somewhat easy to choose the wrong option without looking at a map" — the mile-10.9 fork — and a night storm "complete with lightning and rain" over Alice Lake\'s exposed peninsula. <a href="https://jansjaunts.wordpress.com/2023/09/22/id-sawtooth-national-recreation-area-sawtooth-wilderness-tincup-trailhead-09-23/" target="_blank" rel="noopener">Trip report ↗</a>'},
+ {k:'Sept 2024 · Wine Hiking Society', p:'"The squirrels are also relentless in the area and WILL chew holes in your gear to get at your food." Also: "I lost count of how many large trees we went over and under" in the avalanche blowdown. <a href="https://winehikingsociety.com/alice-toxaway-lake-loop-trail-guide/" target="_blank" rel="noopener">Trail guide ↗</a>'},
+ {k:'Mid-Sept 2025 · Occidentalist', p:'"Friday afternoon and the weekend crowds were arriving in force" — big groups at the lakes even after Labor Day, one running "three sets of flashing string lights… well into the night." No snow at the pass, no hard crossings. Arrive at camp early; be the neighbors you\'d want. <a href="https://occidentalist.org/backpacking-the-sawtooths-alice-toxaway-loop/" target="_blank" rel="noopener">Trip report ↗</a>'},
+ {k:'Apr 2026 · She Dreams of Alpine', p:'The most recently updated guide: "roughly 19 miles" and "about 3,500 feet" for the full loop, Alice-first recommended — and at Toxaway, start looking for sites early because the good ones hide below the trail. <a href="https://www.shedreamsofalpine.com/blog/alice-lake-hike-idaho" target="_blank" rel="noopener">Guide ↗</a>'},
+];
+
+const VIDEOS = [
+ ['Sawtooth Wilderness, Alice & Toxaway Lakes Loop — 2025','Mark Le Baron','2025','https://www.youtube.com/watch?v=PVaYCSBJtZI'],
+ ['Alice & Toxaway Lakes Loop — Sawtooth Backpacking','M&M Outdoors','posted Feb 2026','https://www.youtube.com/watch?v=saf7HWQE-PA'],
+ ['The Sawtooth\'s Famous Alice-Toxaway Loop | Solo Backpacking Trip','Finneys Outdoor Adventure','2024','https://www.youtube.com/watch?v=M-b4mSB7V1A'],
+ ['Backpacking the Alice-Toxaway Loop in the Sawtooths','Just Peachy (Cheryl Hill)','2019','https://www.youtube.com/watch?v=usjmaEwtklY'],
+ ['Solo Backpacking the Sawtooths | Alice Lake and Toxaway Lake Loop','Nomad Unknown','year n/a','https://www.youtube.com/watch?v=KILMcWJ55-k'],
+ ['Alice-Toxaway Loop | Sawtooth Wilderness, Idaho','Mountain Wanderer','year n/a','https://www.youtube.com/watch?v=9SVY01T5EHs'],
+];
+
+const PHOTOS = [
+ {thumb:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/El_Capitan_and_Alice_Lake.jpg/960px-El_Capitan_and_Alice_Lake.jpg',
+  page:'https://commons.wikimedia.org/wiki/File:El_Capitan_and_Alice_Lake.jpg',
+  cap:'El Capitan over Alice Lake from the shoreline trail — the Day-1 payoff', credit:'David~O · CC BY 2.0'},
+ {thumb:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Toxaway_Lake.jpg/960px-Toxaway_Lake.jpg',
+  page:'https://commons.wikimedia.org/wiki/File:Toxaway_Lake.jpg',
+  cap:'Toxaway Lake from the Sand Mountain Pass trail — the view the evening hike earns', credit:'Fredlyfish4 · CC BY-SA 3.0'},
+ {thumb:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Farley_Lake_Sawtooth_NRA.jpg/960px-Farley_Lake_Sawtooth_NRA.jpg',
+  page:'https://commons.wikimedia.org/wiki/File:Farley_Lake_Sawtooth_NRA.jpg',
+  cap:'Farley Lake in its glacial canyon, Sawtooth Valley beyond — Day-3 lunch country', credit:'Fredlyfish4 · CC BY-SA 3.0'},
+ {thumb:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Alice_Lake_with_snow.jpg/960px-Alice_Lake_with_snow.jpg',
+  page:'https://commons.wikimedia.org/wiki/File:Alice_Lake_with_snow.jpg',
+  cap:'Alice Lake still iced over in mid-June — why this is an August trip', credit:'Loyawhat · CC BY-SA 4.0'},
+];
+
+const SOURCES = [
+ ['Sawtooth Wilderness Occupancy & Use Order 0414-04-161 (signed PDF — the campfire ban)','https://www.fs.usda.gov/sites/nfs/files/r04/sawtooth/publication/alerts/0414-04-161_SNF_WildernessOU_Order_JS_Signed.pdf','signed Feb 28, 2025; in force to Mar 2030'],
+ ['Stage 1 Fire Restrictions, Sawtooth Zone — Order 0414-00-032','https://www.fs.usda.gov/r04/sawtooth/alerts/stage-1-fire-restrictions-districts-sawtooth-zone','effective Aug 7 – Oct 31, 2026'],
+ ['SNRA Food Storage Order 0414-04-143 (signed PDF)','https://www.fs.usda.gov/sites/nfs/files/r04/sawtooth/publication/alerts/22-04-06-0414-04-143%20SNRA_Food%20Storage%20Order.pdf','signed Apr 2022; Memorial Day–Labor Day through 2027'],
+ ['Sawtooth NRA Trail Conditions & Mileage Table (USFS PDF — official 18-mi loop figure, wag-bag note)','https://www.fs.usda.gov/media/114044','updated Sept 20, 2024'],
+ ['USFS — Tin Cup Hiker Trailhead (fees, leash rule, SNRA phone)','https://www.fs.usda.gov/r04/sawtooth/recreation/tin-cup-hiker-trailhead','updated Mar 2025'],
+ ['USFS news — Pettit Lake Trailhead day-use fees','https://www.fs.usda.gov/r04/sawtooth/newsroom/releases/new-day-use-fees-be-implemented-pettit-lake-trailhead','May 1, 2025'],
+ ['Sawtooth NF Alerts (re-check within 72 hours of departure)','https://www.fs.usda.gov/r04/sawtooth/alerts','checked Aug 6, 2026'],
+ ['IDFG — Wood River Valley bear-sightings advisory','https://idfg.idaho.gov/article/fish-and-game-reminds-wood-river-valley-residents-secure-attractants-black-bear-sightings','Jul 21, 2026'],
+ ['IDFG Fishing Planner — Toxaway · Farley · Yellow Belly · Pettit · McDonald lake pages','https://idfg.idaho.gov/ifwis/fishingplanner/water/1149712439612','accessed Aug 6, 2026'],
+ ['NWS — lightning safety outdoors ("be down the mountain by noon") & cold-water safety','https://www.weather.gov/safety/lightning-outdoors','current'],
+ ['NRCS Idaho snowpack via Capital Press (68% peak, melt 14–30 days early)','https://capitalpress.com/2026/04/08/idaho-water-supply-outlook-mixed-after-paltry-snow-early-melt/','Apr 8, 2026'],
+ ['USGS: GNIS official names & coordinates · 3DEP elevation point service','https://epqs.nationalmap.gov/','queried Aug 6, 2026'],
+ ['OpenStreetMap trail geometry (Pettit Creek #095, Alice–Redfish #092, Yellowbelly #096, Edith #040, Pettit Lake Cutoff #041)','https://www.openstreetmap.org/copyright','exported Aug 6, 2026'],
+ ['Matt Leidecker, Exploring the Sawtooths — via archived Outdoor Project pages (6.1-mi day loop, segment mileages)','https://web.archive.org/web/20200714221716/https://www.outdoorproject.com/united-states/idaho/toxaway-lake-sand-mountain-pass-snowyside-divide','2020 archive'],
+ ['Trip reports quoted: Cheryl Hill (2019) · Regensburger (2018) · nacforadventure (2020) · Girl on a Hike (2020) · Jan\'s Jaunts (2023) · Wine Hiking Society (2024) · Occidentalist (2025) · She Dreams of Alpine (2026)','https://cherylhill.net/blog/2019/09/08/backpacking-the-alice-toxaway-loop/','each opened & quoted verbatim'],
+ ['Loop mileage, honestly: USFS table 18 mi · AllTrails 18.8 mi · our measured trail line 18.6 mi · guidebooks 19–21 mi. Climbing: our USGS-sampled ~2,900 ft (valley route) vs 3,100–3,500 published for variants.','#atlas','the spread, not a silent average'],
+];
+
+/* ================= map ================= */
+const map = L.map('map', { scrollWheelZoom: false });
+const topo = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}', {
+  maxZoom: 16, attribution: 'USGS The National Map' }).addTo(map);
+const sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+  maxZoom: 18, attribution: 'Esri, Maxar, Earthstar Geographics' });
+L.control.layers({ 'USGS Topo': topo, 'Satellite': sat }, null, { position: 'topright' }).addTo(map);
+L.control.scale({ imperial: true, metric: false }).addTo(map);
+
+const casing = { color: '#ffffff', weight: 7, opacity: .85 };
+const mk = (pts, color, dash) => {
+  L.polyline(pts, casing).addTo(map);
+  return L.polyline(pts, { color, weight: 4, opacity: .95, dashArray: dash || null }).addTo(map);
+};
+const day1 = mk(TRAIL.legs.day1, C.d1);
+const day2 = mk([...TRAIL.legs.day2a, ...TRAIL.legs.day2b.slice(1)], C.d2);
+const day3 = mk([...TRAIL.legs.day3a, ...TRAIL.legs.day3b.slice(1)], C.d3);
+mk(TRAIL.legs.spurEdith, C.spur, '6 7');
+mk(TRAIL.legs.spurPass, C.spur, '6 7');
+
+const routeLine = [...TRAIL.legs.day1, ...TRAIL.legs.day2a.slice(1), ...TRAIL.legs.day2b.slice(1),
+                   ...TRAIL.legs.day3a.slice(1), ...TRAIL.legs.day3b.slice(1)];
+map.fitBounds(L.latLngBounds(routeLine).pad(0.06));
+
+/* cumulative miles along routeLine for mile markers + profile sync */
+const RM = 3958.8, toR = d => d * Math.PI / 180;
+const hav = (a, b) => 2 * RM * Math.asin(Math.sqrt(
+  Math.sin(toR(b[0]-a[0])/2)**2 + Math.cos(toR(a[0]))*Math.cos(toR(b[0]))*Math.sin(toR(b[1]-a[1])/2)**2));
+const cum = [0];
+for (let i = 1; i < routeLine.length; i++) cum.push(cum[i-1] + hav(routeLine[i-1], routeLine[i]));
+function latLngAtMile(mi) {
+  if (mi <= 0) return routeLine[0];
+  for (let i = 1; i < cum.length; i++) if (cum[i] >= mi) {
+    const f = (mi - cum[i-1]) / (cum[i] - cum[i-1] || 1);
+    return [routeLine[i-1][0] + (routeLine[i][0]-routeLine[i-1][0])*f,
+            routeLine[i-1][1] + (routeLine[i][1]-routeLine[i-1][1])*f];
+  }
+  return routeLine[routeLine.length-1];
+}
+for (let m = 2; m < cum[cum.length-1]; m += 2) {
+  L.marker(latLngAtMile(m), { interactive: false,
+    icon: L.divIcon({ className: '', html: `<div class="pin-mile">${m}</div>`, iconSize: [20,20], iconAnchor: [10,10] })
+  }).addTo(map);
+}
+
+/* pin layers */
+const GLYPH = { camp: '⛺', hazard: '⚠️', highlight: '★', nav: '➜' };
+const layers = { camp: L.layerGroup().addTo(map), hazard: L.layerGroup().addTo(map),
+                 highlight: L.layerGroup().addTo(map), nav: L.layerGroup().addTo(map) };
+function popupHtml(p) {
+  const srcs = (p.src || []).map(s => `<a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a> <small>(${s[2]})</small>`).join(' · ');
+  const cat = { camp: 'Camp', hazard: 'Hazard', highlight: 'Highlight', nav: 'Waypoint' }[p.cat];
+  const col = C[p.cat];
+  return `<div class="pp-meta" style="color:${col}">${cat}</div><h4>${p.t}</h4><p>${p.d}</p>` +
+         (srcs ? `<div class="pp-src">Sources: ${srcs}</div>` : '');
+}
+PINS.forEach(p => {
+  L.marker([p.lat, p.lng], {
+    icon: L.divIcon({ className: '', iconSize: [26, 26], iconAnchor: [13, 24], popupAnchor: [0, -22],
+      html: `<div class="pin" style="background:${C[p.cat]}"><span>${GLYPH[p.cat]}</span></div>` })
+  }).bindPopup(popupHtml(p), { maxWidth: 300 }).addTo(layers[p.cat]);
+});
+
+/* layer chips */
+const chipData = [ ['camp','Camps',C.camp], ['hazard','Hazards',C.hazard],
+                   ['highlight','Highlights',C.highlight], ['nav','Junctions',C.nav] ];
+const chipRow = document.getElementById('chips');
+chipData.forEach(([key, label, col]) => {
+  const b = document.createElement('button');
+  b.className = 'chip'; b.setAttribute('aria-pressed', 'true');
+  b.innerHTML = `<span class="dot" style="background:${col}"></span>${label}`;
+  b.onclick = () => {
+    const on = b.getAttribute('aria-pressed') === 'true';
+    b.setAttribute('aria-pressed', String(!on));
+    if (on) map.removeLayer(layers[key]); else map.addLayer(layers[key]);
+  };
+  chipRow.appendChild(b);
+});
+
+/* day-zoom links from the day cards */
+const dayBounds = { day1: TRAIL.legs.day1, day2: [...TRAIL.legs.day2a, ...TRAIL.legs.day2b],
+                    day3: [...TRAIL.legs.day3a, ...TRAIL.legs.day3b] };
+document.querySelectorAll('[data-zoom]').forEach(a => a.addEventListener('click', () => {
+  setTimeout(() => map.fitBounds(L.latLngBounds(dayBounds[a.dataset.zoom]).pad(0.15)), 250);
+}));
+
+/* ================= elevation profile ================= */
+(function drawProfile() {
+  const svg = document.getElementById('profile');
+  const P = TRAIL.profile.main;                 // [mi, ele]
+  const W = 940, H = 320, L = 52, Rp = 14, T = 16, B = 42;
+  const xMax = P[P.length-1][0], yMin = 6800, yMax = 9700;
+  const x = mi => L + (mi / xMax) * (W - L - Rp);
+  const y = e => T + (1 - (e - yMin) / (yMax - yMin)) * (H - T - B);
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (n, at, parent) => { const e = document.createElementNS(NS, n);
+    for (const k in at) e.setAttribute(k, at[k]); (parent || svg).appendChild(e); return e; };
+
+  // recessive grid
+  for (let e = 7000; e <= 9500; e += 500) {
+    el('line', { x1: L, x2: W - Rp, y1: y(e), y2: y(e), stroke: '#cfc5ad', 'stroke-width': 1, 'stroke-dasharray': e % 1000 ? '2 5' : null });
+    el('text', { x: L - 8, y: y(e) + 4, 'text-anchor': 'end', 'font-size': 11, fill: '#5a7360', 'font-family': 'Archivo' }).textContent = (e/1000).toFixed(1) + 'k';
+  }
+  for (let m = 0; m <= xMax; m += 2) {
+    el('text', { x: x(m), y: H - B + 18, 'text-anchor': 'middle', 'font-size': 11, fill: '#5a7360', 'font-family': 'Archivo' }).textContent = m;
+  }
+  el('text', { x: (L + W - Rp) / 2, y: H - 4, 'text-anchor': 'middle', 'font-size': 11, fill: '#5a7360', 'font-family': 'Archivo', 'letter-spacing': '.12em' }).textContent = 'MILES FROM TRAILHEAD';
+
+  // day-colored area + line segments (day boundaries at 6.83 and 12.34 mi)
+  const segs = [ [0, 6.83, C.d1], [6.83, 12.34, C.d2], [12.34, xMax, C.d3] ];
+  segs.forEach(([a, b, col]) => {
+    const pts = P.filter(p => p[0] >= a - 0.05 && p[0] <= b + 0.05);
+    const dLine = pts.map((p, i) => (i ? 'L' : 'M') + x(p[0]).toFixed(1) + ' ' + y(p[1]).toFixed(1)).join('');
+    el('path', { d: dLine + `L${x(Math.min(b, xMax))} ${y(yMin)}L${x(a)} ${y(yMin)}Z`, fill: col, 'fill-opacity': 0.16, stroke: 'none' });
+    el('path', { d: dLine, fill: 'none', stroke: col, 'stroke-width': 2.5, 'stroke-linejoin': 'round' });
+  });
+
+  // labeled landmarks (selective, not every point)
+  const marks = [ [0, 'Trailhead', 1], [5.96, 'Alice', 1], [6.83, 'Twin', -1], [8.10, 'Snowyside Pass 9,415′', 1],
+                  [12.34, 'Toxaway camp', 1], [14.4, 'Farley', 1], [16.41, 'McDonald jct', -1], [xMax, 'back at the cars', -1] ];
+  marks.forEach(([mi, label, side]) => {
+    const p = P.reduce((bb, pp) => Math.abs(pp[0]-mi) < Math.abs(bb[0]-mi) ? pp : bb);
+    el('circle', { cx: x(p[0]), cy: y(p[1]), r: 4, fill: '#23291f', stroke: '#f4efe2', 'stroke-width': 1.5 });
+    el('text', { x: x(p[0]) + (side < 0 ? -7 : 7), y: y(p[1]) - 8, 'text-anchor': side < 0 ? 'end' : 'start',
+      'font-size': 11.5, 'font-weight': 600, fill: '#23291f', 'font-family': 'Archivo' }).textContent = label;
+  });
+
+  // hover: crosshair + tooltip + map sync
+  const cross = el('line', { y1: T, y2: H - B, stroke: '#23291f', 'stroke-width': 1, 'stroke-dasharray': '3 3', opacity: 0 });
+  const dot = el('circle', { r: 5, fill: '#b4531f', stroke: '#fff', 'stroke-width': 2, opacity: 0 });
+  const tip = document.getElementById('proftip');
+  let mapDot = null;
+  function onMove(evt) {
+    const rect = svg.getBoundingClientRect();
+    const cx = (evt.touches ? evt.touches[0].clientX : evt.clientX) - rect.left;
+    const mi = Math.max(0, Math.min(xMax, ((cx / rect.width) * W - L) / (W - L - Rp) * xMax));
+    const p = P.reduce((bb, pp) => Math.abs(pp[0]-mi) < Math.abs(bb[0]-mi) ? pp : bb);
+    cross.setAttribute('x1', x(p[0])); cross.setAttribute('x2', x(p[0])); cross.setAttribute('opacity', 1);
+    dot.setAttribute('cx', x(p[0])); dot.setAttribute('cy', y(p[1])); dot.setAttribute('opacity', 1);
+    const day = p[0] <= 6.83 ? 'Day 1' : p[0] <= 12.34 ? 'Day 2' : 'Day 3–4';
+    tip.style.left = (x(p[0]) / W * 100) + '%';
+    tip.style.top = (y(p[1]) / H * 100) + '%';
+    tip.style.opacity = 1;
+    tip.textContent = `${day} · mile ${p[0].toFixed(1)} · ${p[1].toLocaleString()} ft`;
+    const ll = latLngAtMile(p[0]);
+    if (!mapDot) mapDot = L.circleMarker(ll, { radius: 7, color: '#fff', weight: 2, fillColor: '#b4531f', fillOpacity: 1 }).addTo(map);
+    else mapDot.setLatLng(ll);
+  }
+  function onLeave() { cross.setAttribute('opacity', 0); dot.setAttribute('opacity', 0); tip.style.opacity = 0;
+    if (mapDot) { map.removeLayer(mapDot); mapDot = null; } }
+  svg.addEventListener('mousemove', onMove); svg.addEventListener('touchmove', onMove, { passive: true });
+  svg.addEventListener('mouseleave', onLeave); svg.addEventListener('touchend', onLeave);
+})();
+
+/* small spur profiles */
+function drawSpur(id, data, color, endLabel) {
+  const svg = document.getElementById(id);
+  const W = 420, H = 150, L = 44, Rp = 10, T = 12, B = 26;
+  const xMax = data[data.length-1][0];
+  const es = data.map(p => p[1]); const yMin = Math.min(...es) - 60, yMax = Math.max(...es) + 60;
+  const x = mi => L + (mi / xMax) * (W - L - Rp);
+  const y = e => T + (1 - (e - yMin) / (yMax - yMin)) * (H - T - B);
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (n, at) => { const e = document.createElementNS(NS, n); for (const k in at) e.setAttribute(k, at[k]); svg.appendChild(e); return e; };
+  [Math.round(yMin/500)*500 + 500].forEach(e0 => { for (let e = e0; e < yMax; e += 500) {
+    el('line', { x1: L, x2: W - Rp, y1: y(e), y2: y(e), stroke: '#cfc5ad', 'stroke-width': 1, 'stroke-dasharray': '2 5' });
+    el('text', { x: L - 6, y: y(e) + 4, 'text-anchor': 'end', 'font-size': 10, fill: '#5a7360', 'font-family': 'Archivo' }).textContent = (e/1000).toFixed(1) + 'k'; } });
+  const d = data.map((p, i) => (i ? 'L' : 'M') + x(p[0]).toFixed(1) + ' ' + y(p[1]).toFixed(1)).join('');
+  el('path', { d: d + `L${x(xMax)} ${y(yMin)}L${x(0)} ${y(yMin)}Z`, fill: color, 'fill-opacity': .16 });
+  el('path', { d, fill: 'none', stroke: color, 'stroke-width': 2.5 });
+  const last = data[data.length-1];
+  el('circle', { cx: x(last[0]), cy: y(last[1]), r: 3.5, fill: '#23291f', stroke: '#f4efe2', 'stroke-width': 1.5 });
+  el('text', { x: x(last[0]) - 6, y: y(last[1]) - 7, 'text-anchor': 'end', 'font-size': 10.5, 'font-weight': 600, fill: '#23291f', 'font-family': 'Archivo' }).textContent = endLabel;
+  el('text', { x: (L + W) / 2, y: H - 3, 'text-anchor': 'middle', 'font-size': 10, fill: '#5a7360', 'font-family': 'Archivo', 'letter-spacing': '.1em' }).textContent = 'MILES FROM JUNCTION';
+}
+drawSpur('spur-edith', TRAIL.profile.spurEdith, C.spur, 'Edith 8,671′');
+drawSpur('spur-pass', TRAIL.profile.spurPass, C.spur, 'pass 9,282′');
+
+/* ================= research-fed sections ================= */
+function renderHazards() {
+  const host = document.getElementById('hazard-cards');
+  host.innerHTML = HAZARD_CARDS.map(h => `
+    <div class="hz" id="hz-${h.id}">
+      <div class="where">${h.where}</div>
+      <h4>${h.title} ${h.v ? `<span class="v-tag ${h.v === 'ok' ? 'v-ok' : 'v-un'}">${h.v === 'ok' ? 'verified' : 'unverified'}</span>` : ''}</h4>
+      <p>${h.body}</p>
+      <div class="brief"><b>The brief:</b> ${h.brief}</div>
+      ${h.src ? `<div class="src-line">Sources: ${h.src.map(s => `<a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a> (${s[2]})`).join(' · ')}</div>` : ''}
+    </div>`).join('');
+}
+function renderConditions() {
+  document.getElementById('conditions-cards').innerHTML = CONDITIONS.map(c => `
+    <div class="intel"><span class="src">${c.k}</span><p>${c.p}</p></div>`).join('');
+}
+function renderVoices() {
+  document.getElementById('voices-cards').innerHTML = VOICES.map(v => `
+    <div class="intel"><span class="src">${v.k}</span><p>${v.p}</p></div>`).join('');
+  document.getElementById('video-list').innerHTML =
+    '<ul class="video-list">' + VIDEOS.map(v =>
+      `<li><a href="${v[3]}" target="_blank" rel="noopener">▶ ${v[0]}</a> <small>— ${v[1]} (${v[2]})</small></li>`).join('') + '</ul>';
+  document.getElementById('photo-grid').innerHTML = PHOTOS.map(p => `
+    <figure class="ph">
+      <a href="${p.page}" target="_blank" rel="noopener"><img src="${p.thumb}" alt="${p.cap}" loading="lazy"></a>
+      <figcaption>${p.cap} <small>· photo ${p.credit}, Wikimedia Commons</small></figcaption>
+    </figure>`).join('');
+}
+function renderSources() {
+  document.getElementById('source-list').innerHTML =
+    '<ul style="margin:6px 0 30px 22px;font-size:13.5px;line-height:1.9">' +
+    SOURCES.map(s => `<li><a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a> <small style="color:var(--moss)">— ${s[2]}</small></li>`).join('') + '</ul>';
+}
+renderHazards(); renderConditions(); renderVoices(); renderSources();
+</script>
+
+</body>
+</html>

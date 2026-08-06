@@ -1,0 +1,396 @@
+{
+ "points": [
+  {
+   "lat": 43.9214015,
+   "lng": -114.9907463,
+   "name": "Alpine Creek Lakes Peak",
+   "tags": {
+    "ele": "3037",
+    "name": "Alpine Creek Lakes Peak",
+    "natural": "peak"
+   }
+  },
+  {
+   "lat": 44.0193773,
+   "lng": -114.975908,
+   "name": "Dave's Peak",
+   "tags": {
+    "ele": "3224.5",
+    "name": "Dave's Peak",
+    "natural": "peak",
+    "wikidata": "Q5228188",
+    "wikipedia": "en:Dave's Peak"
+   }
+  },
+  {
+   "lat": 44.0427085,
+   "lng": -114.9672961,
+   "name": "Decker Peak",
+   "tags": {
+    "ele": "3263",
+    "gnis:feature_id": "380369",
+    "name": "Decker Peak",
+    "natural": "peak",
+    "wikidata": "Q5249296",
+    "wikipedia": "en:Decker Peak"
+   }
+  },
+  {
+   "lat": 43.9408112,
+   "lng": -114.9334108,
+   "name": "El Capitan",
+   "tags": {
+    "ele": "3018",
+    "gnis:feature_id": "381291",
+    "name": "El Capitan",
+    "natural": "peak",
+    "wikidata": "Q5350920",
+    "wikipedia": "en:El Capitan (Idaho)"
+   }
+  },
+  {
+   "lat": 44.0262194,
+   "lng": -114.9619708,
+   "name": "Finger Of Fate",
+   "tags": {
+    "ele": "2980.4",
+    "name": "Finger Of Fate",
+    "natural": "peak"
+   }
+  },
+  {
+   "lat": 43.9497954,
+   "lng": -115.0111461,
+   "name": "Glens Peak",
+   "tags": {
+    "ele": "3065",
+    "gnis:feature_id": "382297",
+    "name": "Glens Peak",
+    "natural": "peak",
+    "wikidata": "Q49031679"
+   }
+  },
+  {
+   "lat": 44.0595568,
+   "lng": -114.9833492,
+   "name": "Goat Perch",
+   "tags": {
+    "ele": "3075",
+    "name": "Goat Perch",
+    "natural": "peak"
+   }
+  },
+  {
+   "lat": 43.9934118,
+   "lng": -114.935224,
+   "name": "Imogene Peak",
+   "tags": {
+    "ele": "3086",
+    "name": "Imogene Peak",
+    "natural": "peak",
+    "wikidata": "Q8537455",
+    "wikipedia": "en:Imogene Peak"
+   }
+  },
+  {
+   "lat": 43.9462939,
+   "lng": -114.906464,
+   "name": "McDonald Peak",
+   "tags": {
+    "ele": "3063",
+    "gnis:feature_id": "386604",
+    "name": "McDonald Peak",
+    "natural": "peak",
+    "wikidata": "Q6800920",
+    "wikipedia": "en:McDonald Peak (Blaine County, Idaho)"
+   }
+  },
+  {
+   "lat": 44.0257805,
+   "lng": -114.8417489,
+   "name": "Mount Cramer",
+   "tags": {
+    "ele": "3266",
+    "gnis:feature_id": "380022",
+    "name": "Mount Cramer",
+    "natural": "peak",
+    "wikidata": "Q8528285",
+    "wikipedia": "en:Mount Cramer"
+   }
+  },
+  {
+   "lat": 44.0563032,
+   "lng": -114.9526004,
+   "name": "Old Decker",
+   "tags": {
+    "ele": "3001",
+    "name": "Old Decker",
+    "natural": "peak"
+   }
+  },
+  {
+   "lat": 43.9666066,
+   "lng": -114.9327755,
+   "name": "Parks Peak",
+   "tags": {
+    "ele": "3130",
+    "gnis:feature_id": "400031",
+    "name": "Parks Peak",
+    "natural": "peak",
+    "wikidata": "Q7138653",
+    "wikipedia": "en:Parks Peak (Blaine County, Idaho)"
+   }
+  },
+  {
+   "lat": 43.992155,
+   "lng": -114.987251,
+   "name": "Payette Peak",
+   "tags": {
+    "ele": "3115",
+    "gnis:feature_id": "388283",
+    "name": "Payette Peak",
+    "natural": "peak",
+    "wikidata": "Q7156736",
+    "wikipedia": "en:Payette Peak"
+   }
+  },
+  {
+   "lat": 43.9192487,
+   "lng": -114.9474001,
+   "name": "Perfect Peak",
+   "tags": {
+    "ele": "3130",
+    "name": "Perfect Peak",
+    "natural": "peak"
+   }
+  },
+  {
+   "lat": 44.0274117,
+   "lng": -114.9748794,
+   "name": "Red Bluff",
+   "tags": {
+    "ele": "3131.91",
+    "name": "Red Bluff",
+    "natural": "peak"
+   }
+  },
+  {
+   "lat": 43.9440971,
+   "lng": -115.0275591,
+   "name": "Redfish Peak",
+   "tags": {
+    "ele": "3113",
+    "name": "Redfish Peak",
+    "natural": "peak"
+   }
+  },
+  {
+   "lat": 44.0552391,
+   "lng": -114.9954728,
+   "name": "Redfish Point",
+   "tags": {
+    "ele": "3077",
+    "name": "Redfish Point",
+    "natural": "peak"
+   }
+  },
+  {
+   "lat": 44.0240902,
+   "lng": -115.0383033,
+   "name": "Sand Mountain",
+   "tags": {
+    "ele": "2916",
+    "name": "Sand Mountain",
+    "natural": "peak"
+   }
+  },
+  {
+   "lat": 44.0303101,
+   "lng": -114.9901233,
+   "name": "Sand Mountain Pass",
+   "tags": {
+    "name": "Sand Mountain Pass",
+    "natural": "saddle"
+   }
+  },
+  {
+   "lat": 44.0245653,
+   "lng": -114.9732388,
+   "name": "Sevy Peak",
+   "tags": {
+    "alt_name": "Mount Sevy",
+    "ele": "3200.4",
+    "gnis:feature_id": "393906",
+    "name": "Sevy Peak",
+    "natural": "peak",
+    "wikidata": "Q7458120",
+    "wikipedia": "en:Sevy Peak"
+   }
+  },
+  {
+   "lat": 43.938134,
+   "lng": -114.9713602,
+   "name": "Snowyside Peak",
+   "tags": {
+    "ele": "3249",
+    "gnis:feature_id": "400097",
+    "name": "Snowyside Peak",
+    "natural": "peak",
+    "wikidata": "Q7548767",
+    "wikipedia": "en:Snowyside Peak"
+   }
+  },
+  {
+   "lat": 44.0208234,
+   "lng": -114.974844,
+   "name": "The Arrowhead",
+   "tags": {
+    "ele": "3139.4",
+    "gnis:feature_id": "397241",
+    "name": "The Arrowhead",
+    "natural": "peak",
+    "wikidata": "Q49082108"
+   }
+  },
+  {
+   "lat": 44.028928,
+   "lng": -114.9734147,
+   "name": "The Coffin",
+   "tags": {
+    "ele": "3102.9",
+    "name": "The Coffin",
+    "natural": "peak"
+   }
+  },
+  {
+   "lat": 44.0364712,
+   "lng": -114.8037949,
+   "name": "The Sentry",
+   "tags": {
+    "ele": "3115.1",
+    "name": "The Sentry",
+    "natural": "peak"
+   }
+  },
+  {
+   "lat": 44.011393,
+   "lng": -114.992595,
+   "name": "The Temple",
+   "tags": {
+    "ele": "2986",
+    "gnis:feature_id": "397246",
+    "name": "The Temple",
+    "natural": "peak"
+   }
+  }
+ ],
+ "lakes": [
+  {
+   "name": "Alturas Lake",
+   "lat": 43.914200947211896,
+   "lng": -114.8620375769517
+  },
+  {
+   "name": "Ardeth Lake",
+   "lat": 43.96503854076923,
+   "lng": -115.01414721076915
+  },
+  {
+   "name": "Bowknot Lake",
+   "lat": 43.966422264197526,
+   "lng": -114.95894932098757,
+   "ele": "2513"
+  },
+  {
+   "name": "Camp Lake",
+   "lat": 43.938238470454536,
+   "lng": -115.00377673409088
+  },
+  {
+   "name": "Edith Lake",
+   "lat": 43.97684147874999,
+   "lng": -114.95937681749997
+  },
+  {
+   "name": "Heart Lake",
+   "lat": 43.93975855342465,
+   "lng": -114.99746350136984
+  },
+  {
+   "name": "Hell Roaring Lake",
+   "lat": 44.024554069402974,
+   "lng": -114.93490228358209
+  },
+  {
+   "name": "Hidden Lake",
+   "lat": 43.998689627972006,
+   "lng": -114.99777382237761
+  },
+  {
+   "name": "Lower Cramer Lake",
+   "lat": 44.03326858529413,
+   "lng": -114.99473975
+  },
+  {
+   "name": "Lucille Lake",
+   "lat": 44.00571209344263,
+   "lng": -114.96859055
+  },
+  {
+   "name": "McDonald Lake",
+   "lat": 43.99851064999999,
+   "lng": -114.88946345666666
+  },
+  {
+   "name": "Middle Cramer Lake",
+   "lat": 44.030955386111124,
+   "lng": -114.99113140277775
+  },
+  {
+   "name": "Mushroom Lake",
+   "lat": 43.9896354768421,
+   "lng": -114.96409523263156
+  },
+  {
+   "name": "Perkins Lake",
+   "lat": 43.92822779352517,
+   "lng": -114.84165484820143
+  },
+  {
+   "name": "Pettit Lake",
+   "lat": 43.98021394053253,
+   "lng": -114.87532068047334
+  },
+  {
+   "name": "Profile Lake",
+   "lat": 44.0148126976744,
+   "lng": -114.97349856899227
+  },
+  {
+   "name": "Twin Lakes",
+   "lat": 43.939308012857154,
+   "lng": -114.95795709999999,
+   "ele": "2700"
+  },
+  {
+   "name": "Upper Cramer Lake",
+   "lat": 44.02938603620689,
+   "lng": -114.98708753793099
+  },
+  {
+   "name": "Vernon Lake",
+   "lat": 43.96367707934783,
+   "lng": -114.99214177336964
+  },
+  {
+   "name": "Virginia Lake",
+   "lat": 43.97714566935486,
+   "lng": -114.99256721774194
+  },
+  {
+   "name": "Yellow Belly Lake",
+   "lat": 44.00244393090903,
+   "lng": -114.87343983045449
+  }
+ ]
+}
