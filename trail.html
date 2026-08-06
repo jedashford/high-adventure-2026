@@ -59,6 +59,7 @@ body.map-fs{overflow:hidden}
 .mm{position:relative;width:0;height:0}
 .mm-tick{position:absolute;left:-1.25px;top:-7px;width:2.5px;height:14px;border-radius:2px;box-shadow:0 0 0 1.5px rgba(255,255,255,.9);transform:rotate(var(--a))}
 .mm-chip{position:absolute;left:-9px;top:-9px;width:18px;height:18px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font:700 9.5px/1 var(--sans);border:1.5px solid #f4efe2;box-shadow:0 1px 4px rgba(0,0,0,.35);transform:rotate(var(--a)) translateY(-16px) rotate(calc(-1 * var(--a)))}
+.dir-arrow{position:absolute;width:16px;height:16px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#23291f;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 4px #fff}
 .leaflet-popup-content-wrapper{border-radius:8px;background:var(--paper);color:var(--ink);font-family:var(--sans)}
 .leaflet-popup-content{margin:14px 16px;font-size:13.5px;line-height:1.5}
 .leaflet-popup-content h4{font-family:var(--serif);color:var(--pine);font-size:16px;margin:0 0 4px}
@@ -176,7 +177,8 @@ body.map-fs{overflow:hidden}
     Colors are the days: <strong style="color:#b4531f">Day 1</strong>,
     <strong style="color:#2f7dad">Day 2</strong>, <strong style="color:#2f7442">Day 3</strong>.
     Dashed = optional pack-free side trips. We are <em>skipping</em> the old high route over
-    Sand Mountain Pass — it stays on the map as a day hike.</p>
+    Sand Mountain Pass — it stays on the map as a day hike. Hit the <strong>Grade</strong> button
+    to repaint the route by steepness: warm colors climbing, blues descending, darker = steeper.</p>
 
     <div class="chiprow" id="chips" role="group" aria-label="Toggle pin categories"></div>
 
@@ -189,11 +191,23 @@ body.map-fs{overflow:hidden}
       more photos on AllTrails ↗</a> · trail lines © OpenStreetMap (ODbL) · elevations USGS 3DEP.</div>
     </div>
 
-    <div class="route-legend">
+    <div class="route-legend" id="legend-days">
       <span><span class="rl-line" style="border-color:#b4531f"></span>Day 1 · TH → Alice / Twin</span>
       <span><span class="rl-line" style="border-color:#3b8ec2"></span>Day 2 · Snowyside → Toxaway</span>
       <span><span class="rl-line" style="border-color:#3e8a55"></span>Day 3–4 · valley out</span>
       <span><span class="rl-line rl-dash" style="border-color:#8a6d3b"></span>optional side trips</span>
+    </div>
+    <div class="route-legend" id="legend-grade" style="display:none">
+      <span title="12%+"><span class="rl-line" style="border-color:#7e1c10"></span>steepest climb</span>
+      <span title="8–12%"><span class="rl-line" style="border-color:#c43d20"></span>steep</span>
+      <span title="5–8%"><span class="rl-line" style="border-color:#dd7a33"></span>moderate</span>
+      <span title="2–5%"><span class="rl-line" style="border-color:#e8b04b"></span>gentle</span>
+      <span title="under 2%"><span class="rl-line" style="border-color:#b6ad97"></span>flat</span>
+      <span title="2–5%"><span class="rl-line" style="border-color:#8fc1dd"></span>gentle&nbsp;↓</span>
+      <span title="5–8%"><span class="rl-line" style="border-color:#4f94c4"></span>moderate&nbsp;↓</span>
+      <span title="8–12%"><span class="rl-line" style="border-color:#2a6ba3"></span>steep&nbsp;↓</span>
+      <span title="12%+"><span class="rl-line" style="border-color:#143f6b"></span>steepest&nbsp;↓</span>
+      <span style="font-weight:400">warm&nbsp;=&nbsp;climbing · blue&nbsp;=&nbsp;descending · darker&nbsp;=&nbsp;steeper · ➤&nbsp;our direction · tap the line for numbers</span>
     </div>
   </section>
 
@@ -206,8 +220,10 @@ body.map-fs{overflow:hidden}
 
     <div class="profile-shell">
       <h3>Main loop — 18.6 mi, ~2,900 ft of climbing</h3>
-      <div class="profile-sub">Trailhead 7,014 ft → Snowyside Pass 9,415 ft → out at 7,024 ft · hover / touch to explore</div>
-      <svg id="profile" viewBox="0 0 940 320" preserveAspectRatio="xMidYMid meet" aria-label="Elevation profile of the loop"></svg>
+      <div class="profile-sub">Trailhead 7,014 ft → Snowyside Pass 9,415 ft → out at 7,024 ft ·
+      hover / touch to explore (the tooltip shows the grade) · the strip under the chart is the
+      steepness ribbon — same colors as the map's Grade mode</div>
+      <svg id="profile" viewBox="0 0 940 332" preserveAspectRatio="xMidYMid meet" aria-label="Elevation profile of the loop with grade ribbon"></svg>
       <div class="prof-tip" id="proftip"></div>
     </div>
 
@@ -439,6 +455,12 @@ body.map-fs{overflow:hidden}
         Yellowbelly, Edith Lake, Pettit Lake Cutoff trails), stitched; mileage is arc length along the mapped line.</li>
         <li><strong>Elevations:</strong> 260 samples from the USGS 3D Elevation Program point service, one per 0.1 mi.
         Cross-checked against published anchors (trailhead ~7,000 ft, Alice 8,596 ft, Snowyside ≈9,400 ft).</li>
+        <li><strong>Grade coloring:</strong> a second, denser USGS pass (374 samples, one per 0.05 mi);
+        grade = rise over run, smoothed across a 0.15-mi window (point-to-point DEM grades are noise —
+        every serious tool smooths). Buckets fitted to this trail's real distribution: ±2% flat, then
+        2–5 / 5–8 / 8–12 / 12%+ (sustained grades here top out ~12% up, ~16% down). Warm-up/blue-down
+        ramp chosen over red/green for colorblind safety and validated (worst up-vs-down confusion
+        ΔE 14.6 under simulated color-vision deficiency).</li>
         <li><strong>Lake coordinates:</strong> USGS GNIS official names database.</li>
         <li><strong>Camps, hazards, conditions:</strong> primary Forest Service pages and signed orders first,
         then dated first-person trip reports — every cited page was opened and read, none trusted from a search
@@ -679,15 +701,40 @@ L.control.layers({ 'USGS Topo': topo, 'Satellite': sat }, null, { position: 'top
 L.control.scale({ imperial: true, metric: false }).addTo(map);
 
 const casing = { color: '#ffffff', weight: 7, opacity: .85 };
-const mk = (pts, color, dash) => {
-  L.polyline(pts, casing).addTo(map);
-  return L.polyline(pts, { color, weight: 4, opacity: .95, dashArray: dash || null }).addTo(map);
+const dayGroup = L.layerGroup().addTo(map);   // day-colored route (default mode)
+const spurGroup = L.layerGroup().addTo(map);  // dashed side trips (always on)
+const mk = (grp, pts, color, dash) => {
+  L.polyline(pts, casing).addTo(grp);
+  return L.polyline(pts, { color, weight: 4, opacity: .95, dashArray: dash || null }).addTo(grp);
 };
-const day1 = mk(TRAIL.legs.day1, C.d1);
-const day2 = mk([...TRAIL.legs.day2a, ...TRAIL.legs.day2b.slice(1)], C.d2);
-const day3 = mk([...TRAIL.legs.day3a, ...TRAIL.legs.day3b.slice(1)], C.d3);
-mk(TRAIL.legs.spurEdith, C.spur, '6 7');
-mk(TRAIL.legs.spurPass, C.spur, '6 7');
+mk(dayGroup, TRAIL.legs.day1, C.d1);
+mk(dayGroup, [...TRAIL.legs.day2a, ...TRAIL.legs.day2b.slice(1)], C.d2);
+mk(dayGroup, [...TRAIL.legs.day3a, ...TRAIL.legs.day3b.slice(1)], C.d3);
+mk(spurGroup, TRAIL.legs.spurEdith, C.spur, '6 7');
+mk(spurGroup, TRAIL.legs.spurPass, C.spur, '6 7');
+
+/* ---- GRADE MODE: route repainted by steepness (validated diverging ramp:
+   warm = climbing, blue = descending, darker = steeper, neutral = flat;
+   sign of the grade = clockwise, our direction of travel) ---- */
+const GRADE_COLORS = { '-4':'#143f6b','-3':'#2a6ba3','-2':'#4f94c4','-1':'#8fc1dd',
+                       '0':'#b6ad97','1':'#e8b04b','2':'#dd7a33','3':'#c43d20','4':'#7e1c10' };
+const GRADE_LABEL = { '0':'≈ flat · under 2%','1':'gentle climb · 2–5%','2':'moderate climb · 5–8%',
+                      '3':'steep climb · 8–12%','4':'very steep climb · 12%+',
+                      '-1':'gentle descent · 2–5%','-2':'moderate descent · 5–8%',
+                      '-3':'steep descent · 8–12%','-4':'very steep descent · 12%+' };
+const gradeBucket = (g) => { const s = Math.sign(g), a = Math.abs(g);
+  return a < 2 ? 0 : s * (a < 5 ? 1 : a < 8 ? 2 : a < 12 ? 3 : 4); };
+const gradeGroup = L.layerGroup();
+TRAIL.grade.segs.forEach(s => L.polyline(s.pts, casing).addTo(gradeGroup));
+TRAIL.grade.segs.forEach(s => {
+  const day = s.m0 <= 6.83 ? 'Day 1' : s.m0 <= 12.34 ? 'Day 2' : 'Day 3–4';
+  L.polyline(s.pts, { color: GRADE_COLORS[s.b], weight: 5, opacity: .97 })
+    .bindPopup(`<div class="pp-meta" style="color:${GRADE_COLORS[s.b]}">${day} · miles ${s.m0.toFixed(1)} → ${s.m1.toFixed(1)}</div>` +
+               `<h4>${GRADE_LABEL[s.b]}</h4><p>Read in our direction of travel (clockwise, Alice first).</p>` +
+               `<div class="pp-src">USGS elevation sampled every 0.05 mi, grade smoothed over 0.15 mi.</div>`)
+    .addTo(gradeGroup);
+});
+let gradeMode = false; // travel-direction arrows are added to gradeGroup after the mileage engine below
 
 const routeLine = [...TRAIL.legs.day1, ...TRAIL.legs.day2a.slice(1), ...TRAIL.legs.day2b.slice(1),
                    ...TRAIL.legs.day3a.slice(1), ...TRAIL.legs.day3b.slice(1)];
@@ -747,6 +794,14 @@ for (let m = 1; m < totalMi; m += 1) {
                `<h4>Mile ${m} of ${totalMi.toFixed(1)}</h4><p>${MILE_NOTES[m] || ''}</p>` +
                `<div class="pp-src">Measured along the mapped trail line — matches the elevation chart's mile axis.</div>`).addTo(map);
 }
+
+/* travel-direction arrows for grade mode — up/down only means something with a direction */
+[1.5, 4.5, 7.5, 10.5, 13.5, 16.5].forEach(m => {
+  const a = latLngAtMile(m - 0.04), b = latLngAtMile(m + 0.04);
+  const brg = Math.atan2((b[1]-a[1]) * Math.cos(a[0]*Math.PI/180), b[0]-a[0]) * 180 / Math.PI;
+  L.marker(latLngAtMile(m), { interactive: false, icon: L.divIcon({ className: '', iconSize: [0,0],
+    html: `<div class="dir-arrow" style="transform:translate(-8px,-8px) rotate(${(brg-90).toFixed(0)}deg)">➤</div>` }) }).addTo(gradeGroup);
+});
 
 /* clickable route segments — wide invisible hit lines over each leg */
 const SEGMENTS = [
@@ -816,6 +871,7 @@ const ViewCtl = L.Control.extend({
       '<button data-v="day1" class="d1" title="Zoom to Day 1">D1</button>' +
       '<button data-v="day2" class="d2" title="Zoom to Day 2">D2</button>' +
       '<button data-v="day3" class="d3" title="Zoom to Days 3–4">D3–4</button>' +
+      '<button data-v="mode" title="Repaint the route by steepness">Grade</button>' +
       '<button data-v="fs" title="Fullscreen">⛶</button>';
     L.DomEvent.disableClickPropagation(div);
     div.addEventListener('click', (e) => {
@@ -842,6 +898,13 @@ const ViewCtl = L.Control.extend({
         e.target.textContent = on ? '✕' : '⛶';
         map.scrollWheelZoom[on ? 'enable' : 'disable']();
         setTimeout(() => map.invalidateSize(), 60);
+      } else if (v === 'mode') {
+        gradeMode = !gradeMode;
+        if (gradeMode) { map.removeLayer(dayGroup); gradeGroup.addTo(map); }
+        else { map.removeLayer(gradeGroup); dayGroup.addTo(map); }
+        e.target.textContent = gradeMode ? 'Days' : 'Grade';
+        document.getElementById('legend-days').style.display = gradeMode ? 'none' : '';
+        document.getElementById('legend-grade').style.display = gradeMode ? '' : 'none';
       } else if (v === 'loop') {
         map.fitBounds(L.latLngBounds(routeLine).pad(0.06));
       } else {
@@ -864,7 +927,7 @@ document.querySelectorAll('[data-zoom]').forEach(a => a.addEventListener('click'
 (function drawProfile() {
   const svg = document.getElementById('profile');
   const P = TRAIL.profile.main;                 // [mi, ele]
-  const W = 940, H = 320, L = 52, Rp = 14, T = 16, B = 42;
+  const W = 940, H = 332, L = 52, Rp = 14, T = 16, B = 54;
   const xMax = P[P.length-1][0], yMin = 6800, yMax = 9700;
   const x = mi => L + (mi / xMax) * (W - L - Rp);
   const y = e => T + (1 - (e - yMin) / (yMax - yMin)) * (H - T - B);
@@ -881,6 +944,13 @@ document.querySelectorAll('[data-zoom]').forEach(a => a.addEventListener('click'
     el('text', { x: x(m), y: H - B + 18, 'text-anchor': 'middle', 'font-size': 11, fill: '#5a7360', 'font-family': 'Archivo' }).textContent = m;
   }
   el('text', { x: (L + W - Rp) / 2, y: H - 4, 'text-anchor': 'middle', 'font-size': 11, fill: '#5a7360', 'font-family': 'Archivo', 'letter-spacing': '.12em' }).textContent = 'MILES FROM TRAILHEAD';
+
+  // grade ribbon: one tick per 0.05-mi hop, same colors as the map's Grade mode
+  (TRAIL.grade ? TRAIL.grade.ribbon : []).forEach(([mi, g]) => {
+    el('rect', { x: x(mi).toFixed(1), y: H - B + 5, width: Math.max(1.2, x(Math.min(xMax, mi + 0.05)) - x(mi) + 0.4).toFixed(1),
+      height: 7, fill: GRADE_COLORS[gradeBucket(g)] });
+  });
+  el('text', { x: L - 8, y: H - B + 12, 'text-anchor': 'end', 'font-size': 9.5, fill: '#5a7360', 'font-family': 'Archivo' }).textContent = 'grade';
 
   // day-colored area + line segments (day boundaries at 6.83 and 12.34 mi)
   const segs = [ [0, 6.83, C.d1], [6.83, 12.34, C.d2], [12.34, xMax, C.d3] ];
@@ -917,7 +987,9 @@ document.querySelectorAll('[data-zoom]').forEach(a => a.addEventListener('click'
     tip.style.left = (x(p[0]) / W * 100) + '%';
     tip.style.top = (y(p[1]) / H * 100) + '%';
     tip.style.opacity = 1;
-    tip.textContent = `${day} · mile ${p[0].toFixed(1)} · ${p[1].toLocaleString()} ft`;
+    const rb = TRAIL.grade ? TRAIL.grade.ribbon.reduce((bb, rr) => Math.abs(rr[0]-p[0]) < Math.abs(bb[0]-p[0]) ? rr : bb) : null;
+    tip.textContent = `${day} · mile ${p[0].toFixed(1)} · ${p[1].toLocaleString()} ft` +
+                      (rb ? ` · ${rb[1] > 0 ? '+' : ''}${rb[1].toFixed(0)}% grade` : '');
     const ll = latLngAtMile(p[0]);
     if (!mapDot) mapDot = L.circleMarker(ll, { radius: 7, color: '#fff', weight: 2, fillColor: '#b4531f', fillOpacity: 1 }).addTo(map);
     else mapDot.setLatLng(ll);
