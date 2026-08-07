@@ -18,6 +18,9 @@
 <style>
 .stage{position:relative;margin:14px auto 8px;max-width:1400px;padding:0 14px}
 #map3d{height:min(84vh,860px);min-height:500px;border:1px solid var(--line);border-radius:8px;background:#0e1512}
+/* our custom orbit/pinch owns touch while flying — disabling MapLibre's handlers
+   removes its touch-action rule, so pin it here or phone drags scroll the page */
+#map3d .maplibregl-canvas-container{touch-action:none}
 
 /* top-left controls */
 .ctl3d{position:absolute;top:26px;left:26px;z-index:5;display:flex;flex-wrap:wrap;gap:8px;max-width:72%}
@@ -78,12 +81,16 @@
 .marker3d{width:22px;height:22px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;cursor:pointer}
 .marker3d span{transform:rotate(45deg);font-size:11px;line-height:1}
 @media (max-width:700px){
-  .ctl3d{top:14px;left:14px}
-  .dock{left:8px;right:8px;bottom:8px;padding:8px 10px 6px}
+  .ctl3d{top:14px;left:14px;right:14px;max-width:none;flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .ctl3d::-webkit-scrollbar{display:none}
+  .ctl3d button,.ctl3d a{padding:12px 14px;flex:0 0 auto}
+  .dock{left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));padding:8px 10px 6px}
   .dock-mile{font-size:17px}
   .nextchip{margin-left:0}
-  .fcard{top:auto;bottom:190px}
-  .recenter{bottom:210px}
+  .fcard{top:64px;bottom:auto}
+  .fcard img{height:110px}
+  .fcard-x{width:32px;height:32px;font-size:16px}
+  .recenter{bottom:200px}
   #prof svg{height:48px}
 }
 </style>
@@ -109,13 +116,13 @@
   <div class="wrap">
     <div class="kicker">Field Manual No. 4 · Plate II</div>
     <h1 class="title" style="font-size:clamp(38px,6vw,64px)">The Loop in <em>Three Dimensions</em></h1>
-    <p class="subtitle">Live navigation over real terrain. Press <strong>▶ Fly the loop</strong> and the camera walks
-    the trail for you — mile counter, live elevation &amp; grade, photo cards at every landmark, and both
-    turn-right junctions called out. The <strong>⏩ slider</strong> goes from a slow crawl to 8×, the
-    <strong>∠ slider</strong> tips the view from straight-down to skimming the horizon, and
+    <p class="subtitle">Live navigation over real terrain — and it works like a video:
+    <strong>tap the map to pause, tap again to play</strong>. While it flies, <strong>drag to spin and tilt
+    around the hiker</strong> (it keeps going — ⟲ Recenter swings back behind them) and
+    <strong>scroll, pinch, or +/− to zoom</strong>. The <strong>⏩ slider</strong> runs from a slow crawl to 8×,
+    the <strong>∠ slider</strong> tips the view from straight-down to skimming the horizon, and
     <strong>🧭 Trail-up / 🔒 View locked</strong> chooses whether the screen turns with the switchbacks or the
-    arrow does. <strong>Scroll or +/− to zoom mid-flight, drag to look around</strong> (the hiker keeps going —
-    hit ⟲ Recenter to catch up), and <strong>drag the elevation profile</strong> to jump to any mile.</p>
+    arrow does. <strong>Drag the elevation profile</strong> to jump to any mile.</p>
   </div>
 </header>
 
@@ -317,7 +324,8 @@ map.on('load', () => {
     el.innerHTML = `<span>${p[3]}</span>`;
     new maplibregl.Marker({ element: el, anchor: 'bottom' })
       .setLngLat([p[1], p[0]])
-      .setPopup(new maplibregl.Popup({ offset: 18 }).setHTML(`<h4>${p[4]}</h4><p>${p[5]}</p>`))
+      .setPopup(new maplibregl.Popup({ offset: 18, closeOnClick: false })   // × closes it — a map tap
+        .setHTML(`<h4>${p[4]}</h4><p>${p[5]}</p>`))                         // means play/pause, nothing else
       .addTo(map);
   });
 
@@ -370,9 +378,10 @@ function buildProfile() {
 }
 
 /* ---------- flyover state ---------- */
-let flying = false, attached = true, flyMi = 0, lastT = 0, speed = 2;
+let flying = false, flyMi = 0, lastT = 0, speed = 2;
 let curBearing = null, curZoom = 13.8, curPitch = 63, viewMode = 'trail';
-let suppressCamUntil = 0, lastProg = -1, curDay = -1;
+let bearingOff = 0;                                  // orbit offset from dragging mid-flight
+let suppressCamUntil = 0, suppressClickUntil = 0, lastProg = -1, curDay = -1;
 const ZOOM_MIN = 11.3, ZOOM_MAX = 17;
 let shown = new Set();
 const btnFly = document.getElementById('btn-fly');
@@ -395,17 +404,24 @@ function render(force, dt) {
   const here = atMile(flyMi), brg = bearingAt(flyMi);
   puck.setLngLat([here[1], here[0]]).setRotation(brg);
   updProgress();
-  // chase-cam (only while flying + attached):
-  //  trail-up — screen rotates to keep the trail pointing up
+  // chase-cam (only while flying):
+  //  trail-up — screen rotates to keep the trail pointing up (plus any drag-orbit offset)
   //  locked   — screen holds its direction; the arrow does the turning
-  if (flying && attached && performance.now() > suppressCamUntil) {
+  if (flying && performance.now() > suppressCamUntil) {
+    // keep the camera's terrain anchor glued to the trail height — the per-frame jumpTo
+    // freezes MapLibre's center elevation, which is what made the hiker drift off-center
+    // vertically on climbs and descents (queryTerrainElevation is relative to the anchor)
+    const qte = map.queryTerrainElevation([here[1], here[0]]);
+    if (qte != null && Number.isFinite(qte)) map.transform.elevation += qte * 0.35;
     const cam = { center: [here[1], here[0]], pitch: curPitch, zoom: curZoom };
     if (viewMode === 'trail') {
-      curBearing = curBearing == null ? brg : lerpAngle(curBearing, brg, Math.min(1, (dt || 0.016) * 3.5));
+      const tgt = brg + bearingOff;
+      curBearing = curBearing == null ? tgt : lerpAngle(curBearing, tgt, Math.min(1, (dt || 0.016) * 3.5));
       cam.bearing = curBearing;
     }
     map.jumpTo(cam);
   }
+  recenterBtn.classList.toggle('show', flying && viewMode === 'trail' && Math.abs(bearingOff) > 12);
   // HUD
   const di = dayIdxOf(flyMi), day = DAYS[di];
   const chip = document.getElementById('hud-day');
@@ -472,20 +488,28 @@ function frame(t) {
   if (flyMi >= totalMi) { stopFly(); return; }
   requestAnimationFrame(frame);
 }
-function setAttached(on) {
-  attached = on;
-  recenterBtn.classList.toggle('show', flying && !on);
-  if (on && flying) { map.scrollZoom.disable(); map.touchZoomRotate.disable(); }
-  else { map.scrollZoom.enable(); map.touchZoomRotate.enable(); }
+// while flying, WE own the gestures (drag = orbit, tap = pause, scroll = zoom);
+// while paused, the map behaves like any normal map.
+// 'keyboard' stays permanently off — our own bindings cover space/arrows/+/− and the
+// native handler ignores preventDefault, so both would fire (double-zoom, phantom pans).
+function setGestures(native) {
+  ['dragPan', 'dragRotate', 'scrollZoom', 'touchZoomRotate', 'touchPitch', 'doubleClickZoom', 'boxZoom']
+    .forEach(h => map[h] && (native ? map[h].enable() : map[h].disable()));
 }
+map.keyboard.disable();
+let gestureTimer = null;
 function startFly() {
   if (!loaded || flying) return;
   if (flyMi >= totalMi - 0.05) { flyMi = 0; shown.clear(); lastProg = -1; hideCard(); }
   flying = true; btnFly.textContent = '⏸ Pause';
-  curZoom = map.getZoom() > 12.5 ? Math.min(map.getZoom(), ZOOM_MAX) : 13.8;
-  curBearing = map.getBearing(); curDay = dayIdxOf(flyMi);
+  // fresh start gets the framing default; resume keeps the zoom/pitch you chose
+  curZoom = flyMi < 0.05 && map.getZoom() <= 12.5 ? 13.8
+          : Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, map.getZoom()));
+  setTilt(90 - map.getPitch(), true);            // adopt pitch changed while paused
+  curBearing = map.getBearing(); bearingOff = 0; curDay = dayIdxOf(flyMi);
   if (flyMi < 0.05) splash(DAYS[0]);
-  setAttached(true);
+  clearTimeout(gestureTimer);
+  setGestures(false);
   suppressCamUntil = performance.now() + 900;
   const h = atMile(flyMi);
   const cam = { center: [h[1], h[0]], pitch: curPitch, zoom: curZoom, duration: 900 };
@@ -497,11 +521,22 @@ function startFly() {
 }
 function stopFly() {
   flying = false;
-  map.scrollZoom.enable(); map.touchZoomRotate.enable();
+  map.stop();                                    // halt any in-progress start ease
+  // re-enable native gestures AFTER the dblclick window, so a double-tap
+  // pauses without doubleClickZoom also firing on the second click
+  clearTimeout(gestureTimer);
+  gestureTimer = setTimeout(() => { if (!flying) setGestures(true); }, 400);
   recenterBtn.classList.remove('show');
   btnFly.textContent = flyMi > 0.05 && flyMi < totalMi - 0.05 ? '▶ Resume' : '▶ Fly the loop';
 }
-btnFly.addEventListener('click', () => (flying ? stopFly() : startFly()));
+let lastToggle = 0;
+function togglePlay() {                       // debounced so dblclick can't play+pause
+  const n = performance.now();
+  if (n - lastToggle < 350) return;
+  lastToggle = n;
+  flying ? stopFly() : startFly();
+}
+btnFly.addEventListener('click', togglePlay);
 
 function setMile(mi, scrub) {
   flyMi = Math.min(totalMi, Math.max(0, mi));
@@ -518,24 +553,70 @@ function setMile(mi, scrub) {
   }
 }
 
-/* ---------- free-look + zoom during flight ---------- */
-// The chase-cam's per-frame jumpTo cancels MapLibre gestures before they can start,
-// so: any press on the terrain hands you the camera (the hiker keeps going) and
-// native pan/rotate/pinch take over. ⟲ Recenter snaps back behind the hiker.
+/* ---------- video-style input while flying ----------
+   tap the map = pause/play (like a video) · drag = orbit around the hiker while it
+   keeps flying (horizontal spins the view, vertical tilts) · two fingers = pinch-zoom.
+   While paused the map is a normal map. */
 const canvas = map.getCanvas();
-canvas.addEventListener('pointerdown', () => { if (flying && attached) setAttached(false); });
-recenterBtn.addEventListener('click', () => {
-  setAttached(true);
-  curZoom = Math.min(ZOOM_MAX, Math.max(12.2, map.getZoom()));
-  suppressCamUntil = performance.now() + 650;
-  const h = atMile(flyMi);
-  const cam = { center: [h[1], h[0]], pitch: curPitch, zoom: curZoom, duration: 650 };
-  if (viewMode === 'trail') cam.bearing = bearingAt(flyMi);
-  map.easeTo(cam);
-  setTimeout(() => { curBearing = map.getBearing(); }, 670);
+const ptrs = new Map();                        // active pointers on the canvas
+let dragMoved = false, pinchD = null;
+canvas.addEventListener('pointerdown', e => {
+  if (!flying) return;                         // paused → native handlers own it
+  if (e.pointerType === 'mouse' && e.button !== 0) return;
+  ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  if (ptrs.size === 1) dragMoved = false;
+  if (ptrs.size === 2) {                       // pinch begins — not a tap, not an orbit
+    dragMoved = true;
+    const [a, b] = [...ptrs.values()];
+    pinchD = Math.hypot(a.x - b.x, a.y - b.y);
+  }
+  canvas.setPointerCapture(e.pointerId);
 });
+canvas.addEventListener('pointermove', e => {
+  if (!flying || !ptrs.has(e.pointerId)) return;
+  const p = ptrs.get(e.pointerId);
+  const dx = e.clientX - p.x, dy = e.clientY - p.y;
+  if (ptrs.size === 2 && pinchD) {             // pinch-zoom
+    p.x = e.clientX; p.y = e.clientY;
+    const [a, b] = [...ptrs.values()];
+    const d = Math.hypot(a.x - b.x, a.y - b.y);
+    curZoom = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, curZoom + (d / pinchD - 1) * 2.4));
+    pinchD = d;
+    return;
+  }
+  const slop = e.pointerType === 'touch' ? 12 : 5;    // fingers jitter more than mice
+  if (!dragMoved && Math.hypot(dx, dy) < slop) return; // still a tap
+  dragMoved = true;
+  p.x = e.clientX; p.y = e.clientY;
+  // orbit: horizontal = spin, vertical = tilt (Google-Earth style)
+  if (viewMode === 'trail') bearingOff = ((bearingOff - dx * 0.35 + 540) % 360) - 180;
+  else map.setBearing(map.getBearing() - dx * 0.35);
+  setTilt((90 - curPitch) + dy * 0.22, true);
+});
+const endPtr = e => {
+  if (!ptrs.has(e.pointerId)) return;
+  ptrs.delete(e.pointerId);
+  if (ptrs.size < 2) pinchD = null;
+  if (ptrs.size === 0 && dragMoved) suppressClickUntil = performance.now() + 400;
+};
+canvas.addEventListener('pointerup', endPtr);
+canvas.addEventListener('pointercancel', endPtr);
+
+// tap/click anywhere on the terrain = play/pause, like tapping a video.
+// Pins and popups are exempt — markers open their popups THROUGH this same map
+// click (MapLibre hit-tests the target), so we filter rather than stopPropagation.
+map.on('click', e => {
+  const t = e.originalEvent && e.originalEvent.target;
+  if (t && t.closest && t.closest('.marker3d, .maplibregl-popup')) return;
+  if (performance.now() < suppressClickUntil) return;
+  togglePlay();
+});
+
+// ⟲ Recenter clears the drag-orbit offset and swings back behind the hiker
+recenterBtn.addEventListener('click', () => { bearingOff = 0; });
+
 canvas.addEventListener('wheel', e => {
-  if (!(flying && attached)) return;
+  if (!flying) return;
   e.preventDefault();
   curZoom = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, curZoom - e.deltaY * 0.0032));
 }, { passive: false });
@@ -543,7 +624,7 @@ canvas.addEventListener('wheel', e => {
 // cancelled by the per-frame jumpTo, which is why they felt dead mid-flight)
 document.querySelectorAll('.maplibregl-ctrl-zoom-in, .maplibregl-ctrl-zoom-out').forEach(btn =>
   btn.addEventListener('click', () => {
-    if (!(flying && attached)) return;
+    if (!flying) return;
     const d = btn.classList.contains('maplibregl-ctrl-zoom-in') ? 0.7 : -0.7;
     curZoom = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, curZoom + d));
   }));
@@ -562,29 +643,38 @@ function setSpeed(v) {
 speedInput.addEventListener('input', e => setSpeed(speedFromSlider(parseFloat(e.target.value))));
 
 const tiltInput = document.getElementById('tilt');
-function setTilt(angle) {                       // slider is "degrees looking down": 90 = top-down, 12 = horizon
+function setTilt(angle, quiet) {                // slider is "degrees looking down": 90 = top-down, 12 = horizon
   const a = Math.min(90, Math.max(12, angle));
   curPitch = 90 - a; tiltInput.value = a;
   document.getElementById('tilt-lab').textContent = Math.round(a) + '°';
-  if (!(flying && attached)) map.easeTo({ pitch: curPitch, duration: 350 });
+  if (!flying && !quiet) map.easeTo({ pitch: curPitch, duration: 350 });
 }
 tiltInput.addEventListener('input', e => setTilt(parseFloat(e.target.value)));
 
 document.getElementById('btn-view').addEventListener('click', e => {
   viewMode = viewMode === 'trail' ? 'locked' : 'trail';
   e.target.textContent = viewMode === 'trail' ? '🧭 Trail-up' : '🔒 View locked';
+  bearingOff = 0;                                            // no stale orbit across modes
   if (viewMode === 'trail') curBearing = map.getBearing();   // ease from wherever we are
 });
+// compass: while flying its native reset loses to the chase-cam, so give it the
+// mode-appropriate meaning (Trail-up → back behind the hiker; locked → north-up)
+document.querySelectorAll('.maplibregl-ctrl-compass').forEach(btn =>
+  btn.addEventListener('click', () => {
+    if (!flying) return;
+    if (viewMode === 'trail') bearingOff = 0;
+    else map.setBearing(0);
+  }));
 
 window.addEventListener('keydown', e => {
   if (e.target.matches('input,textarea,select')) return;
-  if (e.code === 'Space') { e.preventDefault(); flying ? stopFly() : startFly(); }
+  if (e.code === 'Space') { e.preventDefault(); togglePlay(); }
   else if (e.key === 'ArrowRight') { e.preventDefault(); setMile(flyMi + 0.25, true); }
   else if (e.key === 'ArrowLeft')  { e.preventDefault(); setMile(flyMi - 0.25, true); }
   else if (e.key === 'ArrowUp')    { e.preventDefault(); setSpeed(speed * 1.35); }
   else if (e.key === 'ArrowDown')  { e.preventDefault(); setSpeed(speed / 1.35); }
-  else if (e.key === '+' || e.key === '=') { if (flying && attached) curZoom = Math.min(ZOOM_MAX, curZoom + 0.5); else map.zoomIn(); }
-  else if (e.key === '-') { if (flying && attached) curZoom = Math.max(ZOOM_MIN, curZoom - 0.5); else map.zoomOut(); }
+  else if (e.key === '+' || e.key === '=') { if (flying) curZoom = Math.min(ZOOM_MAX, curZoom + 0.5); else map.zoomIn(); }
+  else if (e.key === '-') { if (flying) curZoom = Math.max(ZOOM_MIN, curZoom - 0.5); else map.zoomOut(); }
 });
 
 /* ---------- other controls ---------- */
@@ -604,7 +694,8 @@ const DAY_RANGE = { 1: [0, 6.83], 2: [6.83, 12.34], 3: [12.34, totalMi] };
 document.querySelectorAll('[data-day]').forEach(b => b.addEventListener('click', () => {
   stopFly();
   const [a, z] = DAY_RANGE[b.dataset.day];
-  const mid = atMile((a + z) / 2);
+  setMile(a, true);                 // chapter-seek: hiker + HUD move to the day start...
+  const mid = atMile((a + z) / 2);  // ...while the camera surveys that day's terrain
   map.flyTo({ center: [mid[1], mid[0]], zoom: 12.6, pitch: 62,
               bearing: (Number(b.dataset.day) - 1) * 70 - 30, duration: 2200 });
 }));
