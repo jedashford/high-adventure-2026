@@ -139,7 +139,7 @@
   <div class="ctl3d">
     <button class="primary" id="btn-fly">▶ Fly the loop</button>
     <span class="speedwrap" title="Flyover speed — drag far left for a slow walk-through"><b>⏩</b><input type="range" id="speed" min="0" max="100" step="1" value="73" aria-label="Flyover speed"><b id="speed-lab">2×</b></span>
-    <span class="speedwrap" title="Camera angle — 90° looks straight down, 12° skims the horizon"><b>∠</b><input type="range" id="tilt" min="12" max="90" step="1" value="27" aria-label="Camera angle"><b id="tilt-lab">27°</b></span>
+    <span class="speedwrap" title="Camera angle — 90° looks straight down, 8° skims the horizon"><b>∠</b><input type="range" id="tilt" min="8" max="90" step="1" value="27" aria-label="Camera angle"><b id="tilt-lab">27°</b></span>
     <button id="btn-view" title="Trail-up rotates the view with the trail; View locked holds one direction and lets the arrow do the turning">🧭 Trail-up</button>
     <button data-day="1">D1</button>
     <button data-day="2">D2</button>
@@ -263,12 +263,16 @@ const CARDS = [
 const map = new maplibregl.Map({
   container: 'map3d',
   center: [-114.92, 43.965], zoom: 11.6, pitch: 58, bearing: -35,
-  maxPitch: 78, attributionControl: { compact: true },
+  maxPitch: 83, attributionControl: { compact: true },
   style: { version: 8, sources: {
-      sat:  { type: 'raster', tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'], tileSize: 256, maxzoom: 17, attribution: 'Esri, Maxar, Earthstar Geographics' },
+      // z18 verified real (individual trees resolve at Alice Lake, not upsample)
+      sat:  { type: 'raster', tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'], tileSize: 256, maxzoom: 18, attribution: 'Esri, Maxar, Earthstar Geographics' },
       topo: { type: 'raster', tiles: ['https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}'], tileSize: 256, maxzoom: 16, attribution: 'USGS The National Map' },
-      dem:  { type: 'raster-dem', tiles: ['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'], tileSize: 256, encoding: 'terrarium', maxzoom: 14, attribution: 'Terrain: Mapzen/AWS Open Data' },
+      dem:  { type: 'raster-dem', tiles: ['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'], tileSize: 256, encoding: 'terrarium', maxzoom: 15, attribution: 'Terrain: Mapzen/AWS Open Data' },
     },
+    // graded sky + distance haze — the hard horizon cut was the biggest "fake" tell
+    sky: { 'sky-color': '#79a6cf', 'horizon-color': '#e8eef4', 'fog-color': '#dde2d8',
+           'sky-horizon-blend': .66, 'horizon-fog-blend': .5, 'fog-ground-blend': .88 },
     layers: [
       { id: 'base-sat',  type: 'raster', source: 'sat' },
       { id: 'base-topo', type: 'raster', source: 'topo', layout: { visibility: 'none' } },
@@ -681,7 +685,7 @@ speedInput.addEventListener('input', e => setSpeed(speedFromSlider(parseFloat(e.
 
 const tiltInput = document.getElementById('tilt');
 function setTilt(angle, quiet) {                // slider is "degrees looking down": 90 = top-down, 12 = horizon
-  const a = Math.min(90, Math.max(12, angle));
+  const a = Math.min(90, Math.max(8, angle));
   curPitch = 90 - a; tiltInput.value = a;
   document.getElementById('tilt-lab').textContent = Math.round(a) + '°';
   if (!flying && !quiet) map.easeTo({ pitch: curPitch, duration: 350 });
