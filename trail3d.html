@@ -80,6 +80,12 @@
 .maplibregl-popup-content p{margin:0;font-size:12.5px;line-height:1.45}
 .marker3d{width:22px;height:22px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;cursor:pointer}
 .marker3d span{transform:rotate(45deg);font-size:11px;line-height:1}
+/* place-name labels — pointer-events none so taps/drags pass through to the flyover */
+.lbl3d{pointer-events:none;white-space:nowrap;text-align:center;
+  text-shadow:0 1px 2px rgba(0,0,0,.9),0 0 6px rgba(0,0,0,.7)}
+.lbl3d.lake{font:italic 600 12.5px/1.15 var(--serif);color:#bfe3f5}
+.lbl3d.peak{font:700 10.5px/1.2 var(--sans);color:#f3ead6;letter-spacing:.03em}
+.lbl3d.peak small{display:block;font-weight:600;font-size:9.5px;color:#d8cbAA}
 @media (max-width:700px){
   .ctl3d{top:14px;left:14px;right:14px;max-width:none;flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .ctl3d::-webkit-scrollbar{display:none}
@@ -163,7 +169,7 @@
 </div>
 
 <p class="note3d">Terrain: AWS Open Data / Mapzen global elevation (1.35× vertical exaggeration) ·
-imagery Esri World Imagery · topo USGS · route © OpenStreetMap contributors · photos credited on each card.
+imagery Esri World Imagery · topo USGS · route &amp; place names © OpenStreetMap contributors · photos credited on each card.
 Keyboard: <strong>space</strong> play/pause · <strong>←/→</strong> scrub · <strong>↑/↓</strong> speed.
 Take it offline instead: <a href="sawtooth-loop.gpx" download><strong>GPX</strong></a> for Gaia/AllTrails/Garmin ·
 <a href="sawtooth-loop.kml" download><strong>KML</strong></a> for Google Earth.
@@ -180,7 +186,7 @@ Old phone struggling? The <a href="trail.html">2D atlas</a> has everything.</p>
 <script src="trail-data.js"></script>
 <script>
 'use strict';
-const C = { d1:'#b4531f', d2:'#3b8ec2', d3:'#3e8a55', spur:'#c9a84c' };
+const C = { d1:'#b4531f', d2:'#3b8ec2', d3:'#3e8a55', spur:'#c0369b' };  // spur: magenta — the old gold vanished into the terrain
 const GRADE_COLORS = { '-4':'#143f6b','-3':'#2a6ba3','-2':'#4f94c4','-1':'#8fc1dd',
                        '0':'#b6ad97','1':'#e8b04b','2':'#dd7a33','3':'#c43d20','4':'#7e1c10' };
 
@@ -298,8 +304,11 @@ map.on('load', () => {
   casing('days-casing', 'route-days'); colored('days-line', 'route-days', 4.5);
   casing('grade-casing', 'route-grade'); colored('grade-line', 'route-grade', 5);
   ['grade-casing', 'grade-line'].forEach(id => map.setLayoutProperty(id, 'visibility', 'none'));
+  map.addLayer({ id: 'spur-halo', type: 'line', source: 'spurs',
+    paint: { 'line-color': '#ffffff', 'line-width': 6, 'line-opacity': .7 },
+    layout: { 'line-cap': 'round' } });
   map.addLayer({ id: 'spur-line', type: 'line', source: 'spurs',
-    paint: { 'line-color': C.spur, 'line-width': 3, 'line-dasharray': [1.5, 1.8] } });
+    paint: { 'line-color': C.spur, 'line-width': 3.5, 'line-dasharray': [1.5, 1.8] } });
   // "already walked" chalk line, on top of the day/grade coloring
   map.addLayer({ id: 'progress-casing', type: 'line', source: 'progress',
     paint: { 'line-color': 'rgba(20,26,20,.55)', 'line-width': 8 },
@@ -338,6 +347,33 @@ map.on('load', () => {
     '<path d="M12 5.2 L16.4 16 L12 13.2 L7.6 16 Z" fill="#fff"/></svg>';
   puck = new maplibregl.Marker({ element: pe, rotationAlignment: 'map', pitchAlignment: 'map' })
     .setLngLat(lngLat(routeLine[0])).addTo(map);
+
+  // place-name labels — lakes & peaks (OSM names; elevations only where verified)
+  const LAKE_LABELS = [
+    [43.98021,-114.87532,'Pettit Lake'],[43.93730,-114.94360,'Alice Lake'],
+    [43.93931,-114.95796,'Twin Lakes'],[43.96059,-114.97030,'Toxaway Lake'],
+    [43.97850,-114.93350,'Farley Lake'],[43.96642,-114.95895,'Bowknot Lake'],
+    [43.97760,-114.95850,'Edith Lake'],[44.00244,-114.87344,'Yellow Belly Lake'],
+    [43.99851,-114.88946,'McDonald Lake'],
+  ];
+  const PEAK_LABELS = [
+    [43.938134,-114.9713602,'Snowyside Peak','10,651 ft'],
+    [43.9408112,-114.9334108,'El Capitan','9,901 ft'],
+    [43.9192487,-114.9474001,'Perfect Peak',''],[43.9462939,-114.906464,'McDonald Peak',''],
+    [43.9666066,-114.9327755,'Parks Peak',''],[43.992155,-114.987251,'Payette Peak',''],
+    [43.9934118,-114.935224,'Imogene Peak',''],
+  ];
+  LAKE_LABELS.forEach(([lat,lng,name]) => {
+    const el = document.createElement('div');
+    el.className = 'lbl3d lake'; el.textContent = name;
+    new maplibregl.Marker({ element: el }).setLngLat([lng, lat]).addTo(map);
+  });
+  PEAK_LABELS.forEach(([lat,lng,name,ele]) => {
+    const el = document.createElement('div');
+    el.className = 'lbl3d peak';
+    el.innerHTML = `▲ ${name}${ele ? `<small>${ele}</small>` : ''}`;
+    new maplibregl.Marker({ element: el, anchor: 'bottom' }).setLngLat([lng, lat]).addTo(map);
+  });
 
   buildProfile();
   document.getElementById('dock').style.visibility = '';

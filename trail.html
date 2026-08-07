@@ -52,6 +52,13 @@ body.map-fs{overflow:hidden}
 .route-legend span{display:inline-flex;align-items:center;gap:7px;font-weight:600}
 .rl-line{display:inline-block;width:30px;height:0;border-top:4px solid}
 .rl-dash{border-top-style:dashed;border-top-width:3px}
+/* place-name labels (lakes & peaks) */
+.mlbl-wrap{background:none!important;border:none!important}
+.mlbl{pointer-events:none;white-space:nowrap;transform:translate(-50%,-50%);display:inline-block;
+  text-shadow:0 1px 0 rgba(255,255,255,.95),0 -1px 0 rgba(255,255,255,.95),1px 0 0 rgba(255,255,255,.95),-1px 0 0 rgba(255,255,255,.95),0 0 6px rgba(255,255,255,.8)}
+.mlbl-lake{font:italic 600 12.5px/1.15 var(--serif);color:#1f5f86}
+.mlbl-peak{font:700 10.5px/1.2 var(--sans);color:#4a3f2b;letter-spacing:.02em;text-align:center;transform:translate(-50%,-100%)}
+.mlbl-peak small{display:block;font-weight:600;font-size:9.5px;color:#6b6455}
 /* pins */
 .pin{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)}
 .pin span{transform:rotate(45deg);font-size:13px;line-height:1}
@@ -192,14 +199,14 @@ body.map-fs{overflow:hidden}
       more photos on AllTrails ↗</a> · <a href="trail3d.html"><strong>fly it in 3D ⛰</strong></a> ·
       offline backup: <a href="sawtooth-loop.gpx" download>GPX</a> (Gaia / AllTrails / Garmin) ·
       <a href="sawtooth-loop.kml" download>KML</a> (Google Earth) ·
-      trail lines © OpenStreetMap (ODbL) · elevations USGS 3DEP.</div>
+      trail lines &amp; place names © OpenStreetMap (ODbL) · elevations USGS 3DEP.</div>
     </div>
 
     <div class="route-legend" id="legend-days">
       <span><span class="rl-line" style="border-color:#b4531f"></span>Day 1 · TH → Alice / Twin</span>
       <span><span class="rl-line" style="border-color:#3b8ec2"></span>Day 2 · Snowyside → Toxaway</span>
       <span><span class="rl-line" style="border-color:#3e8a55"></span>Day 3–4 · valley out</span>
-      <span><span class="rl-line rl-dash" style="border-color:#8a6d3b"></span>optional side trips</span>
+      <span><span class="rl-line rl-dash" style="border-color:#c0369b"></span>optional side trips</span>
     </div>
     <div class="route-legend" id="legend-grade" style="display:none">
       <span title="12%+"><span class="rl-line" style="border-color:#7e1c10"></span>steepest climb</span>
@@ -492,7 +499,7 @@ body.map-fs{overflow:hidden}
 <script>
 /* ================= Trail Atlas runtime ================= */
 'use strict';
-const C = { d1:'#b4531f', d2:'#3b8ec2', d3:'#3e8a55', spur:'#8a6d3b',
+const C = { d1:'#b4531f', d2:'#3b8ec2', d3:'#3e8a55', spur:'#c0369b',
             camp:'#2d5240', hazard:'#b4531f', highlight:'#4f83a0', nav:'#6b6455' };
 
 /* ---------- PINS (hand-curated; every entry carries sources) ---------- */
@@ -704,7 +711,7 @@ const topo = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/U
   maxZoom: 16, attribution: 'USGS The National Map' }).addTo(map);
 const sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
   maxZoom: 18, attribution: 'Esri, Maxar, Earthstar Geographics' });
-L.control.layers({ 'USGS Topo': topo, 'Satellite': sat }, null, { position: 'topright' }).addTo(map);
+const layersCtl = L.control.layers({ 'USGS Topo': topo, 'Satellite': sat }, null, { position: 'topright' }).addTo(map);
 L.control.scale({ imperial: true, metric: false }).addTo(map);
 
 const casing = { color: '#ffffff', weight: 7, opacity: .85 };
@@ -719,6 +726,40 @@ mk(dayGroup, [...TRAIL.legs.day2a, ...TRAIL.legs.day2b.slice(1)], C.d2);
 mk(dayGroup, [...TRAIL.legs.day3a, ...TRAIL.legs.day3b.slice(1)], C.d3);
 mk(spurGroup, TRAIL.legs.spurEdith, C.spur, '6 7');
 mk(spurGroup, TRAIL.legs.spurPass, C.spur, '6 7');
+
+/* ---- place-name labels: lakes & peaks along the loop.
+   Coordinates: OpenStreetMap (lake centroids computed from the water polygons;
+   peak nodes). Elevations shown only where independently verified (Snowyside
+   10,651 / El Capitan 9,901 — Wikipedia/GNIS, cross-checked in the fleet digest);
+   other summits are name-only because published vs USGS-3DEP figures differ. */
+const LAKE_LABELS = [
+  [43.98021,-114.87532,'Pettit Lake'],
+  [43.93730,-114.94360,'Alice Lake'],
+  [43.93931,-114.95796,'Twin Lakes'],
+  [43.96059,-114.97030,'Toxaway Lake'],
+  [43.97850,-114.93350,'Farley Lake'],
+  [43.96642,-114.95895,'Bowknot Lake'],
+  [43.97760,-114.95850,'Edith Lake'],
+  [44.00244,-114.87344,'Yellow Belly Lake'],
+  [43.99851,-114.88946,'McDonald Lake'],
+];
+const PEAK_LABELS = [
+  [43.938134,-114.9713602,'Snowyside Peak','10,651 ft'],
+  [43.9408112,-114.9334108,'El Capitan','9,901 ft'],
+  [43.9192487,-114.9474001,'Perfect Peak',''],
+  [43.9462939,-114.906464,'McDonald Peak',''],
+  [43.9666066,-114.9327755,'Parks Peak',''],
+  [43.992155,-114.987251,'Payette Peak',''],
+  [43.9934118,-114.935224,'Imogene Peak',''],
+];
+const labelGroup = L.layerGroup().addTo(map);
+LAKE_LABELS.forEach(([lat,lng,name]) =>
+  L.marker([lat,lng], { icon: L.divIcon({ className:'mlbl-wrap', iconSize:[0,0],
+    html:`<span class="mlbl mlbl-lake">${name}</span>` }), interactive:false, keyboard:false }).addTo(labelGroup));
+PEAK_LABELS.forEach(([lat,lng,name,ele]) =>
+  L.marker([lat,lng], { icon: L.divIcon({ className:'mlbl-wrap', iconSize:[0,0],
+    html:`<span class="mlbl mlbl-peak">▲ ${name}${ele ? `<small>${ele}</small>` : ''}</span>` }), interactive:false, keyboard:false }).addTo(labelGroup));
+layersCtl.addOverlay(labelGroup, 'Place names');
 
 /* ---- GRADE MODE: route repainted by steepness (validated diverging ramp:
    warm = climbing, blue = descending, darker = steeper, neutral = flat;
