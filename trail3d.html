@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="3D Flyover · Alice–Toxaway Loop · Sawtooth High Adventure 2026">
-<meta property="og:description" content="Fly the whole 18.6-mile loop over real terrain — satellite imagery draped on USGS elevation.">
+<meta property="og:description" content="Fly the whole 18.6-mile loop over real terrain — live navigation mode with mile-by-mile info, elevation, and photo cards.">
 <meta property="og:url" content="https://jedashford.github.io/high-adventure-2026/trail3d.html">
 <title>3D Flyover — Alice–Toxaway Loop · Sawtooth ’26</title>
 <link rel="icon" type="image/png" href="images/favicon.png">
@@ -17,23 +17,73 @@
 <link rel="stylesheet" href="styles.css">
 <style>
 .stage{position:relative;margin:14px auto 8px;max-width:1400px;padding:0 14px}
-#map3d{height:min(82vh,820px);min-height:460px;border:1px solid var(--line);border-radius:8px;background:#0e1512}
-.hud{position:absolute;left:26px;bottom:26px;z-index:5;background:rgba(30,58,47,.92);color:var(--paper);border-radius:8px;padding:12px 16px;font:600 13px/1.5 var(--sans);min-width:230px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
-.hud b{font-family:var(--serif);font-size:19px;display:block}
-.hud .day-chip{display:inline-block;border-radius:4px;padding:1px 8px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
-.ctl3d{position:absolute;top:26px;left:26px;z-index:5;display:flex;flex-wrap:wrap;gap:8px;max-width:75%}
-.ctl3d button,.ctl3d a{border:0;border-radius:6px;padding:9px 14px;font:700 12px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;background:rgba(255,255,255,.94);color:var(--pine);box-shadow:0 2px 8px rgba(0,0,0,.35);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+#map3d{height:min(84vh,860px);min-height:500px;border:1px solid var(--line);border-radius:8px;background:#0e1512}
+
+/* top-left controls */
+.ctl3d{position:absolute;top:26px;left:26px;z-index:5;display:flex;flex-wrap:wrap;gap:8px;max-width:72%}
+.ctl3d button,.ctl3d a,.speedwrap{border:0;border-radius:6px;padding:9px 14px;font:700 12px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;background:rgba(255,255,255,.94);color:var(--pine);box-shadow:0 2px 8px rgba(0,0,0,.35);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .ctl3d button:hover,.ctl3d a:hover{background:var(--paper)}
 .ctl3d button.primary{background:var(--rust);color:#fff}
 .ctl3d button.primary:hover{background:var(--ember)}
 .ctl3d button[aria-pressed="true"]{outline:2px solid var(--rust)}
+.speedwrap{cursor:default;padding:6px 12px}
+.speedwrap input{width:86px;accent-color:var(--rust);cursor:pointer}
+.speedwrap b{min-width:26px;text-align:right;font-size:12px}
+
+/* live-nav dock */
+.dock{position:absolute;left:14px;right:14px;bottom:14px;z-index:5;background:rgba(23,41,34,.93);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);border-radius:10px;padding:10px 14px 8px;color:var(--paper);box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.dock-row{display:flex;align-items:baseline;gap:6px 14px;flex-wrap:wrap;font:600 12.5px/1.45 var(--sans)}
+.dock-mile{font-family:var(--serif);font-size:21px;font-weight:700;line-height:1}
+.dock-mile small{font-family:var(--sans);font-size:11.5px;font-weight:600;opacity:.75}
+.day-chip{display:inline-block;border-radius:4px;padding:2px 8px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.stat{white-space:nowrap;opacity:.95}
+.nextchip{margin-left:auto;background:rgba(255,255,255,.13);border-radius:6px;padding:3px 10px;white-space:nowrap}
+.dock-note{font:italic 500 12px/1.4 var(--sans);opacity:.72;margin-top:2px}
+#prof{margin-top:7px;cursor:pointer;touch-action:none}
+#prof svg{display:block;width:100%;height:64px;border-radius:5px;background:rgba(0,0,0,.28)}
+
+/* hiker puck */
+.puck{position:relative;width:30px;height:30px}
+.puck svg{position:relative;z-index:2;display:block;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+.puck .halo{position:absolute;inset:-9px;border-radius:50%;background:rgba(232,176,75,.35);animation:pulse 2.2s ease-out infinite;z-index:1}
+@keyframes pulse{0%{transform:scale(.55);opacity:.9}70%{transform:scale(1.25);opacity:0}100%{opacity:0}}
+
+/* pass-by info cards */
+.fcard{position:absolute;right:14px;top:78px;z-index:6;width:min(300px,74vw);background:#fdfaf2;color:#26221c;border-radius:10px;overflow:hidden;box-shadow:0 12px 34px rgba(0,0,0,.5);transform:translateX(130%);transition:transform .45s cubic-bezier(.2,.8,.25,1);pointer-events:auto}
+.fcard.show{transform:none}
+.fcard img{display:block;width:100%;height:148px;object-fit:cover}
+.fcard-b{padding:10px 13px 12px}
+.fcard-k{font:700 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--rust)}
+.fcard h4{font-family:var(--serif);font-size:17px;margin:3px 0 4px;color:var(--pine)}
+.fcard p{margin:0;font:400 12.5px/1.5 var(--sans)}
+.fcard p a{color:var(--rust);font-weight:600}
+.fcard small{display:block;margin-top:5px;font:400 10px/1.3 var(--sans);color:#8a8272}
+.fcard-x{position:absolute;top:6px;right:6px;z-index:2;border:0;border-radius:50%;width:24px;height:24px;background:rgba(0,0,0,.45);color:#fff;font:700 14px/1 var(--sans);cursor:pointer}
+
+/* day splash + recenter */
+.splash{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:7;opacity:0;transition:opacity .5s}
+.splash.show{opacity:1}
+.splash div{text-align:center;color:#fff;text-shadow:0 3px 18px rgba(0,0,0,.8)}
+.splash b{display:block;font-family:var(--serif);font-size:clamp(30px,5vw,52px);letter-spacing:.02em}
+.splash span{font:600 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;opacity:.92}
+.recenter{position:absolute;left:50%;transform:translateX(-50%);bottom:168px;z-index:6;display:none;border:0;border-radius:99px;padding:9px 18px;font:700 12px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;background:#fff;color:var(--pine);box-shadow:0 4px 16px rgba(0,0,0,.45);cursor:pointer}
+.recenter.show{display:block}
+
 .note3d{max-width:980px;margin:0 auto;padding:0 28px;font-size:13.5px;color:var(--moss)}
-.marker3d{width:22px;height:22px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;cursor:pointer}
-.marker3d span{transform:rotate(45deg);font-size:11px;line-height:1}
 .maplibregl-popup-content{font-family:var(--sans);border-radius:8px;padding:12px 15px}
 .maplibregl-popup-content h4{font-family:var(--serif);color:var(--pine);margin:0 0 4px;font-size:15px}
 .maplibregl-popup-content p{margin:0;font-size:12.5px;line-height:1.45}
-@media (max-width:700px){.ctl3d{top:14px;left:14px}.hud{left:14px;bottom:14px;min-width:0;padding:9px 12px}.hud b{font-size:16px}}
+.marker3d{width:22px;height:22px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.marker3d span{transform:rotate(45deg);font-size:11px;line-height:1}
+@media (max-width:700px){
+  .ctl3d{top:14px;left:14px}
+  .dock{left:8px;right:8px;bottom:8px;padding:8px 10px 6px}
+  .dock-mile{font-size:17px}
+  .nextchip{margin-left:0}
+  .fcard{top:auto;bottom:190px}
+  .recenter{bottom:210px}
+  #prof svg{height:48px}
+}
 </style>
 </head>
 <body>
@@ -57,16 +107,19 @@
   <div class="wrap">
     <div class="kicker">Field Manual No. 4 · Plate II</div>
     <h1 class="title" style="font-size:clamp(38px,6vw,64px)">The Loop in <em>Three Dimensions</em></h1>
-    <p class="subtitle">Satellite imagery draped over real USGS terrain — drag to spin, pinch/scroll to zoom,
-    <strong>hold Ctrl (or two fingers) and drag to tilt</strong>. Or just press <strong>▶ Fly the loop</strong>.</p>
+    <p class="subtitle">Live navigation over real terrain. Press <strong>▶ Fly the loop</strong> and the camera walks
+    the trail for you — mile counter, live elevation &amp; grade, photo cards at every landmark, and both
+    turn-right junctions called out. <strong>Scroll to zoom mid-flight, drag to look around</strong> (the hiker keeps
+    going — hit ⟲ Recenter to catch up), and <strong>drag the elevation profile</strong> to jump to any mile.</p>
   </div>
 </header>
 
 <div class="stage">
   <div id="map3d"></div>
+
   <div class="ctl3d">
     <button class="primary" id="btn-fly">▶ Fly the loop</button>
-    <button id="btn-speed" title="Flyover speed">2×</button>
+    <span class="speedwrap" title="Flyover speed"><input type="range" id="speed" min="0.5" max="6" step="0.5" value="2" aria-label="Flyover speed"><b id="speed-lab">2×</b></span>
     <button data-day="1">D1</button>
     <button data-day="2">D2</button>
     <button data-day="3">D3–4</button>
@@ -74,14 +127,29 @@
     <button id="btn-base" title="Toggle satellite / topo">Topo</button>
     <a href="trail.html">↩ 2D Atlas</a>
   </div>
-  <div class="hud" id="hud" style="display:none">
-    <span class="day-chip" id="hud-day"></span>
-    <b id="hud-mile"></b>
-    <span id="hud-note"></span>
+
+  <button class="recenter" id="recenter">⟲ Recenter</button>
+  <div class="splash" id="splash"><div><span id="splash-sub"></span><b id="splash-day"></b></div></div>
+  <div class="fcard" id="fcard" aria-live="polite"></div>
+
+  <div class="dock" id="dock" style="visibility:hidden">
+    <div class="dock-row">
+      <span class="day-chip" id="hud-day">Day 1</span>
+      <span class="dock-mile" id="hud-mile">Mile 0.0 <small>of 18.6</small></span>
+      <span class="stat" id="hud-pct">0% walked</span>
+      <span class="stat" id="hud-ele">⛰ 7,014 ft</span>
+      <span class="stat" id="hud-grade">→ level</span>
+      <span class="stat" id="hud-pace" title="At a 2 mph pack-on pace">⏱ 0.0 h hiked</span>
+      <span class="nextchip" id="hud-next"></span>
+    </div>
+    <div class="dock-note" id="hud-note">Press ▶ Fly the loop — or drag anywhere on the profile below to scrub.</div>
+    <div id="prof" title="Drag to jump to any mile"></div>
   </div>
 </div>
+
 <p class="note3d">Terrain: AWS Open Data / Mapzen global elevation (1.35× vertical exaggeration) ·
-imagery Esri World Imagery · topo USGS · route © OpenStreetMap contributors.
+imagery Esri World Imagery · topo USGS · route © OpenStreetMap contributors · photos credited on each card.
+Keyboard: <strong>space</strong> play/pause · <strong>←/→</strong> scrub · <strong>↑/↓</strong> speed.
 Take it offline instead: <a href="sawtooth-loop.gpx" download><strong>GPX</strong></a> for Gaia/AllTrails/Garmin ·
 <a href="sawtooth-loop.kml" download><strong>KML</strong></a> for Google Earth.
 Old phone struggling? The <a href="trail.html">2D atlas</a> has everything.</p>
@@ -101,6 +169,7 @@ const C = { d1:'#b4531f', d2:'#3b8ec2', d3:'#3e8a55', spur:'#c9a84c' };
 const GRADE_COLORS = { '-4':'#143f6b','-3':'#2a6ba3','-2':'#4f94c4','-1':'#8fc1dd',
                        '0':'#b6ad97','1':'#e8b04b','2':'#dd7a33','3':'#c43d20','4':'#7e1c10' };
 
+/* ---------- mileage engine ---------- */
 const routeLine = [...TRAIL.legs.day1, ...TRAIL.legs.day2a.slice(1), ...TRAIL.legs.day2b.slice(1),
                    ...TRAIL.legs.day3a.slice(1), ...TRAIL.legs.day3b.slice(1)];
 const RM = 3958.8, toR = d => d * Math.PI / 180;
@@ -109,18 +178,67 @@ const hav = (a, b) => 2 * RM * Math.asin(Math.sqrt(
 const cum = [0];
 for (let i = 1; i < routeLine.length; i++) cum.push(cum[i-1] + hav(routeLine[i-1], routeLine[i]));
 const totalMi = cum[cum.length-1];
+const miIdx = mi => { let lo = 1, hi = cum.length - 1;               // first idx with cum >= mi
+  while (lo < hi) { const m = (lo + hi) >> 1; cum[m] < mi ? lo = m + 1 : hi = m; } return lo; };
 function atMile(mi) {
   if (mi <= 0) return routeLine[0];
-  for (let i = 1; i < cum.length; i++) if (cum[i] >= mi) {
-    const f = (mi - cum[i-1]) / (cum[i] - cum[i-1] || 1);
-    return [routeLine[i-1][0] + (routeLine[i][0]-routeLine[i-1][0])*f,
-            routeLine[i-1][1] + (routeLine[i][1]-routeLine[i-1][1])*f];
-  }
-  return routeLine[routeLine.length-1];
+  if (mi >= totalMi) return routeLine[routeLine.length-1];
+  const i = miIdx(mi), f = (mi - cum[i-1]) / ((cum[i] - cum[i-1]) || 1);
+  return [routeLine[i-1][0] + (routeLine[i][0]-routeLine[i-1][0])*f,
+          routeLine[i-1][1] + (routeLine[i][1]-routeLine[i-1][1])*f];
 }
+const bearingAt = mi => { const a = atMile(mi), b = atMile(Math.min(totalMi, mi + 0.22));
+  return Math.atan2((b[1]-a[1]) * Math.cos(a[0]*Math.PI/180), b[0]-a[0]) * 180 / Math.PI; };
 const eleAtMile = mi => TRAIL.profile.main.reduce((b,p) => Math.abs(p[0]-mi) < Math.abs(b[0]-mi) ? p : b)[1];
+const ribbon = TRAIL.grade.ribbon;
+const gradeAt = mi => { let lo = 0, hi = ribbon.length - 1;
+  while (lo < hi) { const m = (lo + hi + 1) >> 1; ribbon[m][0] <= mi ? lo = m : hi = m - 1; } return ribbon[lo][1]; };
 const lngLat = p => [p[1], p[0]];
+const lerpAngle = (a, b, t) => { let d = ((b - a + 540) % 360) - 180; return a + d * t; };
 
+/* ---------- narrative & waypoints (all facts verified in the 2D atlas) ---------- */
+const DAYS = [
+  { end: 6.83,  label: 'Day 1',   sub: 'Tin Cup → Alice Lake → Twin Lakes', c: C.d1 },
+  { end: 12.34, label: 'Day 2',   sub: 'Over Snowyside Pass → Toxaway',     c: C.d2 },
+  { end: 1e9,   label: 'Day 3–4', sub: 'Toxaway → Farley → out to the cars', c: C.d3 },
+];
+const dayIdxOf = mi => mi <= 6.83 ? 0 : mi <= 12.34 ? 1 : 2;
+const HUD_NOTES = [[0,'Leaving the trailhead along Pettit Lake'],[1.4,'Into the wilderness — Pettit Creek canyon'],
+  [3.5,'The crossings zone — bridge at ~mile 5'],[5.8,'Alice Lake · El Capitan on the left'],[6.8,'Twin Lakes bench — night 1'],
+  [7.4,'Climbing above treeline'],[8.1,'SNOWYSIDE PASS — 9,415 ft'],[8.6,'The 2-mile switchback descent'],
+  [10.9,'Three-way junction — we turn right'],[11.8,'Toxaway north shore — night 2'],[12.9,'Waterfalls & the boulder field'],
+  [14.4,'Farley Lake — lunch'],[15.5,'Down the open valley'],[16.4,'McDonald junction — right to the cutoff'],
+  [17.3,'Over the little saddle'],[18.3,'Back to the cars']];
+const noteAt = mi => HUD_NOTES.reduce((a, n) => mi >= n[0] ? n : a)[1];
+const NAV = [  // "Next up" ticker
+  [1.4,'🌲','Wilderness boundary'],[5.0,'⚠️','No-railing bridge'],[5.8,'🏔','Alice Lake'],
+  [6.8,'⛺','Twin Lakes — camp 1'],[8.1,'⚠️','Snowyside Pass 9,415 ft'],[10.9,'➡️','Junction — TURN RIGHT'],
+  [11.8,'⛺','Toxaway — camp 2'],[14.4,'🥪','Farley Lake — lunch'],[16.4,'➡️','McDonald jct — TURN RIGHT'],
+  [totalMi,'🚗','Tin Cup Trailhead']];
+
+const WM = f => `https://upload.wikimedia.org/wikipedia/commons/thumb/${f}`;
+const CARDS = [
+  { mi:.12, t:'Tin Cup Trailhead', k:'Mile 0 · 7,014 ft', p:'$10/vehicle/day, cash. Self-issue wilderness permit at the box. 18.6 miles ahead.',
+    img: WM('c/c2/Pettit_Lake_Sawtooth.jpg/500px-Pettit_Lake_Sawtooth.jpg'), cr:'Pettit Lake — David~O · CC BY 2.0' },
+  { mi:1.4, t:'Sawtooth Wilderness boundary', k:'Mile 1.4', p:'Sign in at the register. Groups are capped at 12 in here — and leaders count toward it.' },
+  { mi:5.0, t:'The no-railing bridge', k:'Mile ~5 · ⚠ hazard', p:'Crossing #5 of 6 — a log footbridge with no railings over Pettit Creek. One at a time, packs cinched, no stopping mid-span. <a href="https://cherylhill.net/blog/2019/09/08/backpacking-the-alice-toxaway-loop/" target="_blank" rel="noopener">Photo of this exact bridge ↗</a>' },
+  { mi:5.8, t:'Alice Lake', k:'Mile 5.8', p:'El Capitan towers over the far shore — the most photographed spot on the loop.',
+    img: WM('9/98/El_Capitan_and_Alice_Lake.jpg/500px-El_Capitan_and_Alice_Lake.jpg'), cr:'El Capitan over Alice — David~O · CC BY 2.0' },
+  { mi:6.8, t:'Twin Lakes — night 1', k:'Mile 6.8 · 8,860 ft', p:'Camp on the bench between the two lakes; sites in the trees on the east side. Hang all food tonight.' },
+  { mi:8.1, t:'Snowyside Pass — 9,415 ft', k:'Mile 8.1 · high point · ⚠', p:'The top of the whole trip. Be over it before 11 AM — it’s exposed to lightning on both sides.',
+    img: WM('5/52/Smoky_Sawtooths.jpg/500px-Smoky_Sawtooths.jpg'), cr:'Aerial: Twin Lakes center, Snowyside upper-right — Sam Beebe · CC BY 2.0' },
+  { mi:8.65, t:'The switchback descent', k:'Miles 8.6–10.6', p:'Two miles of switchbacks on loose gravel — this is where ankles roll. Poles out, keep spacing.' },
+  { mi:10.9, t:'Turn RIGHT here', k:'Mile 10.9 · ➡ junction', p:'Three-way junction. In July 2026 a group followed the wrong fork toward Edna Lake. Take the right fork, along Toxaway’s shore.' },
+  { mi:11.8, t:'Toxaway Lake — night 2', k:'Mile 11.8 · 8,323 ft', p:'Best group sites toward the NW end, below the trail. Base for the dawn side trips: Edith Lake and Sand Mountain Pass.',
+    img: WM('3/35/Toxaway_Lake.jpg/500px-Toxaway_Lake.jpg'), cr:'Toxaway from the Sand Mtn Pass trail — Fredlyfish4 · CC BY-SA 3.0' },
+  { mi:14.4, t:'Farley Lake — lunch', k:'Mile 14.4', p:'Waterfalls below the outlet. Limited camping here — that’s why it’s lunch, not camp.',
+    img: WM('8/86/Farley_Lake_Sawtooth_NRA.jpg/500px-Farley_Lake_Sawtooth_NRA.jpg'), cr:'Farley Lake — Fredlyfish4 · CC BY-SA 3.0' },
+  { mi:16.4, t:'Turn RIGHT — McDonald junction', k:'Mile 16.4 · ➡ junction', p:'Right onto the Pettit Lake Cutoff, over the little saddle, back to the cars.' },
+  { mi:totalMi-0.15, t:'The loop, closed', k:'Mile 18.6 · 🎉', p:'18.6 miles and ~2,900 ft of climbing — back where we started on Pettit Lake.',
+    img: WM('c/c2/Pettit_Lake_Sawtooth.jpg/500px-Pettit_Lake_Sawtooth.jpg'), cr:'Pettit Lake — David~O · CC BY 2.0' },
+];
+
+/* ---------- map ---------- */
 const map = new maplibregl.Map({
   container: 'map3d',
   center: [-114.92, 43.965], zoom: 11.6, pitch: 58, bearing: -35,
@@ -138,10 +256,11 @@ const map = new maplibregl.Map({
 map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right');
 map.addControl(new maplibregl.ScaleControl({ unit: 'imperial' }), 'bottom-right');
 
+let loaded = false, puck = null;
 map.on('load', () => {
+  loaded = true;
   map.setTerrain({ source: 'dem', exaggeration: 1.35 });
 
-  // route by day
   const dayFeature = (pts, c) => ({ type: 'Feature', properties: { c }, geometry: { type: 'LineString', coordinates: pts.map(lngLat) } });
   map.addSource('route-days', { type: 'geojson', data: { type: 'FeatureCollection', features: [
     dayFeature(TRAIL.legs.day1, C.d1),
@@ -153,6 +272,7 @@ map.on('load', () => {
       geometry: { type: 'LineString', coordinates: s.pts.map(lngLat) } })) } });
   map.addSource('spurs', { type: 'geojson', data: { type: 'FeatureCollection', features: [
     dayFeature(TRAIL.legs.spurEdith, C.spur), dayFeature(TRAIL.legs.spurPass, C.spur) ] } });
+  map.addSource('progress', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
 
   const casing = (id, src) => map.addLayer({ id, type: 'line', source: src,
     paint: { 'line-color': '#ffffff', 'line-width': 7, 'line-opacity': .85 },
@@ -165,8 +285,14 @@ map.on('load', () => {
   ['grade-casing', 'grade-line'].forEach(id => map.setLayoutProperty(id, 'visibility', 'none'));
   map.addLayer({ id: 'spur-line', type: 'line', source: 'spurs',
     paint: { 'line-color': C.spur, 'line-width': 3, 'line-dasharray': [1.5, 1.8] } });
+  // "already walked" chalk line, on top of the day/grade coloring
+  map.addLayer({ id: 'progress-casing', type: 'line', source: 'progress',
+    paint: { 'line-color': 'rgba(20,26,20,.55)', 'line-width': 8 },
+    layout: { 'line-cap': 'round', 'line-join': 'round' } });
+  map.addLayer({ id: 'progress-line', type: 'line', source: 'progress',
+    paint: { 'line-color': '#f7f1df', 'line-width': 4.5, 'line-opacity': .96 },
+    layout: { 'line-cap': 'round', 'line-join': 'round' } });
 
-  // markers
   const PINS = [
     [43.98441,-114.87189,'#6b6455','🚗','Tin Cup Trailhead','Mile 0 · 7,014 ft. Start and finish.'],
     [43.93824,-114.95647,'#2d5240','⛺','Twin Lakes — night 1','Mile 6.8 · 8,860 ft.'],
@@ -187,9 +313,230 @@ map.on('load', () => {
       .setPopup(new maplibregl.Popup({ offset: 18 }).setHTML(`<h4>${p[4]}</h4><p>${p[5]}</p>`))
       .addTo(map);
   });
+
+  // hiker puck
+  const pe = document.createElement('div');
+  pe.className = 'puck';
+  pe.innerHTML = '<div class="halo"></div><svg viewBox="0 0 24 24" width="30" height="30">' +
+    '<circle cx="12" cy="12" r="10" fill="#1e3a2f" stroke="#fff" stroke-width="2.5"/>' +
+    '<path d="M12 5.2 L16.4 16 L12 13.2 L7.6 16 Z" fill="#fff"/></svg>';
+  puck = new maplibregl.Marker({ element: pe, rotationAlignment: 'map', pitchAlignment: 'map' })
+    .setLngLat(lngLat(routeLine[0])).addTo(map);
+
+  buildProfile();
+  document.getElementById('dock').style.visibility = '';
+  render(true);
 });
 
-/* ---------- controls ---------- */
+/* ---------- elevation-profile scrubber ---------- */
+const profEl = document.getElementById('prof');
+let phG, phDot, clipR, yOf;
+function buildProfile() {
+  const P = TRAIL.profile.main, W = 1000, H = 100;
+  const eles = P.map(p => p[1]), lo = Math.min(...eles) - 90, hi = Math.max(...eles) + 90;
+  const x = mi => mi / totalMi * W;
+  yOf = ele => H - 6 - (ele - lo) / (hi - lo) * (H - 14);
+  const line = P.map((p, i) => (i ? 'L' : 'M') + x(p[0]).toFixed(1) + ',' + yOf(p[1]).toFixed(1)).join('');
+  const area = line + `L${W},${H}L0,${H}Z`;
+  const bands = DAYS.map((d, i) => { const a = i ? DAYS[i-1].end : 0, b = Math.min(d.end, totalMi);
+    return `<rect x="${x(a).toFixed(1)}" y="0" width="${(x(b)-x(a)).toFixed(1)}" height="${H}" fill="${d.c}" opacity="0.14"/>`; }).join('');
+  const dots = NAV.filter(n => n[0] > 0.5 && n[0] < totalMi - 0.3)
+    .map(n => `<circle cx="${x(n[0]).toFixed(1)}" cy="${yOf(eleAtMile(n[0])).toFixed(1)}" r="2.6" fill="#fff" opacity=".85"><title>${n[2]}</title></circle>`).join('');
+  profEl.innerHTML =
+    `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-label="Elevation profile — drag to scrub">
+      ${bands}
+      <path d="${area}" fill="rgba(244,239,226,.14)"/>
+      <clipPath id="pclip"><rect id="clipR" x="0" y="0" width="0" height="${H}"/></clipPath>
+      <path d="${area}" fill="rgba(232,176,75,.38)" clip-path="url(#pclip)"/>
+      <path d="${line}" fill="none" stroke="rgba(244,239,226,.75)" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+      ${dots}
+      <g id="phG"><line x1="0" x2="0" y1="0" y2="${H}" stroke="#fff" stroke-width="1.2" vector-effect="non-scaling-stroke" opacity=".9"/>
+        <circle id="phDot" cx="0" cy="50" r="4.6" fill="#e8b04b" stroke="#fff" stroke-width="1.6" vector-effect="non-scaling-stroke"/></g>
+    </svg>`;
+  phG = document.getElementById('phG'); phDot = document.getElementById('phDot'); clipR = document.getElementById('clipR');
+  let scrubbing = false;
+  const seekEv = e => { const r = profEl.getBoundingClientRect();
+    setMile((e.clientX - r.left) / r.width * totalMi, true); };
+  profEl.addEventListener('pointerdown', e => { scrubbing = true; profEl.setPointerCapture(e.pointerId); seekEv(e); });
+  profEl.addEventListener('pointermove', e => scrubbing && seekEv(e));
+  ['pointerup','pointercancel'].forEach(ev => profEl.addEventListener(ev, () => scrubbing = false));
+}
+
+/* ---------- flyover state ---------- */
+let flying = false, attached = true, flyMi = 0, lastT = 0, speed = 2;
+let curBearing = null, curZoom = 13.8, suppressCamUntil = 0, lastProg = -1, curDay = -1;
+let shown = new Set();
+const btnFly = document.getElementById('btn-fly');
+const recenterBtn = document.getElementById('recenter');
+
+function updProgress() {
+  if (!loaded) return;
+  if (flyMi > 0.01 && Math.abs(flyMi - lastProg) < 0.008) return;
+  lastProg = flyMi;
+  const src = map.getSource('progress'); if (!src) return;
+  if (flyMi <= 0.005) { src.setData({ type: 'FeatureCollection', features: [] }); return; }
+  const i = miIdx(Math.min(flyMi, totalMi));
+  const coords = routeLine.slice(0, i).map(lngLat);
+  const p = atMile(flyMi); coords.push([p[1], p[0]]);
+  src.setData({ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: coords } });
+}
+
+function render(force, dt) {
+  if (!loaded) return;
+  const here = atMile(flyMi), brg = bearingAt(flyMi);
+  puck.setLngLat([here[1], here[0]]).setRotation(brg);
+  updProgress();
+  // chase-cam: stay on the hiker, nose pointed down-trail (only while flying + attached)
+  if (flying && attached && performance.now() > suppressCamUntil) {
+    curBearing = curBearing == null ? brg : lerpAngle(curBearing, brg, Math.min(1, (dt || 0.016) * 3.5));
+    map.jumpTo({ center: [here[1], here[0]], bearing: curBearing, pitch: 63, zoom: curZoom });
+  }
+  // HUD
+  const di = dayIdxOf(flyMi), day = DAYS[di];
+  const chip = document.getElementById('hud-day');
+  chip.textContent = day.label; chip.style.background = day.c;
+  document.getElementById('hud-mile').innerHTML = `Mile ${flyMi.toFixed(1)} <small>of ${totalMi.toFixed(1)}</small>`;
+  document.getElementById('hud-pct').textContent = `${Math.round(flyMi/totalMi*100)}% walked`;
+  document.getElementById('hud-ele').textContent = `⛰ ${Math.round(eleAtMile(flyMi)).toLocaleString()} ft`;
+  const g = gradeAt(flyMi), ga = Math.abs(g);
+  const gEl = document.getElementById('hud-grade');
+  gEl.textContent = ga < 2 ? '→ level' : `${g > 0 ? '↗' : '↘'} ${ga.toFixed(0)}% ${g > 0 ? 'climb' : 'descent'}`;
+  gEl.style.color = ga < 2 ? '#b6ad97' : g > 0 ? (ga >= 8 ? '#ff9d6e' : '#e8b04b') : (ga >= 8 ? '#5fb0e8' : '#8fc1dd');
+  document.getElementById('hud-pace').textContent = `⏱ ~${(flyMi/2).toFixed(1)} h hiked`;
+  document.getElementById('hud-note').textContent = noteAt(flyMi);
+  const nxt = NAV.find(n => n[0] > flyMi + 0.04);
+  document.getElementById('hud-next').textContent =
+    nxt ? `Next · ${nxt[1]} ${nxt[2]} — ${(nxt[0]-flyMi) < 0.1 ? 'here' : (nxt[0]-flyMi).toFixed(1) + ' mi'}` : '🎉 Loop complete';
+  // profile playhead
+  if (phG) { const px = flyMi / totalMi * 1000;
+    phG.setAttribute('transform', `translate(${px.toFixed(1)},0)`);
+    phDot.setAttribute('cy', yOf(eleAtMile(flyMi)).toFixed(1));
+    clipR.setAttribute('width', px.toFixed(1)); }
+}
+
+/* ---------- pass-by cards ---------- */
+const fcard = document.getElementById('fcard');
+let cardTimer = null;
+function hideCard() { fcard.classList.remove('show'); clearTimeout(cardTimer); }
+function showCard(c) {
+  fcard.innerHTML = `<button class="fcard-x" aria-label="Dismiss">×</button>` +
+    (c.img ? `<img src="${c.img}" alt="" loading="lazy">` : '') +
+    `<div class="fcard-b"><span class="fcard-k">${c.k}</span><h4>${c.t}</h4><p>${c.p}</p>` +
+    (c.cr ? `<small>${c.cr}</small>` : '') + `</div>`;
+  fcard.querySelector('.fcard-x').addEventListener('click', hideCard);
+  fcard.classList.add('show');
+  clearTimeout(cardTimer);
+  cardTimer = setTimeout(hideCard, 9000);
+}
+function checkCards(prev, cur) {
+  for (const c of CARDS) if (c.mi > prev && c.mi <= cur && !shown.has(c.mi)) { shown.add(c.mi); showCard(c); }
+}
+
+/* ---------- day splash ---------- */
+const splashEl = document.getElementById('splash');
+let splashTimer = null;
+function splash(day) {
+  document.getElementById('splash-day').textContent = day.label;
+  document.getElementById('splash-day').style.color = '#fff';
+  document.getElementById('splash-sub').textContent = day.sub;
+  splashEl.classList.add('show');
+  clearTimeout(splashTimer);
+  splashTimer = setTimeout(() => splashEl.classList.remove('show'), 2800);
+}
+
+/* ---------- flight loop ---------- */
+function frame(t) {
+  if (!flying) return;
+  const dt = Math.min(0.1, (t - lastT) / 1000); lastT = t;
+  const prev = flyMi;
+  flyMi = Math.min(totalMi, flyMi + dt * 0.075 * speed);   // 0.075 mi/s at 1×
+  checkCards(prev, flyMi);
+  const di = dayIdxOf(flyMi);
+  if (di !== curDay) { curDay = di; splash(DAYS[di]); }
+  render(false, dt);
+  if (flyMi >= totalMi) { stopFly(); return; }
+  requestAnimationFrame(frame);
+}
+function setAttached(on) {
+  attached = on;
+  recenterBtn.classList.toggle('show', flying && !on);
+  if (on && flying) { map.scrollZoom.disable(); map.touchZoomRotate.disable(); }
+  else { map.scrollZoom.enable(); map.touchZoomRotate.enable(); }
+}
+function startFly() {
+  if (!loaded || flying) return;
+  if (flyMi >= totalMi - 0.05) { flyMi = 0; shown.clear(); lastProg = -1; hideCard(); }
+  flying = true; btnFly.textContent = '⏸ Pause';
+  curZoom = map.getZoom() > 12.5 ? Math.min(map.getZoom(), 15.5) : 13.8;
+  curBearing = map.getBearing(); curDay = dayIdxOf(flyMi);
+  if (flyMi < 0.05) splash(DAYS[0]);
+  setAttached(true);
+  suppressCamUntil = performance.now() + 900;
+  const h = atMile(flyMi);
+  map.easeTo({ center: [h[1], h[0]], bearing: bearingAt(flyMi), pitch: 63, zoom: curZoom, duration: 900 });
+  setTimeout(() => { curBearing = map.getBearing(); }, 920);
+  lastT = performance.now();
+  requestAnimationFrame(frame);
+}
+function stopFly() {
+  flying = false;
+  map.scrollZoom.enable(); map.touchZoomRotate.enable();
+  recenterBtn.classList.remove('show');
+  btnFly.textContent = flyMi > 0.05 && flyMi < totalMi - 0.05 ? '▶ Resume' : '▶ Fly the loop';
+}
+btnFly.addEventListener('click', () => (flying ? stopFly() : startFly()));
+
+function setMile(mi, scrub) {
+  flyMi = Math.min(totalMi, Math.max(0, mi));
+  shown = new Set(CARDS.filter(c => c.mi <= flyMi).map(c => c.mi));
+  hideCard(); curDay = dayIdxOf(flyMi); lastProg = -1;
+  render(true);
+  if (!flying) {
+    const h = atMile(flyMi);
+    map.easeTo({ center: [h[1], h[0]], bearing: bearingAt(flyMi),
+      pitch: Math.max(map.getPitch(), 55), zoom: Math.max(map.getZoom(), 12.6), duration: scrub ? 0 : 700 });
+    btnFly.textContent = flyMi > 0.05 && flyMi < totalMi - 0.05 ? '▶ Resume' : '▶ Fly the loop';
+  }
+}
+
+/* ---------- free-look + zoom during flight ---------- */
+// The chase-cam's per-frame jumpTo cancels MapLibre gestures before they can start,
+// so: any press on the terrain hands you the camera (the hiker keeps going) and
+// native pan/rotate/pinch take over. ⟲ Recenter snaps back behind the hiker.
+const canvas = map.getCanvas();
+canvas.addEventListener('pointerdown', () => { if (flying && attached) setAttached(false); });
+recenterBtn.addEventListener('click', () => {
+  setAttached(true);
+  curZoom = Math.min(15.5, Math.max(12.2, map.getZoom()));
+  suppressCamUntil = performance.now() + 650;
+  const h = atMile(flyMi);
+  map.easeTo({ center: [h[1], h[0]], bearing: bearingAt(flyMi), pitch: 63, zoom: curZoom, duration: 650 });
+  setTimeout(() => { curBearing = map.getBearing(); }, 670);
+});
+canvas.addEventListener('wheel', e => {
+  if (!(flying && attached)) return;
+  e.preventDefault();
+  curZoom = Math.min(15.8, Math.max(11.3, curZoom - e.deltaY * 0.0032));
+}, { passive: false });
+
+/* ---------- speed + keyboard ---------- */
+const speedInput = document.getElementById('speed');
+function setSpeed(v) {
+  speed = Math.min(6, Math.max(0.5, v));
+  speedInput.value = speed;
+  document.getElementById('speed-lab').textContent = (speed % 1 ? speed.toFixed(1) : speed) + '×';
+}
+speedInput.addEventListener('input', e => setSpeed(parseFloat(e.target.value)));
+window.addEventListener('keydown', e => {
+  if (e.target.matches('input,textarea,select')) return;
+  if (e.code === 'Space') { e.preventDefault(); flying ? stopFly() : startFly(); }
+  else if (e.key === 'ArrowRight') { e.preventDefault(); setMile(flyMi + 0.25, true); }
+  else if (e.key === 'ArrowLeft')  { e.preventDefault(); setMile(flyMi - 0.25, true); }
+  else if (e.key === 'ArrowUp')    { e.preventDefault(); setSpeed(speed + 0.5); }
+  else if (e.key === 'ArrowDown')  { e.preventDefault(); setSpeed(speed - 0.5); }
+});
+
+/* ---------- other controls ---------- */
 document.getElementById('btn-base').addEventListener('click', (e) => {
   const topoOn = map.getLayoutProperty('base-topo', 'visibility') !== 'none';
   map.setLayoutProperty('base-topo', 'visibility', topoOn ? 'none' : 'visible');
@@ -210,51 +557,6 @@ document.querySelectorAll('[data-day]').forEach(b => b.addEventListener('click',
   map.flyTo({ center: [mid[1], mid[0]], zoom: 12.6, pitch: 62,
               bearing: (Number(b.dataset.day) - 1) * 70 - 30, duration: 2200 });
 }));
-
-/* ---------- the flyover ---------- */
-let flying = false, flyMi = 0, lastT = 0, speed = 2, curBearing = null;
-const SPEEDS = [1, 2, 4];
-const hud = document.getElementById('hud');
-const btnFly = document.getElementById('btn-fly');
-const dayOf = mi => mi <= 6.83 ? ['Day 1', C.d1] : mi <= 12.34 ? ['Day 2', C.d2] : ['Day 3–4', C.d3];
-const HUD_NOTES = [[0,'Leaving the trailhead along Pettit Lake'],[1.4,'Into the wilderness — Pettit Creek canyon'],
-  [3.5,'The crossings zone — bridge at ~mile 5'],[5.8,'Alice Lake · El Capitan on the left'],[6.8,'Twin Lakes bench — night 1'],
-  [7.4,'Climbing above treeline'],[8.1,'SNOWYSIDE PASS — 9,415 ft'],[8.6,'The 2-mile switchback descent'],
-  [10.9,'Three-way junction — we turn right'],[11.8,'Toxaway north shore — night 2'],[12.9,'Waterfalls & the boulder field'],
-  [14.4,'Farley Lake — lunch'],[15.5,'Down the open valley'],[16.4,'McDonald junction — right to the cutoff'],
-  [17.3,'Over the little saddle'],[18.3,'Back to the cars']];
-const noteAt = mi => HUD_NOTES.reduce((a, n) => mi >= n[0] ? n : a)[1];
-const lerpAngle = (a, b, t) => { let d = ((b - a + 540) % 360) - 180; return a + d * t; };
-
-function frame(t) {
-  if (!flying) return;
-  const dt = Math.min(0.1, (t - lastT) / 1000); lastT = t;
-  flyMi += dt * 0.075 * speed;                       // 0.075 mi/s at 1×
-  if (flyMi >= totalMi) { stopFly(); return; }
-  const here = atMile(flyMi), ahead = atMile(Math.min(totalMi, flyMi + 0.25));
-  const tgt = Math.atan2((ahead[1]-here[1]) * Math.cos(here[0]*Math.PI/180), ahead[0]-here[0]) * 180 / Math.PI;
-  curBearing = curBearing == null ? tgt : lerpAngle(curBearing, tgt, Math.min(1, dt * 1.6));
-  map.jumpTo({ center: [here[1], here[0]], bearing: curBearing, pitch: 63, zoom: 13.8 });
-  const [dLabel, dCol] = dayOf(flyMi);
-  document.getElementById('hud-day').textContent = dLabel;
-  document.getElementById('hud-day').style.background = dCol;
-  document.getElementById('hud-mile').textContent = `Mile ${flyMi.toFixed(1)} · ${eleAtMile(flyMi).toLocaleString()} ft`;
-  document.getElementById('hud-note').textContent = noteAt(flyMi);
-  requestAnimationFrame(frame);
-}
-function startFly() {
-  flying = true; hud.style.display = ''; btnFly.textContent = '⏸ Pause';
-  if (flyMi >= totalMi - 0.1) flyMi = 0;
-  curBearing = map.getBearing(); lastT = performance.now();
-  requestAnimationFrame(frame);
-}
-function stopFly() { flying = false; btnFly.textContent = flyMi > 0.1 && flyMi < totalMi - 0.1 ? '▶ Resume' : '▶ Fly the loop'; }
-btnFly.addEventListener('click', () => (flying ? stopFly() : startFly()));
-document.getElementById('btn-speed').addEventListener('click', (e) => {
-  speed = SPEEDS[(SPEEDS.indexOf(speed) + 1) % SPEEDS.length];
-  e.target.textContent = speed + '×';
-});
-['mousedown', 'touchstart', 'wheel'].forEach(ev => map.getCanvas().addEventListener(ev, stopFly, { passive: true }));
 </script>
 
 </body>
