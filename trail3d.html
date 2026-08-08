@@ -140,7 +140,7 @@
     <button class="primary" id="btn-fly">▶ Fly the loop</button>
     <span class="speedwrap" title="Flyover speed — drag far left for a slow walk-through"><b>⏩</b><input type="range" id="speed" min="0" max="100" step="1" value="73" aria-label="Flyover speed"><b id="speed-lab">2×</b></span>
     <span class="speedwrap" title="Camera angle — 90° looks straight down, 8° skims the horizon"><b>∠</b><input type="range" id="tilt" min="8" max="90" step="1" value="27" aria-label="Camera angle"><b id="tilt-lab">27°</b></span>
-    <button id="btn-view" title="Trail-up rotates the view with the trail; View locked holds one direction and lets the arrow do the turning">🧭 Trail-up</button>
+    <button id="btn-view" title="Trail-up rotates the view with the trail; View locked holds one direction and lets the arrow do the turning">🔒 View locked</button>
     <button data-day="1">D1</button>
     <button data-day="2">D2</button>
     <button data-day="3">D3–4</button>
@@ -420,7 +420,7 @@ function buildProfile() {
 
 /* ---------- flyover state ---------- */
 let flying = false, flyMi = 0, lastT = 0, speed = 2;
-let curBearing = null, curZoom = 13.8, curPitch = 63, viewMode = 'trail';
+let curBearing = null, curZoom = 13.8, curPitch = 63, viewMode = 'locked';   // default: locked view — arrow does the turning
 let bearingOff = 0;                                  // orbit offset from dragging mid-flight
 let suppressCamUntil = 0, suppressClickUntil = 0, lastProg = -1, curDay = -1;
 const ZOOM_MIN = 11.3, ZOOM_MAX = 17;
